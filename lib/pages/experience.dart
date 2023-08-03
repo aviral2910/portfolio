@@ -1,4 +1,5 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/experienceCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +13,45 @@ class Experience extends StatefulWidget {
 }
 
 class _ExperienceState extends State<Experience> {
+  List<String> gravity = [
+    "flutter",
+    "dart",
+    "github",
+    "block",
+    "figma",
+    "adobexd"
+  ];
+  List<String> prmsnls = [
+    "flutter",
+    "react",
+    "website",
+    "dart",
+    "github",
+    "block",
+    "figma",
+    "html5",
+    "css"
+  ];
+
+  List<String> pansil = [
+    "flutter",
+    "springboot",
+    "dart",
+    "java",
+    "sql",
+    "adobexd",
+    "figma",
+    "github"
+  ];
+  List<String> jss = [
+    "python",
+    "django",
+    "flask",
+    "html5",
+    "css",
+    "sql",
+    "github"
+  ];
   @override
   void initState() {
     // TODO: implement initState
@@ -57,146 +97,383 @@ class _ExperienceState extends State<Experience> {
             curve: Curves.easeIn,
             height: changeAppBar ? 30 : 50,
           ),
-          Stack(
+          Row(
             children: [
-              Positioned(
-                  top: 20,
-                  left: 35,
-                  child: Container(
-                    width: 4,
-                    height: 700,
-                    color: Colors.black,
-                  )),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    // height: 450,
-                    width: w,
-                    child: Column(
+              Expanded(
+                child: Stack(
+                  children: [
+                    Positioned(
+                        top: 20,
+                        left: 35,
+                        child: Container(
+                          width: 4,
+                          height: 700,
+                          color: Colors.black,
+                        )),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeIn,
-                          height: changeAppBar ? 20 : 50,
-                        ),
-                        ExperienceCard(
+                        Container(
+                          // height: 450,
+                          width: w,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "Gravity Orienting Intellingence",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(207, 255, 255, 255),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22),
+                              AnimatedContainer(
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeIn,
+                                height: changeAppBar ? 20 : 50,
                               ),
-                              const SizedBox(
-                                height: 5,
+                              ExperienceCard(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Gravity Orienting Intellingence",
+                                      style: GoogleFonts.titilliumWeb(
+                                          color: const Color.fromARGB(
+                                              207, 255, 255, 255),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 22),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "May 2023 - Present  |  Lucknow, India",
+                                          style: GoogleFonts.titilliumWeb(
+                                              color: const Color.fromARGB(
+                                                  100, 255, 255, 255),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
+                                        ),
+                                        if (w > 1200)
+                                          Text(
+                                            "Software Developer",
+                                            style: GoogleFonts.titilliumWeb(
+                                                color: const Color.fromARGB(
+                                                    160, 255, 255, 255),
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 15),
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    if (w < 1200)
+                                      Text(
+                                        "Software Developer",
+                                        style: GoogleFonts.titilliumWeb(
+                                            color: const Color.fromARGB(
+                                                160, 255, 255, 255),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 15),
+                                      ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Wrap(
+                                      runSpacing: 15,
+                                      spacing: 15,
+                                      children: [
+                                        for (int i = 0; i < gravity.length; i++)
+                                          CustomSkillShadowCard(
+                                            height: 50,
+                                            width: 50,
+                                            radius: 50,
+                                            image:
+                                                "assets/images/${gravity[i]}.png",
+                                          ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Text(
-                                "May 2023 - Present  |  Lucknow, India",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(100, 255, 255, 255),
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12),
+                              AnimatedContainer(
+                                duration: const Duration(milliseconds: 1000),
+                                curve: Curves.easeIn,
+                                height: changeAppBar ? 20 : 50,
                               ),
-                            ],
-                          ),
-                        ),
-                        AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeIn,
-                          height: changeAppBar ? 20 : 50,
-                        ),
-                        ExperienceCard(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Permissionless",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(207, 255, 255, 255),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "Jan 2022 - April 2023  |  Mumbai, India",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(100, 255, 255, 255),
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12),
-                              ),
-                            ],
-                          ),
-                        ),
-                        AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.easeIn,
-                          height: changeAppBar ? 20 : 50,
-                        ),
-                        ExperienceCard(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "PansilWorks Private Limited",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(207, 255, 255, 255),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "Sep 2020 - Jan 2022  |  Lucknow, India",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(100, 255, 255, 255),
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12),
-                              ),
-                            ],
-                          ),
-                        ),
-                        AnimatedContainer(
-                          duration: Duration(milliseconds: 1000),
-                          curve: Curves.easeIn,
-                          height: changeAppBar ? 20 : 50,
-                        ),
-                        ExperienceCard(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "JSS Academy of Technical Education",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(207, 255, 255, 255),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 22),
-                              ),
-                              const SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                "2016 - 2020  |  Noida, India",
-                                style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(100, 255, 255, 255),
-                                    fontWeight: FontWeight.w300,
-                                    fontSize: 12),
+                              ExperienceCard(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Permissionless",
+                                      style: GoogleFonts.titilliumWeb(
+                                          color: const Color.fromARGB(
+                                              207, 255, 255, 255),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 22),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Jan 2022 - April 2023  |  Mumbai, India",
+                                          style: GoogleFonts.titilliumWeb(
+                                              color: const Color.fromARGB(
+                                                  100, 255, 255, 255),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
+                                        ),
+                                        if (w > 1200)
+                                          Text(
+                                            "Team Lead",
+                                            style: GoogleFonts.titilliumWeb(
+                                                color: const Color.fromARGB(
+                                                    160, 255, 255, 255),
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 15),
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    if (w < 1200)
+                                      Text(
+                                        "Team Lead",
+                                        style: GoogleFonts.titilliumWeb(
+                                            color: const Color.fromARGB(
+                                                160, 255, 255, 255),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 15),
+                                      ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Wrap(
+                                      runSpacing: 15,
+                                      spacing: 15,
+                                      children: [
+                                        for (int i = 0; i < prmsnls.length; i++)
+                                          CustomSkillShadowCard(
+                                            height: 50,
+                                            width: 50,
+                                            radius: 50,
+                                            image:
+                                                "assets/images/${prmsnls[i]}.png",
+                                          ),
+                                        CustomSkillShadowCard(
+                                          height: 50,
+                                          width: 50,
+                                          radius: 1000,
+                                          image: "MVC",
+                                        ),
+                                        CustomSkillShadowCard(
+                                          height: 50,
+                                          width: 50,
+                                          radius: 1000,
+                                          image: "MVP",
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Stack(
+                  children: [
+                    Positioned(
+                        top: 20,
+                        left: 35,
+                        child: Container(
+                          width: 4,
+                          height: 700,
+                          color: Colors.black,
+                        )),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          // height: 450,
+                          width: w,
+                          child: Column(
+                            children: [
+                              AnimatedContainer(
+                                duration: Duration(milliseconds: 500),
+                                curve: Curves.easeIn,
+                                height: changeAppBar ? 20 : 50,
+                              ),
+                              ExperienceCard(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "PansilWorks Private Limited",
+                                      style: GoogleFonts.titilliumWeb(
+                                          color: const Color.fromARGB(
+                                              207, 255, 255, 255),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 22),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Sep 2020 - Jan 2022  |  Lucknow, India",
+                                          style: GoogleFonts.titilliumWeb(
+                                              color: const Color.fromARGB(
+                                                  100, 255, 255, 255),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
+                                        ),
+                                        if (w > 1200)
+                                          Text(
+                                            "Software Engineer",
+                                            style: GoogleFonts.titilliumWeb(
+                                                color: const Color.fromARGB(
+                                                    160, 255, 255, 255),
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 15),
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    if (w < 1200)
+                                      Text(
+                                        "Software Engineer",
+                                        style: GoogleFonts.titilliumWeb(
+                                            color: const Color.fromARGB(
+                                                160, 255, 255, 255),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 15),
+                                      ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Wrap(
+                                      runSpacing: 15,
+                                      spacing: 15,
+                                      children: [
+                                        for (int i = 0; i < pansil.length; i++)
+                                          CustomSkillShadowCard(
+                                            height: 50,
+                                            width: 50,
+                                            radius: 50,
+                                            image:
+                                                "assets/images/${pansil[i]}.png",
+                                          ),
+                                        CustomSkillShadowCard(
+                                          height: 50,
+                                          width: 50,
+                                          radius: 1000,
+                                          image: "MVC",
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              AnimatedContainer(
+                                duration: const Duration(milliseconds: 1000),
+                                curve: Curves.easeIn,
+                                height: changeAppBar ? 20 : 50,
+                              ),
+                              ExperienceCard(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "JSS Academy of Technical Education",
+                                      style: GoogleFonts.titilliumWeb(
+                                          color: const Color.fromARGB(
+                                              207, 255, 255, 255),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 22),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "2016 - 2020  |  Noida, India",
+                                          style: GoogleFonts.titilliumWeb(
+                                              color: const Color.fromARGB(
+                                                  100, 255, 255, 255),
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12),
+                                        ),
+                                        if (w > 1200)
+                                          Text(
+                                            "BTech",
+                                            style: GoogleFonts.titilliumWeb(
+                                                color: const Color.fromARGB(
+                                                    160, 255, 255, 255),
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 15),
+                                          ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    if (w < 1200)
+                                      Text(
+                                        "BTech",
+                                        style: GoogleFonts.titilliumWeb(
+                                            color: const Color.fromARGB(
+                                                160, 255, 255, 255),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 15),
+                                      ),
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Wrap(
+                                      runSpacing: 15,
+                                      spacing: 15,
+                                      children: [
+                                        for (int i = 0; i < jss.length; i++)
+                                          CustomSkillShadowCard(
+                                            height: 50,
+                                            width: 50,
+                                            radius: 50,
+                                            image:
+                                                "assets/images/${jss[i]}.png",
+                                          ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

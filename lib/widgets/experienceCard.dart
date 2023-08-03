@@ -55,36 +55,40 @@ class _ExperienceCardState extends State<ExperienceCard> {
               ),
             ),
             Expanded(
-              child: Container(
-                  // height: 200,
-                  // width: w - 110,
-                  padding:
-                      EdgeInsets.only(left: 35, right: 35, top: 25, bottom: 25),
-                  decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                            blurRadius: 7,
-                            offset: Offset(-8, -8),
-                            color: Color.fromARGB(121, 32, 32, 32)),
-                        BoxShadow(
-                            blurRadius: 10,
-                            offset: Offset(8, 8),
-                            color: Color.fromARGB(121, 15, 15, 15))
-                      ],
-                      gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: ishover
-                              ? [
-                                  Color.fromARGB(255, 19, 19, 19),
-                                  Color.fromARGB(255, 15, 15, 15)
-                                ]
-                              : [
-                                  Color.fromARGB(255, 15, 15, 15),
-                                  Color.fromARGB(255, 19, 19, 19),
-                                ]),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: widget.child),
+              child: Padding(
+                padding: EdgeInsets.only(
+                    top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
+                child: Container(
+                    // height: 200,
+                    // width: w - 110,
+                    padding: const EdgeInsets.only(
+                        left: 35, right: 35, top: 25, bottom: 25),
+                    decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                              blurRadius: 7,
+                              offset: Offset(-8, -8),
+                              color: Color.fromARGB(121, 32, 32, 32)),
+                          BoxShadow(
+                              blurRadius: 10,
+                              offset: Offset(8, 8),
+                              color: Color.fromARGB(121, 15, 15, 15))
+                        ],
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: ishover
+                                ? [
+                                    Color.fromARGB(255, 19, 19, 19),
+                                    Color.fromARGB(255, 15, 15, 15)
+                                  ]
+                                : [
+                                    Color.fromARGB(255, 15, 15, 15),
+                                    Color.fromARGB(255, 19, 19, 19),
+                                  ]),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: widget.child),
+              ),
             )
           ],
         ),
