@@ -1,5 +1,7 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/pages/about.dart';
 import 'package:aviralportfolio/pages/home.dart';
+import 'package:aviralportfolio/pages/project.dart';
 
 import 'package:aviralportfolio/widgets/customAppBar.dart';
 
@@ -30,113 +32,104 @@ class HomePage extends StatelessWidget {
           width: w,
           padding: const EdgeInsets.only(left: 20, right: 20),
           color: darkthemeColor,
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Column(
-              children: [
-                Home(h: h, w: w),
-                const Divider(
-                  height: 0,
-                  thickness: 1,
-                  color: Color.fromARGB(170, 67, 66, 66),
-                ),
-
-                Container(
-                  height: 1000,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Card(
-                        elevation: 10,
-                        child: Container(
-                          height: 100,
-                          width: 100,
-                          color: darkthemeColor,
-                        ),
-                      )
-                    ],
+          child: ListView.builder(
+              controller: _scrollController,
+              itemCount: 1,
+              itemBuilder: (context, index) {
+                return Column(children: [
+                  Home(h: h, w: w),
+                  const Divider(
+                    height: 0,
+                    thickness: 1,
+                    color: Color.fromARGB(170, 67, 66, 66),
                   ),
-                )
+                  About(
+                    height: h,
+                    scrollController: _scrollController,
+                  ),
+                  const Divider(
+                    height: 0,
+                    thickness: 1,
+                    color: Color.fromARGB(170, 67, 66, 66),
+                  ),
+                  Project(),
 
-                // Stack(
-                //   children: [
-                //     MouseRegion(
-                //         onHover: (event) {
-                //           Provider.of<MousePointerProvider>(context,
-                //                   listen: false)
-                //               .setMousePointer(event.localPosition.dx,
-                //                   event.localPosition.dy);
-                //         },
-                //         child: Home(h: h, w: w)),
-                //     Consumer<MousePointerProvider>(builder: (_, a, context) {
-                //       return Positioned(
-                //           // top: 0,
-                //           top: a.getMouseY,
-                //           left: a.getMouseX,
-                //           child: Container(
-                //             height: 35,
-                //             width: 35,
-                //             decoration: BoxDecoration(
-                //                 border: Border.all(color: themeColor),
-                //                 borderRadius: BorderRadius.circular(35)),
-                //             child: Center(
-                //               child: Container(
-                //                 height: 5,
-                //                 width: 5,
-                //                 decoration: BoxDecoration(
-                //                     color: themeColor,
-                //                     borderRadius: BorderRadius.circular(5)),
-                //               ),
-                //             ),
-                //           ));
-                //     })
-                //   ],
-                // ),
-                // Stack(
-                //   children: [
-                //     MouseRegion(
-                //       onHover: (event) {
-                //         Provider.of<MousePointerProvider>(context,
-                //                 listen: false)
-                //             .setMousePointer(
-                //                 event.localPosition.dx, event.localPosition.dy);
-                //       },
-                //       child: Container(
-                //         height: 1000,
-                //       ),
-                //     ),
-                //     Consumer<MousePointerProvider>(builder: (_, a, context) {
-                //       return Positioned(
-                //           // top: 0,
-                //           top: a.getMouseY,
-                //           left: a.getMouseX,
-                //           child: (a.getMouseY < 0)
-                //               ? SizedBox()
-                //               : Container(
-                //                   height: 35,
-                //                   width: 35,
-                //                   decoration: BoxDecoration(
-                //                       border: Border.all(color: themeColor),
-                //                       borderRadius: BorderRadius.circular(35)),
-                //                   child: Center(
-                //                     child: Container(
-                //                       height: 5,
-                //                       width: 5,
-                //                       decoration: BoxDecoration(
-                //                           color: themeColor,
-                //                           borderRadius:
-                //                               BorderRadius.circular(5)),
-                //                     ),
-                //                   ),
-                //                 ));
-                //     })
-                //   ],
-                // )
-              ],
-            ),
-          ),
+                  // Stack(
+                  //   children: [
+                  //     MouseRegion(
+                  //         onHover: (event) {
+                  //           Provider.of<MousePointerProvider>(context,
+                  //                   listen: false)
+                  //               .setMousePointer(event.localPosition.dx,
+                  //                   event.localPosition.dy);
+                  //         },
+                  //         child: Home(h: h, w: w)),
+                  //     Consumer<MousePointerProvider>(builder: (_, a, context) {
+                  //       return Positioned(
+                  //           // top: 0,
+                  //           top: a.getMouseY,
+                  //           left: a.getMouseX,
+                  //           child: Container(
+                  //             height: 35,
+                  //             width: 35,
+                  //             decoration: BoxDecoration(
+                  //                 border: Border.all(color: themeColor),
+                  //                 borderRadius: BorderRadius.circular(35)),
+                  //             child: Center(
+                  //               child: Container(
+                  //                 height: 5,
+                  //                 width: 5,
+                  //                 decoration: BoxDecoration(
+                  //                     color: themeColor,
+                  //                     borderRadius: BorderRadius.circular(5)),
+                  //               ),
+                  //             ),
+                  //           ));
+                  //     })
+                  //   ],
+                  // ),
+                  // Stack(
+                  //   children: [
+                  //     MouseRegion(
+                  //       onHover: (event) {
+                  //         Provider.of<MousePointerProvider>(context,
+                  //                 listen: false)
+                  //             .setMousePointer(
+                  //                 event.localPosition.dx, event.localPosition.dy);
+                  //       },
+                  //       child: Container(
+                  //         height: 1000,
+                  //       ),
+                  //     ),
+                  //     Consumer<MousePointerProvider>(builder: (_, a, context) {
+                  //       return Positioned(
+                  //           // top: 0,
+                  //           top: a.getMouseY,
+                  //           left: a.getMouseX,
+                  //           child: (a.getMouseY < 0)
+                  //               ? SizedBox()
+                  //               : Container(
+                  //                   height: 35,
+                  //                   width: 35,
+                  //                   decoration: BoxDecoration(
+                  //                       border: Border.all(color: themeColor),
+                  //                       borderRadius: BorderRadius.circular(35)),
+                  //                   child: Center(
+                  //                     child: Container(
+                  //                       height: 5,
+                  //                       width: 5,
+                  //                       decoration: BoxDecoration(
+                  //                           color: themeColor,
+                  //                           borderRadius:
+                  //                               BorderRadius.circular(5)),
+                  //                     ),
+                  //                   ),
+                  //                 ));
+                  //     })
+                  //   ],
+                  // )
+                ]);
+              }),
         ));
   }
 }

@@ -1,11 +1,13 @@
 import 'package:aviralportfolio/pages/homePage.dart';
 import 'package:aviralportfolio/provider/mousePointer.dart';
+import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
     MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => SkillTypeProvider()),
       ChangeNotifierProvider(create: (context) => MousePointerProvider()),
     ], child: const MyApp()),
   );

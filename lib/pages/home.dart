@@ -1,4 +1,5 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/normalText.dart';
 import 'package:aviralportfolio/widgets/shadowText.dart';
 import 'package:flutter/material.dart';
@@ -114,7 +115,7 @@ class _HomeState extends State<Home> {
               Column(
                 children: [
                   Container(
-                    height: h * .1,
+                    height: h * .05,
                   ),
                   Stack(
                     children: [
@@ -147,44 +148,185 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       AnimatedPositioned(
-                        top: h * .2,
+                        top: h * .15,
                         curve: Curves.easeInOut,
                         duration: Duration(milliseconds: 700),
-                        left: animate ? 0 : -w,
+                        left: animate ? 35 : -w,
                         child: Container(
                           width: w,
+                          height: h * .5,
+                          constraints: BoxConstraints(minHeight: 300),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  NormalText("Hi, I’m ",
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 58,
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      NormalText("Hi, I’m ",
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 55,
+                                          letterSpacing: 2,
+                                          color: Colors.white),
+                                      NormalText("Aviral Dixit",
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 58,
+                                          letterSpacing: 8,
+                                          color: const Color.fromRGBO(
+                                              69, 189, 244, 1)),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  NormalText(
+                                      "SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 20,
                                       letterSpacing: 2,
                                       color: Colors.white),
-                                  NormalText("Aviral Dixit",
-                                      fontWeight: FontWeight.w800,
-                                      fontSize: 58,
-                                      letterSpacing: 10,
-                                      color: const Color.fromRGBO(
-                                          69, 189, 244, 1)),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 20,
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      NormalText("My Socials ",
+                                          fontWeight: FontWeight.w200,
+                                          fontSize: 16,
+                                          letterSpacing: 2,
+                                          color: Colors.white),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      CustomShadowCard(
+                                        height: 70,
+                                        width: 70,
+                                        child: Center(
+                                          child: Image.asset(
+                                            "assets/images/gmail.png",
+                                            height: 25,
+                                            width: 25,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      CustomShadowCard(
+                                        height: 70,
+                                        width: 70,
+                                        child: Center(
+                                          child: Image.asset(
+                                            "assets/images/linkedin.png",
+                                            height: 25,
+                                            width: 25,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      CustomShadowCard(
+                                        height: 70,
+                                        width: 70,
+                                        child: Center(
+                                          child: Image.asset(
+                                            "assets/images/github.png",
+                                            height: 25,
+                                            width: 25,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
-                              NormalText(
-                                  "SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 20,
-                                  letterSpacing: 2,
-                                  color: Colors.white),
                             ],
                           ),
                         ),
-                      )
+                      ),
+                      // AnimatedPositioned(
+                      //   bottom: h * .2,
+                      //   curve: Curves.easeInOut,
+                      //   duration: Duration(milliseconds: 700),
+                      //   left: animate ? 35 : -w,
+                      //   child: Container(
+                      //     width: w,
+                      //     child: Column(
+                      //       mainAxisAlignment: MainAxisAlignment.center,
+                      //       crossAxisAlignment: CrossAxisAlignment.start,
+                      //       children: [
+                      //         Row(
+                      //           children: [
+                      //             NormalText("My Socials ",
+                      //                 fontWeight: FontWeight.w200,
+                      //                 fontSize: 16,
+                      //                 letterSpacing: 2,
+                      //                 color: Colors.white),
+                      //           ],
+                      //         ),
+                      //         const SizedBox(
+                      //           height: 20,
+                      //         ),
+                      //         Row(
+                      //           mainAxisAlignment: MainAxisAlignment.start,
+                      //           children: [
+                      //             CustomShadowCard(
+                      //               height: 80,
+                      //               width: 80,
+                      //               child: Center(
+                      //                 child: Image.asset(
+                      //                   "assets/images/gmail.png",
+                      //                   height: 25,
+                      //                   width: 25,
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             const SizedBox(
+                      //               width: 20,
+                      //             ),
+                      //             CustomShadowCard(
+                      //               height: 80,
+                      //               width: 80,
+                      //               child: Center(
+                      //                 child: Image.asset(
+                      //                   "assets/images/linkedin.png",
+                      //                   height: 25,
+                      //                   width: 25,
+                      //                 ),
+                      //               ),
+                      //             ),
+                      //             const SizedBox(
+                      //               width: 20,
+                      //             ),
+                      //             CustomShadowCard(
+                      //               height: 80,
+                      //               width: 80,
+                      //               child: Center(
+                      //                 child: Image.asset(
+                      //                   "assets/images/github.png",
+                      //                   height: 25,
+                      //                   width: 25,
+                      //                 ),
+                      //               ),
+                      //             )
+                      //           ],
+                      //         )
+                      //       ],
+                      //     ),
+                      //   ),
+                      // )
                     ],
                   ),
                   Container(
