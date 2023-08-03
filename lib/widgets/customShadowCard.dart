@@ -103,7 +103,8 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
         },
         child: Align(
           alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
-          child: Container(
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 400),
             decoration: BoxDecoration(
                 boxShadow: const [
                   BoxShadow(

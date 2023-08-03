@@ -1,5 +1,6 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/pages/about.dart';
+import 'package:aviralportfolio/pages/contact.dart';
 import 'package:aviralportfolio/pages/experience.dart';
 import 'package:aviralportfolio/pages/home.dart';
 import 'package:aviralportfolio/pages/project.dart';
@@ -31,7 +32,8 @@ class HomePage extends StatelessWidget {
         body: Container(
           height: h,
           width: w,
-          padding: const EdgeInsets.only(left: 20, right: 20),
+          padding: EdgeInsets.only(
+              left: w < mobileSize ? 10 : 20, right: w < mobileSize ? 10 : 20),
           color: darkthemeColor,
           child: ListView.builder(
               controller: _scrollController,
@@ -61,7 +63,15 @@ class HomePage extends StatelessWidget {
                     scrollController: _scrollController,
                     height: h,
                   ),
-
+                  const Divider(
+                    height: 0,
+                    thickness: 1,
+                    color: Color.fromARGB(170, 67, 66, 66),
+                  ),
+                  Contact(
+                    scrollController: _scrollController,
+                    height: h,
+                  ),
                   // Stack(
                   //   children: [
                   //     MouseRegion(

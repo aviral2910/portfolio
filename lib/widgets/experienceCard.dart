@@ -17,6 +17,8 @@ class _ExperienceCardState extends State<ExperienceCard> {
   bool ishover = false;
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: () {},
       onHover: (value) {
@@ -33,8 +35,8 @@ class _ExperienceCardState extends State<ExperienceCard> {
               padding: const EdgeInsets.only(top: 30.0),
               child: Row(
                 children: [
-                  const SizedBox(
-                    width: 28,
+                  SizedBox(
+                    width: (w < mobileSize) ? 0 : 28,
                   ),
                   Container(
                     height: 18,
@@ -47,7 +49,7 @@ class _ExperienceCardState extends State<ExperienceCard> {
                         border: Border.all(width: 4, color: Colors.black)),
                   ),
                   Container(
-                    width: 20,
+                    width: w < mobileSize ? 10 : 20,
                     height: 4,
                     color: Colors.black,
                   )
@@ -61,8 +63,11 @@ class _ExperienceCardState extends State<ExperienceCard> {
                 child: Container(
                     // height: 200,
                     // width: w - 110,
-                    padding: const EdgeInsets.only(
-                        left: 35, right: 35, top: 25, bottom: 25),
+                    padding: EdgeInsets.only(
+                        left: w < mobileSize ? 20 : 35,
+                        right: w < mobileSize ? 20 : 35,
+                        top: w < mobileSize ? 20 : 25,
+                        bottom: w < mobileSize ? 20 : 25),
                     decoration: BoxDecoration(
                         boxShadow: const [
                           BoxShadow(

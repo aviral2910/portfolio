@@ -148,6 +148,16 @@ class Others extends StatelessWidget {
         CustomSkillsCard(
           height: 100,
           width: 100,
+          image: "assets/images/firebase.png",
+          imagWidth: 35,
+          imageHieght: 35,
+          text: "Firebase",
+          experienceLevel: "Advanced",
+          fontSize: 14,
+        ),
+        CustomSkillsCard(
+          height: 100,
+          width: 100,
           image: "assets/images/figma.png",
           imagWidth: 35,
           imageHieght: 35,

@@ -1,3 +1,4 @@
+import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,16 +41,16 @@ class _ProjectState extends State<Project> {
       height: h,
       width: w,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AnimatedContainer(
             duration: Duration(milliseconds: 500),
             curve: Curves.easeIn,
             height: changeAppBar ? h * .1 : h * .2,
           ),
-          Text(
-            "My Expertise".toUpperCase(),
-            style: GoogleFonts.titilliumWeb(
-                color: Colors.white, fontWeight: FontWeight.w500, fontSize: 24),
+          HeadingCard(
+            icon: "assets/images/project.png",
+            text: "PROJECTS",
           ),
         ],
       ),

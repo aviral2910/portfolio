@@ -1,6 +1,7 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
+import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:aviralportfolio/widgets/normalText.dart';
 import 'package:aviralportfolio/widgets/skillCard.dart';
 import 'package:flutter/material.dart';
@@ -61,39 +62,9 @@ class _AboutState extends State<About> {
                           curve: Curves.easeIn,
                           height: changeAppBar ? 60 : 90,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 35, right: 20),
-                          child: Container(
-                            height: 35,
-                            padding: const EdgeInsets.only(left: 20, right: 20),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                                border: Border.all(
-                                    width: .4,
-                                    color: Color.fromARGB(174, 255, 255, 255))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Image.asset(
-                                  "assets/images/profile.png",
-                                  height: 13,
-                                  width: 13,
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "ABOUT",
-                                  style: GoogleFonts.titilliumWeb(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: 14),
-                                ),
-                              ],
-                            ),
-                          ),
+                        HeadingCard(
+                          icon: "assets/images/profile.png",
+                          text: "ABOUT",
                         ),
                         AnimatedContainer(
                           duration: Duration(milliseconds: 1000),
@@ -101,7 +72,9 @@ class _AboutState extends State<About> {
                           height: changeAppBar ? 30 : 50,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 35, right: 30),
+                          padding: EdgeInsets.only(
+                              left: w < mobileSize ? 20 : 35,
+                              right: w < mobileSize ? 20 : 30),
                           child: Text(
                             """I'm a Frontend Web Developer building the Front-end of Websites and Web Applications that leads to the success of the overall product. Check out some of my work in the Projects section. I also like sharing content related to the stuff that I have learned over the years in Web Development so it can help other people of the Dev Community. Feel free to Connect or Follow me on my Linkedin where I post useful content related to Web Development and Programming I'm open to Job opportunities where I can contribute, learn and grow. If you have a good opportunity that matches my skills and experience then don't hesitate to contact me.""",
                             textAlign: TextAlign.justify,
@@ -117,7 +90,9 @@ class _AboutState extends State<About> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 20, right: 35),
+                  padding: EdgeInsets.only(
+                      left: w < mobileSize ? 20 : 20,
+                      right: w < mobileSize ? 20 : 35),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -164,41 +139,9 @@ class _AboutState extends State<About> {
                           //   curve: Curves.easeIn,
                           //   height: changeAppBar ? 0 : h * .2,
                           // ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 35, right: 20),
-                            child: Container(
-                              height: 35,
-                              padding:
-                                  const EdgeInsets.only(left: 20, right: 20),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40),
-                                  border: Border.all(
-                                      width: .4,
-                                      color:
-                                          Color.fromARGB(174, 255, 255, 255))),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/profile.png",
-                                    height: 13,
-                                    width: 13,
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  Text(
-                                    "ABOUT",
-                                    style: GoogleFonts.titilliumWeb(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                            ),
+                          HeadingCard(
+                            icon: "assets/images/profile.png",
+                            text: "ABOUT",
                           ),
                           AnimatedContainer(
                             duration: Duration(milliseconds: 1000),
