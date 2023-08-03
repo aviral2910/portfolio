@@ -212,13 +212,7 @@ class _HomeState extends State<Home> {
                                       CustomShadowCard(
                                         height: 70,
                                         width: 70,
-                                        child: Center(
-                                          child: Image.asset(
-                                            "assets/images/gmail.png",
-                                            height: 25,
-                                            width: 25,
-                                          ),
-                                        ),
+                                        image: "assets/images/gmail.png",
                                       ),
                                       const SizedBox(
                                         width: 20,
@@ -226,13 +220,7 @@ class _HomeState extends State<Home> {
                                       CustomShadowCard(
                                         height: 70,
                                         width: 70,
-                                        child: Center(
-                                          child: Image.asset(
-                                            "assets/images/linkedin.png",
-                                            height: 25,
-                                            width: 25,
-                                          ),
-                                        ),
+                                        image: "assets/images/linkedin.png",
                                       ),
                                       const SizedBox(
                                         width: 20,
@@ -240,13 +228,15 @@ class _HomeState extends State<Home> {
                                       CustomShadowCard(
                                         height: 70,
                                         width: 70,
-                                        child: Center(
-                                          child: Image.asset(
-                                            "assets/images/github.png",
-                                            height: 25,
-                                            width: 25,
-                                          ),
-                                        ),
+                                        image: "assets/images/github.png",
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      CustomShadowCard(
+                                        height: 70,
+                                        width: 70,
+                                        image: "assets/images/telephone.png",
                                       )
                                     ],
                                   )

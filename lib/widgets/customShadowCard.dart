@@ -1,11 +1,12 @@
+import 'package:aviralportfolio/global.dart';
 import 'package:flutter/material.dart';
 
 class CustomShadowCard extends StatefulWidget {
-  CustomShadowCard({Key? key, this.height, this.width, this.child})
+  CustomShadowCard({Key? key, this.height, this.width, this.image})
       : super(key: key);
   double? width;
   double? height;
-  Widget? child;
+  String? image;
 
   @override
   State<CustomShadowCard> createState() => _CustomShadowCardState();
@@ -54,7 +55,14 @@ class _CustomShadowCardState extends State<CustomShadowCard> {
                 borderRadius: BorderRadius.circular(10)),
             height: widget.height! - 3,
             width: widget.width! - 3,
-            child: widget.child,
+            child: Center(
+              child: Image.asset(
+                widget.image.toString(),
+                color: ishover ? themeColor : Colors.white,
+                height: 25,
+                width: 25,
+              ),
+            ),
           ),
         ),
       ),

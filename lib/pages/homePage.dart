@@ -1,5 +1,6 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/pages/about.dart';
+import 'package:aviralportfolio/pages/experience.dart';
 import 'package:aviralportfolio/pages/home.dart';
 import 'package:aviralportfolio/pages/project.dart';
 
@@ -47,12 +48,19 @@ class HomePage extends StatelessWidget {
                     height: h,
                     scrollController: _scrollController,
                   ),
+                  Experience(
+                    scrollController: _scrollController,
+                    height: h,
+                  ),
                   const Divider(
                     height: 0,
                     thickness: 1,
                     color: Color.fromARGB(170, 67, 66, 66),
                   ),
-                  Project(),
+                  Project(
+                    scrollController: _scrollController,
+                    height: h,
+                  ),
 
                   // Stack(
                   //   children: [

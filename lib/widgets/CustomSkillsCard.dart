@@ -198,17 +198,19 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
               height: widget.height! - 3,
               width: widget.width == null ? widget.width : widget.width! - 3,
               child: Center(
-                child: Text(
-                  widget.text.toString(),
-                  style: GoogleFonts.titilliumWeb(
-                    letterSpacing: 1,
-                    color: widget.isHover
-                        ? themeColor
-                        : ishover
-                            ? themeColor
-                            : Colors.white,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
+                child: FittedBox(
+                  child: Text(
+                    widget.text.toString(),
+                    style: GoogleFonts.titilliumWeb(
+                      letterSpacing: 1,
+                      color: widget.isHover
+                          ? themeColor
+                          : ishover
+                              ? themeColor
+                              : Colors.white,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
