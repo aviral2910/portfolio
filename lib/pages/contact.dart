@@ -61,26 +61,23 @@ class _ContactState extends State<Contact> {
             curve: Curves.easeIn,
             height: changeAppBar ? 25 : 50,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 35.0),
-            child: Text(
-              "Feel free to Contact me by submitting the form below and I will get back to you as soon as possible",
-              style: GoogleFonts.titilliumWeb(
-                  color: const Color.fromARGB(207, 255, 255, 255),
-                  fontWeight: FontWeight.w300,
-                  fontSize: w < mobileSize ? 13 : 16),
-            ),
-          ),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 800),
-            curve: Curves.easeIn,
-            height: changeAppBar ? 45 : 60,
-          ),
           Container(
             width: w,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text(
+                  "Feel free to Contact me by submitting the form below and I will get back to you as soon as possible",
+                  style: GoogleFonts.titilliumWeb(
+                      color: const Color.fromARGB(207, 255, 255, 255),
+                      fontWeight: FontWeight.w400,
+                      fontSize: w < mobileSize ? 13 : 16),
+                ),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 800),
+                  curve: Curves.easeIn,
+                  height: changeAppBar ? 45 : 60,
+                ),
                 Container(
                   padding: EdgeInsets.all(w < mobileSize ? 15 : 35),
                   width: w < mobileSize ? w * .9 : w * .6,
@@ -89,13 +86,13 @@ class _ContactState extends State<Contact> {
                       color: darkthemeColor,
                       boxShadow: const [
                         BoxShadow(
-                            blurRadius: 7,
-                            offset: Offset(-8, -8),
-                            color: Color.fromARGB(121, 32, 32, 32)),
+                            blurRadius: 4,
+                            offset: Offset(-6, -6),
+                            color: Color.fromARGB(220, 32, 32, 32)),
                         BoxShadow(
-                            blurRadius: 10,
-                            offset: Offset(8, 8),
-                            color: Color.fromARGB(121, 15, 15, 15))
+                            blurRadius: 5,
+                            offset: Offset(6, 6),
+                            color: Color.fromARGB(220, 15, 15, 15))
                       ],
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
