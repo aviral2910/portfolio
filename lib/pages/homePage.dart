@@ -4,6 +4,7 @@ import 'package:aviralportfolio/pages/contact.dart';
 import 'package:aviralportfolio/pages/experience.dart';
 import 'package:aviralportfolio/pages/home.dart';
 import 'package:aviralportfolio/pages/project.dart';
+import 'package:aviralportfolio/pages/testimonial.dart';
 
 import 'package:aviralportfolio/widgets/customAppBar.dart';
 
@@ -60,6 +61,15 @@ class HomePage extends StatelessWidget {
                     color: Color.fromARGB(170, 67, 66, 66),
                   ),
                   Project(
+                    scrollController: _scrollController,
+                    height: h,
+                  ),
+                  const Divider(
+                    height: 0,
+                    thickness: 1,
+                    color: Color.fromARGB(170, 67, 66, 66),
+                  ),
+                  Testimonial(
                     scrollController: _scrollController,
                     height: h,
                   ),
