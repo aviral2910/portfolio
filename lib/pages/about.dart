@@ -75,14 +75,78 @@ class _AboutState extends State<About> {
                           padding: EdgeInsets.only(
                               left: w < mobileSize ? 20 : 35,
                               right: w < mobileSize ? 20 : 30),
-                          child: Text(
-                            """I'm a Frontend Web Developer building the Front-end of Websites and Web Applications that leads to the success of the overall product. Check out some of my work in the Projects section. I also like sharing content related to the stuff that I have learned over the years in Web Development so it can help other people of the Dev Community. Feel free to Connect or Follow me on my Linkedin where I post useful content related to Web Development and Programming I'm open to Job opportunities where I can contribute, learn and grow. If you have a good opportunity that matches my skills and experience then don't hesitate to contact me.""",
+                          child: RichText(
                             textAlign: TextAlign.justify,
-                            style: GoogleFonts.titilliumWeb(
-                                color: Color.fromARGB(193, 255, 255, 255),
-                                fontSize: 14,
-                                height: 2,
-                                fontWeight: FontWeight.w300),
+                            text: TextSpan(
+                              text: 'I am a passionate',
+                              // textAlign: TextAlign.justify,
+                              style: GoogleFonts.titilliumWeb(
+                                  color: Color.fromARGB(193, 255, 255, 255),
+                                  fontSize: 18,
+                                  height: 2,
+                                  fontWeight: FontWeight.w300),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: ' Software Engineer ',
+                                    style: GoogleFonts.titilliumWeb(
+                                        color: const Color.fromARGB(
+                                            193, 255, 255, 255),
+                                        fontSize: 18,
+                                        height: 2,
+                                        fontWeight: FontWeight.w600)),
+                                TextSpan(
+                                  text:
+                                      'with a deep fascination for cutting-edge technologies and a drive to create exceptional digital experiences',
+                                  style: GoogleFonts.titilliumWeb(
+                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      fontSize: 18,
+                                      height: 2,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                TextSpan(
+                                  text:
+                                      '\n \nI am a dedicated and versatile developer with a strong focus on mobile and web app development.',
+                                  style: GoogleFonts.titilliumWeb(
+                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      fontSize: 18,
+                                      height: 2,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                TextSpan(
+                                    text: ' mobile and web app development. ',
+                                    style: GoogleFonts.titilliumWeb(
+                                        color: const Color.fromARGB(
+                                            193, 255, 255, 255),
+                                        fontSize: 18,
+                                        height: 2,
+                                        fontWeight: FontWeight.w700)),
+                                TextSpan(
+                                  text: ' I specialize in Flutter, ',
+                                  style: GoogleFonts.titilliumWeb(
+                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      fontSize: 18,
+                                      height: 2,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                TextSpan(
+                                    text: ' Flutter, ',
+                                    style: GoogleFonts.titilliumWeb(
+                                        color: const Color.fromARGB(
+                                            193, 255, 255, 255),
+                                        fontSize: 18,
+                                        height: 2,
+                                        fontWeight: FontWeight.w700)),
+                                TextSpan(
+                                  text:
+                                      'a powerful framework for creating beautiful, fast, and native-like experiences across multiple platforms. Additionally, I have explored other frameworks, including React, Spring Boot, to broaden my expertise. Moreover, I have a keen eye for design and often utilize Figma to create stunning UI/UX designs.',
+                                  style: GoogleFonts.titilliumWeb(
+                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      fontSize: 18,
+                                      height: 2,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],

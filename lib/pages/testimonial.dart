@@ -83,16 +83,13 @@ class _TestimonialState extends State<Testimonial> {
               width: w,
               child: Center(
                 child: Container(
-                  padding: EdgeInsets.only(left: 35, right: 35),
+                  padding: EdgeInsets.only(left: 25, right: 55),
                   constraints: BoxConstraints(maxWidth: 1400),
-                  width: w < 1000 ? w * .89 : w * .8,
+                  // width: w < 1000 ? w * .89 : w * .8,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       TestimonialCard(w: w),
-                      SizedBox(
-                        width: 20,
-                      ),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +129,7 @@ class _TestimonialState extends State<Testimonial> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 30,
                                     ),
                                     Container(
@@ -282,7 +279,10 @@ class TestimonialText extends StatelessWidget {
                 fontSize: 17,
                 letterSpacing: 2,
                 fontWeight: FontWeight.w400,
-                color: Color.fromARGB(140, 255, 255, 255)),
+                color: const Color.fromARGB(140, 255, 255, 255)),
+          ),
+          const SizedBox(
+            height: 15,
           ),
           Align(
             alignment: Alignment.bottomRight,
@@ -393,6 +393,8 @@ class _TestimonialCardState extends State<TestimonialCard> {
             children: [
               Container(
                 width: widget.w,
+                constraints:
+                    BoxConstraints(maxWidth: widget.w < mobileSize ? 400 : 280),
                 decoration: BoxDecoration(boxShadow: const [
                   BoxShadow(
                       blurRadius: 3,
