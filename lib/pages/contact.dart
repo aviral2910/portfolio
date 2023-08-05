@@ -19,7 +19,7 @@ class _ContactState extends State<Contact> {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * 3) {
+      if (widget.scrollController.offset > widget.height * 3.6) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;

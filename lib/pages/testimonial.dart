@@ -18,7 +18,7 @@ class _TestimonialState extends State<Testimonial> {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * 2.6) {
+      if (widget.scrollController.offset > widget.height * 2.8) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;
