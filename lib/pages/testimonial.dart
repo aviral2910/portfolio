@@ -18,7 +18,7 @@ class _TestimonialState extends State<Testimonial> {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * 2.8) {
+      if (widget.scrollController.offset > widget.height * 3.7) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;
@@ -275,9 +275,9 @@ class TestimonialText extends StatelessWidget {
           ),
           Text(
             "Aviral is a really hard working person who doesn't stop until the task at hand is completed. Commendable critical thinking and fundamental knowledge. Makes him a no-brainer for any Mobile development projects.",
-            style: GoogleFonts.titilliumWeb(
+            style: GoogleFonts.saira(
                 fontSize: 17,
-                letterSpacing: 2,
+                letterSpacing: 1,
                 fontWeight: FontWeight.w400,
                 color: const Color.fromARGB(140, 255, 255, 255)),
           ),

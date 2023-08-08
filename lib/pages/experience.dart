@@ -228,18 +228,22 @@ class MobileExperience extends StatelessWidget {
                             const SizedBox(
                               height: 25,
                             ),
-                            Wrap(
-                              runSpacing: 15,
-                              spacing: 15,
-                              children: [
-                                for (int i = 0; i < gravity.length; i++)
-                                  CustomSkillShadowCard(
-                                    height: 50,
-                                    width: 50,
-                                    radius: 50,
-                                    image: "assets/images/${gravity[i]}.png",
-                                  ),
-                              ],
+                            SizedBox(
+                              width: double.infinity,
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
+                                runSpacing: 15,
+                                spacing: 15,
+                                children: [
+                                  for (int i = 0; i < gravity.length; i++)
+                                    CustomSkillShadowCard(
+                                      height: 50,
+                                      width: 50,
+                                      radius: 50,
+                                      image: "assets/images/${gravity[i]}.png",
+                                    ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -267,13 +271,15 @@ class MobileExperience extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  "Jan 2022 - April 2023  |  Mumbai, India",
-                                  style: GoogleFonts.titilliumWeb(
-                                      color: const Color.fromARGB(
-                                          100, 255, 255, 255),
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: w < mobileSize ? 11 : 12),
+                                Flexible(
+                                  child: Text(
+                                    "Jan 2022 - April 2023  |  Mumbai, India",
+                                    style: GoogleFonts.titilliumWeb(
+                                        color: const Color.fromARGB(
+                                            100, 255, 255, 255),
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: w < mobileSize ? 11 : 12),
+                                  ),
                                 ),
                                 if (w > 1200)
                                   Text(
@@ -301,30 +307,34 @@ class MobileExperience extends StatelessWidget {
                             const SizedBox(
                               height: 25,
                             ),
-                            Wrap(
-                              runSpacing: 15,
-                              spacing: 15,
-                              children: [
-                                for (int i = 0; i < prmsnls.length; i++)
+                            SizedBox(
+                              width: double.infinity,
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
+                                runSpacing: 15,
+                                spacing: 15,
+                                children: [
+                                  for (int i = 0; i < prmsnls.length; i++)
+                                    CustomSkillShadowCard(
+                                      height: 50,
+                                      width: 50,
+                                      radius: 50,
+                                      image: "assets/images/${prmsnls[i]}.png",
+                                    ),
                                   CustomSkillShadowCard(
                                     height: 50,
                                     width: 50,
-                                    radius: 50,
-                                    image: "assets/images/${prmsnls[i]}.png",
+                                    radius: 1000,
+                                    image: "MVC",
                                   ),
-                                CustomSkillShadowCard(
-                                  height: 50,
-                                  width: 50,
-                                  radius: 1000,
-                                  image: "MVC",
-                                ),
-                                CustomSkillShadowCard(
-                                  height: 50,
-                                  width: 50,
-                                  radius: 1000,
-                                  image: "MVP",
-                                ),
-                              ],
+                                  CustomSkillShadowCard(
+                                    height: 50,
+                                    width: 50,
+                                    radius: 1000,
+                                    image: "MVP",
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -352,13 +362,15 @@ class MobileExperience extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  "Sep 2020 - Jan 2022  |  Lucknow, India",
-                                  style: GoogleFonts.titilliumWeb(
-                                      color: const Color.fromARGB(
-                                          100, 255, 255, 255),
-                                      fontWeight: FontWeight.w300,
-                                      fontSize: w < mobileSize ? 11 : 12),
+                                Flexible(
+                                  child: Text(
+                                    "Sep 2020 - Jan 2022  |  Lucknow, India",
+                                    style: GoogleFonts.titilliumWeb(
+                                        color: const Color.fromARGB(
+                                            100, 255, 255, 255),
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: w < mobileSize ? 11 : 12),
+                                  ),
                                 ),
                                 if (w > 1200)
                                   Text(
@@ -386,24 +398,28 @@ class MobileExperience extends StatelessWidget {
                             const SizedBox(
                               height: 25,
                             ),
-                            Wrap(
-                              runSpacing: 15,
-                              spacing: 15,
-                              children: [
-                                for (int i = 0; i < pansil.length; i++)
+                            SizedBox(
+                              width: double.infinity,
+                              child: Wrap(
+                                alignment: WrapAlignment.center,
+                                runSpacing: 15,
+                                spacing: 15,
+                                children: [
+                                  for (int i = 0; i < pansil.length; i++)
+                                    CustomSkillShadowCard(
+                                      height: 50,
+                                      width: 50,
+                                      radius: 50,
+                                      image: "assets/images/${pansil[i]}.png",
+                                    ),
                                   CustomSkillShadowCard(
                                     height: 50,
                                     width: 50,
-                                    radius: 50,
-                                    image: "assets/images/${pansil[i]}.png",
+                                    radius: 1000,
+                                    image: "MVC",
                                   ),
-                                CustomSkillShadowCard(
-                                  height: 50,
-                                  width: 50,
-                                  radius: 1000,
-                                  image: "MVC",
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -465,18 +481,22 @@ class MobileExperience extends StatelessWidget {
                             const SizedBox(
                               height: 25,
                             ),
-                            Wrap(
-                              runSpacing: 15,
-                              spacing: 15,
-                              children: [
-                                for (int i = 0; i < jss.length; i++)
-                                  CustomSkillShadowCard(
-                                    height: 50,
-                                    width: 50,
-                                    radius: 50,
-                                    image: "assets/images/${jss[i]}.png",
-                                  ),
-                              ],
+                            SizedBox(
+                              width: double.infinity,
+                              child: Wrap(
+                                runSpacing: 15,
+                                alignment: WrapAlignment.center,
+                                spacing: 15,
+                                children: [
+                                  for (int i = 0; i < jss.length; i++)
+                                    CustomSkillShadowCard(
+                                      height: 50,
+                                      width: 50,
+                                      radius: 50,
+                                      image: "assets/images/${jss[i]}.png",
+                                    ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -634,13 +654,15 @@ class DesktopExperience extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    "Jan 2022 - April 2023  |  Mumbai, India",
-                                    style: GoogleFonts.titilliumWeb(
-                                        color: const Color.fromARGB(
-                                            100, 255, 255, 255),
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 12),
+                                  Flexible(
+                                    child: Text(
+                                      "Jan 2022 - April 2023  |  Mumbai, India",
+                                      style: GoogleFonts.titilliumWeb(
+                                          color: const Color.fromARGB(
+                                              100, 255, 255, 255),
+                                          fontWeight: FontWeight.w300,
+                                          fontSize: 12),
+                                    ),
                                   ),
                                   if (w > 1200)
                                     Text(
