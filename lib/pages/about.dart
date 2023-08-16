@@ -83,7 +83,7 @@ class _AboutState extends State<About> {
                           child: RichText(
                             textAlign: TextAlign.justify,
                             text: TextSpan(
-                              text: 'I am a passionate',
+                              text: 'I am an enthusiastic',
                               // textAlign: TextAlign.justify,
                               style: GoogleFonts.titilliumWeb(
                                   color:
@@ -102,7 +102,7 @@ class _AboutState extends State<About> {
                                         fontWeight: FontWeight.w600)),
                                 TextSpan(
                                   text:
-                                      'with a deep fascination for cutting-edge technologies and a drive to create exceptional digital experiences',
+                                      'with a profound interest in avant-garde technologies and a determination to craft outstanding digital experiences',
                                   style: GoogleFonts.titilliumWeb(
                                       color: const Color.fromARGB(
                                           193, 255, 255, 255),
@@ -112,7 +112,7 @@ class _AboutState extends State<About> {
                                 ),
                                 TextSpan(
                                   text:
-                                      '\n \nI am a dedicated and versatile developer with a strong focus on ',
+                                      '\n \nMy dedication as a versatile developer is primarily directed towards',
                                   style: GoogleFonts.titilliumWeb(
                                       color: const Color.fromARGB(
                                           193, 255, 255, 255),
@@ -129,7 +129,7 @@ class _AboutState extends State<About> {
                                         height: 2,
                                         fontWeight: FontWeight.w700)),
                                 TextSpan(
-                                  text: ' I specialize in',
+                                  text: ' My specialization lies in',
                                   style: GoogleFonts.titilliumWeb(
                                       color: const Color.fromARGB(
                                           193, 255, 255, 255),
@@ -147,7 +147,7 @@ class _AboutState extends State<About> {
                                         fontWeight: FontWeight.w700)),
                                 TextSpan(
                                   text:
-                                      'a powerful framework for creating beautiful, fast, and native-like experiences across multiple platforms. Additionally, I have explored other frameworks, including React, Spring Boot, to broaden my expertise. Moreover, I have a keen eye for design and often utilize Figma to create stunning UI/UX designs.',
+                                      'a potent framework renowned for its capacity to produce aesthetically pleasing, rapid, and native-like encounters across various platforms. In addition, I have delved into other frameworks such as ReactJs and Spring Boot, augmenting my skill set. Furthermore, I possess a discerning design sensibility and frequently employ Figma to fashion remarkable UI/UX designs',
                                   style: GoogleFonts.titilliumWeb(
                                       color: const Color.fromARGB(
                                           193, 255, 255, 255),
@@ -227,7 +227,7 @@ class _AboutState extends State<About> {
                             child: RichText(
                               textAlign: TextAlign.justify,
                               text: TextSpan(
-                                text: 'I am a passionate',
+                                text: 'I am an enthusiastic',
                                 // textAlign: TextAlign.justify,
                                 style: GoogleFonts.titilliumWeb(
                                     color: const Color.fromARGB(
@@ -246,7 +246,7 @@ class _AboutState extends State<About> {
                                           fontWeight: FontWeight.w600)),
                                   TextSpan(
                                     text:
-                                        'with a deep fascination for cutting-edge technologies and a drive to create exceptional digital experiences',
+                                        'with a profound interest in avant-garde technologies and a determination to craft outstanding digital experiences',
                                     style: GoogleFonts.titilliumWeb(
                                         color: const Color.fromARGB(
                                             193, 255, 255, 255),
@@ -256,7 +256,7 @@ class _AboutState extends State<About> {
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n \nI am a dedicated and versatile developer with a strong focus on ',
+                                        '\n \nMy dedication as a versatile developer is primarily directed towards',
                                     style: GoogleFonts.titilliumWeb(
                                         color: const Color.fromARGB(
                                             193, 255, 255, 255),
@@ -273,7 +273,7 @@ class _AboutState extends State<About> {
                                           height: 2,
                                           fontWeight: FontWeight.w700)),
                                   TextSpan(
-                                    text: ' I specialize in',
+                                    text: ' My specialization lies in',
                                     style: GoogleFonts.titilliumWeb(
                                         color: const Color.fromARGB(
                                             193, 255, 255, 255),
@@ -291,7 +291,7 @@ class _AboutState extends State<About> {
                                           fontWeight: FontWeight.w700)),
                                   TextSpan(
                                     text:
-                                        'a powerful framework for creating beautiful, fast, and native-like experiences across multiple platforms. Additionally, I have explored other frameworks, including React, Spring Boot, to broaden my expertise. Moreover, I have a keen eye for design and often utilize Figma to create stunning UI/UX designs.',
+                                        'a potent framework renowned for its capacity to produce aesthetically pleasing, rapid, and native-like encounters across various platforms. In addition, I have delved into other frameworks such as ReactJs and Spring Boot, augmenting my skill set. Furthermore, I possess a discerning design sensibility and frequently employ Figma to fashion remarkable UI/UX designs',
                                     style: GoogleFonts.titilliumWeb(
                                         color: const Color.fromARGB(
                                             193, 255, 255, 255),
