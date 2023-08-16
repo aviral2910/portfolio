@@ -1,10 +1,7 @@
-import 'dart:ui';
 
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/widgets/shadowText.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:background_app_bar/background_app_bar.dart';
 
 class CustomAppBar extends StatefulWidget {
   CustomAppBar({Key? key, required this.scrollController}) : super(key: key);

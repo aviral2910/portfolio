@@ -9,13 +9,13 @@ import 'package:aviralportfolio/pages/testimonial.dart';
 import 'package:aviralportfolio/widgets/customAppBar.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+// import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   double mouseX = 0;
   double mouseY = 0;
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;

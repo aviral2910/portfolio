@@ -1,9 +1,7 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';
-import 'package:aviralportfolio/widgets/normalText.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SkillsCard extends StatefulWidget {
@@ -24,10 +22,10 @@ class _SkillsCardState extends State<SkillsCard> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 400),
       width: widget.w,
-      constraints: BoxConstraints(minHeight: 400),
-      padding: EdgeInsets.only(left: 0, right: 00, bottom: 20),
+      constraints: const BoxConstraints(minHeight: 400),
+      padding: const EdgeInsets.only(left: 0, right: 00, bottom: 20),
       decoration: BoxDecoration(
           boxShadow: const [
             BoxShadow(
@@ -88,7 +86,7 @@ class _SkillsCardState extends State<SkillsCard> {
             ],
           ),
           AnimatedContainer(
-            duration: Duration(milliseconds: 600),
+            duration: const Duration(milliseconds: 600),
             curve: Curves.easeIn,
             height: widget.changeAppBar ? 30 : 50,
           ),
@@ -98,13 +96,13 @@ class _SkillsCardState extends State<SkillsCard> {
               children: [
                 if (Provider.of<SkillTypeProvider>(context).selected ==
                     "Languages")
-                  Languages(),
+                  const Languages(),
                 if (Provider.of<SkillTypeProvider>(context).selected ==
                     "Frameworks")
-                  Framework(),
+                  const Framework(),
                 if (Provider.of<SkillTypeProvider>(context).selected ==
                     "Others")
-                  Others(),
+                  const Others(),
               ],
             ),
           ),

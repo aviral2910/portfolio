@@ -6,8 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ShadowText extends StatefulWidget {
   ShadowText(this.data,
-      {required this.fontSize, required this.color, required this.fontWeight})
-      : assert(data != null);
+      {super.key, required this.fontSize, required this.color, required this.fontWeight});
 
   Color color;
   FontWeight? fontWeight;
@@ -21,6 +20,7 @@ class ShadowText extends StatefulWidget {
 
 class _ShadowTextState extends State<ShadowText> {
   bool isHover = false;
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},

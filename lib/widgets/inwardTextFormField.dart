@@ -21,7 +21,7 @@ class InwardTextFormField extends StatelessWidget {
             blurRadius: 2,
             offset: Offset(3, 3),
             color: Color.fromARGB(255, 32, 32, 32))
-      ], border: Border.all(color: Color.fromARGB(255, 19, 19, 19))),
+      ], border: Border.all(color: const Color.fromARGB(255, 19, 19, 19))),
       child: TextFormField(
           style: GoogleFonts.titilliumWeb(
               color: Colors.white,

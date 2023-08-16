@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../global.dart';
 
@@ -84,12 +83,12 @@ class _ExperienceCardState extends State<ExperienceCard> {
                             end: Alignment.bottomRight,
                             colors: ishover
                                 ? [
-                                    Color.fromARGB(255, 19, 19, 19),
-                                    Color.fromARGB(255, 15, 15, 15)
+                                    const Color.fromARGB(255, 19, 19, 19),
+                                    const Color.fromARGB(255, 15, 15, 15)
                                   ]
                                 : [
-                                    Color.fromARGB(255, 15, 15, 15),
-                                    Color.fromARGB(255, 19, 19, 19),
+                                    const Color.fromARGB(255, 15, 15, 15),
+                                    const Color.fromARGB(255, 19, 19, 19),
                                   ]),
                         borderRadius: BorderRadius.circular(10)),
                     child: widget.child),

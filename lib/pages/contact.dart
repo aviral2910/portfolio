@@ -1,5 +1,4 @@
 import 'package:aviralportfolio/global.dart';
-import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:aviralportfolio/widgets/inwardTextFormField.dart';
 import 'package:flutter/material.dart';
@@ -14,12 +13,18 @@ class Contact extends StatefulWidget {
 }
 
 class _ContactState extends State<Contact> {
+  RenderBox? box;
+  double? y;
+  Offset? position;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * 4.2) {
+      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      position = box!.localToGlobal(Offset.zero); //this is global position
+
+      if (position!.dy < widget.height * .6) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;
@@ -35,6 +40,8 @@ class _ContactState extends State<Contact> {
     });
   }
 
+  final positionKey = GlobalKey();
+
   bool changeAppBar = false;
   @override
   Widget build(BuildContext context) {
@@ -42,6 +49,7 @@ class _ContactState extends State<Contact> {
     double h = MediaQuery.of(context).size.height;
     return Container(
       width: w,
+      key: positionKey,
       padding: EdgeInsets.only(
           left: w < mobileSize ? 20 : 0, right: w < mobileSize ? 20 : 0),
       child: Column(
@@ -61,7 +69,7 @@ class _ContactState extends State<Contact> {
             curve: Curves.easeIn,
             height: changeAppBar ? 25 : 50,
           ),
-          Container(
+          SizedBox(
             width: w,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -104,7 +112,7 @@ class _ContactState extends State<Contact> {
                           Text(
                             "YOUR NAME",
                             style: GoogleFonts.titilliumWeb(
-                                color: Color.fromARGB(255, 214, 231, 240),
+                                color: const Color.fromARGB(255, 214, 231, 240),
                                 fontWeight: FontWeight.w200,
                                 fontSize: w < mobileSize ? 13 : 16),
                           ),
@@ -126,7 +134,7 @@ class _ContactState extends State<Contact> {
                           Text(
                             "PHONE NUMBER",
                             style: GoogleFonts.titilliumWeb(
-                                color: Color.fromARGB(255, 214, 231, 240),
+                                color: const Color.fromARGB(255, 214, 231, 240),
                                 fontWeight: FontWeight.w200,
                                 fontSize: w < mobileSize ? 13 : 16),
                           ),
@@ -148,7 +156,7 @@ class _ContactState extends State<Contact> {
                           Text(
                             "EMAIL",
                             style: GoogleFonts.titilliumWeb(
-                                color: Color.fromARGB(255, 214, 231, 240),
+                                color: const Color.fromARGB(255, 214, 231, 240),
                                 fontWeight: FontWeight.w200,
                                 fontSize: w < mobileSize ? 13 : 16),
                           ),
@@ -170,7 +178,7 @@ class _ContactState extends State<Contact> {
                           Text(
                             "MESSAGE",
                             style: GoogleFonts.titilliumWeb(
-                                color: Color.fromARGB(255, 214, 231, 240),
+                                color: const Color.fromARGB(255, 214, 231, 240),
                                 fontWeight: FontWeight.w200,
                                 fontSize: w < mobileSize ? 13 : 16),
                           ),
@@ -185,7 +193,7 @@ class _ContactState extends State<Contact> {
                         curve: Curves.easeIn,
                         height: changeAppBar ? 30 : 45,
                       ),
-                      Align(
+                      const Align(
                           alignment: Alignment.centerLeft,
                           child: CustomShadowButton()),
                       const SizedBox(height: 50),
@@ -231,7 +239,7 @@ class _CustomShadowButtonState extends State<CustomShadowButton> {
         child: Container(
           height: 50,
           width: 200,
-          padding: EdgeInsets.only(left: 15, right: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           decoration: BoxDecoration(
               boxShadow: const [
                 BoxShadow(
@@ -248,12 +256,12 @@ class _CustomShadowButtonState extends State<CustomShadowButton> {
                   end: Alignment.bottomRight,
                   colors: ishover
                       ? [
-                          Color.fromARGB(255, 15, 15, 15),
-                          Color.fromARGB(255, 15, 15, 15)
+                          const Color.fromARGB(255, 15, 15, 15),
+                          const Color.fromARGB(255, 15, 15, 15)
                         ]
                       : [
-                          Color.fromARGB(255, 19, 19, 19),
-                          Color.fromARGB(255, 19, 19, 19),
+                          const Color.fromARGB(255, 19, 19, 19),
+                          const Color.fromARGB(255, 19, 19, 19),
                         ]),
               borderRadius: BorderRadius.circular(10)),
           child: Center(

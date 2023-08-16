@@ -1,7 +1,5 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
-import 'package:aviralportfolio/widgets/normalText.dart';
-import 'package:aviralportfolio/widgets/skillCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -35,7 +33,7 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
   bool ishover = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.width,
       height: widget.height,
       child: InkWell(
@@ -48,7 +46,7 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
         child: Align(
           alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
           child: Container(
-            padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
             decoration: BoxDecoration(
                 boxShadow: const [
                   BoxShadow(
@@ -65,12 +63,12 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
                     end: Alignment.bottomRight,
                     colors: ishover
                         ? [
-                            Color.fromARGB(255, 20, 20, 20),
-                            Color.fromARGB(255, 15, 15, 15)
+                            const Color.fromARGB(255, 20, 20, 20),
+                            const Color.fromARGB(255, 15, 15, 15)
                           ]
                         : [
-                            Color.fromARGB(255, 18, 18, 18),
-                            Color.fromARGB(255, 26, 26, 26),
+                            const Color.fromARGB(255, 18, 18, 18),
+                            const Color.fromARGB(255, 26, 26, 26),
                           ]),
                 borderRadius: BorderRadius.circular(10)),
             height: widget.height! - 3,
@@ -129,7 +127,7 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
   bool ishover = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.width,
       height: widget.height,
       child: Center(
@@ -151,7 +149,7 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                     : Alignment.bottomCenter,
             child: Container(
               padding:
-                  EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+                  const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
               decoration: BoxDecoration(
                   boxShadow: widget.isHover
                       ? const [
@@ -181,17 +179,17 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                       end: Alignment.bottomRight,
                       colors: widget.isHover
                           ? [
-                              Color.fromARGB(255, 18, 18, 18),
-                              Color.fromARGB(255, 24, 24, 24),
+                              const Color.fromARGB(255, 18, 18, 18),
+                              const Color.fromARGB(255, 24, 24, 24),
                             ]
                           : ishover
                               ? [
-                                  Color.fromARGB(255, 18, 18, 18),
-                                  Color.fromARGB(255, 24, 24, 24),
+                                  const Color.fromARGB(255, 18, 18, 18),
+                                  const Color.fromARGB(255, 24, 24, 24),
                                 ]
                               : [
-                                  Color.fromARGB(255, 20, 20, 20),
-                                  Color.fromARGB(255, 20, 20, 20),
+                                  const Color.fromARGB(255, 20, 20, 20),
+                                  const Color.fromARGB(255, 20, 20, 20),
                                   // Color.fromARGB(255, 15, 15, 15)
                                 ]),
                   borderRadius: BorderRadius.circular(10)),

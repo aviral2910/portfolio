@@ -1,10 +1,10 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/normalText.dart';
-import 'package:aviralportfolio/widgets/shadowText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
   }
 
   animationn() async {
-    await Future.delayed(Duration(milliseconds: 200));
+    await Future.delayed(const Duration(milliseconds: 200));
     setState(() {
       animate = true;
     });
@@ -85,6 +85,63 @@ class _HomeState extends State<Home> {
                                 letterSpacing: 2,
                                 color: Colors.white),
                           ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Wrap(
+                            alignment: WrapAlignment.center,
+                            children: [
+                              CustomShadowCard(
+                                name: "Gmail",
+                                onTap: () async {
+                                  await launchUrl(Uri.parse(
+                                      "mailto:aviral.dixit2110@gmail.com"));
+                                },
+                                height: 45,
+                                width: 45,
+                                image: "assets/images/gmail.png",
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              CustomShadowCard(
+                                name: "Linkedin",
+                                onTap: () async {
+                                  await launchUrl(Uri.parse(
+                                      "https://www.linkedin.com/in/aviral-dixit/"));
+                                },
+                                height: 45,
+                                width: 45,
+                                image: "assets/images/linkedin.png",
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              CustomShadowCard(
+                                name: "Github",
+                                onTap: () async {
+                                  await launchUrl(Uri.parse(
+                                      "https://github.com/aviral2910"));
+                                },
+                                height: 45,
+                                width: 45,
+                                image: "assets/images/github.png",
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              CustomShadowCard(
+                                name: "Call",
+                                onTap: () async {
+                                  await launchUrl(
+                                      Uri.parse('tel:+917007042761'));
+                                },
+                                height: 45,
+                                width: 45,
+                                image: "assets/images/telephone.png",
+                              )
+                            ],
+                          ),
                           SizedBox(
                             height: h * .18,
                           ),
@@ -98,7 +155,7 @@ class _HomeState extends State<Home> {
                   bottom: 20,
                   left: w * .5 - (25),
                   child: ShakeWidget(
-                    duration: Duration(seconds: 40),
+                    duration: const Duration(seconds: 40),
                     autoPlay: true,
                     enableWebMouseHover: true,
                     shakeConstant: ShakeHardConstant2(),
@@ -128,7 +185,7 @@ class _HomeState extends State<Home> {
                       ),
                       AnimatedPositioned(
                         curve: Curves.bounceOut,
-                        duration: Duration(milliseconds: 1000),
+                        duration: const Duration(milliseconds: 1000),
                         right: animate ? 0 : -w * .4,
                         child: Container(
                           height: h * .8,
@@ -150,12 +207,12 @@ class _HomeState extends State<Home> {
                       AnimatedPositioned(
                         top: h * .15,
                         curve: Curves.easeInOut,
-                        duration: Duration(milliseconds: 700),
+                        duration: const Duration(milliseconds: 700),
                         left: animate ? 35 : -w,
                         child: Container(
                           width: w,
                           height: h * .5,
-                          constraints: BoxConstraints(minHeight: 300),
+                          constraints: const BoxConstraints(minHeight: 300),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -210,6 +267,11 @@ class _HomeState extends State<Home> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       CustomShadowCard(
+                                        name: "Gmail",
+                                        onTap: () async {
+                                          await launchUrl(Uri.parse(
+                                              "mailto:aviral.dixit2110@gmail.com"));
+                                        },
                                         height: 70,
                                         width: 70,
                                         image: "assets/images/gmail.png",
@@ -218,6 +280,11 @@ class _HomeState extends State<Home> {
                                         width: 20,
                                       ),
                                       CustomShadowCard(
+                                        name: "Linkdin",
+                                        onTap: () async {
+                                          await launchUrl(Uri.parse(
+                                              "https://www.linkedin.com/in/aviral-dixit/"));
+                                        },
                                         height: 70,
                                         width: 70,
                                         image: "assets/images/linkedin.png",
@@ -226,6 +293,11 @@ class _HomeState extends State<Home> {
                                         width: 20,
                                       ),
                                       CustomShadowCard(
+                                        name: "Github",
+                                        onTap: () async {
+                                          await launchUrl(Uri.parse(
+                                              "https://github.com/aviral2910"));
+                                        },
                                         height: 70,
                                         width: 70,
                                         image: "assets/images/github.png",
@@ -234,6 +306,11 @@ class _HomeState extends State<Home> {
                                         width: 20,
                                       ),
                                       CustomShadowCard(
+                                        name: "Call",
+                                        onTap: () async {
+                                          await launchUrl(
+                                              Uri.parse('tel:+917007042761'));
+                                        },
                                         height: 70,
                                         width: 70,
                                         image: "assets/images/telephone.png",
@@ -328,7 +405,7 @@ class _HomeState extends State<Home> {
                   bottom: 40,
                   left: w * .5 - (45),
                   child: ShakeWidget(
-                    duration: Duration(seconds: 40),
+                    duration: const Duration(seconds: 40),
                     autoPlay: true,
                     enableWebMouseHover: true,
                     shakeConstant: ShakeHardConstant2(),

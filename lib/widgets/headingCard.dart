@@ -23,7 +23,7 @@ class HeadingCard extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             border: Border.all(
-                width: .4, color: Color.fromARGB(174, 255, 255, 255))),
+                width: .4, color: const Color.fromARGB(174, 255, 255, 255))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

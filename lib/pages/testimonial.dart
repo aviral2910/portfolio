@@ -4,21 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Testimonial extends StatefulWidget {
-  Testimonial(
+  const Testimonial(
       {super.key, required this.scrollController, required this.height});
-  ScrollController scrollController;
-  double height;
+  final ScrollController scrollController;
+  final double height;
   @override
   State<Testimonial> createState() => _TestimonialState();
 }
 
 class _TestimonialState extends State<Testimonial> {
+  RenderBox? box;
+  double? y;
+  Offset? position;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * 3.7) {
+      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      position = box!.localToGlobal(Offset.zero); //this is global position
+
+      if (position!.dy < widget.height * .6) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;
@@ -34,18 +40,20 @@ class _TestimonialState extends State<Testimonial> {
     });
   }
 
+  final positionKey = GlobalKey();
   bool changeAppBar = false;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return Container(
+    return SizedBox(
+      key: positionKey,
       width: w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AnimatedContainer(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
             height: changeAppBar ? h * .1 : h * .2,
           ),
@@ -54,7 +62,7 @@ class _TestimonialState extends State<Testimonial> {
             text: "TESTIMONIAL",
           ),
           AnimatedContainer(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
             height: changeAppBar ? 60 : 80,
           ),
@@ -83,8 +91,8 @@ class _TestimonialState extends State<Testimonial> {
               width: w,
               child: Center(
                 child: Container(
-                  padding: EdgeInsets.only(left: 25, right: 55),
-                  constraints: BoxConstraints(maxWidth: 1400),
+                  padding: const EdgeInsets.only(left: 25, right: 55),
+                  constraints: const BoxConstraints(maxWidth: 1400),
                   // width: w < 1000 ? w * .89 : w * .8,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +183,7 @@ class _TestimonialState extends State<Testimonial> {
               ),
             ),
           AnimatedContainer(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
             height: changeAppBar ? h * .1 : h * .2,
           ),
@@ -198,7 +206,7 @@ class TestimonialText extends StatelessWidget {
     return Container(
       width: double.infinity,
       // height: 300,
-      constraints: BoxConstraints(minHeight: 340),
+      constraints: const BoxConstraints(minHeight: 340),
       padding: EdgeInsets.only(
           left: w < mobileSize ? 20 : 35,
           right: w < mobileSize ? 20 : 35,
@@ -249,7 +257,7 @@ class TestimonialText extends StatelessWidget {
             style: GoogleFonts.titilliumWeb(
                 fontSize: 27,
                 fontWeight: FontWeight.w400,
-                color: Color.fromARGB(255, 224, 238, 248)),
+                color: const Color.fromARGB(255, 224, 238, 248)),
           ),
           const SizedBox(
             height: 5,
@@ -260,7 +268,7 @@ class TestimonialText extends StatelessWidget {
                 fontSize: 15,
                 letterSpacing: 2,
                 fontWeight: FontWeight.w400,
-                color: Color.fromARGB(140, 255, 255, 255)),
+                color: const Color.fromARGB(140, 255, 255, 255)),
           ),
           const SizedBox(
             height: 25,
@@ -268,7 +276,7 @@ class TestimonialText extends StatelessWidget {
           Container(
             height: 2,
             width: w,
-            color: Color.fromARGB(200, 11, 11, 11),
+            color: const Color.fromARGB(200, 11, 11, 11),
           ),
           const SizedBox(
             height: 25,
@@ -366,12 +374,12 @@ class _TestimonialCardState extends State<TestimonialCard> {
                   end: Alignment.bottomRight,
                   colors: ishover
                       ? [
-                          Color.fromARGB(255, 19, 19, 19),
-                          Color.fromARGB(255, 15, 15, 15)
+                          const Color.fromARGB(255, 19, 19, 19),
+                          const Color.fromARGB(255, 15, 15, 15)
                         ]
                       : [
-                          Color.fromARGB(255, 15, 15, 15),
-                          Color.fromARGB(255, 19, 19, 19),
+                          const Color.fromARGB(255, 15, 15, 15),
+                          const Color.fromARGB(255, 19, 19, 19),
                         ]),
               borderRadius: BorderRadius.circular(10)),
           // decoration: BoxDecoration(
@@ -404,7 +412,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                       blurRadius: 2,
                       offset: Offset(3, 3),
                       color: Color.fromARGB(255, 32, 32, 32))
-                ], border: Border.all(color: Color.fromARGB(255, 19, 19, 19))),
+                ], border: Border.all(color: const Color.fromARGB(255, 19, 19, 19))),
                 child: Padding(
                   padding: EdgeInsets.all(!ishover ? 0 : 8.0),
                   child: Image.asset(
@@ -433,7 +441,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 style: GoogleFonts.titilliumWeb(
                     fontSize: 27,
                     fontWeight: FontWeight.w700,
-                    color: Color.fromARGB(255, 224, 238, 248)),
+                    color: const Color.fromARGB(255, 224, 238, 248)),
               ),
               const SizedBox(
                 height: 4,

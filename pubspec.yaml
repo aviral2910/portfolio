@@ -40,9 +40,10 @@ dependencies:
   flutter_shake_animated: ^0.0.5
   provider: ^6.0.5
   loading_animation_widget: ^1.2.0+4
-  flutter_neumorphic: ^3.2.0
+  # flutter_neumorphic: ^3.2.0
   background_app_bar: ^2.0.1
   firebase_core: ^2.15.0
+  url_launcher: ^6.1.11
 
 
 dev_dependencies:

@@ -3,6 +3,7 @@ import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Project extends StatefulWidget {
   Project({super.key, required this.scrollController, required this.height});
@@ -13,12 +14,18 @@ class Project extends StatefulWidget {
 }
 
 class _ProjectState extends State<Project> {
+  RenderBox? box;
+  double? y;
+  Offset? position;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * 2) {
+      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      position = box!.localToGlobal(Offset.zero); //this is global position
+
+      if (position!.dy < widget.height * .6) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;
@@ -34,6 +41,7 @@ class _ProjectState extends State<Project> {
     });
   }
 
+  final positionKey = GlobalKey();
   List<String> krishn = [
     "flutter",
     "dart",
@@ -42,18 +50,44 @@ class _ProjectState extends State<Project> {
     "css",
     "figma",
   ];
+  List<String> krishnName = [
+    "Flutter",
+    "Dart",
+    "Firebase",
+    "Github",
+    "CSS",
+    "Figma",
+  ];
+  List<String> tracker = [
+    "flutter",
+    "dart",
+    "firebase",
+    "github",
+  ];
+  List<String> trackerName = [
+    "Flutter",
+    "Dart",
+    "Firebase",
+    "Github",
+  ];
   List<String> krishnData = [
     "assets/images/krishn.png",
-    "Developed Webapp and android app for it with which we Talk to Divine Krishna, and resolve all your doubts and problem of life from Lord Krishna's Perspective. He can help you with modern-day problems using advanced Artificial Intelligence. \n\nGita GPT is a chatbot based on ChatGPT. We inspired it, and we love to keep innovating in this space to continue to help you achieve your mental health goals and guide you through spiritual intelligence.",
-    "krishn.ai",
+    "Developed Webapp and android app with which we Talk to Divine Krishna, and resolve all your doubts and problem of life from Lord Krishna's Perspective. He can help you with modern-day problems using advanced Artificial Intelligence. \n\nGita GPT is a chatbot based on ChatGPT. We inspired it, and we love to keep innovating in this space to continue to help you achieve your mental health goals and guide you through spiritual intelligence.",
+    "https://krishn.ai/",
     "Krishn.ai",
-    "Krishn.ai",
+    "market://details?id=com.puterlabs.krishnai"
   ];
   List<String> vsparkleData = [
     "assets/images/vsparkle.png",
     "Developed the landing for the Vsparkle who are commited in developing a sustainable and eco-friendly energy future that is readily accessible. \n \nThere goal is to protect the planet and pave the way for a brighter present and even more promising future",
-    "vsparkle.in",
+    "https://vsparkle.in/",
     "Vsparkle"
+  ];
+  List<String> trackerData = [
+    "assets/images/trackers.png",
+    "This application allows users to create instances for specific tasks or events and then conveniently track their progress.\n\nAdditionally, the app features an Anxiety Tracker, which aids users in tracking their anxiety levels over time. This Anxiety Tracker comes equipped with a range of Breathing exercises designed to help manage anxiety. it also allows users to customize the breathing exercises to suit their individual needs and preferences.",
+    "https://drive.google.com/file/d/18JdxjWRsEcCyR4NI2FTZQMUYBDt37gsj/view?usp=sharing",
+    "Tracker"
   ];
   List<String> vsparkle = [
     "flutter",
@@ -63,13 +97,22 @@ class _ProjectState extends State<Project> {
     "css",
     "figma",
   ];
+  List<String> vsparkleName = [
+    "Flutter",
+    "Dart",
+    "Firebase",
+    "Github",
+    "CSS",
+    "Figma",
+  ];
   bool changeAppBar = false;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return Container(
+    return SizedBox(
       width: w,
+      key: positionKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -88,27 +131,52 @@ class _ProjectState extends State<Project> {
             height: changeAppBar ? 30 : 40,
           ),
           ProjectCard(
-            image: krishnData[0],
-            text: krishnData[1],
-            link: krishnData[2],
-            heading: krishnData[3],
-            w: w,
-            apkLink: krishnData[4],
-            index: 0,
-            list: krishn,
-          ),
+              image: krishnData[0],
+              text: krishnData[1],
+              link: krishnData[2],
+              heading: krishnData[3],
+              w: w,
+              apkLink: krishnData[4],
+              index: 0,
+              list: krishn,
+              listName: krishnName),
           const SizedBox(
             height: 50,
           ),
           ProjectCard(
-            image: vsparkleData[0],
-            text: vsparkleData[1],
-            link: vsparkleData[2],
-            heading: vsparkleData[3],
-            w: w,
-            index: 1,
-            list: vsparkle,
+              image: vsparkleData[0],
+              text: vsparkleData[1],
+              link: vsparkleData[2],
+              heading: vsparkleData[3],
+              w: w,
+              index: 1,
+              list: vsparkle,
+              listName: vsparkleName),
+          const SizedBox(
+            height: 50,
           ),
+          ProjectCard(
+            image: trackerData[0],
+            text: trackerData[1],
+            link: trackerData[2],
+            heading: trackerData[3],
+            w: w,
+            index: 2,
+            list: tracker,
+            listName: trackerName,
+          ),
+          // const SizedBox(
+          //   height: 50,
+          // ),
+          // ProjectCard(
+          //   image: vsparkleData[0],
+          //   text: vsparkleData[1],
+          //   link: vsparkleData[2],
+          //   heading: vsparkleData[3],
+          //   w: w,
+          //   index: 3,
+          //   list: vsparkle,
+          // ),
           AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
@@ -128,14 +196,17 @@ class ProjectCard extends StatefulWidget {
       required this.link,
       required this.image,
       this.apkLink,
+      required this.listName,
       required this.list,
       required this.index,
       required this.heading})
       : super(key: key);
   List<String> list;
+  List<String> listName;
   String link;
   String? apkLink;
   String image;
+
   String heading;
   int index;
   String text;
@@ -172,6 +243,7 @@ class _ProjectCardState extends State<ProjectCard> {
                       height: 20,
                     ),
                     ProjectTextCard(
+                      listName: widget.listName,
                       apklink: widget.apkLink,
                       heading: widget.heading,
                       text: widget.text,
@@ -206,6 +278,7 @@ class _ProjectCardState extends State<ProjectCard> {
                               index: widget.index,
                               heading: widget.heading,
                               link: widget.link,
+                              listName: widget.listName,
                               text: widget.text,
                               list: widget.list,
                               w: widget.w,
@@ -222,6 +295,7 @@ class _ProjectCardState extends State<ProjectCard> {
                               index: widget.index,
                               link: widget.link,
                               text: widget.text,
+                              listName: widget.listName,
                               list: widget.list,
                               w: widget.w,
                               ishover: ishover)),
@@ -249,6 +323,7 @@ class ProjectTextCard extends StatelessWidget {
       {Key? key,
       required this.text,
       required this.list,
+      required this.listName,
       this.apklink,
       required this.heading,
       required this.index,
@@ -259,6 +334,7 @@ class ProjectTextCard extends StatelessWidget {
   double w;
   int index;
   String? apklink;
+  List<String> listName;
   List<String> list;
   String heading;
   String link;
@@ -267,7 +343,7 @@ class ProjectTextCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: w,
       child: Column(
           crossAxisAlignment: (index % 2 == 0)
@@ -290,7 +366,7 @@ class ProjectTextCard extends StatelessWidget {
             Container(
               // height: 200,
               width: w,
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                   boxShadow: const [
                     BoxShadow(
@@ -307,12 +383,12 @@ class ProjectTextCard extends StatelessWidget {
                       end: Alignment.bottomRight,
                       colors: ishover
                           ? [
-                              Color.fromARGB(255, 19, 19, 19),
-                              Color.fromARGB(255, 15, 15, 15)
+                              const Color.fromARGB(255, 19, 19, 19),
+                              const Color.fromARGB(255, 15, 15, 15)
                             ]
                           : [
-                              Color.fromARGB(255, 15, 15, 15),
-                              Color.fromARGB(255, 19, 19, 19),
+                              const Color.fromARGB(255, 15, 15, 15),
+                              const Color.fromARGB(255, 19, 19, 19),
                             ]),
                   borderRadius: BorderRadius.circular(10)),
               child: Text(
@@ -322,7 +398,7 @@ class ProjectTextCard extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                     fontSize: 13,
                     letterSpacing: 1,
-                    color: Color.fromARGB(215, 214, 214, 214)),
+                    color: const Color.fromARGB(215, 214, 214, 214)),
               ),
             ),
             const SizedBox(
@@ -346,7 +422,7 @@ class ProjectTextCard extends StatelessWidget {
                 runSpacing: 20,
                 spacing: 20,
                 alignment: w < mobileSize
-                    ? WrapAlignment.center
+                    ? WrapAlignment.start
                     : (index % 2 != 0)
                         ? WrapAlignment.start
                         : (w < mobileSize)
@@ -355,6 +431,7 @@ class ProjectTextCard extends StatelessWidget {
                 children: [
                   for (int i = 0; i < list.length; i++)
                     CustomSkillShadowCard(
+                      name: listName[i],
                       height: 50,
                       width: 50,
                       radius: 50,
@@ -397,7 +474,11 @@ class ProjectTextCard extends StatelessWidget {
                       if (apklink != null)
                         CustomSkillShadowCard(
                           height: 50,
+                          onTap: () async {
+                            await launchUrl(Uri.parse(apklink.toString()));
+                          },
                           width: 50,
+                          name: "Play Store",
                           radius: 50,
                           image: "assets/images/playstore.png",
                         ),
@@ -406,7 +487,11 @@ class ProjectTextCard extends StatelessWidget {
                           width: 10,
                         ),
                       CustomSkillShadowCard(
+                        onTap: () async {
+                          await launchUrl(Uri.parse(link));
+                        },
                         height: 50,
+                        name: "Live Link",
                         width: 50,
                         radius: 50,
                         image: "assets/images/link.png",
@@ -528,8 +613,8 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
 
             child: Center(
               child: Container(
-                decoration: ishover
-                    ? BoxDecoration()
+                decoration: !ishover
+                    ? const BoxDecoration()
                     : BoxDecoration(
                         boxShadow: const [
                             BoxShadow(
@@ -541,12 +626,12 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                                 offset: Offset(3, 3),
                                 color: Color.fromARGB(255, 32, 32, 32))
                           ],
-                        border:
-                            Border.all(color: Color.fromARGB(255, 19, 19, 19))),
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 19, 19, 19))),
                 child: Center(
                   child: Image.asset(
                     widget.image.toString(),
-                    height: widget.w < mobileSize ? 400 : 450,
+                    height: widget.w < mobileSize ? 230 : 450,
                     fit: BoxFit.fill,
                   ),
                 ),

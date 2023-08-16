@@ -21,6 +21,14 @@ class _ExperienceState extends State<Experience> {
     "figma",
     "adobexd"
   ];
+  List<String> gravityName = [
+    "Flutter",
+    "Dart",
+    "Github",
+    "Block",
+    "Figma",
+    "Adobe Xd"
+  ];
   List<String> prmsnls = [
     "flutter",
     "react",
@@ -33,6 +41,18 @@ class _ExperienceState extends State<Experience> {
     "html5",
     "css"
   ];
+  List<String> prmsnlsName = [
+    "Flutter",
+    "React",
+    "Web 3",
+    "Dart",
+    "Github",
+    "Firebase",
+    "Block",
+    "Figma",
+    "Html 5",
+    "CSS"
+  ];
 
   List<String> pansil = [
     "flutter",
@@ -44,6 +64,16 @@ class _ExperienceState extends State<Experience> {
     "figma",
     "github"
   ];
+  List<String> pansilName = [
+    "Flutter",
+    "Spring Boot",
+    "Dart",
+    "Java",
+    "Sql",
+    "Adobe Xd",
+    "Figma",
+    "Github"
+  ];
   List<String> jss = [
     "python",
     "django",
@@ -54,12 +84,29 @@ class _ExperienceState extends State<Experience> {
     "sql",
     "github"
   ];
+  List<String> jssName = [
+    "Python",
+    "Django",
+    "Flask",
+    "Firebase",
+    "Html 5",
+    "CSS",
+    "Sql",
+    "Github"
+  ];
+  RenderBox? box;
+  double? y;
+  Offset? position;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * 1.2) {
+      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      position = box!.localToGlobal(Offset.zero); //this is global position
+
+      if (position!.dy < widget.height * .6) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;
@@ -75,12 +122,15 @@ class _ExperienceState extends State<Experience> {
     });
   }
 
+  final positionKey = GlobalKey();
+
   bool changeAppBar = false;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Container(
+      key: positionKey,
       // height: h,
       width: w,
       padding: EdgeInsets.only(
@@ -96,7 +146,7 @@ class _ExperienceState extends State<Experience> {
                 color: Colors.white, fontWeight: FontWeight.w500, fontSize: 24),
           ),
           AnimatedContainer(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
             height: changeAppBar ? 30 : 50,
           ),
@@ -107,7 +157,11 @@ class _ExperienceState extends State<Experience> {
                 gravity: gravity,
                 prmsnls: prmsnls,
                 pansil: pansil,
-                jss: jss),
+                jss: jss,
+                gravityName: gravityName,
+                prmsnlsName: prmsnlsName,
+                pansilName: pansilName,
+                jssName: jssName),
           if (w <= mobileSize)
             MobileExperience(
                 w: w,
@@ -115,9 +169,13 @@ class _ExperienceState extends State<Experience> {
                 gravity: gravity,
                 prmsnls: prmsnls,
                 pansil: pansil,
-                jss: jss),
+                jss: jss,
+                gravityName: gravityName,
+                prmsnlsName: prmsnlsName,
+                pansilName: pansilName,
+                jssName: jssName),
           AnimatedContainer(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
             height: changeAppBar ? h * .1 : h * .2,
           ),
@@ -136,6 +194,10 @@ class MobileExperience extends StatelessWidget {
     required this.prmsnls,
     required this.pansil,
     required this.jss,
+    required this.gravityName,
+    required this.prmsnlsName,
+    required this.pansilName,
+    required this.jssName,
   }) : super(key: key);
 
   final double w;
@@ -144,6 +206,10 @@ class MobileExperience extends StatelessWidget {
   final List<String> prmsnls;
   final List<String> pansil;
   final List<String> jss;
+  final List<String> gravityName;
+  final List<String> prmsnlsName;
+  final List<String> pansilName;
+  final List<String> jssName;
 
   @override
   Widget build(BuildContext context) {
@@ -164,13 +230,13 @@ class MobileExperience extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
+                SizedBox(
                   // height: 450,
                   width: w,
                   child: Column(
                     children: [
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.easeIn,
                         height: changeAppBar ? 20 : 50,
                       ),
@@ -237,6 +303,7 @@ class MobileExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < gravity.length; i++)
                                     CustomSkillShadowCard(
+                                      name: gravityName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,
@@ -316,12 +383,14 @@ class MobileExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < prmsnls.length; i++)
                                     CustomSkillShadowCard(
+                                      name: prmsnlsName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,
                                       image: "assets/images/${prmsnls[i]}.png",
                                     ),
                                   CustomSkillShadowCard(
+                                    name: "MVC",
                                     height: 50,
                                     width: 50,
                                     radius: 1000,
@@ -329,6 +398,7 @@ class MobileExperience extends StatelessWidget {
                                   ),
                                   CustomSkillShadowCard(
                                     height: 50,
+                                    name: "MVP",
                                     width: 50,
                                     radius: 1000,
                                     image: "MVP",
@@ -340,7 +410,7 @@ class MobileExperience extends StatelessWidget {
                         ),
                       ),
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.easeIn,
                         height: changeAppBar ? 20 : 50,
                       ),
@@ -407,12 +477,14 @@ class MobileExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < pansil.length; i++)
                                     CustomSkillShadowCard(
+                                      name: pansilName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,
                                       image: "assets/images/${pansil[i]}.png",
                                     ),
                                   CustomSkillShadowCard(
+                                    name: "MVC",
                                     height: 50,
                                     width: 50,
                                     radius: 1000,
@@ -490,6 +562,7 @@ class MobileExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < jss.length; i++)
                                     CustomSkillShadowCard(
+                                      name: jssName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,
@@ -522,6 +595,10 @@ class DesktopExperience extends StatelessWidget {
     required this.prmsnls,
     required this.pansil,
     required this.jss,
+    required this.gravityName,
+    required this.prmsnlsName,
+    required this.pansilName,
+    required this.jssName,
   }) : super(key: key);
 
   final double w;
@@ -530,7 +607,10 @@ class DesktopExperience extends StatelessWidget {
   final List<String> prmsnls;
   final List<String> pansil;
   final List<String> jss;
-
+  final List<String> gravityName;
+  final List<String> prmsnlsName;
+  final List<String> pansilName;
+  final List<String> jssName;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -551,13 +631,13 @@ class DesktopExperience extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     // height: 450,
                     width: w,
                     child: Column(
                       children: [
                         AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           curve: Curves.easeIn,
                           height: changeAppBar ? 20 : 50,
                         ),
@@ -620,6 +700,7 @@ class DesktopExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < gravity.length; i++)
                                     CustomSkillShadowCard(
+                                      name: gravityName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,
@@ -696,18 +777,21 @@ class DesktopExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < prmsnls.length; i++)
                                     CustomSkillShadowCard(
+                                      name: prmsnlsName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,
                                       image: "assets/images/${prmsnls[i]}.png",
                                     ),
                                   CustomSkillShadowCard(
+                                    name: "MVC",
                                     height: 50,
                                     width: 50,
                                     radius: 1000,
                                     image: "MVC",
                                   ),
                                   CustomSkillShadowCard(
+                                    name: "MVP",
                                     height: 50,
                                     width: 50,
                                     radius: 1000,
@@ -742,13 +826,13 @@ class DesktopExperience extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     // height: 450,
                     width: w,
                     child: Column(
                       children: [
                         AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           curve: Curves.easeIn,
                           height: changeAppBar ? 20 : 50,
                         ),
@@ -811,12 +895,14 @@ class DesktopExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < pansil.length; i++)
                                     CustomSkillShadowCard(
+                                      name: pansilName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,
                                       image: "assets/images/${pansil[i]}.png",
                                     ),
                                   CustomSkillShadowCard(
+                                    name: "MVC",
                                     height: 50,
                                     width: 50,
                                     radius: 1000,
@@ -891,6 +977,7 @@ class DesktopExperience extends StatelessWidget {
                                 children: [
                                   for (int i = 0; i < jss.length; i++)
                                     CustomSkillShadowCard(
+                                      name: jssName[i],
                                       height: 50,
                                       width: 50,
                                       radius: 50,

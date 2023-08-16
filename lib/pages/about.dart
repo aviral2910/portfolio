@@ -1,8 +1,5 @@
 import 'package:aviralportfolio/global.dart';
-import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';
-import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/headingCard.dart';
-import 'package:aviralportfolio/widgets/normalText.dart';
 import 'package:aviralportfolio/widgets/skillCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,12 +13,18 @@ class About extends StatefulWidget {
 }
 
 class _AboutState extends State<About> {
+  RenderBox? box;
+  double? y;
+  Offset? position;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      if (widget.scrollController.offset > widget.height * .4) {
+      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      position = box!.localToGlobal(Offset.zero); //this is global position
+
+      if (position!.dy < widget.height * .6) {
         if (changeAppBar == false) {
           setState(() {
             changeAppBar = true;
@@ -37,6 +40,7 @@ class _AboutState extends State<About> {
     });
   }
 
+  final positionKey = GlobalKey();
   bool changeAppBar = false;
 
   @override
@@ -44,6 +48,7 @@ class _AboutState extends State<About> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Container(
+      key: positionKey,
       // height: h,
       width: w,
       // constraints: BoxConstraints(minHeight: 650, maxHeight: 850),
@@ -53,12 +58,12 @@ class _AboutState extends State<About> {
               children: [
                 Center(
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 800),
+                    constraints: const BoxConstraints(maxWidth: 800),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         AnimatedContainer(
-                          duration: Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 500),
                           curve: Curves.easeIn,
                           height: changeAppBar ? 60 : 90,
                         ),
@@ -67,7 +72,7 @@ class _AboutState extends State<About> {
                           text: "ABOUT",
                         ),
                         AnimatedContainer(
-                          duration: Duration(milliseconds: 1000),
+                          duration: const Duration(milliseconds: 1000),
                           curve: Curves.easeIn,
                           height: changeAppBar ? 30 : 50,
                         ),
@@ -81,7 +86,8 @@ class _AboutState extends State<About> {
                               text: 'I am a passionate',
                               // textAlign: TextAlign.justify,
                               style: GoogleFonts.titilliumWeb(
-                                  color: Color.fromARGB(193, 255, 255, 255),
+                                  color:
+                                      const Color.fromARGB(193, 255, 255, 255),
                                   fontSize: 18,
                                   height: 2,
                                   fontWeight: FontWeight.w300),
@@ -98,16 +104,18 @@ class _AboutState extends State<About> {
                                   text:
                                       'with a deep fascination for cutting-edge technologies and a drive to create exceptional digital experiences',
                                   style: GoogleFonts.titilliumWeb(
-                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      color: const Color.fromARGB(
+                                          193, 255, 255, 255),
                                       fontSize: 18,
                                       height: 2,
                                       fontWeight: FontWeight.w300),
                                 ),
                                 TextSpan(
                                   text:
-                                      '\n \nI am a dedicated and versatile developer with a strong focus on mobile and web app development.',
+                                      '\n \nI am a dedicated and versatile developer with a strong focus on ',
                                   style: GoogleFonts.titilliumWeb(
-                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      color: const Color.fromARGB(
+                                          193, 255, 255, 255),
                                       fontSize: 18,
                                       height: 2,
                                       fontWeight: FontWeight.w300),
@@ -121,9 +129,10 @@ class _AboutState extends State<About> {
                                         height: 2,
                                         fontWeight: FontWeight.w700)),
                                 TextSpan(
-                                  text: ' I specialize in Flutter, ',
+                                  text: ' I specialize in',
                                   style: GoogleFonts.titilliumWeb(
-                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      color: const Color.fromARGB(
+                                          193, 255, 255, 255),
                                       fontSize: 18,
                                       height: 2,
                                       fontWeight: FontWeight.w300),
@@ -140,7 +149,8 @@ class _AboutState extends State<About> {
                                   text:
                                       'a powerful framework for creating beautiful, fast, and native-like experiences across multiple platforms. Additionally, I have explored other frameworks, including React, Spring Boot, to broaden my expertise. Moreover, I have a keen eye for design and often utilize Figma to create stunning UI/UX designs.',
                                   style: GoogleFonts.titilliumWeb(
-                                      color: Color.fromARGB(193, 255, 255, 255),
+                                      color: const Color.fromARGB(
+                                          193, 255, 255, 255),
                                       fontSize: 18,
                                       height: 2,
                                       fontWeight: FontWeight.w300),
@@ -161,7 +171,7 @@ class _AboutState extends State<About> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.easeIn,
                         height: changeAppBar ? 50 : 70,
                       ),
@@ -173,13 +183,13 @@ class _AboutState extends State<About> {
                             fontSize: 24),
                       ),
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 800),
+                        duration: const Duration(milliseconds: 800),
                         curve: Curves.easeIn,
                         height: changeAppBar ? 30 : 50,
                       ),
                       SkillsCard(w: w, changeAppBar: changeAppBar),
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.easeIn,
                         height: changeAppBar ? 60 : 90,
                       ),
@@ -193,7 +203,7 @@ class _AboutState extends State<About> {
                 Expanded(
                   child: Center(
                     child: Container(
-                      constraints: BoxConstraints(maxWidth: 800),
+                      constraints: const BoxConstraints(maxWidth: 800),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -208,7 +218,7 @@ class _AboutState extends State<About> {
                             text: "ABOUT",
                           ),
                           AnimatedContainer(
-                            duration: Duration(milliseconds: 1000),
+                            duration: const Duration(milliseconds: 1000),
                             curve: Curves.easeIn,
                             height: changeAppBar ? 30 : 50,
                           ),
@@ -220,7 +230,8 @@ class _AboutState extends State<About> {
                                 text: 'I am a passionate',
                                 // textAlign: TextAlign.justify,
                                 style: GoogleFonts.titilliumWeb(
-                                    color: Color.fromARGB(193, 255, 255, 255),
+                                    color: const Color.fromARGB(
+                                        193, 255, 255, 255),
                                     fontSize: 18,
                                     height: 2,
                                     fontWeight: FontWeight.w300),
@@ -237,18 +248,18 @@ class _AboutState extends State<About> {
                                     text:
                                         'with a deep fascination for cutting-edge technologies and a drive to create exceptional digital experiences',
                                     style: GoogleFonts.titilliumWeb(
-                                        color:
-                                            Color.fromARGB(193, 255, 255, 255),
+                                        color: const Color.fromARGB(
+                                            193, 255, 255, 255),
                                         fontSize: 18,
                                         height: 2,
                                         fontWeight: FontWeight.w300),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n \nI am a dedicated and versatile developer with a strong focus on mobile and web app development.',
+                                        '\n \nI am a dedicated and versatile developer with a strong focus on ',
                                     style: GoogleFonts.titilliumWeb(
-                                        color:
-                                            Color.fromARGB(193, 255, 255, 255),
+                                        color: const Color.fromARGB(
+                                            193, 255, 255, 255),
                                         fontSize: 18,
                                         height: 2,
                                         fontWeight: FontWeight.w300),
@@ -262,10 +273,10 @@ class _AboutState extends State<About> {
                                           height: 2,
                                           fontWeight: FontWeight.w700)),
                                   TextSpan(
-                                    text: ' I specialize in Flutter, ',
+                                    text: ' I specialize in',
                                     style: GoogleFonts.titilliumWeb(
-                                        color:
-                                            Color.fromARGB(193, 255, 255, 255),
+                                        color: const Color.fromARGB(
+                                            193, 255, 255, 255),
                                         fontSize: 18,
                                         height: 2,
                                         fontWeight: FontWeight.w300),
@@ -282,8 +293,8 @@ class _AboutState extends State<About> {
                                     text:
                                         'a powerful framework for creating beautiful, fast, and native-like experiences across multiple platforms. Additionally, I have explored other frameworks, including React, Spring Boot, to broaden my expertise. Moreover, I have a keen eye for design and often utilize Figma to create stunning UI/UX designs.',
                                     style: GoogleFonts.titilliumWeb(
-                                        color:
-                                            Color.fromARGB(193, 255, 255, 255),
+                                        color: const Color.fromARGB(
+                                            193, 255, 255, 255),
                                         fontSize: 18,
                                         height: 2,
                                         fontWeight: FontWeight.w300),
@@ -293,7 +304,7 @@ class _AboutState extends State<About> {
                             ),
                           ),
                           AnimatedContainer(
-                            duration: Duration(milliseconds: 800),
+                            duration: const Duration(milliseconds: 800),
                             curve: Curves.easeIn,
                             height: changeAppBar ? 40 : 60,
                           ),
@@ -304,12 +315,12 @@ class _AboutState extends State<About> {
                 ),
                 Expanded(
                     child: Container(
-                  padding: EdgeInsets.only(left: 20, right: 35),
+                  padding: const EdgeInsets.only(left: 20, right: 35),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 500),
+                        duration: const Duration(milliseconds: 500),
                         curve: Curves.easeIn,
                         height: changeAppBar ? h * .1 : h * .2,
                       ),
@@ -321,13 +332,13 @@ class _AboutState extends State<About> {
                             fontSize: 24),
                       ),
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 800),
+                        duration: const Duration(milliseconds: 800),
                         curve: Curves.easeIn,
                         height: changeAppBar ? 30 : 50,
                       ),
                       SkillsCard(w: w, changeAppBar: changeAppBar),
                       AnimatedContainer(
-                        duration: Duration(milliseconds: 800),
+                        duration: const Duration(milliseconds: 800),
                         curve: Curves.easeIn,
                         height: changeAppBar ? 40 : 60,
                       ),

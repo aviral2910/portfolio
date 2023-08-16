@@ -6,11 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class NormalText extends StatefulWidget {
   NormalText(this.data,
-      {required this.letterSpacing,
+      {super.key, required this.letterSpacing,
       required this.fontSize,
       required this.color,
-      required this.fontWeight})
-      : assert(data != null);
+      required this.fontWeight});
 
   Color color;
   double? letterSpacing;
@@ -25,6 +24,7 @@ class NormalText extends StatefulWidget {
 
 class _NormalTextState extends State<NormalText> {
   bool isHover = false;
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
