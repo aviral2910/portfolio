@@ -5,8 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 class InwardTextFormField extends StatelessWidget {
   InwardTextFormField({
     required this.maxlines,
+    required this.controller,
     Key? key,
   }) : super(key: key);
+  TextEditingController controller;
   int maxlines;
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class InwardTextFormField extends StatelessWidget {
             color: Color.fromARGB(255, 32, 32, 32))
       ], border: Border.all(color: const Color.fromARGB(255, 19, 19, 19))),
       child: TextFormField(
+          controller: controller,
           style: GoogleFonts.titilliumWeb(
               color: Colors.white,
               fontSize: w < mobileSize ? 14 : 18,
