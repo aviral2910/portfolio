@@ -64,6 +64,27 @@ class _ProjectState extends State<Project> {
     "firebase",
     "github",
   ];
+  List<String> gravity = [
+    "flutter",
+    "dart",
+    "block",
+    "figma",
+    "github",
+  ];
+  List<String> gravityName = [
+    "Flutter",
+    "Dart",
+    "Bloc",
+    "Figma",
+    "Github",
+  ];
+  List<String> gravityData = [
+    "assets/images/gravity.png",
+    "Developed an Android app, Gravity 9.8, the revolutionary exam-taking and results-displaying application that simplifies the educational journey. Gravity 9.8 provides a seamless and efficient platform for taking exams and receiving immediate results, allowing users to gauge their performance and track their progress effortlessly.\n\nThis app has crossed 4.5+ rating and downloaded by 1.5k+ users on playstore within a day of launch.",
+    "",
+    "Gravity 9.8",
+    "market://details?id=com.gravity.gravity98"
+  ];
   List<String> trackerName = [
     "Flutter",
     "Dart",
@@ -131,13 +152,26 @@ class _ProjectState extends State<Project> {
             height: changeAppBar ? 30 : 40,
           ),
           ProjectCard(
+              image: gravityData[0],
+              text: gravityData[1],
+              link: gravityData[2],
+              heading: gravityData[3],
+              w: w,
+              apkLink: gravityData[4],
+              index: 0,
+              list: gravity,
+              listName: gravityName),
+          const SizedBox(
+            height: 50,
+          ),
+          ProjectCard(
               image: krishnData[0],
               text: krishnData[1],
               link: krishnData[2],
               heading: krishnData[3],
               w: w,
               apkLink: krishnData[4],
-              index: 0,
+              index: 1,
               list: krishn,
               listName: krishnName),
           const SizedBox(
@@ -149,7 +183,7 @@ class _ProjectState extends State<Project> {
               link: vsparkleData[2],
               heading: vsparkleData[3],
               w: w,
-              index: 1,
+              index: 2,
               list: vsparkle,
               listName: vsparkleName),
           const SizedBox(
@@ -161,7 +195,7 @@ class _ProjectState extends State<Project> {
             link: trackerData[2],
             heading: trackerData[3],
             w: w,
-            index: 2,
+            index: 3,
             list: tracker,
             listName: trackerName,
           ),
@@ -486,16 +520,17 @@ class ProjectTextCard extends StatelessWidget {
                         const SizedBox(
                           width: 10,
                         ),
-                      CustomSkillShadowCard(
-                        onTap: () async {
-                          await launchUrl(Uri.parse(link));
-                        },
-                        height: 50,
-                        name: "Live Link",
-                        width: 50,
-                        radius: 50,
-                        image: "assets/images/link.png",
-                      ),
+                      if (link != "")
+                        CustomSkillShadowCard(
+                          onTap: () async {
+                            await launchUrl(Uri.parse(link));
+                          },
+                          height: 50,
+                          name: "Live Link",
+                          width: 50,
+                          radius: 50,
+                          image: "assets/images/link.png",
+                        ),
                       // Container(
                       //   padding: EdgeInsets.only(
                       //       top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
