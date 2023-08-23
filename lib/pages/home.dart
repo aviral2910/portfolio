@@ -1,6 +1,7 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/normalText.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -139,6 +140,19 @@ class _HomeState extends State<Home> {
                                 height: 45,
                                 width: 45,
                                 image: "assets/images/telephone.png",
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              CustomShadowCard(
+                                name: "Resume",
+                                onTap: () async {
+                                  await launchUrl(Uri.parse(
+                                      "https://drive.google.com/file/d/1-IJ7mkVQE_ZKWdIXy6LkaIHk-9EHkFOv/view?usp=sharing"));
+                                },
+                                height: 45,
+                                width: 45,
+                                image: "assets/images/resume.png",
                               )
                             ],
                           ),
@@ -314,6 +328,25 @@ class _HomeState extends State<Home> {
                                         height: 70,
                                         width: 70,
                                         image: "assets/images/telephone.png",
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      CustomShadowCard(
+                                        name: "Resume",
+                                        onTap: () async {
+                                          // await FileSaver.instance.saveFile(
+                                          //     name: "Resume: Aviral Dixit",
+                                          //     // ext: ".pdf",
+                                          //     filePath:
+                                          //         "assets/images/Resume-AviralDixit.pdf",
+                                          //     mimeType: MimeType.pdf);
+                                          await launchUrl(Uri.parse(
+                                              "https://drive.google.com/file/d/1-IJ7mkVQE_ZKWdIXy6LkaIHk-9EHkFOv/view?usp=sharing"));
+                                        },
+                                        height: 70,
+                                        width: 70,
+                                        image: "assets/images/resume.png",
                                       )
                                     ],
                                   )

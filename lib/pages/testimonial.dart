@@ -1,7 +1,9 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Testimonial extends StatefulWidget {
   const Testimonial(
@@ -40,6 +42,32 @@ class _TestimonialState extends State<Testimonial> {
     });
   }
 
+  List<Map<String, String>> testimonial = [
+    {
+      "image": "assets/images/roshan.png",
+      "name": "Roshann Vadassery ",
+      "role": "Founder - Chief",
+      "companyName": "Permissionless",
+      "myRole": "Flutter Team Lead",
+      "words":
+          "Aviral is one of the most proficient flutter developers that I have worked with, his contributions in building krishn.ai is irreplaceable. Very good at co ordinating with multiple designers and product managers.",
+      "duration": "Jan 2022 - April 2023",
+      "linkdinlink": "https://www.linkedin.com/in/roshan-vadassery/",
+    },
+    {
+      "image": "assets/images/nishank.png",
+      "name": "Nishank Sidhpura",
+      "role": "Chief Technical Officer",
+      "companyName": "Permissionless",
+      "myRole": "Flutter Team Lead",
+      "words":
+          "Aviral is a really hard working person who doesn't stop until the task at hand is completed. Commendable critical thinking and fundamental knowledge. Makes him a no-brainer for any Mobile development projects.",
+      "duration": "Jan 2022 - April 2023",
+      "linkdinlink": "https://www.linkedin.com/in/nishank-s-8141aab5/",
+    }
+  ];
+  int selectedIndex = 0;
+
   final positionKey = GlobalKey();
   bool changeAppBar = false;
   @override
@@ -72,7 +100,13 @@ class _TestimonialState extends State<Testimonial> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TestimonialCard(w: w),
+                  TestimonialCard(
+                    w: w,
+                    image: testimonial[selectedIndex]["image"],
+                    name: testimonial[selectedIndex]["name"],
+                    role: testimonial[selectedIndex]["role"],
+                    companyName: testimonial[selectedIndex]["companyName"],
+                  ),
                   const SizedBox(
                     height: 30,
                   ),
@@ -81,8 +115,79 @@ class _TestimonialState extends State<Testimonial> {
                       left: w < mobileSize ? 20 : 35,
                       right: w < mobileSize ? 20 : 35,
                     ),
-                    child: TestimonialText(w: w),
-                  )
+                    child: TestimonialText(
+                      w: w,
+                      myRole: testimonial[selectedIndex]["myRole"],
+                      words: testimonial[selectedIndex]["words"],
+                      duration: testimonial[selectedIndex]["duration"],
+                      linkdinlink: testimonial[selectedIndex]["linkdinlink"],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 35,
+                      left: w < mobileSize ? 20 : 35,
+                      right: w < mobileSize ? 20 : 35,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            ArrowButton(
+                              onTap: () {
+                                if (selectedIndex > 0) {
+                                  setState(() {
+                                    selectedIndex--;
+                                  });
+                                }
+                              },
+                              icon: Icons.arrow_back,
+                            ),
+                            const SizedBox(
+                              width: 30,
+                            ),
+                            ArrowButton(
+                              onTap: () {
+                                if (selectedIndex < 1) {
+                                  setState(() {
+                                    selectedIndex++;
+                                  });
+                                }
+                              },
+                              icon: Icons.arrow_forward,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 15,
+                              width: 15,
+                              decoration: BoxDecoration(
+                                  color: selectedIndex == 0
+                                      ? themeColor
+                                      : Colors.black,
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Container(
+                              height: 15,
+                              width: 15,
+                              decoration: BoxDecoration(
+                                  color: selectedIndex == 1
+                                      ? themeColor
+                                      : Colors.black,
+                                  borderRadius: BorderRadius.circular(20)),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -97,7 +202,13 @@ class _TestimonialState extends State<Testimonial> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TestimonialCard(w: w),
+                      TestimonialCard(
+                        w: w,
+                        image: testimonial[selectedIndex]["image"],
+                        name: testimonial[selectedIndex]["name"],
+                        role: testimonial[selectedIndex]["role"],
+                        companyName: testimonial[selectedIndex]["companyName"],
+                      ),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,61 +222,29 @@ class _TestimonialState extends State<Testimonial> {
                                 ),
                                 Row(
                                   children: [
-                                    Container(
-                                      height: 50,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                          color: darkthemeColor,
-                                          boxShadow: const [
-                                            BoxShadow(
-                                                blurRadius: 4,
-                                                offset: Offset(-6, -6),
-                                                color: Color.fromARGB(
-                                                    220, 32, 32, 32)),
-                                            BoxShadow(
-                                                blurRadius: 5,
-                                                offset: Offset(6, 6),
-                                                color: Color.fromARGB(
-                                                    220, 15, 15, 15))
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.arrow_back,
-                                          color: Colors.white,
-                                        ),
-                                      ),
+                                    ArrowButton(
+                                      onTap: () {
+                                        if (selectedIndex > 0) {
+                                          setState(() {
+                                            selectedIndex--;
+                                          });
+                                        }
+                                      },
+                                      icon: Icons.arrow_back,
                                     ),
                                     const SizedBox(
                                       width: 30,
                                     ),
-                                    Container(
-                                      height: 50,
-                                      width: 50,
-                                      decoration: BoxDecoration(
-                                          color: darkthemeColor,
-                                          boxShadow: const [
-                                            BoxShadow(
-                                                blurRadius: 4,
-                                                offset: Offset(-6, -6),
-                                                color: Color.fromARGB(
-                                                    220, 32, 32, 32)),
-                                            BoxShadow(
-                                                blurRadius: 5,
-                                                offset: Offset(6, 6),
-                                                color: Color.fromARGB(
-                                                    220, 15, 15, 15))
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(5)),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.arrow_forward,
-                                          color: themeColor,
-                                        ),
-                                      ),
-                                    )
+                                    ArrowButton(
+                                      onTap: () {
+                                        if (selectedIndex < 1) {
+                                          setState(() {
+                                            selectedIndex++;
+                                          });
+                                        }
+                                      },
+                                      icon: Icons.arrow_forward,
+                                    ),
                                   ],
                                 )
                               ],
@@ -173,7 +252,14 @@ class _TestimonialState extends State<Testimonial> {
                             const SizedBox(
                               height: 20,
                             ),
-                            TestimonialText(w: w),
+                            TestimonialText(
+                              w: w,
+                              myRole: testimonial[selectedIndex]["myRole"],
+                              words: testimonial[selectedIndex]["words"],
+                              duration: testimonial[selectedIndex]["duration"],
+                              linkdinlink: testimonial[selectedIndex]
+                                  ["linkdinlink"],
+                            ),
                           ],
                         ),
                       )
@@ -181,6 +267,33 @@ class _TestimonialState extends State<Testimonial> {
                   ),
                 ),
               ),
+            ),
+          if (w > mobileSize)
+            const SizedBox(
+              height: 50,
+            ),
+          if (w > mobileSize)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 15,
+                  width: 15,
+                  decoration: BoxDecoration(
+                      color: selectedIndex == 0 ? themeColor : Colors.black,
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+                Container(
+                  height: 15,
+                  width: 15,
+                  decoration: BoxDecoration(
+                      color: selectedIndex == 1 ? themeColor : Colors.black,
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ],
             ),
           AnimatedContainer(
             duration: const Duration(milliseconds: 500),
@@ -193,13 +306,75 @@ class _TestimonialState extends State<Testimonial> {
   }
 }
 
+class ArrowButton extends StatefulWidget {
+  ArrowButton({super.key, required this.icon, required this.onTap});
+  IconData icon;
+  void Function()? onTap;
+
+  @override
+  State<ArrowButton> createState() => _ArrowButtonState();
+}
+
+class _ArrowButtonState extends State<ArrowButton> {
+  bool ishover = false;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: widget.onTap,
+      onHover: (value) {
+        setState(() {
+          ishover = value;
+        });
+      },
+      child: Container(
+        height: 55,
+        width: 55,
+        child: Align(
+          alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
+          child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+                color: darkthemeColor,
+                boxShadow: const [
+                  BoxShadow(
+                      blurRadius: 4,
+                      offset: Offset(-6, -6),
+                      color: Color.fromARGB(220, 32, 32, 32)),
+                  BoxShadow(
+                      blurRadius: 5,
+                      offset: Offset(6, 6),
+                      color: Color.fromARGB(220, 15, 15, 15))
+                ],
+                borderRadius: BorderRadius.circular(5)),
+            child: Center(
+              child: Icon(
+                widget.icon,
+                color: ishover ? themeColor : Colors.white,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class TestimonialText extends StatelessWidget {
-  const TestimonialText({
+  TestimonialText({
     Key? key,
+    required this.myRole,
+    required this.duration,
+    required this.linkdinlink,
+    required this.words,
     required this.w,
   }) : super(key: key);
 
   final double w;
+  String? duration;
+  String? linkdinlink;
+  String? words;
+  String? myRole;
 
   @override
   Widget build(BuildContext context) {
@@ -253,7 +428,7 @@ class TestimonialText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Flutter Team Lead",
+            myRole.toString(),
             style: GoogleFonts.titilliumWeb(
                 fontSize: 27,
                 fontWeight: FontWeight.w400,
@@ -263,7 +438,7 @@ class TestimonialText extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "Jan 2022 - April 2023",
+            duration.toString(),
             style: GoogleFonts.titilliumWeb(
                 fontSize: 15,
                 letterSpacing: 2,
@@ -282,7 +457,7 @@ class TestimonialText extends StatelessWidget {
             height: 25,
           ),
           Text(
-            "Aviral is a really hard working person who doesn't stop until the task at hand is completed. Commendable critical thinking and fundamental knowledge. Makes him a no-brainer for any Mobile development projects.",
+            words.toString(),
             style: GoogleFonts.saira(
                 fontSize: 17,
                 letterSpacing: 1,
@@ -294,30 +469,44 @@ class TestimonialText extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomRight,
-            child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                  color: darkthemeColor,
-                  boxShadow: const [
-                    BoxShadow(
-                        blurRadius: 4,
-                        offset: Offset(-6, -6),
-                        color: Color.fromARGB(220, 32, 32, 32)),
-                    BoxShadow(
-                        blurRadius: 5,
-                        offset: Offset(6, 6),
-                        color: Color.fromARGB(220, 15, 15, 15))
-                  ],
-                  borderRadius: BorderRadius.circular(4)),
-              child: Center(
-                child: Image.asset(
-                  "assets/images/linkedin.png",
-                  width: 20,
-                  height: 20,
-                ),
-              ),
+            child: CustomShadowCard(
+              name: "Linkdin",
+              onTap: () async {
+                await launchUrl(Uri.parse(linkdinlink.toString()));
+              },
+              height: 60,
+              width: 60,
+              image: "assets/images/linkedin.png",
             ),
+            // child: InkWell(
+            //   onTap: () {
+            //     launchUrl(Uri.parse(linkdinlink.toString()));
+            //   },
+            //   child: Container(
+            //     height: 50,
+            //     width: 50,
+            //     decoration: BoxDecoration(
+            //         color: darkthemeColor,
+            //         boxShadow: const [
+            //           BoxShadow(
+            //               blurRadius: 4,
+            //               offset: Offset(-6, -6),
+            //               color: Color.fromARGB(220, 32, 32, 32)),
+            //           BoxShadow(
+            //               blurRadius: 5,
+            //               offset: Offset(6, 6),
+            //               color: Color.fromARGB(220, 15, 15, 15))
+            //         ],
+            //         borderRadius: BorderRadius.circular(4)),
+            //     child: Center(
+            //       child: Image.asset(
+            //         "assets/images/linkedin.png",
+            //         width: 20,
+            //         height: 20,
+            //       ),
+            //     ),
+            //   ),
+            // ),
           )
         ],
       ),
@@ -326,11 +515,18 @@ class TestimonialText extends StatelessWidget {
 }
 
 class TestimonialCard extends StatefulWidget {
-  const TestimonialCard({
+  TestimonialCard({
+    required this.name,
+    required this.image,
+    required this.companyName,
+    required this.role,
     Key? key,
     required this.w,
   }) : super(key: key);
-
+  String? name;
+  String? image;
+  String? companyName;
+  String? role;
   final double w;
 
   @override
@@ -403,20 +599,23 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 width: widget.w,
                 constraints:
                     BoxConstraints(maxWidth: widget.w < mobileSize ? 400 : 280),
-                decoration: BoxDecoration(boxShadow: const [
-                  BoxShadow(
-                      blurRadius: 3,
-                      offset: Offset(-3, -3),
-                      color: Color.fromARGB(255, 12, 12, 12)),
-                  BoxShadow(
-                      blurRadius: 2,
-                      offset: Offset(3, 3),
-                      color: Color.fromARGB(255, 32, 32, 32))
-                ], border: Border.all(color: const Color.fromARGB(255, 19, 19, 19))),
+                decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                          blurRadius: 3,
+                          offset: Offset(-3, -3),
+                          color: Color.fromARGB(255, 12, 12, 12)),
+                      BoxShadow(
+                          blurRadius: 2,
+                          offset: Offset(3, 3),
+                          color: Color.fromARGB(255, 32, 32, 32))
+                    ],
+                    border: Border.all(
+                        color: const Color.fromARGB(255, 19, 19, 19))),
                 child: Padding(
                   padding: EdgeInsets.all(!ishover ? 0 : 8.0),
                   child: Image.asset(
-                    "assets/images/nishank.png",
+                    widget.image.toString(),
                     width: !ishover ? 266 : 250,
                     height: !ishover ? 266 : 250,
                     fit: BoxFit.fill,
@@ -427,7 +626,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 height: 20,
               ),
               Text(
-                "Permissionless",
+                widget.companyName.toString(),
                 style: GoogleFonts.titilliumWeb(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
@@ -437,7 +636,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 height: 10,
               ),
               Text(
-                "Nishank Sidhpure",
+                widget.name.toString(),
                 style: GoogleFonts.titilliumWeb(
                     fontSize: 27,
                     fontWeight: FontWeight.w700,
@@ -447,7 +646,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 height: 4,
               ),
               Text(
-                "Chief Technical Officer",
+                widget.role.toString(),
                 style: GoogleFonts.titilliumWeb(
                     fontSize: 15,
                     fontWeight: FontWeight.w300,
