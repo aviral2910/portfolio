@@ -71,12 +71,32 @@ class _ProjectState extends State<Project> {
     "figma",
     "github",
   ];
+  List<String> shubham = [
+    "flutter",
+    "dart",
+    "block",
+    "figma",
+    "github",
+  ];
+  List<String> shubhamName = [
+    "Flutter",
+    "Dart",
+    "Bloc",
+    "Figma",
+    "Github",
+  ];
   List<String> gravityName = [
     "Flutter",
     "Dart",
     "Bloc",
     "Figma",
     "Github",
+  ];
+  List<String> shubhamData = [
+    "assets/images/shubhamDark.png",
+    "Developed a comprehensive portfolio showcasing the client's outstanding work as a graphic designer specializing in UI and UX. This portfolio serves as a testament to the client's proficiency in the field, capturing the essence of their design journey and leaving a lasting impression on viewers. With a keen eye for detail and a commitment to excellence, the portfolio stands as a powerful representation of the client's expertise in graphic design for UI and UX.",
+    "https://shubham-singh.in",
+    "Shubham's Portfolio",
   ];
   List<String> gravityData = [
     "assets/images/gravity.png",
@@ -152,13 +172,26 @@ class _ProjectState extends State<Project> {
             height: changeAppBar ? 30 : 40,
           ),
           ProjectCard(
+              image: shubhamData[0],
+              text: shubhamData[1],
+              link: shubhamData[2],
+              heading: shubhamData[3],
+              w: w,
+              // apkLink: shubhamData[4],
+              index: 0,
+              list: shubham,
+              listName: shubhamName),
+          const SizedBox(
+            height: 50,
+          ),
+          ProjectCard(
               image: gravityData[0],
               text: gravityData[1],
               link: gravityData[2],
               heading: gravityData[3],
               w: w,
               apkLink: gravityData[4],
-              index: 0,
+              index: 1,
               list: gravity,
               listName: gravityName),
           const SizedBox(
@@ -171,7 +204,7 @@ class _ProjectState extends State<Project> {
               heading: krishnData[3],
               w: w,
               apkLink: krishnData[4],
-              index: 1,
+              index: 2,
               list: krishn,
               listName: krishnName),
           const SizedBox(
@@ -183,7 +216,7 @@ class _ProjectState extends State<Project> {
               link: vsparkleData[2],
               heading: vsparkleData[3],
               w: w,
-              index: 2,
+              index: 3,
               list: vsparkle,
               listName: vsparkleName),
           const SizedBox(
@@ -195,7 +228,7 @@ class _ProjectState extends State<Project> {
             link: trackerData[2],
             heading: trackerData[3],
             w: w,
-            index: 3,
+            index: 4,
             list: tracker,
             listName: trackerName,
           ),

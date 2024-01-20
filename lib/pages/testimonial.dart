@@ -458,6 +458,7 @@ class TestimonialText extends StatelessWidget {
           ),
           Text(
             words.toString(),
+            textAlign: TextAlign.justify,
             style: GoogleFonts.saira(
                 fontSize: 17,
                 letterSpacing: 1,

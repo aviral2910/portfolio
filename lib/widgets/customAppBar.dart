@@ -1,4 +1,3 @@
-
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/widgets/shadowText.dart';
 import 'package:flutter/material.dart';
