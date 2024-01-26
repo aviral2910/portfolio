@@ -45,18 +45,24 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
         },
         child: Align(
           alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
-          child: Container(
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 200),
+            padding:
+                const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
             decoration: BoxDecoration(
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
-                      blurRadius: 7,
-                      offset: Offset(-8, -8),
-                      color: Color.fromARGB(121, 32, 32, 32)),
+                      blurRadius: ishover ? 2 : 7,
+                      offset: ishover ? Offset(-1, -1) : Offset(-8, -8),
+                      color: !ishover
+                          ? Color.fromARGB(121, 32, 32, 32)
+                          : Color.fromRGBO(27, 181, 252, 0.7)),
                   BoxShadow(
-                      blurRadius: 10,
-                      offset: Offset(8, 8),
-                      color: Color.fromARGB(121, 15, 15, 15))
+                      blurRadius: ishover ? 2 : 10,
+                      offset: ishover ? Offset(1, 1) : Offset(8, 8),
+                      color: !ishover
+                          ? Color.fromARGB(121, 32, 32, 32)
+                          : Color.fromRGBO(27, 182, 252, .7))
                 ],
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -111,10 +117,16 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
 
 class CustomChooseCard extends StatefulWidget {
   CustomChooseCard(
-      {Key? key, this.height, this.width, this.text, required this.isHover})
+      {Key? key,
+      this.height,
+      this.width,
+      this.text,
+      required this.isHover,
+      required this.islight})
       : super(key: key);
   double? width;
   double? height;
+  bool islight;
 
   String? text;
   bool isHover;
@@ -147,71 +159,125 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                 : ishover
                     ? Alignment.topCenter
                     : Alignment.bottomCenter,
-            child: Container(
-              padding:
-                  const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
-              decoration: BoxDecoration(
-                  boxShadow: widget.isHover
-                      ? const [
-                          BoxShadow(
-                              blurRadius: 7,
-                              offset: Offset(-8, -3),
-                              color: Color.fromARGB(121, 32, 32, 32)),
-                          BoxShadow(
-                              blurRadius: 10,
-                              offset: Offset(8, 8),
-                              color: Color.fromARGB(121, 15, 15, 15))
-                        ]
-                      : ishover
+            child: Column(
+              children: [
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 200),
+                  padding: const EdgeInsets.only(
+                      left: 15, right: 15, top: 10, bottom: 10),
+                  decoration: BoxDecoration(
+                      boxShadow: widget.isHover
                           ? const [
                               BoxShadow(
                                   blurRadius: 7,
                                   offset: Offset(-8, -3),
                                   color: Color.fromARGB(121, 32, 32, 32)),
-                              BoxShadow(
-                                  blurRadius: 10,
-                                  offset: Offset(8, 8),
-                                  color: Color.fromARGB(121, 15, 15, 15))
-                            ]
-                          : [],
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: widget.isHover
-                          ? [
-                              const Color.fromARGB(255, 18, 18, 18),
-                              const Color.fromARGB(255, 24, 24, 24),
+                              // BoxShadow(
+                              //     blurRadius: 10,
+                              //     offset: Offset(8, 8),
+                              //     color: Color.fromARGB(121, 15, 15, 15)
+                              // )
                             ]
                           : ishover
-                              ? [
-                                  const Color.fromARGB(255, 18, 18, 18),
-                                  const Color.fromARGB(255, 24, 24, 24),
+                              ? const [
+                                  BoxShadow(
+                                      blurRadius: 7,
+                                      offset: Offset(-8, -3),
+                                      color: Color.fromARGB(121, 32, 32, 32)),
+                                  BoxShadow(
+                                      blurRadius: 10,
+                                      offset: Offset(8, 8),
+                                      color: Color.fromARGB(121, 15, 15, 15))
                                 ]
-                              : [
+                              : [],
+                      gradient: LinearGradient(
+                          begin: ishover
+                              ? Alignment.topLeft
+                              : Alignment.bottomCenter,
+                          end: ishover
+                              ? Alignment.bottomRight
+                              : Alignment.topCenter,
+                          colors: widget.isHover
+                              ? [
                                   const Color.fromARGB(255, 20, 20, 20),
                                   const Color.fromARGB(255, 20, 20, 20),
-                                  // Color.fromARGB(255, 15, 15, 15)
-                                ]),
-                  borderRadius: BorderRadius.circular(10)),
-              height: widget.height! - 3,
-              width: widget.width == null ? widget.width : widget.width! - 3,
-              child: Center(
-                child: FittedBox(
-                  child: Text(
-                    widget.text.toString(),
-                    style: GoogleFonts.titilliumWeb(
-                      letterSpacing: 1,
-                      color: widget.isHover
-                          ? themeColor
-                          : ishover
+                                  // const Color.fromARGB(255, 18, 18, 18),
+                                  // const Color.fromARGB(255, 24, 24, 24),
+                                ]
+                              : ishover
+                                  ? [
+                                      const Color.fromARGB(255, 24, 24, 24),
+                                      const Color.fromARGB(255, 18, 18, 18),
+                                      const Color.fromARGB(255, 24, 24, 24),
+                                    ]
+                                  : [
+                                      widget.islight
+                                          ? Color.fromARGB(7, 8, 33, 45)
+                                          : const Color.fromARGB(
+                                              255, 24, 24, 24),
+
+                                      const Color.fromARGB(255, 20, 20, 20),
+
+                                      // Color.fromARGB(255, 15, 15, 15)
+                                    ]),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10))),
+                  height: widget.height! - 3,
+                  width:
+                      widget.width == null ? widget.width : widget.width! - 3,
+                  child: Center(
+                    child: FittedBox(
+                      child: Text(
+                        widget.text.toString(),
+                        style: GoogleFonts.titilliumWeb(
+                          letterSpacing: 1,
+                          color: widget.isHover
                               ? themeColor
-                              : Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
+                              : ishover
+                                  ? themeColor
+                                  : Colors.white,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 400),
+                  height: 1,
+                  width:
+                      widget.width == null ? widget.width : widget.width! - 3,
+                  decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Color.fromARGB(255, 20, 20, 20),
+                            Color.fromARGB(255, 20, 20, 20),
+                            // Color.fromARGB(255, 15, 15, 15),
+                            // Color.fromARGB(255, 15, 15, 15)
+                          ]),
+                      boxShadow: [
+                        widget.islight
+                            ? widget.isHover
+                                ? const BoxShadow()
+                                : ishover
+                                    ? const BoxShadow()
+                                    : const BoxShadow(
+                                        blurRadius: 3,
+                                        offset: Offset(0, -4),
+                                        color: Color.fromRGBO(27, 181, 252, 1))
+                            : const BoxShadow(),
+                        // BoxShadow(
+                        //     blurRadius: 10,
+                        //     offset: Offset(8, 8),
+                        //     color: Color.fromARGB(121, 15, 15, 15)
+                        // )
+                      ]),
+                )
+              ],
             ),
           ),
         ),

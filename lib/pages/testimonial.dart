@@ -100,32 +100,10 @@ class _TestimonialState extends State<Testimonial> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TestimonialCard(
-                    w: w,
-                    image: testimonial[selectedIndex]["image"],
-                    name: testimonial[selectedIndex]["name"],
-                    role: testimonial[selectedIndex]["role"],
-                    companyName: testimonial[selectedIndex]["companyName"],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
                   Padding(
                     padding: EdgeInsets.only(
-                      left: w < mobileSize ? 20 : 35,
-                      right: w < mobileSize ? 20 : 35,
-                    ),
-                    child: TestimonialText(
-                      w: w,
-                      myRole: testimonial[selectedIndex]["myRole"],
-                      words: testimonial[selectedIndex]["words"],
-                      duration: testimonial[selectedIndex]["duration"],
-                      linkdinlink: testimonial[selectedIndex]["linkdinlink"],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: 35,
+                      // top: 35,
+                      bottom: 20,
                       left: w < mobileSize ? 20 : 35,
                       right: w < mobileSize ? 20 : 35,
                     ),
@@ -186,6 +164,29 @@ class _TestimonialState extends State<Testimonial> {
                           ],
                         ),
                       ],
+                    ),
+                  ),
+                  TestimonialCard(
+                    w: w,
+                    image: testimonial[selectedIndex]["image"],
+                    name: testimonial[selectedIndex]["name"],
+                    role: testimonial[selectedIndex]["role"],
+                    companyName: testimonial[selectedIndex]["companyName"],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: w < mobileSize ? 20 : 35,
+                      right: w < mobileSize ? 20 : 35,
+                    ),
+                    child: TestimonialText(
+                      w: w,
+                      myRole: testimonial[selectedIndex]["myRole"],
+                      words: testimonial[selectedIndex]["words"],
+                      duration: testimonial[selectedIndex]["duration"],
+                      linkdinlink: testimonial[selectedIndex]["linkdinlink"],
                     ),
                   ),
                 ],

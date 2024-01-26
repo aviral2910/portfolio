@@ -42,17 +42,22 @@ class _CustomShadowCardState extends State<CustomShadowCard> {
           },
           child: Align(
             alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
-            child: Container(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                        blurRadius: 7,
-                        offset: Offset(-8, -8),
-                        color: Color.fromARGB(121, 32, 32, 32)),
+                        blurRadius: ishover ? 1.2 : 7,
+                        offset: ishover ? Offset(-1, -1) : Offset(-8, -8),
+                        color: !ishover
+                            ? Color.fromARGB(121, 32, 32, 32)
+                            : Color.fromRGBO(27, 181, 252, 0.7)),
                     BoxShadow(
-                        blurRadius: 10,
-                        offset: Offset(8, 8),
-                        color: Color.fromARGB(121, 15, 15, 15))
+                        blurRadius: ishover ? 1.2 : 10,
+                        offset: ishover ? Offset(1, 1) : Offset(8, 8),
+                        color: !ishover
+                            ? Color.fromARGB(121, 32, 32, 32)
+                            : Color.fromRGBO(27, 182, 252, .7))
                   ],
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
@@ -136,17 +141,21 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
           child: Align(
             alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
             child: AnimatedContainer(
-              duration: const Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                        blurRadius: 3,
-                        offset: Offset(-2, -2),
-                        color: Color.fromARGB(200, 53, 53, 53)),
+                        blurRadius: ishover ? 2 : 3,
+                        offset: ishover ? Offset(-1, -1) : Offset(-2, -2),
+                        color: ishover
+                            ? Color.fromRGBO(27, 181, 252, 0.7)
+                            : Color.fromARGB(200, 53, 53, 53)),
                     BoxShadow(
-                        blurRadius: 10,
-                        offset: Offset(8, 8),
-                        color: Color.fromARGB(255, 15, 15, 15))
+                        blurRadius: ishover ? 3 : 10,
+                        offset: ishover ? Offset(1, 1) : Offset(8, 8),
+                        color: ishover
+                            ? Color.fromRGBO(27, 181, 252, 0.7)
+                            : Color.fromARGB(255, 15, 15, 15))
                   ],
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,

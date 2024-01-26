@@ -19,94 +19,110 @@ class SkillsCard extends StatefulWidget {
 }
 
 class _SkillsCardState extends State<SkillsCard> {
+  bool isHover = false;
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 400),
-      width: widget.w,
-      constraints: const BoxConstraints(minHeight: 400),
-      padding: const EdgeInsets.only(left: 0, right: 00, bottom: 20),
-      decoration: BoxDecoration(
-          boxShadow: const [
-            BoxShadow(
-                blurRadius: 7,
-                offset: Offset(-8, -8),
-                color: Color.fromARGB(121, 32, 32, 32)),
-            BoxShadow(
-                blurRadius: 10,
-                offset: Offset(8, 8),
-                color: Color.fromARGB(121, 15, 15, 15))
-          ],
-          gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color.fromARGB(255, 20, 20, 20),
-                Color.fromARGB(255, 20, 20, 20),
-                // Color.fromARGB(255, 15, 15, 15),
-                // Color.fromARGB(255, 15, 15, 15)
-              ]),
-          borderRadius: BorderRadius.circular(10)),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Expanded(
-                  child: CustomChooseCard(
-                height: 55,
-                isHover: Provider.of<SkillTypeProvider>(context).selected ==
-                        "Languages"
-                    ? true
-                    : false,
-                width: widget.w,
-                text: "Languages",
-              )),
-              Expanded(
-                  child: CustomChooseCard(
-                height: 55,
-                isHover: Provider.of<SkillTypeProvider>(context).selected ==
-                        "Frameworks"
-                    ? true
-                    : false,
-                width: widget.w,
-                text: "Frameworks",
-              )),
-              Expanded(
-                  child: CustomChooseCard(
-                height: 55,
-                isHover:
-                    Provider.of<SkillTypeProvider>(context).selected == "Others"
-                        ? true
-                        : false,
-                width: widget.w,
-                text: "Others",
-              )),
+    return InkWell(
+      onTap: () {},
+      onHover: (value) {
+        setState(() {
+          isHover = value;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 400),
+        width: widget.w,
+        constraints: const BoxConstraints(minHeight: 400),
+        padding: const EdgeInsets.only(left: 0, right: 00, bottom: 20),
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: isHover ? 6 : 7,
+                  offset: isHover ? Offset(-5, -5) : Offset(-8, -8),
+                  color: isHover
+                      ? Color.fromRGBO(27, 182, 252, .2)
+                      : Color.fromARGB(121, 32, 32, 32)),
+              BoxShadow(
+                  blurRadius: isHover ? 2 : 10,
+                  offset: isHover ? Offset(4, 4) : Offset(8, 8),
+                  color: isHover
+                      ? Color.fromRGBO(27, 182, 252, .2)
+                      : Color.fromARGB(121, 15, 15, 15))
             ],
-          ),
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 600),
-            curve: Curves.easeIn,
-            height: widget.changeAppBar ? 30 : 50,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 20),
-            child: Column(
+            gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 20, 20, 20),
+                  Color.fromARGB(255, 20, 20, 20),
+                  // Color.fromARGB(255, 15, 15, 15),
+                  // Color.fromARGB(255, 15, 15, 15)
+                ]),
+            borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               children: [
-                if (Provider.of<SkillTypeProvider>(context).selected ==
-                    "Languages")
-                  const Languages(),
-                if (Provider.of<SkillTypeProvider>(context).selected ==
-                    "Frameworks")
-                  const Framework(),
-                if (Provider.of<SkillTypeProvider>(context).selected ==
-                    "Others")
-                  const Others(),
+                Expanded(
+                    child: CustomChooseCard(
+                  islight: isHover,
+                  height: 55,
+                  isHover: Provider.of<SkillTypeProvider>(context).selected ==
+                          "Languages"
+                      ? true
+                      : false,
+                  width: widget.w,
+                  text: "Languages",
+                )),
+                Expanded(
+                    child: CustomChooseCard(
+                  islight: isHover,
+                  height: 55,
+                  isHover: Provider.of<SkillTypeProvider>(context).selected ==
+                          "Frameworks"
+                      ? true
+                      : false,
+                  width: widget.w,
+                  text: "Frameworks",
+                )),
+                Expanded(
+                    child: CustomChooseCard(
+                  islight: isHover,
+                  height: 55,
+                  isHover: Provider.of<SkillTypeProvider>(context).selected ==
+                          "Others"
+                      ? true
+                      : false,
+                  width: widget.w,
+                  text: "Others",
+                )),
               ],
             ),
-          ),
-        ],
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.easeIn,
+              height: widget.changeAppBar ? 30 : 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20),
+              child: Column(
+                children: [
+                  if (Provider.of<SkillTypeProvider>(context).selected ==
+                      "Languages")
+                    const Languages(),
+                  if (Provider.of<SkillTypeProvider>(context).selected ==
+                      "Frameworks")
+                    const Framework(),
+                  if (Provider.of<SkillTypeProvider>(context).selected ==
+                      "Others")
+                    const Others(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -59,7 +59,8 @@ class _ExperienceCardState extends State<ExperienceCard> {
               child: Padding(
                 padding: EdgeInsets.only(
                     top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
-                child: Container(
+                child: AnimatedContainer(
+                    duration: Duration(milliseconds: 200),
                     // height: 200,
                     // width: w - 110,
                     padding: EdgeInsets.only(
@@ -68,13 +69,15 @@ class _ExperienceCardState extends State<ExperienceCard> {
                         top: w < mobileSize ? 20 : 25,
                         bottom: w < mobileSize ? 20 : 25),
                     decoration: BoxDecoration(
-                        boxShadow: const [
+                        boxShadow: [
                           BoxShadow(
-                              blurRadius: 7,
-                              offset: Offset(-8, -8),
-                              color: Color.fromARGB(121, 32, 32, 32)),
+                              blurRadius: ishover ? 6 : 7,
+                              offset: ishover ? Offset(-5, -5) : Offset(-8, -8),
+                              color: ishover
+                                  ? Color.fromRGBO(27, 181, 252, 0.2)
+                                  : Color.fromARGB(121, 32, 32, 32)),
                           BoxShadow(
-                              blurRadius: 10,
+                              blurRadius: ishover ? 2 : 10,
                               offset: Offset(8, 8),
                               color: Color.fromARGB(121, 15, 15, 15))
                         ],
