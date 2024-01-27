@@ -3,7 +3,10 @@ import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../provider/themeProvider.dart';
 
 class Testimonial extends StatefulWidget {
   const Testimonial(
@@ -145,7 +148,8 @@ class _TestimonialState extends State<Testimonial> {
                               width: 15,
                               decoration: BoxDecoration(
                                   color: selectedIndex == 0
-                                      ? themeColor
+                                      ? Provider.of<ThemeProvider>(context)
+                                          .getThemeColor
                                       : Colors.black,
                                   borderRadius: BorderRadius.circular(20)),
                             ),
@@ -157,7 +161,8 @@ class _TestimonialState extends State<Testimonial> {
                               width: 15,
                               decoration: BoxDecoration(
                                   color: selectedIndex == 1
-                                      ? themeColor
+                                      ? Provider.of<ThemeProvider>(context)
+                                          .getThemeColor
                                       : Colors.black,
                                   borderRadius: BorderRadius.circular(20)),
                             ),
@@ -281,7 +286,9 @@ class _TestimonialState extends State<Testimonial> {
                   height: 15,
                   width: 15,
                   decoration: BoxDecoration(
-                      color: selectedIndex == 0 ? themeColor : Colors.black,
+                      color: selectedIndex == 0
+                          ? Provider.of<ThemeProvider>(context).getThemeColor
+                          : Colors.black,
                       borderRadius: BorderRadius.circular(20)),
                 ),
                 const SizedBox(
@@ -291,7 +298,9 @@ class _TestimonialState extends State<Testimonial> {
                   height: 15,
                   width: 15,
                   decoration: BoxDecoration(
-                      color: selectedIndex == 1 ? themeColor : Colors.black,
+                      color: selectedIndex == 1
+                          ? Provider.of<ThemeProvider>(context).getThemeColor
+                          : Colors.black,
                       borderRadius: BorderRadius.circular(20)),
                 ),
               ],
@@ -327,31 +336,56 @@ class _ArrowButtonState extends State<ArrowButton> {
           ishover = value;
         });
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
         height: 55,
         width: 55,
         child: Align(
           alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
-          child: Container(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 250),
             height: 50,
             width: 50,
             decoration: BoxDecoration(
-                color: darkthemeColor,
-                boxShadow: const [
+                gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: ishover
+                        ? [
+                            const Color.fromARGB(255, 19, 19, 19),
+                            const Color.fromARGB(255, 15, 15, 15)
+                          ]
+                        : [
+                            const Color.fromARGB(255, 15, 15, 15),
+                            const Color.fromARGB(255, 19, 19, 19),
+                          ]),
+                // color: darkthemeColor,
+                boxShadow: [
                   BoxShadow(
-                      blurRadius: 4,
-                      offset: Offset(-6, -6),
-                      color: Color.fromARGB(220, 32, 32, 32)),
+                      blurRadius: ishover ? 2 : 7,
+                      offset:
+                          ishover ? const Offset(-2, -2) : const Offset(-8, -8),
+                      color: ishover
+                          ? Provider.of<ThemeProvider>(context)
+                              .getThemeColor
+                              .withOpacity(.8)
+                          : const Color.fromARGB(121, 32, 32, 32)),
                   BoxShadow(
-                      blurRadius: 5,
-                      offset: Offset(6, 6),
-                      color: Color.fromARGB(220, 15, 15, 15))
+                      blurRadius: ishover ? 2 : 8,
+                      offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
+                      color: ishover
+                          ? Provider.of<ThemeProvider>(context)
+                              .getThemeColor
+                              .withOpacity(.8)
+                          : const Color.fromARGB(121, 15, 15, 15))
                 ],
                 borderRadius: BorderRadius.circular(5)),
             child: Center(
               child: Icon(
                 widget.icon,
-                color: ishover ? themeColor : Colors.white,
+                color: ishover
+                    ? Provider.of<ThemeProvider>(context).getThemeColor
+                    : Colors.white,
               ),
             ),
           ),
@@ -361,7 +395,7 @@ class _ArrowButtonState extends State<ArrowButton> {
   }
 }
 
-class TestimonialText extends StatelessWidget {
+class TestimonialText extends StatefulWidget {
   TestimonialText({
     Key? key,
     required this.myRole,
@@ -378,139 +412,152 @@ class TestimonialText extends StatelessWidget {
   String? myRole;
 
   @override
+  State<TestimonialText> createState() => _TestimonialTextState();
+}
+
+class _TestimonialTextState extends State<TestimonialText> {
+  bool ishover = false;
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      // height: 300,
-      constraints: const BoxConstraints(minHeight: 340),
-      padding: EdgeInsets.only(
-          left: w < mobileSize ? 20 : 35,
-          right: w < mobileSize ? 20 : 35,
-          top: w < mobileSize ? 20 : 25,
-          bottom: w < mobileSize ? 20 : 25),
-      // decoration: BoxDecoration(
-      //     boxShadow: const [
-      //       BoxShadow(
-      //           blurRadius: 7,
-      //           offset: Offset(-8, -8),
-      //           color: Color.fromARGB(121, 32, 32, 32)),
-      //       BoxShadow(
-      //           blurRadius: 10,
-      //           offset: Offset(8, 8),
-      //           color: Color.fromARGB(121, 15, 15, 15))
-      //     ],
-      //     gradient: LinearGradient(
-      //         begin: Alignment.topLeft,
-      //         end: Alignment.bottomRight,
-      //         colors: true
-      //             ? [
-      //                 Color.fromARGB(255, 19, 19, 19),
-      //                 Color.fromARGB(255, 15, 15, 15)
-      //               ]
-      //             : [
-      //                 Color.fromARGB(255, 15, 15, 15),
-      //                 Color.fromARGB(255, 19, 19, 19),
-      //               ]),
-      //     borderRadius: BorderRadius.circular(10)),
-      decoration: BoxDecoration(
-          color: darkthemeColor,
-          boxShadow: const [
-            BoxShadow(
-                blurRadius: 4,
-                offset: Offset(-6, -6),
-                color: Color.fromARGB(220, 32, 32, 32)),
-            BoxShadow(
-                blurRadius: 5,
-                offset: Offset(6, 6),
-                color: Color.fromARGB(220, 15, 15, 15))
-          ],
-          borderRadius: BorderRadius.circular(10)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            myRole.toString(),
-            style: GoogleFonts.titilliumWeb(
-                fontSize: 27,
-                fontWeight: FontWeight.w400,
-                color: const Color.fromARGB(255, 224, 238, 248)),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(
-            duration.toString(),
-            style: GoogleFonts.titilliumWeb(
-                fontSize: 15,
-                letterSpacing: 2,
-                fontWeight: FontWeight.w400,
-                color: const Color.fromARGB(140, 255, 255, 255)),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          Container(
-            height: 2,
-            width: w,
-            color: const Color.fromARGB(200, 11, 11, 11),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          Text(
-            words.toString(),
-            textAlign: TextAlign.justify,
-            style: GoogleFonts.saira(
-                fontSize: 17,
-                letterSpacing: 1,
-                fontWeight: FontWeight.w400,
-                color: const Color.fromARGB(140, 255, 255, 255)),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: CustomShadowCard(
-              name: "Linkdin",
-              onTap: () async {
-                await launchUrl(Uri.parse(linkdinlink.toString()));
-              },
-              height: 60,
-              width: 60,
-              image: "assets/images/linkedin.png",
+    return InkWell(
+      onTap: () {},
+      onHover: (val) {
+        ishover = val;
+        setState(() {});
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        width: double.infinity,
+        // height: 300,
+        constraints: const BoxConstraints(minHeight: 340),
+        padding: EdgeInsets.only(
+            left: widget.w < mobileSize ? 20 : 35,
+            right: widget.w < mobileSize ? 20 : 35,
+            top: widget.w < mobileSize ? 20 : 25,
+            bottom: widget.w < mobileSize ? 20 : 25),
+
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: ishover
+                    ? [
+                        const Color.fromARGB(255, 19, 19, 19),
+                        const Color.fromARGB(255, 15, 15, 15)
+                      ]
+                    : [
+                        const Color.fromARGB(255, 15, 15, 15),
+                        const Color.fromARGB(255, 19, 19, 19),
+                      ]),
+            // color: darkthemeColor,
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: ishover ? 2 : 7,
+                  offset: ishover ? const Offset(-2, -2) : const Offset(-8, -8),
+                  color: ishover
+                      ? Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.8)
+                      : const Color.fromARGB(121, 32, 32, 32)),
+              BoxShadow(
+                  blurRadius: ishover ? 2 : 8,
+                  offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
+                  color: ishover
+                      ? Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.8)
+                      : const Color.fromARGB(121, 15, 15, 15))
+            ],
+            borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.myRole.toString(),
+              style: GoogleFonts.titilliumWeb(
+                  fontSize: 27,
+                  fontWeight: FontWeight.w400,
+                  color: ishover
+                      ? Provider.of<ThemeProvider>(context).getThemeColor
+                      : const Color.fromARGB(255, 224, 238, 248)),
             ),
-            // child: InkWell(
-            //   onTap: () {
-            //     launchUrl(Uri.parse(linkdinlink.toString()));
-            //   },
-            //   child: Container(
-            //     height: 50,
-            //     width: 50,
-            //     decoration: BoxDecoration(
-            //         color: darkthemeColor,
-            //         boxShadow: const [
-            //           BoxShadow(
-            //               blurRadius: 4,
-            //               offset: Offset(-6, -6),
-            //               color: Color.fromARGB(220, 32, 32, 32)),
-            //           BoxShadow(
-            //               blurRadius: 5,
-            //               offset: Offset(6, 6),
-            //               color: Color.fromARGB(220, 15, 15, 15))
-            //         ],
-            //         borderRadius: BorderRadius.circular(4)),
-            //     child: Center(
-            //       child: Image.asset(
-            //         "assets/images/linkedin.png",
-            //         width: 20,
-            //         height: 20,
-            //       ),
-            //     ),
-            //   ),
-            // ),
-          )
-        ],
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              widget.duration.toString(),
+              style: GoogleFonts.titilliumWeb(
+                  fontSize: 15,
+                  letterSpacing: 2,
+                  fontWeight: FontWeight.w400,
+                  color: const Color.fromARGB(140, 255, 255, 255)),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Container(
+              height: 2,
+              width: widget.w,
+              color: const Color.fromARGB(200, 11, 11, 11),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Text(
+              widget.words.toString(),
+              textAlign: TextAlign.justify,
+              style: GoogleFonts.saira(
+                  fontSize: 17,
+                  letterSpacing: 1,
+                  fontWeight: FontWeight.w400,
+                  color: const Color.fromARGB(140, 255, 255, 255)),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: CustomShadowCard(
+                name: "Linkdin",
+                onTap: () async {
+                  await launchUrl(Uri.parse(widget.linkdinlink.toString()));
+                },
+                height: 60,
+                width: 60,
+                image: "assets/images/linkedin.png",
+              ),
+              // child: InkWell(
+              //   onTap: () {
+              //     launchUrl(Uri.parse(linkdinlink.toString()));
+              //   },
+              //   child: Container(
+              //     height: 50,
+              //     width: 50,
+              //     decoration: BoxDecoration(
+              //         color: darkthemeColor,
+              //         boxShadow: const [
+              //           BoxShadow(
+              //               blurRadius: 4,
+              //               offset: Offset(-6, -6),
+              //               color: Color.fromARGB(220, 32, 32, 32)),
+              //           BoxShadow(
+              //               blurRadius: 5,
+              //               offset: Offset(6, 6),
+              //               color: Color.fromARGB(220, 15, 15, 15))
+              //         ],
+              //         borderRadius: BorderRadius.circular(4)),
+              //     child: Center(
+              //       child: Image.asset(
+              //         "assets/images/linkedin.png",
+              //         width: 20,
+              //         height: 20,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -550,22 +597,32 @@ class _TestimonialCardState extends State<TestimonialCard> {
             ishover = value;
           });
         },
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
           padding: EdgeInsets.only(
               left: widget.w < mobileSize ? 20 : 35,
               right: widget.w < mobileSize ? 20 : 35,
               top: widget.w < mobileSize ? 20 : 25,
               bottom: widget.w < mobileSize ? 20 : 25),
           decoration: BoxDecoration(
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
-                    blurRadius: 7,
-                    offset: Offset(-8, -8),
-                    color: Color.fromARGB(121, 32, 32, 32)),
+                    blurRadius: ishover ? 2 : 7,
+                    offset:
+                        ishover ? const Offset(-2, -2) : const Offset(-8, -8),
+                    color: ishover
+                        ? Provider.of<ThemeProvider>(context)
+                            .getThemeColor
+                            .withOpacity(.8)
+                        : const Color.fromARGB(121, 32, 32, 32)),
                 BoxShadow(
-                    blurRadius: 10,
-                    offset: Offset(8, 8),
-                    color: Color.fromARGB(121, 15, 15, 15))
+                    blurRadius: ishover ? 2 : 8,
+                    offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
+                    color: ishover
+                        ? Provider.of<ThemeProvider>(context)
+                            .getThemeColor
+                            .withOpacity(.8)
+                        : const Color.fromARGB(121, 15, 15, 15))
               ],
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
@@ -597,11 +654,15 @@ class _TestimonialCardState extends State<TestimonialCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
                 width: widget.w,
                 constraints:
                     BoxConstraints(maxWidth: widget.w < mobileSize ? 400 : 280),
                 decoration: BoxDecoration(
+                    color: Provider.of<ThemeProvider>(context)
+                        .getThemeColor
+                        .withOpacity(.04),
                     boxShadow: const [
                       BoxShadow(
                           blurRadius: 3,
@@ -632,7 +693,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 style: GoogleFonts.titilliumWeb(
                     fontSize: 15,
                     fontWeight: FontWeight.w700,
-                    color: themeColor),
+                    color: Provider.of<ThemeProvider>(context).getThemeColor),
               ),
               const SizedBox(
                 height: 10,

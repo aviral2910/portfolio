@@ -1,4 +1,6 @@
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../global.dart';
 
@@ -42,7 +44,9 @@ class _ExperienceCardState extends State<ExperienceCard> {
                     width: 18,
                     decoration: BoxDecoration(
                         color: ishover
-                            ? themeColor.withOpacity(.7)
+                            ? Provider.of<ThemeProvider>(context)
+                                .getThemeColor
+                                .withOpacity(.7)
                             : darkthemeColor,
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(width: 4, color: Colors.black)),
@@ -56,9 +60,13 @@ class _ExperienceCardState extends State<ExperienceCard> {
               ),
             ),
             Expanded(
-              child: Padding(
+              child: AnimatedPadding(
+                duration: Duration(milliseconds: 200),
                 padding: EdgeInsets.only(
-                    top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
+                    left: 5,
+                    right: 5,
+                    top: ishover ? 0 : 5,
+                    bottom: ishover ? 5 : 0),
                 child: AnimatedContainer(
                     duration: Duration(milliseconds: 200),
                     // height: 200,
@@ -71,15 +79,21 @@ class _ExperienceCardState extends State<ExperienceCard> {
                     decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
-                              blurRadius: ishover ? 6 : 7,
-                              offset: ishover ? Offset(-5, -5) : Offset(-8, -8),
+                              blurRadius: ishover ? 2 : 7,
+                              offset: ishover ? Offset(-2, -2) : Offset(-8, -8),
                               color: ishover
-                                  ? Color.fromRGBO(27, 181, 252, 0.2)
+                                  ? Provider.of<ThemeProvider>(context)
+                                      .getThemeColor
+                                      .withOpacity(.65)
                                   : Color.fromARGB(121, 32, 32, 32)),
                           BoxShadow(
                               blurRadius: ishover ? 2 : 10,
-                              offset: Offset(8, 8),
-                              color: Color.fromARGB(121, 15, 15, 15))
+                              offset: ishover ? Offset(2, 2) : Offset(8, 8),
+                              color: ishover
+                                  ? Provider.of<ThemeProvider>(context)
+                                      .getThemeColor
+                                      .withOpacity(.55)
+                                  : Color.fromARGB(121, 15, 15, 15))
                         ],
                         gradient: LinearGradient(
                             begin: Alignment.topLeft,

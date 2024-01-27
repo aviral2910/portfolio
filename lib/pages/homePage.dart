@@ -9,6 +9,8 @@ import 'package:aviralportfolio/pages/testimonial.dart';
 import 'package:aviralportfolio/widgets/customAppBar.dart';
 
 import 'package:flutter/material.dart';
+
+import '../widgets/colorChanger.dart';
 // import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,6 +24,7 @@ class HomePage extends StatelessWidget {
     double h = MediaQuery.of(context).size.height;
     // print("object");
     return Scaffold(
+        floatingActionButton: const ColorChanger(),
         // extendBody: true,
         extendBodyBehindAppBar: true,
         // backgroundColor: darkthemeColor,

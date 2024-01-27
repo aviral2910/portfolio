@@ -1,5 +1,6 @@
 import 'package:aviralportfolio/global.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -52,17 +53,21 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                      blurRadius: ishover ? 2 : 7,
-                      offset: ishover ? Offset(-1, -1) : Offset(-8, -8),
-                      color: !ishover
+                      blurRadius: !ishover ? 2 : 7,
+                      offset: !ishover ? Offset(-1, -1) : Offset(-8, -8),
+                      color: ishover
                           ? Color.fromARGB(121, 32, 32, 32)
-                          : Color.fromRGBO(27, 181, 252, 0.7)),
+                          : Provider.of<ThemeProvider>(context)
+                              .getThemeColor
+                              .withOpacity(.9)),
                   BoxShadow(
-                      blurRadius: ishover ? 2 : 10,
-                      offset: ishover ? Offset(1, 1) : Offset(8, 8),
-                      color: !ishover
+                      blurRadius: !ishover ? 2 : 10,
+                      offset: !ishover ? Offset(1, 1) : Offset(8, 8),
+                      color: ishover
                           ? Color.fromARGB(121, 32, 32, 32)
-                          : Color.fromRGBO(27, 182, 252, .7))
+                          : Provider.of<ThemeProvider>(context)
+                              .getThemeColor
+                              .withOpacity(.9))
                 ],
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -88,7 +93,9 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
                 if (widget.image != "")
                   Image.asset(
                     widget.image.toString(),
-                    color: ishover ? themeColor : Colors.white,
+                    color: ishover
+                        ? Provider.of<ThemeProvider>(context).getThemeColor
+                        : Colors.white,
                     height: widget.imageHieght,
                     width: widget.imagWidth,
                   ),
@@ -102,7 +109,9 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
                       : widget.text.toString(),
                   textAlign: TextAlign.center,
                   style: GoogleFonts.titilliumWeb(
-                      color: ishover ? themeColor : Colors.white,
+                      color: ishover
+                          ? Provider.of<ThemeProvider>(context).getThemeColor
+                          : Colors.white,
                       fontWeight: FontWeight.w400,
                       fontSize: widget.fontSize),
                 ),
@@ -212,7 +221,8 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                                     ]
                                   : [
                                       widget.islight
-                                          ? Color.fromARGB(7, 8, 33, 45)
+                                          // ? Color.fromARGB(7, 8, 33, 45)
+                                          ? Colors.transparent
                                           : const Color.fromARGB(
                                               255, 24, 24, 24),
 
@@ -233,9 +243,11 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                         style: GoogleFonts.titilliumWeb(
                           letterSpacing: 1,
                           color: widget.isHover
-                              ? themeColor
+                              ? Provider.of<ThemeProvider>(context)
+                                  .getThemeColor
                               : ishover
-                                  ? themeColor
+                                  ? Provider.of<ThemeProvider>(context)
+                                      .getThemeColor
                                   : Colors.white,
                           fontWeight: FontWeight.w700,
                           fontSize: 16,
@@ -246,7 +258,7 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                 ),
                 AnimatedContainer(
                   duration: Duration(milliseconds: 400),
-                  height: 1,
+                  height: 3,
                   width:
                       widget.width == null ? widget.width : widget.width! - 3,
                   decoration: BoxDecoration(
@@ -265,10 +277,12 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                                 ? const BoxShadow()
                                 : ishover
                                     ? const BoxShadow()
-                                    : const BoxShadow(
+                                    : BoxShadow(
                                         blurRadius: 3,
-                                        offset: Offset(0, -4),
-                                        color: Color.fromRGBO(27, 181, 252, 1))
+                                        offset: Offset(-0, -3),
+                                        color:
+                                            Provider.of<ThemeProvider>(context)
+                                                .getThemeColor)
                             : const BoxShadow(),
                         // BoxShadow(
                         //     blurRadius: 10,

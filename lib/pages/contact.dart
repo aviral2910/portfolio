@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:aviralportfolio/widgets/inwardTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icon_snackbar/flutter_icon_snackbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class Contact extends StatefulWidget {
   Contact({super.key, required this.scrollController, required this.height});
@@ -44,37 +46,6 @@ class _ContactState extends State<Contact> {
     });
   }
 
-  Future sendEmail(
-    String name,
-    String email,
-    String message,
-    String phone,
-  ) async {
-    final serviceId = 'service_raopw1k';
-    final templateId = 'template_f28mjrc';
-    final userId = 'PQRzhg6kh0s_pVp0q';
-
-    final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
-    final response = await http.post(url,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: json.encode({
-          'service_id': serviceId,
-          'template_id': templateId,
-          'user_id': userId,
-          'accessToken': "qltDvyGkraugzh89I6OFS",
-          'template_params': {
-            'user_email': email,
-            'user_phone': phone,
-            'user_name': name,
-            'user_message': message,
-          }
-        }));
-    print(response.body);
-  }
-
-  bool isLoading = false;
   final positionKey = GlobalKey();
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
@@ -85,7 +56,8 @@ class _ContactState extends State<Contact> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       width: w,
       key: positionKey,
       padding: EdgeInsets.only(
@@ -124,144 +96,13 @@ class _ContactState extends State<Contact> {
                   curve: Curves.easeIn,
                   height: changeAppBar ? 45 : 60,
                 ),
-                Container(
-                  padding: EdgeInsets.all(w < mobileSize ? 15 : 35),
-                  width: w < mobileSize ? w * .9 : w * .6,
-                  // height: 700,
-                  decoration: BoxDecoration(
-                      color: darkthemeColor,
-                      boxShadow: const [
-                        BoxShadow(
-                            blurRadius: 4,
-                            offset: Offset(-6, -6),
-                            color: Color.fromARGB(220, 32, 32, 32)),
-                        BoxShadow(
-                            blurRadius: 5,
-                            offset: Offset(6, 6),
-                            color: Color.fromARGB(220, 15, 15, 15))
-                      ],
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "YOUR NAME",
-                            style: GoogleFonts.titilliumWeb(
-                                color: const Color.fromARGB(255, 214, 231, 240),
-                                fontWeight: FontWeight.w200,
-                                fontSize: w < mobileSize ? 13 : 16),
-                          ),
-                          const SizedBox(height: 15),
-                          InwardTextFormField(
-                            controller: name,
-                            maxlines: 1,
-                          )
-                        ],
-                      ),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 1500),
-                        curve: Curves.easeIn,
-                        height: changeAppBar ? 30 : 45,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "PHONE NUMBER",
-                            style: GoogleFonts.titilliumWeb(
-                                color: const Color.fromARGB(255, 214, 231, 240),
-                                fontWeight: FontWeight.w200,
-                                fontSize: w < mobileSize ? 13 : 16),
-                          ),
-                          const SizedBox(height: 15),
-                          InwardTextFormField(
-                            controller: phone,
-                            maxlines: 1,
-                          )
-                        ],
-                      ),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 1500),
-                        curve: Curves.easeIn,
-                        height: changeAppBar ? 30 : 45,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "EMAIL",
-                            style: GoogleFonts.titilliumWeb(
-                                color: const Color.fromARGB(255, 214, 231, 240),
-                                fontWeight: FontWeight.w200,
-                                fontSize: w < mobileSize ? 13 : 16),
-                          ),
-                          const SizedBox(height: 15),
-                          InwardTextFormField(
-                            controller: email,
-                            maxlines: 1,
-                          )
-                        ],
-                      ),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 1500),
-                        curve: Curves.easeIn,
-                        height: changeAppBar ? 30 : 45,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "MESSAGE",
-                            style: GoogleFonts.titilliumWeb(
-                                color: const Color.fromARGB(255, 214, 231, 240),
-                                fontWeight: FontWeight.w200,
-                                fontSize: w < mobileSize ? 13 : 16),
-                          ),
-                          const SizedBox(height: 15),
-                          InwardTextFormField(
-                            controller: message,
-                            maxlines: 7,
-                          )
-                        ],
-                      ),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 1500),
-                        curve: Curves.easeIn,
-                        height: changeAppBar ? 30 : 45,
-                      ),
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: CustomShadowButton(
-                            onTap: () async {
-                              setState(() {
-                                isLoading = true;
-                              });
-                              await sendEmail(name.text, email.text,
-                                  message.text, phone.text);
-                              name.clear();
-                              email.clear();
-                              message.clear();
-                              phone.clear();
-                              IconSnackBar.show(
-                                  context: context,
-                                  snackBarType: SnackBarType.save,
-                                  label: 'Sent successfully !');
-                              setState(() {
-                                isLoading = false;
-                              });
-                            },
-                            isLoading: isLoading,
-                          )),
-                      const SizedBox(height: 50),
-                    ],
-                  ),
-                )
+                ContactCard(
+                    w: w,
+                    name: name,
+                    changeAppBar: changeAppBar,
+                    phone: phone,
+                    email: email,
+                    message: message)
               ],
             ),
           ),
@@ -276,12 +117,249 @@ class _ContactState extends State<Contact> {
   }
 }
 
+class ContactCard extends StatefulWidget {
+  const ContactCard({
+    super.key,
+    required this.w,
+    required this.name,
+    required this.changeAppBar,
+    required this.phone,
+    required this.email,
+    required this.message,
+  });
+
+  final double w;
+  final TextEditingController name;
+  final bool changeAppBar;
+  final TextEditingController phone;
+  final TextEditingController email;
+  final TextEditingController message;
+
+  @override
+  State<ContactCard> createState() => _ContactCardState();
+}
+
+class _ContactCardState extends State<ContactCard> {
+  bool isLoading = false;
+  Future sendEmail(
+    String name,
+    String email,
+    String message,
+    String phone,
+  ) async {
+    final serviceId = 'service_raopw1k';
+    final templateId = 'template_f28mjrc';
+    final userId = 'PQRzhg6kh0s_pVp0q';
+
+    final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
+    final response = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode({
+          'service_id': serviceId,
+          'template_id': templateId,
+          'user_id': userId,
+          'accessToken': "qltDvyGkraugzh89I6OFS",
+          'template_params': {
+            'user_email': email,
+            'user_phone': phone,
+            'user_name': name,
+            'user_message': message,
+          }
+        }));
+    print(response.body);
+  }
+
+  bool ishover = false;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      onHover: (value) {
+        ishover = value;
+        setState(() {});
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        padding: EdgeInsets.all(widget.w < mobileSize ? 15 : 35),
+        width: widget.w < mobileSize ? widget.w * .9 : widget.w * .6,
+        // height: 700,
+        decoration: BoxDecoration(
+            // color: darkthemeColor,
+            gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 19, 19, 19),
+                  Color.fromARGB(255, 15, 15, 15)
+                ]),
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: ishover ? 2 : 7,
+                  offset: ishover ? const Offset(-2, -2) : const Offset(-8, -8),
+                  color: ishover
+                      ? Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.8)
+                      : const Color.fromARGB(121, 32, 32, 32)),
+              BoxShadow(
+                  blurRadius: ishover ? 2 : 8,
+                  offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
+                  color: ishover
+                      ? Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.8)
+                      : const Color.fromARGB(121, 15, 15, 15))
+            ],
+            borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      "YOUR NAME",
+                      style: GoogleFonts.titilliumWeb(
+                          color: const Color.fromARGB(255, 214, 231, 240),
+                          fontWeight: FontWeight.w200,
+                          fontSize: widget.w < mobileSize ? 13 : 16),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                InwardTextFormField(
+                  controller: widget.name,
+                  maxlines: 1,
+                )
+              ],
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 1500),
+              curve: Curves.easeIn,
+              height: widget.changeAppBar ? 30 : 45,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "PHONE NUMBER",
+                  style: GoogleFonts.titilliumWeb(
+                      color: const Color.fromARGB(255, 214, 231, 240),
+                      fontWeight: FontWeight.w200,
+                      fontSize: widget.w < mobileSize ? 13 : 16),
+                ),
+                const SizedBox(height: 15),
+                InwardTextFormField(
+                  controller: widget.phone,
+                  maxlines: 1,
+                )
+              ],
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 1500),
+              curve: Curves.easeIn,
+              height: widget.changeAppBar ? 30 : 45,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "EMAIL",
+                  style: GoogleFonts.titilliumWeb(
+                      color: const Color.fromARGB(255, 214, 231, 240),
+                      fontWeight: FontWeight.w200,
+                      fontSize: widget.w < mobileSize ? 13 : 16),
+                ),
+                const SizedBox(height: 15),
+                InwardTextFormField(
+                  controller: widget.email,
+                  maxlines: 1,
+                )
+              ],
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 1500),
+              curve: Curves.easeIn,
+              height: widget.changeAppBar ? 30 : 45,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "MESSAGE",
+                  style: GoogleFonts.titilliumWeb(
+                      color: const Color.fromARGB(255, 214, 231, 240),
+                      fontWeight: FontWeight.w200,
+                      fontSize: widget.w < mobileSize ? 13 : 16),
+                ),
+                const SizedBox(height: 15),
+                InwardTextFormField(
+                  controller: widget.message,
+                  maxlines: 7,
+                )
+              ],
+            ),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 1500),
+              curve: Curves.easeIn,
+              height: widget.changeAppBar ? 30 : 45,
+            ),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: CustomShadowButton(
+                  isHover: ishover,
+                  onTap: () async {
+                    setState(() {
+                      isLoading = true;
+                    });
+                    if (widget.name.text.isEmpty ||
+                        widget.email.text.isEmpty ||
+                        widget.message.text.isEmpty) {
+                      IconSnackBar.show(
+                          context: context,
+                          snackBarType: SnackBarType.alert,
+                          label: 'Name, Email and Message cannot be Empty !');
+                    } else {
+                      await sendEmail(widget.name.text, widget.email.text,
+                          widget.message.text, widget.phone.text);
+                      widget.name.clear();
+                      widget.email.clear();
+                      widget.message.clear();
+                      widget.phone.clear();
+                      IconSnackBar.show(
+                          context: context,
+                          snackBarType: SnackBarType.save,
+                          label: 'Submitted Successfully !');
+                    }
+                    setState(() {
+                      isLoading = false;
+                    });
+                  },
+                  isLoading: isLoading,
+                )),
+            const SizedBox(height: 50),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class CustomShadowButton extends StatefulWidget {
   CustomShadowButton({
     required this.onTap,
     required this.isLoading,
+    required this.isHover,
     Key? key,
   }) : super(key: key);
+  bool isHover;
   void Function()? onTap;
   bool isLoading;
   @override
@@ -299,35 +377,43 @@ class _CustomShadowButtonState extends State<CustomShadowButton> {
           ishover = value;
         });
       },
-      child: Container(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
         padding: EdgeInsets.only(top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
         child: Container(
           height: 50,
           width: 200,
           padding: const EdgeInsets.only(left: 15, right: 15),
           decoration: BoxDecoration(
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
-                    blurRadius: 7,
-                    offset: Offset(-8, -8),
-                    color: Color.fromARGB(121, 32, 32, 32)),
+                    blurRadius: widget.isHover ? 2 : 7,
+                    offset: widget.isHover
+                        ? const Offset(-2, -2)
+                        : const Offset(-8, -8),
+                    color: widget.isHover
+                        ? Provider.of<ThemeProvider>(context)
+                            .getThemeColor
+                            .withOpacity(.55)
+                        : const Color.fromARGB(121, 32, 32, 32)),
                 BoxShadow(
-                    blurRadius: 10,
-                    offset: Offset(8, 8),
-                    color: Color.fromARGB(121, 15, 15, 15))
+                    blurRadius: widget.isHover ? 2 : 10,
+                    offset: widget.isHover
+                        ? const Offset(2, 2)
+                        : const Offset(8, 8),
+                    color: widget.isHover
+                        ? Provider.of<ThemeProvider>(context)
+                            .getThemeColor
+                            .withOpacity(.55)
+                        : const Color.fromARGB(121, 15, 15, 15))
               ],
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: ishover
-                      ? [
-                          const Color.fromARGB(255, 15, 15, 15),
-                          const Color.fromARGB(255, 15, 15, 15)
-                        ]
-                      : [
-                          const Color.fromARGB(255, 19, 19, 19),
-                          const Color.fromARGB(255, 19, 19, 19),
-                        ]),
+                  colors: [
+                    Color.fromARGB(255, 15, 15, 15),
+                    Color.fromARGB(255, 15, 15, 15)
+                  ]),
               borderRadius: BorderRadius.circular(10)),
           child: Center(
             child: widget.isLoading
@@ -340,7 +426,9 @@ class _CustomShadowButtonState extends State<CustomShadowButton> {
                         fontWeight: FontWeight.w600,
                         fontSize: 15,
                         letterSpacing: 1,
-                        color: themeColor),
+                        color: widget.isHover
+                            ? Provider.of<ThemeProvider>(context).getThemeColor
+                            : Colors.white),
                   ),
           ),
         ),

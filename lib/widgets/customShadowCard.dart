@@ -1,6 +1,8 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class CustomShadowCard extends StatefulWidget {
   CustomShadowCard(
@@ -47,17 +49,21 @@ class _CustomShadowCardState extends State<CustomShadowCard> {
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                        blurRadius: ishover ? 1.2 : 7,
-                        offset: ishover ? Offset(-1, -1) : Offset(-8, -8),
-                        color: !ishover
-                            ? Color.fromARGB(121, 32, 32, 32)
-                            : Color.fromRGBO(27, 181, 252, 0.7)),
+                        blurRadius: !ishover ? 1.2 : 4,
+                        offset: !ishover
+                            ? const Offset(-1, -1)
+                            : const Offset(-4, -4),
+                        color: ishover
+                            ? const Color.fromARGB(121, 42, 42, 42)
+                            : Provider.of<ThemeProvider>(context)
+                                .getThemeColor),
                     BoxShadow(
-                        blurRadius: ishover ? 1.2 : 10,
-                        offset: ishover ? Offset(1, 1) : Offset(8, 8),
-                        color: !ishover
-                            ? Color.fromARGB(121, 32, 32, 32)
-                            : Color.fromRGBO(27, 182, 252, .7))
+                        blurRadius: !ishover ? 1.2 : 5,
+                        offset:
+                            !ishover ? const Offset(1, 1) : const Offset(5, 5),
+                        color: ishover
+                            ? const Color.fromARGB(121, 42, 42, 42)
+                            : Provider.of<ThemeProvider>(context).getThemeColor)
                   ],
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
@@ -79,7 +85,9 @@ class _CustomShadowCardState extends State<CustomShadowCard> {
               child: Center(
                 child: Image.asset(
                   widget.image.toString(),
-                  color: ishover ? themeColor : Colors.white,
+                  color: ishover
+                      ? Provider.of<ThemeProvider>(context).getThemeColor
+                      : Colors.white,
                   height: w < mobileSize
                       ? 15
                       : widget.radius == null
@@ -146,16 +154,23 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
                   boxShadow: [
                     BoxShadow(
                         blurRadius: ishover ? 2 : 3,
-                        offset: ishover ? Offset(-1, -1) : Offset(-2, -2),
+                        offset: ishover
+                            ? const Offset(-1, -1)
+                            : const Offset(-2, -2),
                         color: ishover
-                            ? Color.fromRGBO(27, 181, 252, 0.7)
-                            : Color.fromARGB(200, 53, 53, 53)),
+                            ? Provider.of<ThemeProvider>(context)
+                                .getThemeColor
+                                .withOpacity(1)
+                            : const Color.fromARGB(200, 53, 53, 53)),
                     BoxShadow(
                         blurRadius: ishover ? 3 : 10,
-                        offset: ishover ? Offset(1, 1) : Offset(8, 8),
+                        offset:
+                            ishover ? const Offset(1, 1) : const Offset(8, 8),
                         color: ishover
-                            ? Color.fromRGBO(27, 181, 252, 0.7)
-                            : Color.fromARGB(255, 15, 15, 15))
+                            ? Provider.of<ThemeProvider>(context)
+                                .getThemeColor
+                                .withOpacity(1)
+                            : const Color.fromARGB(255, 15, 15, 15))
                   ],
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
@@ -182,13 +197,19 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
                       ? Text(
                           widget.image.toString(),
                           style: GoogleFonts.titilliumWeb(
-                              color: ishover ? themeColor : Colors.white,
+                              color: ishover
+                                  ? Provider.of<ThemeProvider>(context)
+                                      .getThemeColor
+                                  : Colors.white,
                               fontSize: 12,
                               fontWeight: FontWeight.w500),
                         )
                       : Image.asset(
                           widget.image.toString(),
-                          color: ishover ? themeColor : Colors.white,
+                          color: ishover
+                              ? Provider.of<ThemeProvider>(context)
+                                  .getThemeColor
+                              : Colors.white,
                           height: widget.radius == null ? 25 : 20,
                           width: widget.radius == null ? 25 : 20,
                         ),

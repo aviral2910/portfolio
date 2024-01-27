@@ -1,6 +1,8 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class InwardTextFormField extends StatelessWidget {
   InwardTextFormField({
@@ -25,6 +27,7 @@ class InwardTextFormField extends StatelessWidget {
             color: Color.fromARGB(255, 32, 32, 32))
       ], border: Border.all(color: const Color.fromARGB(255, 19, 19, 19))),
       child: TextFormField(
+          cursorColor: Provider.of<ThemeProvider>(context).getThemeColor,
           controller: controller,
           style: GoogleFonts.titilliumWeb(
               color: Colors.white,
@@ -36,7 +39,11 @@ class InwardTextFormField extends StatelessWidget {
             fillColor: const Color.fromARGB(255, 19, 19, 19),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4.0),
-              borderSide: const BorderSide(width: 1, color: themeColor
+              borderSide: BorderSide(
+                  width: 1,
+                  color: Provider.of<ThemeProvider>(context)
+                      .getThemeColor
+                      .withOpacity(.5)
                   // color: Color.fromARGB(255, 19, 19, 19),
                   ),
             ),

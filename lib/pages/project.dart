@@ -1,8 +1,10 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Project extends StatefulWidget {
@@ -430,49 +432,12 @@ class ProjectTextCard extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              // height: 200,
-              width: w,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                  boxShadow: const [
-                    BoxShadow(
-                        blurRadius: 7,
-                        offset: Offset(-8, -8),
-                        color: Color.fromARGB(121, 32, 32, 32)),
-                    BoxShadow(
-                        blurRadius: 10,
-                        offset: Offset(8, 8),
-                        color: Color.fromARGB(121, 15, 15, 15))
-                  ],
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: ishover
-                          ? [
-                              const Color.fromARGB(255, 19, 19, 19),
-                              const Color.fromARGB(255, 15, 15, 15)
-                            ]
-                          : [
-                              const Color.fromARGB(255, 15, 15, 15),
-                              const Color.fromARGB(255, 19, 19, 19),
-                            ]),
-                  borderRadius: BorderRadius.circular(10)),
-              child: Text(
-                text,
-                textAlign: TextAlign.justify,
-                style: GoogleFonts.titilliumWeb(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 13,
-                    letterSpacing: 1,
-                    color: const Color.fromARGB(215, 214, 214, 214)),
-              ),
-            ),
+            ProjectIlluminatedTextCard(w: w, ishover: ishover, text: text),
             const SizedBox(
               height: 25,
             ),
             Text(
-              "Tool Used",
+              "Tools Used",
               textAlign: TextAlign.center,
               style: GoogleFonts.titilliumWeb(
                   fontWeight: FontWeight.w600,
@@ -618,6 +583,93 @@ class ProjectTextCard extends StatelessWidget {
   }
 }
 
+class ProjectIlluminatedTextCard extends StatefulWidget {
+  const ProjectIlluminatedTextCard({
+    super.key,
+    required this.w,
+    required this.ishover,
+    required this.text,
+  });
+
+  final double w;
+  final bool ishover;
+  final String text;
+
+  @override
+  State<ProjectIlluminatedTextCard> createState() =>
+      _ProjectIlluminatedTextCardState();
+}
+
+class _ProjectIlluminatedTextCardState
+    extends State<ProjectIlluminatedTextCard> {
+  bool ishover = false;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      onHover: (val) {
+        ishover = val;
+        setState(() {});
+      },
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200),
+        // height: 200,
+        width: widget.w,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: ishover ? 2 : 7,
+                  offset: ishover ? Offset(-1, -1) : Offset(-8, -8),
+                  color: !ishover
+                      ? Color.fromARGB(121, 32, 32, 32)
+                      : Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.7)),
+              BoxShadow(
+                  blurRadius: ishover ? 2 : 10,
+                  offset: ishover ? Offset(1, 1) : Offset(8, 8),
+                  color: !ishover
+                      ? Color.fromARGB(121, 15, 15, 15)
+                      : Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.7))
+              // BoxShadow(
+              //     blurRadius: 7,
+              //     offset: Offset(-8, -8),
+              //     color: Color.fromARGB(121, 32, 32, 32)),
+              // BoxShadow(
+              //     blurRadius: 10,
+              //     offset: Offset(8, 8),
+              //     color: Color.fromARGB(121, 15, 15, 15))
+            ],
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: widget.ishover
+                    ? [
+                        const Color.fromARGB(255, 19, 19, 19),
+                        const Color.fromARGB(255, 15, 15, 15)
+                      ]
+                    : [
+                        const Color.fromARGB(255, 15, 15, 15),
+                        const Color.fromARGB(255, 19, 19, 19),
+                      ]),
+            borderRadius: BorderRadius.circular(10)),
+        child: Text(
+          widget.text,
+          textAlign: TextAlign.justify,
+          style: GoogleFonts.titilliumWeb(
+              fontWeight: FontWeight.w300,
+              fontSize: 13,
+              letterSpacing: 1,
+              color: const Color.fromARGB(215, 214, 214, 214)),
+        ),
+      ),
+    );
+  }
+}
+
 class ProjectImageCard extends StatefulWidget {
   ProjectImageCard(
       {Key? key, required this.w, required this.image, required this.heading})
@@ -654,7 +706,8 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
               ishover = value;
             });
           },
-          child: Container(
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 200),
             // width: widget.w,
             padding: EdgeInsets.only(
                 left: widget.w < mobileSize ? 10 : 20,
@@ -663,15 +716,23 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                 bottom: widget.w < mobileSize ? 10 : 20),
             decoration: BoxDecoration(
                 color: darkthemeColor,
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
                       blurRadius: 4,
                       offset: Offset(-6, -6),
-                      color: Color.fromARGB(220, 32, 32, 32)),
+                      color: ishover
+                          ? Provider.of<ThemeProvider>(context)
+                              .getThemeColor
+                              .withOpacity(.4)
+                          : Color.fromARGB(220, 32, 32, 32)),
                   BoxShadow(
                       blurRadius: 5,
                       offset: Offset(6, 6),
-                      color: Color.fromARGB(220, 15, 15, 15))
+                      color: ishover
+                          ? Provider.of<ThemeProvider>(context)
+                              .getThemeColor
+                              .withOpacity(.4)
+                          : Color.fromARGB(220, 15, 15, 15))
                 ],
                 borderRadius: BorderRadius.circular(10)),
 

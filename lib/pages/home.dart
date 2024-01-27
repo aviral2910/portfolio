@@ -5,7 +5,10 @@ import 'package:aviralportfolio/widgets/normalText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../provider/themeProvider.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -72,7 +75,8 @@ class _HomeState extends State<Home> {
                                 fontWeight: FontWeight.w900,
                                 fontSize: 30,
                                 letterSpacing: 6,
-                                color: const Color.fromRGBO(69, 189, 244, 1)),
+                                color: Provider.of<ThemeProvider>(context)
+                                    .getThemeColor),
                           ),
                           const SizedBox(
                             height: 20,
@@ -177,6 +181,7 @@ class _HomeState extends State<Home> {
                       "assets/images/arrow.png",
                       height: 25,
                       width: 25,
+                      color: Provider.of<ThemeProvider>(context).getThemeColor,
                     ),
                   ))
             ],
@@ -246,8 +251,9 @@ class _HomeState extends State<Home> {
                                           fontWeight: FontWeight.w800,
                                           fontSize: 58,
                                           letterSpacing: 8,
-                                          color: const Color.fromRGBO(
-                                              69, 189, 244, 1)),
+                                          color: Provider.of<ThemeProvider>(
+                                                  context)
+                                              .getThemeColor),
                                     ],
                                   ),
                                   const SizedBox(
@@ -446,6 +452,7 @@ class _HomeState extends State<Home> {
                       "assets/images/arrow.png",
                       height: 45,
                       width: 45,
+                      color: Provider.of<ThemeProvider>(context).getThemeColor,
                     ),
                   ))
             ],

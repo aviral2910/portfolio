@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/themeProvider.dart';
 
 class ShadowText extends StatefulWidget {
   ShadowText(this.data,
-      {super.key, required this.fontSize, required this.color, required this.fontWeight});
+      {super.key,
+      required this.fontSize,
+      required this.color,
+      required this.fontWeight});
 
   Color color;
   FontWeight? fontWeight;
@@ -41,7 +47,9 @@ class _ShadowTextState extends State<ShadowText> {
                 style: GoogleFonts.titilliumWeb(
                         fontWeight: widget.fontWeight,
                         fontSize: widget.fontSize,
-                        color: isHover ? themeColor : widget.color)
+                        color: isHover
+                            ? Provider.of<ThemeProvider>(context).getThemeColor
+                            : widget.color)
                     .copyWith(color: Colors.black.withOpacity(0.7)),
               ),
             ),
@@ -52,7 +60,9 @@ class _ShadowTextState extends State<ShadowText> {
                   style: GoogleFonts.titilliumWeb(
                       fontWeight: widget.fontWeight,
                       fontSize: widget.fontSize,
-                      color: isHover ? themeColor : widget.color)),
+                      color: isHover
+                          ? Provider.of<ThemeProvider>(context).getThemeColor
+                          : widget.color)),
             ),
           ],
         ),

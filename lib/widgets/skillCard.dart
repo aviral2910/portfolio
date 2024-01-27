@@ -4,6 +4,8 @@ import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/themeProvider.dart';
+
 class SkillsCard extends StatefulWidget {
   const SkillsCard({
     Key? key,
@@ -37,16 +39,20 @@ class _SkillsCardState extends State<SkillsCard> {
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                  blurRadius: isHover ? 6 : 7,
-                  offset: isHover ? Offset(-5, -5) : Offset(-8, -8),
+                  blurRadius: isHover ? 3 : 7,
+                  offset: isHover ? Offset(-3, -3) : Offset(-8, -8),
                   color: isHover
-                      ? Color.fromRGBO(27, 182, 252, .2)
+                      ? Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.45)
                       : Color.fromARGB(121, 32, 32, 32)),
               BoxShadow(
                   blurRadius: isHover ? 2 : 10,
-                  offset: isHover ? Offset(4, 4) : Offset(8, 8),
+                  offset: isHover ? Offset(2, 2) : Offset(8, 8),
                   color: isHover
-                      ? Color.fromRGBO(27, 182, 252, .2)
+                      ? Provider.of<ThemeProvider>(context)
+                          .getThemeColor
+                          .withOpacity(.45)
                       : Color.fromARGB(121, 15, 15, 15))
             ],
             gradient: const LinearGradient(
