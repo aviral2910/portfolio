@@ -362,18 +362,20 @@ class _ArrowButtonState extends State<ArrowButton> {
                 // color: darkthemeColor,
                 boxShadow: [
                   BoxShadow(
-                      blurRadius: ishover ? 2 : 7,
-                      offset:
-                          ishover ? const Offset(-2, -2) : const Offset(-8, -8),
-                      color: ishover
+                      blurRadius: !ishover ? 2 : 7,
+                      offset: !ishover
+                          ? const Offset(-2, -2)
+                          : const Offset(-8, -8),
+                      color: !ishover
                           ? Provider.of<ThemeProvider>(context)
                               .getThemeColor
                               .withOpacity(.8)
                           : const Color.fromARGB(121, 32, 32, 32)),
                   BoxShadow(
-                      blurRadius: ishover ? 2 : 8,
-                      offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
-                      color: ishover
+                      blurRadius: !ishover ? 2 : 8,
+                      offset:
+                          !ishover ? const Offset(2, 2) : const Offset(8, 8),
+                      color: !ishover
                           ? Provider.of<ThemeProvider>(context)
                               .getThemeColor
                               .withOpacity(.8)
@@ -677,11 +679,28 @@ class _TestimonialCardState extends State<TestimonialCard> {
                         color: const Color.fromARGB(255, 19, 19, 19))),
                 child: Padding(
                   padding: EdgeInsets.all(!ishover ? 0 : 8.0),
-                  child: Image.asset(
-                    widget.image.toString(),
-                    width: !ishover ? 266 : 250,
-                    height: !ishover ? 266 : 250,
-                    fit: BoxFit.fill,
+                  child: Column(
+                    children: [
+                      Container(
+                        width: widget.w,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                width: 1,
+                                color: const Color.fromARGB(255, 19, 19, 19)),
+                            color: Provider.of<ThemeProvider>(context)
+                                .getThemeColor
+                                .withOpacity(.75),
+                            borderRadius: BorderRadius.circular(
+                              !ishover ? 266 : 250,
+                            )),
+                        child: Image.asset(
+                          widget.image.toString(),
+                          width: !ishover ? 266 : 250,
+                          height: !ishover ? 266 : 250,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

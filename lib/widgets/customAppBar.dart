@@ -1,6 +1,8 @@
 import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/widgets/shadowText.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CustomAppBar extends StatefulWidget {
   CustomAppBar({Key? key, required this.scrollController}) : super(key: key);
@@ -52,10 +54,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       padding: const EdgeInsets.only(left: 5.0),
                       child: Row(
                         children: [
-                          Image.asset(
-                            "assets/images/aviraldp.png",
-                            height: 50,
-                            width: 50,
+                          Container(
+                            color: Provider.of<ThemeProvider>(context)
+                                .getThemeColor
+                                .withOpacity(.7),
+                            child: Image.asset(
+                              "assets/images/aviraldp.png",
+                              height: 50,
+                              width: 50,
+                            ),
                           ),
                           const SizedBox(
                             width: 10,
@@ -99,7 +106,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
                             padding: const EdgeInsets.only(left: 10.0),
                             child: Row(
                               children: [
-                                Image.asset("assets/images/aviraldp.png"),
+                                Container(
+                                    color: Provider.of<ThemeProvider>(context)
+                                        .getThemeColor
+                                        .withOpacity(.7),
+                                    child: Image.asset(
+                                      "assets/images/aviraldp.png",
+                                    )),
                                 const SizedBox(
                                   width: 10,
                                 ),
@@ -150,7 +163,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
                           padding: const EdgeInsets.only(left: 10.0),
                           child: Row(
                             children: [
-                              Image.asset("assets/images/aviraldp.png"),
+                              Container(
+                                  color: Provider.of<ThemeProvider>(context)
+                                      .getThemeColor
+                                      .withOpacity(.7),
+                                  child: Image.asset(
+                                      "assets/images/aviraldp.png")),
                               const SizedBox(
                                 width: 10,
                               ),

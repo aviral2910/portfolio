@@ -153,20 +153,20 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                        blurRadius: ishover ? 2 : 3,
-                        offset: ishover
+                        blurRadius: !ishover ? 2 : 3,
+                        offset: !ishover
                             ? const Offset(-1, -1)
                             : const Offset(-2, -2),
-                        color: ishover
+                        color: !ishover
                             ? Provider.of<ThemeProvider>(context)
                                 .getThemeColor
                                 .withOpacity(1)
                             : const Color.fromARGB(200, 53, 53, 53)),
                     BoxShadow(
-                        blurRadius: ishover ? 3 : 10,
+                        blurRadius: !ishover ? 3 : 10,
                         offset:
-                            ishover ? const Offset(1, 1) : const Offset(8, 8),
-                        color: ishover
+                            !ishover ? const Offset(1, 1) : const Offset(8, 8),
+                        color: !ishover
                             ? Provider.of<ThemeProvider>(context)
                                 .getThemeColor
                                 .withOpacity(1)
