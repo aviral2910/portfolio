@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
-import 'package:aviralportfolio/widgets/headingCard.dart';
+import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:aviralportfolio/widgets/inwardTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icon_snackbar/flutter_icon_snackbar.dart';
@@ -18,6 +18,8 @@ class Contact extends StatefulWidget {
   State<Contact> createState() => _ContactState();
 }
 
+final contactPositionKey = GlobalKey();
+
 class _ContactState extends State<Contact> {
   RenderBox? box;
   double? y;
@@ -27,7 +29,8 @@ class _ContactState extends State<Contact> {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      box ??=
+          contactPositionKey.currentContext!.findRenderObject() as RenderBox;
       position = box!.localToGlobal(Offset.zero); //this is global position
 
       if (position!.dy < widget.height * .6) {
@@ -46,7 +49,6 @@ class _ContactState extends State<Contact> {
     });
   }
 
-  final positionKey = GlobalKey();
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -59,7 +61,7 @@ class _ContactState extends State<Contact> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       width: w,
-      key: positionKey,
+      key: contactPositionKey,
       padding: EdgeInsets.only(
           left: w < mobileSize ? 20 : 0, right: w < mobileSize ? 20 : 0),
       child: Column(

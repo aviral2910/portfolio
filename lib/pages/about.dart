@@ -1,5 +1,7 @@
-import 'package:aviralportfolio/global.dart';
-import 'package:aviralportfolio/widgets/headingCard.dart';
+import 'package:aviralportfolio/common/DialogService.dart';
+import 'package:aviralportfolio/common/global.dart';
+import 'package:aviralportfolio/common/overlayService.dart';
+import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:aviralportfolio/widgets/skillCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +14,8 @@ class About extends StatefulWidget {
   State<About> createState() => _AboutState();
 }
 
+final aboutPositionKey = GlobalKey();
+
 class _AboutState extends State<About> {
   RenderBox? box;
   double? y;
@@ -21,7 +25,7 @@ class _AboutState extends State<About> {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      box ??= aboutPositionKey.currentContext!.findRenderObject() as RenderBox;
       position = box!.localToGlobal(Offset.zero); //this is global position
 
       if (position!.dy < widget.height * .6) {
@@ -40,7 +44,6 @@ class _AboutState extends State<About> {
     });
   }
 
-  final positionKey = GlobalKey();
   bool changeAppBar = false;
 
   @override
@@ -48,7 +51,7 @@ class _AboutState extends State<About> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Container(
-      key: positionKey,
+      key: aboutPositionKey,
       // height: h,
       width: w,
       // constraints: BoxConstraints(minHeight: 650, maxHeight: 850),

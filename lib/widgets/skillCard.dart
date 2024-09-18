@@ -1,4 +1,4 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';
 import 'package:flutter/material.dart';

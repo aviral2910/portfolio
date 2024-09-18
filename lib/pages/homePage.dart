@@ -1,4 +1,4 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/pages/about.dart';
 import 'package:aviralportfolio/pages/contact.dart';
 import 'package:aviralportfolio/pages/experience.dart';
@@ -6,11 +6,12 @@ import 'package:aviralportfolio/pages/home.dart';
 import 'package:aviralportfolio/pages/project.dart';
 import 'package:aviralportfolio/pages/testimonial.dart';
 
-import 'package:aviralportfolio/widgets/customAppBar.dart';
+import 'package:aviralportfolio/widgets/Common/customAppBar.dart';
+import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 
 import 'package:flutter/material.dart';
 
-import '../widgets/colorChanger.dart';
+import '../widgets/Common/colorChanger.dart';
 // import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class HomePage extends StatelessWidget {

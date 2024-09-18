@@ -1,4 +1,4 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/normalText.dart';
 
@@ -152,7 +152,7 @@ class _HomeState extends State<Home> {
                                 name: "Resume",
                                 onTap: () async {
                                   await launchUrl(Uri.parse(
-                                      "https://drive.google.com/file/d/1-IJ7mkVQE_ZKWdIXy6LkaIHk-9EHkFOv/view?usp=sharing"));
+                                      "https://drive.google.com/file/d/1_x9GFkfEhawyKmvTGdeWdMvnaHQy5S00/view?usp=sharing"));
                                 },
                                 height: 45,
                                 width: 45,
@@ -214,7 +214,7 @@ class _HomeState extends State<Home> {
                               image: DecorationImage(
                             alignment: Alignment.centerRight,
                             image: AssetImage(
-                              "assets/images/aviraldark1.png",
+                              "assets/images/aviral.png",
                             ),
                             fit: BoxFit.fitHeight,
                           )),
@@ -348,7 +348,7 @@ class _HomeState extends State<Home> {
                                           //         "assets/images/Resume-AviralDixit.pdf",
                                           //     mimeType: MimeType.pdf);
                                           await launchUrl(Uri.parse(
-                                              "https://drive.google.com/file/d/1-IJ7mkVQE_ZKWdIXy6LkaIHk-9EHkFOv/view?usp=sharing"));
+                                              "https://drive.google.com/file/d/1_x9GFkfEhawyKmvTGdeWdMvnaHQy5S00/view?usp=sharing"));
                                         },
                                         height: 70,
                                         width: 70,

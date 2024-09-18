@@ -1,4 +1,4 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/widgets/generalZWidget/taskBoxes.dart';
 import 'package:flutter/material.dart';
 import 'package:highlight_text/highlight_text.dart';

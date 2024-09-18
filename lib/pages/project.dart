@@ -1,9 +1,13 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
+import 'package:aviralportfolio/pages/caseStudy.dart';
+import 'package:aviralportfolio/pages/contact.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/widgets/ProjectWidget/caseStudyButton.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
-import 'package:aviralportfolio/widgets/headingCard.dart';
+import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -15,6 +19,8 @@ class Project extends StatefulWidget {
   State<Project> createState() => _ProjectState();
 }
 
+final projectPositionKey = GlobalKey();
+
 class _ProjectState extends State<Project> {
   RenderBox? box;
   double? y;
@@ -24,7 +30,8 @@ class _ProjectState extends State<Project> {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      box ??=
+          projectPositionKey.currentContext!.findRenderObject() as RenderBox;
       position = box!.localToGlobal(Offset.zero); //this is global position
 
       if (position!.dy < widget.height * .6) {
@@ -43,7 +50,6 @@ class _ProjectState extends State<Project> {
     });
   }
 
-  final positionKey = GlobalKey();
   List<String> krishn = [
     "flutter",
     "dart",
@@ -155,7 +161,7 @@ class _ProjectState extends State<Project> {
     double h = MediaQuery.of(context).size.height;
     return SizedBox(
       width: w,
-      key: positionKey,
+      key: projectPositionKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -437,7 +443,7 @@ class ProjectTextCard extends StatelessWidget {
               height: 25,
             ),
             Text(
-              "Tools Used",
+              "Technologies Used",
               textAlign: TextAlign.center,
               style: GoogleFonts.titilliumWeb(
                   fontWeight: FontWeight.w600,
@@ -485,7 +491,7 @@ class ProjectTextCard extends StatelessWidget {
                         : CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Links",
+                    "Case Study & Links",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.titilliumWeb(
                         fontWeight: FontWeight.w600,
@@ -503,6 +509,23 @@ class ProjectTextCard extends StatelessWidget {
                             ? MainAxisAlignment.end
                             : MainAxisAlignment.start,
                     children: [
+                      CustomSkillShadowCard(
+                        height: 50,
+                        onTap: () async {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.fade,
+                                  child: CaseStudy()));
+                        },
+                        width: 50,
+                        name: "Case Study",
+                        radius: 50,
+                        image: "assets/images/case1.png",
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       if (apklink != null)
                         CustomSkillShadowCard(
                           height: 50,
@@ -758,11 +781,55 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                         border: Border.all(
                             color: const Color.fromARGB(255, 19, 19, 19))),
                 child: Center(
-                  child: Image.asset(
-                    widget.image.toString(),
-                    height: widget.w < mobileSize ? 230 : 450,
-                    fit: BoxFit.fill,
-                  ),
+                  child: (widget.w >= mobileSize)
+                      ? Stack(
+                          children: [
+                            Image.asset(
+                              widget.image.toString(),
+                              height: widget.w < mobileSize ? 230 : 450,
+                              fit: BoxFit.fill,
+                            ),
+                            Positioned(
+                                child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 400),
+                              color: ishover
+                                  ? Color.fromARGB(218, 20, 20, 20)
+                                  : Colors.transparent,
+                              height: widget.w < mobileSize ? 230 : 450,
+                              width: 1000,
+                              child: ishover
+                                  ? Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.asset(
+                                          "assets/images/case2.png",
+                                          height: 60,
+                                          width: 60,
+                                        ),
+                                        CaseStudyButton(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                    type:
+                                                        PageTransitionType.fade,
+                                                    child: CaseStudy()));
+                                          },
+                                          isHover: ishover,
+                                          isLoading: false,
+                                        )
+                                      ],
+                                    )
+                                  : null,
+                            ))
+                          ],
+                        )
+                      : Image.asset(
+                          widget.image.toString(),
+                          height: widget.w < mobileSize ? 230 : 450,
+                          fit: BoxFit.fill,
+                        ),
                 ),
               ),
             ),

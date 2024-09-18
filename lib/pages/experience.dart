@@ -1,4 +1,4 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/experienceCard.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,8 @@ class Experience extends StatefulWidget {
   @override
   State<Experience> createState() => _ExperienceState();
 }
+
+final experiencePositionKey = GlobalKey();
 
 class _ExperienceState extends State<Experience> {
   List<String> gravity = [
@@ -103,7 +105,8 @@ class _ExperienceState extends State<Experience> {
     super.initState();
 
     widget.scrollController.addListener(() {
-      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      box ??=
+          experiencePositionKey.currentContext!.findRenderObject() as RenderBox;
       position = box!.localToGlobal(Offset.zero); //this is global position
 
       if (position!.dy < widget.height * .6) {
@@ -122,15 +125,13 @@ class _ExperienceState extends State<Experience> {
     });
   }
 
-  final positionKey = GlobalKey();
-
   bool changeAppBar = false;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Container(
-      key: positionKey,
+      key: experiencePositionKey,
       // height: h,
       width: w,
       padding: EdgeInsets.only(

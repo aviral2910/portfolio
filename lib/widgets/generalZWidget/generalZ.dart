@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/widgets/generalZWidget/replyBox.dart';
 import 'package:flutter/material.dart';

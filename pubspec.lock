@@ -25,6 +25,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  carousel_slider:
+    dependency: "direct main"
+    description:
+      name: carousel_slider
+      sha256: "7b006ec356205054af5beaef62e2221160ea36b90fb70a35e4deacd49d0349ae"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.0"
   characters:
     dependency: transitive
     description:
@@ -65,6 +73,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  custom_zoom_widget:
+    dependency: "direct main"
+    description:
+      name: custom_zoom_widget
+      sha256: "24416750afd276a04df42b6231dc513031a10ec1baf00fbc30e5287962fe444d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -126,6 +142,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.1"
+  flutter_easy_animations:
+    dependency: "direct main"
+    description:
+      name: flutter_easy_animations
+      sha256: "86cea94c1d1b9e3d7dcbd94fd7e9d772ae6cd7c54ad4f0d9681ca6cd25bd4b2f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   flutter_icon_snackbar:
     dependency: "direct main"
     description:
@@ -288,6 +312,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  page_transition:
+    dependency: "direct main"
+    description:
+      name: page_transition
+      sha256: dee976b1f23de9bbef5cd512fe567e9f6278caee11f5eaca9a2115c19dc49ef6
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   path:
     dependency: transitive
     description:

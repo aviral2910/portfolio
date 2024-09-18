@@ -1,6 +1,6 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
-import 'package:aviralportfolio/widgets/headingCard.dart';
+import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +17,8 @@ class Testimonial extends StatefulWidget {
   State<Testimonial> createState() => _TestimonialState();
 }
 
+final testimonialPositionKey = GlobalKey();
+
 class _TestimonialState extends State<Testimonial> {
   RenderBox? box;
   double? y;
@@ -26,7 +28,8 @@ class _TestimonialState extends State<Testimonial> {
     // TODO: implement initState
     super.initState();
     widget.scrollController.addListener(() {
-      box ??= positionKey.currentContext!.findRenderObject() as RenderBox;
+      box ??= testimonialPositionKey.currentContext!.findRenderObject()
+          as RenderBox;
       position = box!.localToGlobal(Offset.zero); //this is global position
 
       if (position!.dy < widget.height * .6) {
@@ -71,14 +74,13 @@ class _TestimonialState extends State<Testimonial> {
   ];
   int selectedIndex = 0;
 
-  final positionKey = GlobalKey();
   bool changeAppBar = false;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return SizedBox(
-      key: positionKey,
+      key: testimonialPositionKey,
       width: w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -48,6 +48,13 @@ dependencies:
   highlight_text: ^1.7.0
   flutter_color_picker_wheel: ^0.0.1
   flutter_circular_text: ^0.3.1
+  custom_zoom_widget: ^0.0.3
+  page_transition: ^2.1.0
+  flutter_easy_animations: ^0.0.2
+  carousel_slider: ^5.0.0
+
+  
+
 
 
 

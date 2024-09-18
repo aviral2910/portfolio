@@ -1,4 +1,5 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/DialogService.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -131,6 +132,7 @@ class CustomSkillShadowCard extends StatefulWidget {
 
 class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
   bool ishover = false;
+  GlobalKey buttonKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -140,7 +142,32 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
         message: widget.name ?? "",
         preferBelow: false,
         child: InkWell(
-          onTap: widget.onTap ?? () {},
+          onTap: widget.onTap ??
+              () {
+                DialogService dialogService = DialogService();
+                dialogService.openCustomDialog(
+                    buttonKey,
+                    context,
+                    Container(
+                      width: 180,
+                      padding: const EdgeInsets.all(20),
+                      alignment: Alignment.center,
+                      child: const Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "Speech Bubble Dialog",
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Size(200, 150),
+                    ScrollController());
+              },
           onHover: (value) {
             setState(() {
               ishover = value;
@@ -149,6 +176,7 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
           child: Align(
             alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
             child: AnimatedContainer(
+              key: buttonKey,
               duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
                   boxShadow: [

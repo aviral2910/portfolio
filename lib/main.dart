@@ -1,6 +1,8 @@
+import 'package:aviralportfolio/pages/caseStudy.dart';
 import 'package:aviralportfolio/pages/homePage.dart';
 import 'package:aviralportfolio/provider/mousePointer.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
+import 'package:custom_zoom_widget/custom_zoom_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,7 +39,8 @@ class MyApp extends StatelessWidget {
       //   primarySwatch: Colors.blue,
       // ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      // home: CustomZoomWidget(maxScale: 1, child: CaseStudy()),
+      home: CustomZoomWidget(maxScale: 2, child: HomePage()),
     );
   }
 }

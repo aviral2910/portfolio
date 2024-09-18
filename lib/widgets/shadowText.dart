@@ -1,4 +1,4 @@
-import 'package:aviralportfolio/global.dart';
+import 'package:aviralportfolio/common/global.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
@@ -12,12 +12,16 @@ class ShadowText extends StatefulWidget {
       {super.key,
       required this.fontSize,
       required this.color,
+      this.onTap,
+      this.textAlign,
       required this.fontWeight});
 
   Color color;
   FontWeight? fontWeight;
   double? fontSize;
   final String data;
+  void Function()? onTap;
+  TextAlign? textAlign;
   // final TextStyle style;
 
   @override
@@ -29,7 +33,7 @@ class _ShadowTextState extends State<ShadowText> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: widget.onTap ?? () {},
       onHover: (value) {
         setState(() {
           isHover = value;
@@ -43,7 +47,7 @@ class _ShadowTextState extends State<ShadowText> {
               left: 2.0,
               child: Text(
                 widget.data,
-                textAlign: TextAlign.left,
+                textAlign: widget.textAlign ?? TextAlign.left,
                 style: GoogleFonts.titilliumWeb(
                         fontWeight: widget.fontWeight,
                         fontSize: widget.fontSize,
@@ -56,7 +60,7 @@ class _ShadowTextState extends State<ShadowText> {
             BackdropFilter(
               filter: ui.ImageFilter.blur(sigmaX: .01, sigmaY: .01),
               child: Text(widget.data,
-                  textAlign: TextAlign.left,
+                  textAlign: widget.textAlign ?? TextAlign.left,
                   style: GoogleFonts.titilliumWeb(
                       fontWeight: widget.fontWeight,
                       fontSize: widget.fontSize,
