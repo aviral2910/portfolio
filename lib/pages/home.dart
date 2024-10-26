@@ -59,7 +59,7 @@ class _HomeState extends State<Home> {
                         image: DecorationImage(
                             alignment: Alignment.topCenter,
                             image:
-                                AssetImage("assets/images/aviraldark1.png"))),
+                                AssetImage("assets/images/aviraldark1.webp"))),
                     constraints: const BoxConstraints(
                       minHeight: 600,
                     ),
@@ -104,7 +104,7 @@ class _HomeState extends State<Home> {
                                 },
                                 height: 45,
                                 width: 45,
-                                image: "assets/images/gmail.png",
+                                image: "assets/images/gmail.webp",
                               ),
                               const SizedBox(
                                 width: 20,
@@ -117,7 +117,7 @@ class _HomeState extends State<Home> {
                                 },
                                 height: 45,
                                 width: 45,
-                                image: "assets/images/linkedin.png",
+                                image: "assets/images/linkedin.webp",
                               ),
                               const SizedBox(
                                 width: 20,
@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                                 },
                                 height: 45,
                                 width: 45,
-                                image: "assets/images/github.png",
+                                image: "assets/images/github.webp",
                               ),
                               const SizedBox(
                                 width: 20,
@@ -143,7 +143,7 @@ class _HomeState extends State<Home> {
                                 },
                                 height: 45,
                                 width: 45,
-                                image: "assets/images/telephone.png",
+                                image: "assets/images/telephone.webp",
                               ),
                               const SizedBox(
                                 width: 20,
@@ -156,7 +156,7 @@ class _HomeState extends State<Home> {
                                 },
                                 height: 45,
                                 width: 45,
-                                image: "assets/images/resume.png",
+                                image: "assets/images/resume.webp",
                               )
                             ],
                           ),
@@ -178,7 +178,7 @@ class _HomeState extends State<Home> {
                     enableWebMouseHover: true,
                     shakeConstant: ShakeHardConstant2(),
                     child: Image.asset(
-                      "assets/images/arrow.png",
+                      "assets/images/arrow.webp",
                       height: 25,
                       width: 25,
                       color: Provider.of<ThemeProvider>(context).getThemeColor,
@@ -214,7 +214,7 @@ class _HomeState extends State<Home> {
                               image: DecorationImage(
                             alignment: Alignment.centerRight,
                             image: AssetImage(
-                              "assets/images/aviral.png",
+                              "assets/images/aviral.webp",
                             ),
                             fit: BoxFit.fitHeight,
                           )),
@@ -294,7 +294,7 @@ class _HomeState extends State<Home> {
                                         },
                                         height: 70,
                                         width: 70,
-                                        image: "assets/images/gmail.png",
+                                        image: "assets/images/gmail.webp",
                                       ),
                                       const SizedBox(
                                         width: 20,
@@ -307,7 +307,7 @@ class _HomeState extends State<Home> {
                                         },
                                         height: 70,
                                         width: 70,
-                                        image: "assets/images/linkedin.png",
+                                        image: "assets/images/linkedin.webp",
                                       ),
                                       const SizedBox(
                                         width: 20,
@@ -320,7 +320,7 @@ class _HomeState extends State<Home> {
                                         },
                                         height: 70,
                                         width: 70,
-                                        image: "assets/images/github.png",
+                                        image: "assets/images/github.webp",
                                       ),
                                       const SizedBox(
                                         width: 20,
@@ -333,7 +333,7 @@ class _HomeState extends State<Home> {
                                         },
                                         height: 70,
                                         width: 70,
-                                        image: "assets/images/telephone.png",
+                                        image: "assets/images/telephone.webp",
                                       ),
                                       const SizedBox(
                                         width: 20,
@@ -352,7 +352,7 @@ class _HomeState extends State<Home> {
                                         },
                                         height: 70,
                                         width: 70,
-                                        image: "assets/images/resume.png",
+                                        image: "assets/images/resume.webp",
                                       )
                                     ],
                                   )
@@ -393,7 +393,7 @@ class _HomeState extends State<Home> {
                       //               width: 80,
                       //               child: Center(
                       //                 child: Image.asset(
-                      //                   "assets/images/gmail.png",
+                      //                   "assets/images/gmail.webp",
                       //                   height: 25,
                       //                   width: 25,
                       //                 ),
@@ -407,7 +407,7 @@ class _HomeState extends State<Home> {
                       //               width: 80,
                       //               child: Center(
                       //                 child: Image.asset(
-                      //                   "assets/images/linkedin.png",
+                      //                   "assets/images/linkedin.webp",
                       //                   height: 25,
                       //                   width: 25,
                       //                 ),
@@ -421,7 +421,7 @@ class _HomeState extends State<Home> {
                       //               width: 80,
                       //               child: Center(
                       //                 child: Image.asset(
-                      //                   "assets/images/github.png",
+                      //                   "assets/images/github.webp",
                       //                   height: 25,
                       //                   width: 25,
                       //                 ),
@@ -449,7 +449,7 @@ class _HomeState extends State<Home> {
                     enableWebMouseHover: true,
                     shakeConstant: ShakeHardConstant2(),
                     child: Image.asset(
-                      "assets/images/arrow.png",
+                      "assets/images/arrow.webp",
                       height: 45,
                       width: 45,
                       color: Provider.of<ThemeProvider>(context).getThemeColor,

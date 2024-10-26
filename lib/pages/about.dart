@@ -71,7 +71,7 @@ class _AboutState extends State<About> {
                           height: changeAppBar ? 60 : 90,
                         ),
                         HeadingCard(
-                          icon: "assets/images/profile.png",
+                          icon: "assets/images/profile.webp",
                           text: "ABOUT",
                         ),
                         AnimatedContainer(
@@ -217,7 +217,7 @@ class _AboutState extends State<About> {
                           //   height: changeAppBar ? 0 : h * .2,
                           // ),
                           HeadingCard(
-                            icon: "assets/images/profile.png",
+                            icon: "assets/images/profile.webp",
                             text: "ABOUT",
                           ),
                           AnimatedContainer(

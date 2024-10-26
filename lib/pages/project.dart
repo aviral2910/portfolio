@@ -77,7 +77,7 @@ class _ProjectState extends State<Project> {
             height: changeAppBar ? h * .1 : h * .2,
           ),
           HeadingCard(
-            icon: "assets/images/project.png",
+            icon: "assets/images/project.webp",
             text: "PROJECTS",
           ),
           AnimatedContainer(
@@ -378,7 +378,7 @@ class ProjectTextCard extends StatelessWidget {
                             width: 50,
                             name: "Play Store",
                             radius: 50,
-                            image: "assets/images/playstore.png",
+                            image: "assets/images/playstore.webp",
                           ),
                         ),
                       if (Provider.of<ProjectListProvider>(context)
@@ -398,7 +398,7 @@ class ProjectTextCard extends StatelessWidget {
                             name: "Live Link",
                             width: 50,
                             radius: 50,
-                            image: "assets/images/link.png",
+                            image: "assets/images/link.webp",
                           ),
                         ),
 
@@ -419,7 +419,7 @@ class ProjectTextCard extends StatelessWidget {
                             name: "App Store",
                             width: 50,
                             radius: 50,
-                            image: "assets/images/appstore.png",
+                            image: "assets/images/appstore.webp",
                           ),
                         ),
 
@@ -674,7 +674,7 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                             //               MainAxisAlignment.center,
                             //           children: [
                             //             Image.asset(
-                            //               "assets/images/case2.png",
+                            //               "assets/images/case2.webp",
                             //               height: 60,
                             //               width: 60,
                             //             ),

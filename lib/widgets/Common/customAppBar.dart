@@ -88,7 +88,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                 .getThemeColor
                                 .withOpacity(.7),
                             child: Image.asset(
-                              "assets/images/aviraldp.png",
+                              "assets/images/aviraldp.webp",
                               height: 50,
                               width: 50,
                             ),
@@ -159,7 +159,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                         .getThemeColor
                                         .withOpacity(.7),
                                     child: Image.asset(
-                                      "assets/images/aviraldp.png",
+                                      "assets/images/aviraldp.webp",
                                     )),
                                 const SizedBox(
                                   width: 10,
@@ -256,7 +256,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                       .getThemeColor
                                       .withOpacity(.7),
                                   child: Image.asset(
-                                      "assets/images/aviraldp.png")),
+                                      "assets/images/aviraldp.webp")),
                               const SizedBox(
                                 width: 10,
                               ),

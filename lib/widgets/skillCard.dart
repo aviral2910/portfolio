@@ -166,7 +166,7 @@ class Others extends StatelessWidget {
                             ["image"] ==
                         ""
                     ? ""
-                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.png",
+                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.webp",
                 imagWidth: 35,
                 imageHieght: 35,
                 experienceLevel: Provider.of<SkillListProvider>(context)
@@ -179,7 +179,7 @@ class Others extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/adobexd.png",
+          //   image: "assets/images/adobexd.webp",
           //   imagWidth: 35,
           //   imageHieght: 35,
           //   text: "Adobe Xd",
@@ -189,7 +189,7 @@ class Others extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/firebase.png",
+          //   image: "assets/images/firebase.webp",
           //   imagWidth: 35,
           //   imageHieght: 35,
           //   text: "Firebase",
@@ -199,7 +199,7 @@ class Others extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/figma.png",
+          //   image: "assets/images/figma.webp",
           //   imagWidth: 35,
           //   imageHieght: 35,
           //   text: "Figma",
@@ -229,7 +229,7 @@ class Others extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/block.png",
+          //   image: "assets/images/block.webp",
           //   experienceLevel: "Medium",
           //   imagWidth: 30,
           //   imageHieght: 30,
@@ -272,7 +272,7 @@ class Framework extends StatelessWidget {
                             ["image"] ==
                         ""
                     ? ""
-                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.png",
+                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.webp",
                 imagWidth: 35,
                 imageHieght: 35,
                 experienceLevel: Provider.of<SkillListProvider>(context)
@@ -285,7 +285,7 @@ class Framework extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/flutter.png",
+          //   image: "assets/images/flutter.webp",
           //   experienceLevel: "Advanced",
           //   imagWidth: 35,
           //   imageHieght: 35,
@@ -295,7 +295,7 @@ class Framework extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/react.png",
+          //   image: "assets/images/react.webp",
           //   experienceLevel: "Beginner",
           //   imagWidth: 40,
           //   imageHieght: 40,
@@ -305,7 +305,7 @@ class Framework extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/springboot.png",
+          //   image: "assets/images/springboot.webp",
           //   imagWidth: 25,
           //   imageHieght: 25,
           //   experienceLevel: "Medium",
@@ -315,7 +315,7 @@ class Framework extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/django.png",
+          //   image: "assets/images/django.webp",
           //   imagWidth: 30,
           //   imageHieght: 30,
           //   experienceLevel: "Beginner",
@@ -325,7 +325,7 @@ class Framework extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/flask.png",
+          //   image: "assets/images/flask.webp",
           //   experienceLevel: "Beginner",
           //   imageHieght: 30,
           //   imagWidth: 30,
@@ -335,7 +335,7 @@ class Framework extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/website.png",
+          //   image: "assets/images/website.webp",
           //   imagWidth: 30,
           //   imageHieght: 30,
           //   experienceLevel: "Beginner",
@@ -378,7 +378,7 @@ class Languages extends StatelessWidget {
                             ["image"] ==
                         ""
                     ? ""
-                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.png",
+                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.webp",
                 imagWidth: 35,
                 imageHieght: 35,
                 experienceLevel: Provider.of<SkillListProvider>(context)
@@ -391,7 +391,7 @@ class Languages extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/dart.png",
+          //   image: "assets/images/dart.webp",
           //   experienceLevel: "Advanced",
           //   imagWidth: 35,
           //   imageHieght: 35,
@@ -401,7 +401,7 @@ class Languages extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/java.png",
+          //   image: "assets/images/java.webp",
           //   experienceLevel: "Medium",
           //   imagWidth: 40,
           //   imageHieght: 40,
@@ -411,7 +411,7 @@ class Languages extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/python.png",
+          //   image: "assets/images/python.webp",
           //   experienceLevel: "Medium",
           //   imagWidth: 30,
           //   imageHieght: 30,
@@ -421,7 +421,7 @@ class Languages extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/sql.png",
+          //   image: "assets/images/sql.webp",
           //   experienceLevel: "Medium",
           //   imagWidth: 30,
           //   imageHieght: 30,
@@ -431,7 +431,7 @@ class Languages extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/html5.png",
+          //   image: "assets/images/html5.webp",
           //   experienceLevel: "Medium",
           //   imageHieght: 30,
           //   imagWidth: 30,
@@ -441,7 +441,7 @@ class Languages extends StatelessWidget {
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
-          //   image: "assets/images/css.png",
+          //   image: "assets/images/css.webp",
           //   experienceLevel: "Medium",
           //   imagWidth: 30,
           //   imageHieght: 30,

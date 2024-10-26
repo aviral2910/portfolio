@@ -59,7 +59,7 @@ class _CaseStudyState extends State<CaseStudy> {
                 Row(
                   children: [
                     Image.asset(
-                      "assets/images/case2.png",
+                      "assets/images/case2.webp",
                       height: 40,
                       width: 40,
                     ),
@@ -139,7 +139,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                   Column(
                                     children: [
                                       Image.asset(
-                                        "assets/images/klc.png",
+                                        "assets/images/klc.webp",
                                         height: 100,
                                         width: 100,
                                       ),
@@ -169,7 +169,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                                 name: "Play Store",
                                                 radius: 50,
                                                 image:
-                                                    "assets/images/playstore.png",
+                                                    "assets/images/playstore.webp",
                                               ),
                                               const SizedBox(
                                                 width: 10,
@@ -180,7 +180,8 @@ class _CaseStudyState extends State<CaseStudy> {
                                                 name: "Live Link",
                                                 width: 50,
                                                 radius: 50,
-                                                image: "assets/images/link.png",
+                                                image:
+                                                    "assets/images/link.webp",
                                               ),
                                             ],
                                           ),
@@ -279,7 +280,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                           width: 50,
                                           radius: 50,
                                           image:
-                                              "assets/images/${gravity[i]}.png",
+                                              "assets/images/${gravity[i]}.webp",
                                         ),
                                     ],
                                   ),
@@ -336,7 +337,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                         Column(
                                           children: [
                                             Image.asset(
-                                              "assets/images/klc.png",
+                                              "assets/images/klc.webp",
                                               height: 100,
                                               width: 100,
                                             ),
@@ -367,7 +368,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                                       name: "Play Store",
                                                       radius: 50,
                                                       image:
-                                                          "assets/images/playstore.png",
+                                                          "assets/images/playstore.webp",
                                                     ),
                                                     const SizedBox(
                                                       width: 10,
@@ -379,7 +380,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                                       width: 50,
                                                       radius: 50,
                                                       image:
-                                                          "assets/images/link.png",
+                                                          "assets/images/link.webp",
                                                     ),
                                                   ],
                                                 ),
@@ -430,7 +431,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                             width: 50,
                                             radius: 50,
                                             image:
-                                                "assets/images/${gravity[i]}.png",
+                                                "assets/images/${gravity[i]}.webp",
                                           ),
                                       ],
                                     ),
@@ -663,7 +664,7 @@ class _AnimatedArrowState extends State<AnimatedArrow>
           child: AnimateStyles.shakeY(
             _controller,
             Image.asset(
-              "assets/images/arrow.png",
+              "assets/images/arrow.webp",
               height: 35,
               width: 35,
               color: Provider.of<ThemeProvider>(context).getThemeColor,
@@ -752,7 +753,7 @@ class _WebsiteScreenCardState extends State<WebsiteScreenCard> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(2),
               child: Image.asset(
-                "assets/images/shubham.png",
+                "assets/images/shubham.webp",
                 fit: BoxFit.fill,
               ),
             ),
@@ -863,7 +864,7 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.asset(
-                "assets/images/s1.png",
+                "assets/images/s1.webp",
                 fit: BoxFit.fill,
               ),
             ),
@@ -892,7 +893,7 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
 //                           crossAxisAlignment: CrossAxisAlignment.center,
 //                           children: [
 //                             Image.asset(
-//                               "assets/images/klc.png",
+//                               "assets/images/klc.webp",
 //                               height: 100,
 //                               width: 100,
 //                             ),
@@ -919,7 +920,7 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
 //                                       width: 50,
 //                                       name: "Play Store",
 //                                       radius: 50,
-//                                       image: "assets/images/playstore.png",
+//                                       image: "assets/images/playstore.webp",
 //                                     ),
 //                                     const SizedBox(
 //                                       width: 10,
@@ -930,7 +931,7 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
 //                                       name: "Live Link",
 //                                       width: 50,
 //                                       radius: 50,
-//                                       image: "assets/images/link.png",
+//                                       image: "assets/images/link.webp",
 //                                     ),
 //                                   ],
 //                                 ),

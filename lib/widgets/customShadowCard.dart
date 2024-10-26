@@ -261,7 +261,7 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
                                     fontWeight: FontWeight.w500),
                               )
                             : Image.asset(
-                                "assets/images/${data.first["image"].toString()}.png",
+                                "assets/images/${data.first["image"].toString()}.webp",
                                 color: ishover
                                     ? Provider.of<ThemeProvider>(context)
                                         .getThemeColor

@@ -73,7 +73,7 @@ class _ContactState extends State<Contact> {
             height: changeAppBar ? h * .1 : h * .15,
           ),
           HeadingCard(
-            icon: "assets/images/contact.png",
+            icon: "assets/images/contact.webp",
             text: "CONTACT",
           ),
           AnimatedContainer(

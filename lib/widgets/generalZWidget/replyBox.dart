@@ -62,7 +62,7 @@ class NormalReplyByGeneralZ extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: Image.asset(
-            "assets/images/generalz.png",
+            "assets/images/generalz.webp",
             height: 39,
             width: 39,
           ),
@@ -204,7 +204,7 @@ class GeneralZFirstReply extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: Image.asset(
-            "assets/images/generalz.png",
+            "assets/images/generalz.webp",
             height: 39,
             width: 39,
           ),

@@ -77,7 +77,7 @@ class _TestimonialState extends State<Testimonial> {
             height: changeAppBar ? h * .1 : h * .2,
           ),
           HeadingCard(
-            icon: "assets/images/testimonial.png",
+            icon: "assets/images/testimonial.webp",
             text: "TESTIMONIAL",
           ),
           AnimatedContainer(
@@ -248,7 +248,7 @@ class _TestimonialState extends State<Testimonial> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Image.asset(
-                                    "assets/images/qmark.png",
+                                    "assets/images/qmark.webp",
                                     color: Colors.white30,
                                   ),
                                   Row(
@@ -565,7 +565,7 @@ class _TestimonialTextState extends State<TestimonialText> {
                 },
                 height: 60,
                 width: 60,
-                image: "assets/images/linkedin.png",
+                image: "assets/images/linkedin.webp",
               ),
               // child: InkWell(
               //   onTap: () {
@@ -589,7 +589,7 @@ class _TestimonialTextState extends State<TestimonialText> {
               //         borderRadius: BorderRadius.circular(4)),
               //     child: Center(
               //       child: Image.asset(
-              //         "assets/images/linkedin.png",
+              //         "assets/images/linkedin.webp",
               //         width: 20,
               //         height: 20,
               //       ),

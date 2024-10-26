@@ -607,7 +607,7 @@ class DesktopExperience extends StatelessWidget {
                         //                   height: 50,
                         //                   width: 50,
                         //                   radius: 50,
-                        //                   image: "assets/images/${jss[i]}.png",
+                        //                   image: "assets/images/${jss[i]}.webp",
                         //                 ),
                         //             ],
                         //           ),
