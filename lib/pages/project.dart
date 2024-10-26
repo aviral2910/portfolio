@@ -1,17 +1,15 @@
 import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/pages/caseStudy.dart';
-import 'package:aviralportfolio/pages/contact.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/service/FIrebaseService.dart';
-import 'package:aviralportfolio/widgets/ProjectWidget/caseStudyButton.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
+
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -144,17 +142,10 @@ class _ProjectCardState extends State<ProjectCard> {
               ? Column(
                   children: [
                     ProjectImageCard(
-                      heading: Provider.of<ProjectListProvider>(context)
-                          .getprojectList[widget.index]["name"],
-                      w: widget.w,
-                      image: Provider.of<ProjectListProvider>(context)
-                              .getprojectList[widget.index]["snapDesktop"]
-                              .isEmpty
-                          ? Provider.of<ProjectListProvider>(context)
-                              .getprojectList[widget.index]["snapIA"][0]
-                          : Provider.of<ProjectListProvider>(context)
-                              .getprojectList[widget.index]["snapDesktop"][0],
-                    ),
+                        heading: Provider.of<ProjectListProvider>(context)
+                            .getprojectList[widget.index]["name"],
+                        w: widget.w,
+                        index: widget.index),
                     const SizedBox(
                       height: 20,
                     ),
@@ -182,14 +173,7 @@ class _ProjectCardState extends State<ProjectCard> {
                             heading: Provider.of<ProjectListProvider>(context)
                                 .getprojectList[widget.index]["name"],
                             w: widget.w,
-                            image: Provider.of<ProjectListProvider>(context)
-                                    .getprojectList[widget.index]["snapDesktop"]
-                                    .isEmpty
-                                ? Provider.of<ProjectListProvider>(context)
-                                    .getprojectList[widget.index]["snapIA"][0]
-                                : Provider.of<ProjectListProvider>(context)
-                                        .getprojectList[widget.index]
-                                    ["snapDesktop"][0],
+                            index: widget.index,
                           ),
                         ),
                       ),
@@ -227,14 +211,15 @@ class _ProjectCardState extends State<ProjectCard> {
                             heading: Provider.of<ProjectListProvider>(context)
                                 .getprojectList[widget.index]["name"],
                             w: widget.w,
-                            image: Provider.of<ProjectListProvider>(context)
-                                    .getprojectList[widget.index]["snapDesktop"]
-                                    .isEmpty
-                                ? Provider.of<ProjectListProvider>(context)
-                                    .getprojectList[widget.index]["snapIA"][0]
-                                : Provider.of<ProjectListProvider>(context)
-                                        .getprojectList[widget.index]
-                                    ["snapDesktop"][0],
+                            index: widget.index,
+                            // image: Provider.of<ProjectListProvider>(context)
+                            //         .getprojectList[widget.index]["snapDesktop"]
+                            //         .isEmpty
+                            //     ? Provider.of<ProjectListProvider>(context)
+                            //         .getprojectList[widget.index]["snapIA"][0]
+                            //     : Provider.of<ProjectListProvider>(context)
+                            //             .getprojectList[widget.index]
+                            //         ["snapDesktop"][0],
                           ),
                         ),
                       ),
@@ -566,9 +551,9 @@ class _ProjectIlluminatedTextCardState
 
 class ProjectImageCard extends StatefulWidget {
   ProjectImageCard(
-      {Key? key, required this.w, required this.image, required this.heading})
+      {Key? key, required this.w, required this.index, required this.heading})
       : super(key: key);
-  String image;
+  int index;
   String heading;
   double w;
 
@@ -580,6 +565,7 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
   bool ishover = false;
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -596,114 +582,246 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
         InkWell(
           onTap: () {},
           onHover: (value) {
-            setState(() {
-              ishover = value;
-            });
+            // setState(() {
+            //   ishover = value;
+            // });
           },
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 200),
-            // width: widget.w,
-            padding: EdgeInsets.only(
-                left: widget.w < mobileSize ? 10 : 20,
-                right: widget.w < mobileSize ? 10 : 20,
-                top: widget.w < mobileSize ? 10 : 20,
-                bottom: widget.w < mobileSize ? 10 : 20),
-            decoration: BoxDecoration(
-                color: darkthemeColor,
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 4,
-                      offset: Offset(-6, -6),
-                      color: ishover
-                          ? Provider.of<ThemeProvider>(context)
-                              .getThemeColor
-                              .withOpacity(.4)
-                          : Color.fromARGB(220, 32, 32, 32)),
-                  BoxShadow(
-                      blurRadius: 5,
-                      offset: Offset(6, 6),
-                      color: ishover
-                          ? Provider.of<ThemeProvider>(context)
-                              .getThemeColor
-                              .withOpacity(.4)
-                          : Color.fromARGB(220, 15, 15, 15))
-                ],
-                borderRadius: BorderRadius.circular(10)),
+          child: Stack(
+            children: [
+              AnimatedContainer(
+                duration: Duration(milliseconds: 200),
+                // width: widget.w,
+                // padding: EdgeInsets.only(
+                //     left: widget.w < mobileSize ? 10 : 20,
+                //     right: widget.w < mobileSize ? 10 : 20,
+                //     top: widget.w < mobileSize ? 10 : 20,
+                //     bottom: widget.w < mobileSize ? 10 : 20),
+                decoration: BoxDecoration(
+                    color: darkthemeColor,
+                    boxShadow: [
+                      BoxShadow(
+                          blurRadius: 4,
+                          offset: Offset(-6, -6),
+                          color: ishover
+                              ? Provider.of<ThemeProvider>(context)
+                                  .getThemeColor
+                                  .withOpacity(.4)
+                              : Color.fromARGB(220, 32, 32, 32)),
+                      BoxShadow(
+                          blurRadius: 5,
+                          offset: Offset(6, 6),
+                          color: ishover
+                              ? Provider.of<ThemeProvider>(context)
+                                  .getThemeColor
+                                  .withOpacity(.4)
+                              : Color.fromARGB(220, 15, 15, 15))
+                    ],
+                    borderRadius: BorderRadius.circular(10)),
 
-            constraints: const BoxConstraints(
-              maxWidth: 900,
-            ),
+                constraints: const BoxConstraints(
+                  maxWidth: 900,
+                ),
 
-            child: Center(
-              child: Container(
-                decoration: !ishover
-                    ? const BoxDecoration()
-                    : BoxDecoration(
-                        boxShadow: const [
-                            BoxShadow(
-                                blurRadius: 3,
-                                offset: Offset(-3, -3),
-                                color: Color.fromARGB(255, 12, 12, 12)),
-                            BoxShadow(
-                                blurRadius: 2,
-                                offset: Offset(3, 3),
-                                color: Color.fromARGB(255, 32, 32, 32))
-                          ],
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 19, 19, 19))),
                 child: Center(
-                  child: (widget.w >= mobileSize)
-                      ? Stack(
-                          children: [
-                            Image.network(
-                              widget.image.toString(),
-                              height: widget.w < mobileSize ? 230 : 450,
-                              fit: BoxFit.fill,
-                            ),
-                            // Positioned(
-                            //     child: AnimatedContainer(
-                            //   duration: const Duration(milliseconds: 400),
-                            //   color: ishover
-                            //       ? Color.fromARGB(218, 20, 20, 20)
-                            //       : Colors.transparent,
-                            //   height: widget.w < mobileSize ? 230 : 450,
-                            //   width: 1000,
-                            //   child: ishover
-                            //       ? Column(
-                            //           mainAxisAlignment:
-                            //               MainAxisAlignment.center,
-                            //           children: [
-                            //             Image.asset(
-                            //               "assets/images/case2.webp",
-                            //               height: 60,
-                            //               width: 60,
-                            //             ),
-                            //             CaseStudyButton(
-                            //               onTap: () {
-                            //                 Navigator.push(
-                            //                     context,
-                            //                     PageTransition(
-                            //                         type:
-                            //                             PageTransitionType.fade,
-                            //                         child: CaseStudy()));
-                            //               },
-                            //               isHover: ishover,
-                            //               isLoading: false,
-                            //             )
-                            //           ],
-                            //         )
-                            //       : null,
-                            // ))
-                          ],
-                        )
-                      : Image.network(
-                          widget.image.toString(),
-                          height: widget.w < mobileSize ? 230 : 450,
-                          fit: BoxFit.fill,
+                  child: Container(
+                    decoration: !ishover
+                        ? const BoxDecoration()
+                        : BoxDecoration(
+                            // boxShadow: const [
+                            //     BoxShadow(
+                            //         blurRadius: 3,
+                            //         offset: Offset(-3, -3),
+                            //         color: Color.fromARGB(255, 12, 12, 12)),
+                            //     BoxShadow(
+                            //         blurRadius: 2,
+                            //         offset: Offset(3, 3),
+                            //         color: Color.fromARGB(255, 32, 32, 32))
+                            //   ],
+                            border: Border.all(
+                                color: const Color.fromARGB(255, 19, 19, 19))),
+                    child: Center(
+                        child:
+                            //  (widget.w >= mobileSize)
+                            //     ? Stack(
+                            //         children: [
+                            //           Image.network(
+                            //             "",
+                            //             // widget.image.toString(),
+                            //             height: widget.w < mobileSize ? 230 : 450,
+                            //             fit: BoxFit.fill,
+                            //           ),
+                            //           // Positioned(
+                            //           //     child: AnimatedContainer(
+                            //           //   duration: const Duration(milliseconds: 400),
+                            //           //   color: ishover
+                            //           //       ? Color.fromARGB(218, 20, 20, 20)
+                            //           //       : Colors.transparent,
+                            //           //   height: widget.w < mobileSize ? 230 : 450,
+                            //           //   width: 1000,
+                            //           //   child: ishover
+                            //           //       ? Column(
+                            //           //           mainAxisAlignment:
+                            //           //               MainAxisAlignment.center,
+                            //           //           children: [
+                            //           //             Image.asset(
+                            //           //               "assets/images/case2.webp",
+                            //           //               height: 60,
+                            //           //               width: 60,
+                            //           //             ),
+                            //           //             CaseStudyButton(
+                            //           //               onTap: () {
+                            //           //                 Navigator.push(
+                            //           //                     context,
+                            //           //                     PageTransition(
+                            //           //                         type:
+                            //           //                             PageTransitionType.fade,
+                            //           //                         child: CaseStudy()));
+                            //           //               },
+                            //           //               isHover: ishover,
+                            //           //               isLoading: false,
+                            //           //             )
+                            //           //           ],
+                            //           //         )
+                            //           //       : null,
+                            //           // ))
+                            //         ],
+                            //       )
+                            // :
+                            Provider.of<ProjectListProvider>(context)
+                                    .getprojectList[widget.index]["snapDesktop"]
+                                    .isEmpty
+                                ? SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: [
+                                        for (int i = 0;
+                                            i <
+                                                Provider.of<ProjectListProvider>(
+                                                        context)
+                                                    .getprojectList[
+                                                        widget.index]["snapIA"]
+                                                    .length;
+                                            i++)
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 40.0),
+                                            child: SizedBox(
+                                              height: 460,
+                                              child: MobileScreenCard(
+                                                isHover: true,
+                                                image:
+                                                    Provider.of<ProjectListProvider>(
+                                                                    context)
+                                                                .getprojectList[
+                                                            widget.index]
+                                                        ["snapIA"][i],
+                                              ),
+                                            ),
+                                          )
+                                      ],
+                                    ),
+                                  )
+                                // Container(
+                                //     width: widget.w,
+                                //     // height: ,
+                                //     color: darkthemeColor,
+                                //     child: AbsorbPointer(
+                                //       absorbing: false,
+                                //       child: CarouselSlider(
+                                //         options: CarouselOptions(
+                                //           padEnds: true,
+                                //           // height: 1000,
+                                //           height: 460,
+                                //           // aspectRatio: 16 / 9,
+                                //           viewportFraction: 1,
+                                //           initialPage: 0,
+                                //           enableInfiniteScroll: false,
+                                //           reverse: false,
+                                //           autoPlay: false,
+                                //           autoPlayInterval:
+                                //               Duration(seconds: 4),
+                                //           autoPlayAnimationDuration:
+                                //               Duration(milliseconds: 800),
+                                //           autoPlayCurve: Curves.fastOutSlowIn,
+                                //           enlargeCenterPage: true,
+                                //           enlargeFactor: 0.3,
+                                //           scrollDirection: Axis.horizontal,
+                                //         ),
+                                //         items: Provider.of<ProjectListProvider>(
+                                //                 context)
+                                //             .getprojectList[widget.index]
+                                //                 ["snapIA"]
+                                //             .map<Widget>((i) {
+                                //           return Builder(
+                                //             builder: (BuildContext context) {
+                                //               return MobileScreenCard(
+                                //                 isHover: true,
+                                //                 image: i,
+                                //               );
+                                //             },
+                                //           );
+                                //         }).toList(),
+                                //       ),
+                                //     ))
+                                : Container(
+                                    width: widget.w,
+                                    // height: widget.h,
+                                    color: darkthemeColor,
+                                    child: AbsorbPointer(
+                                      absorbing: false,
+                                      child: CarouselSlider(
+                                        options: CarouselOptions(
+                                          padEnds: true,
+                                          // height: widget.w < mobileSize
+                                          //     ? widget.isWeb
+                                          //         ? null
+                                          //         : 460
+                                          // : widget.h < 670
+                                          //     ? widget.h
+                                          //     : null,
+                                          // height: widget.w < mobileSize ? null : 460,
+                                          aspectRatio: 16 / 9,
+                                          viewportFraction: 0.8,
+                                          initialPage: 0,
+                                          enableInfiniteScroll: false,
+                                          reverse: false,
+                                          autoPlay: false,
+                                          autoPlayInterval:
+                                              Duration(seconds: 3),
+                                          autoPlayAnimationDuration:
+                                              Duration(milliseconds: 800),
+                                          autoPlayCurve: Curves.fastOutSlowIn,
+                                          enlargeCenterPage: true,
+                                          enlargeFactor: 0.3,
+                                          scrollDirection: Axis.horizontal,
+                                        ),
+                                        items: Provider.of<ProjectListProvider>(
+                                                context)
+                                            .getprojectList[widget.index]
+                                                ["snapDesktop"]
+                                            .map<Widget>((i) {
+                                          return Builder(
+                                            builder: (BuildContext context) {
+                                              return WebsiteScreenCard(
+                                                isHover: true,
+                                                image: i,
+                                              );
+                                            },
+                                          );
+                                        }).toList(),
+                                      ),
+                                    ))
+                        //         Image.network(
+                        //             // widget.image.toString(),
+                        //             "",
+                        //             height: widget.w < mobileSize ? 230 : 450,
+                        //             fit: BoxFit.fill,
+                        //           ),
                         ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         ),
       ],

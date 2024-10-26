@@ -499,6 +499,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                               for (int i = 0; i < 10; i++)
                                                 MobileScreenCard(
                                                   isHover: true,
+                                                  image: "",
                                                 )
                                             ],
                                           ),
@@ -510,6 +511,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                               for (int i = 0; i < 10; i++)
                                                 MobileScreenCard(
                                                   isHover: true,
+                                                  image: "",
                                                 )
                                             ],
                                           ),
@@ -522,6 +524,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                                 for (int i = 0; i < 10; i++)
                                                   MobileScreenCard(
                                                     isHover: true,
+                                                    image: "",
                                                   )
                                               ],
                                             ),
@@ -610,8 +613,14 @@ class _WebsiteScreenState extends State<WebsiteScreen> {
                   return Builder(
                     builder: (BuildContext context) {
                       return widget.isWeb
-                          ? WebsiteScreenCard(isHover: true)
-                          : MobileScreenCard(isHover: true);
+                          ? WebsiteScreenCard(
+                              isHover: true,
+                              image: "",
+                            )
+                          : MobileScreenCard(
+                              isHover: true,
+                              image: "",
+                            );
                     },
                   );
                 }).toList(),
@@ -677,10 +686,8 @@ class _AnimatedArrowState extends State<AnimatedArrow>
 }
 
 class WebsiteScreenCard extends StatefulWidget {
-  WebsiteScreenCard({
-    super.key,
-    required this.isHover,
-  });
+  WebsiteScreenCard({super.key, required this.isHover, required this.image});
+  String image;
   bool isHover = true;
   @override
   State<WebsiteScreenCard> createState() => _WebsiteScreenCardState();
@@ -752,8 +759,8 @@ class _WebsiteScreenCardState extends State<WebsiteScreenCard> {
 
             child: ClipRRect(
               borderRadius: BorderRadius.circular(2),
-              child: Image.asset(
-                "assets/images/shubham.webp",
+              child: Image.network(
+                widget.image.toString(),
                 fit: BoxFit.fill,
               ),
             ),
@@ -765,10 +772,8 @@ class _WebsiteScreenCardState extends State<WebsiteScreenCard> {
 }
 
 class MobileScreenCard extends StatefulWidget {
-  MobileScreenCard({
-    super.key,
-    required this.isHover,
-  });
+  MobileScreenCard({super.key, required this.isHover, required this.image});
+  String image;
   bool isHover = true;
   @override
   State<MobileScreenCard> createState() => _MobileScreenCardState();
@@ -863,8 +868,8 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
             width: 200,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
-              child: Image.asset(
-                "assets/images/s1.webp",
+              child: Image.network(
+                widget.image,
                 fit: BoxFit.fill,
               ),
             ),

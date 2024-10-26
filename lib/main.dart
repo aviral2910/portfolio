@@ -1,3 +1,4 @@
+import 'package:aviralportfolio/pages/caseStudy.dart';
 import 'package:aviralportfolio/pages/homePage.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/mousePointer.dart';
