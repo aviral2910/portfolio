@@ -1,5 +1,5 @@
-import 'package:aviralportfolio/pages/caseStudy.dart';
 import 'package:aviralportfolio/pages/homePage.dart';
+import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/mousePointer.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:custom_zoom_widget/custom_zoom_widget.dart';
@@ -21,6 +21,10 @@ void main() async {
           measurementId: "G-FMLBRD030Z"));
   runApp(
     MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context) => TestimonialListProvider()),
+      ChangeNotifierProvider(create: (context) => ProjectListProvider()),
+      ChangeNotifierProvider(create: (context) => ExperinceListProvider()),
+      ChangeNotifierProvider(create: (context) => SkillListProvider()),
       ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ChangeNotifierProvider(create: (context) => SkillTypeProvider()),
       ChangeNotifierProvider(create: (context) => MousePointerProvider()),
@@ -40,7 +44,7 @@ class MyApp extends StatelessWidget {
       // ),
       debugShowCheckedModeBanner: false,
       // home: CustomZoomWidget(maxScale: 1, child: CaseStudy()),
-      home: CustomZoomWidget(maxScale: 2, child: HomePage()),
+      home: CustomZoomWidget(maxScale: 1, child: HomePage()),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:aviralportfolio/common/global.dart';
+import 'package:aviralportfolio/provider/DataProvider.dart';
+import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,7 @@ class _TestimonialState extends State<Testimonial> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    fetchTestimonial();
     widget.scrollController.addListener(() {
       box ??= testimonialPositionKey.currentContext!.findRenderObject()
           as RenderBox;
@@ -48,30 +51,13 @@ class _TestimonialState extends State<Testimonial> {
     });
   }
 
-  List<Map<String, String>> testimonial = [
-    {
-      "image": "assets/images/roshan.png",
-      "name": "Roshann Vadassery ",
-      "role": "Founder - Chief",
-      "companyName": "Permissionless",
-      "myRole": "Flutter Team Lead",
-      "words":
-          "Aviral is one of the most proficient flutter developers that I have worked with, his contributions in building krishn.ai is irreplaceable. Very good at co ordinating with multiple designers and product managers.",
-      "duration": "Jan 2022 - April 2023",
-      "linkdinlink": "https://www.linkedin.com/in/roshan-vadassery/",
-    },
-    {
-      "image": "assets/images/nishank.png",
-      "name": "Nishank Sidhpura",
-      "role": "Chief Technical Officer",
-      "companyName": "Permissionless",
-      "myRole": "Flutter Team Lead",
-      "words":
-          "Aviral is a really hard working person who doesn't stop until the task at hand is completed. Commendable critical thinking and fundamental knowledge. Makes him a no-brainer for any Mobile development projects.",
-      "duration": "Jan 2022 - April 2023",
-      "linkdinlink": "https://www.linkedin.com/in/nishank-s-8141aab5/",
-    }
-  ];
+  FirebaseService firebaseService = FirebaseService();
+
+  fetchTestimonial() async {
+    FirebaseService service = FirebaseService();
+    await service.fetchTestimonialData(context);
+  }
+
   int selectedIndex = 0;
 
   bool changeAppBar = false;
@@ -99,183 +85,234 @@ class _TestimonialState extends State<Testimonial> {
             curve: Curves.easeIn,
             height: changeAppBar ? 60 : 80,
           ),
-          if (w <= mobileSize)
-            SizedBox(
-              width: w,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      // top: 35,
-                      bottom: 20,
-                      left: w < mobileSize ? 20 : 35,
-                      right: w < mobileSize ? 20 : 35,
+          if (Provider.of<TestimonialListProvider>(context, listen: false)
+              .gettestimonial
+              .isNotEmpty)
+            if (w <= mobileSize)
+              SizedBox(
+                width: w,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        // top: 35,
+                        bottom: 20,
+                        left: w < mobileSize ? 20 : 35,
+                        right: w < mobileSize ? 20 : 35,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              ArrowButton(
+                                onTap: () {
+                                  if (selectedIndex > 0) {
+                                    setState(() {
+                                      selectedIndex--;
+                                    });
+                                  }
+                                },
+                                icon: Icons.arrow_back,
+                              ),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              ArrowButton(
+                                onTap: () {
+                                  if (selectedIndex <
+                                      Provider.of<TestimonialListProvider>(
+                                                  context,
+                                                  listen: false)
+                                              .gettestimonial
+                                              .length -
+                                          1) {
+                                    setState(() {
+                                      selectedIndex++;
+                                    });
+                                  }
+                                },
+                                icon: Icons.arrow_forward,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 15,
+                                width: 15,
+                                decoration: BoxDecoration(
+                                    color: selectedIndex == 0
+                                        ? Provider.of<ThemeProvider>(context)
+                                            .getThemeColor
+                                        : Colors.black,
+                                    borderRadius: BorderRadius.circular(20)),
+                              ),
+                              const SizedBox(
+                                width: 15,
+                              ),
+                              Container(
+                                height: 15,
+                                width: 15,
+                                decoration: BoxDecoration(
+                                    color: selectedIndex == 1
+                                        ? Provider.of<ThemeProvider>(context)
+                                            .getThemeColor
+                                        : Colors.black,
+                                    borderRadius: BorderRadius.circular(20)),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
+                    TestimonialCard(
+                      w: w,
+                      image: Provider.of<TestimonialListProvider>(
+                        context,
+                      ).gettestimonial[selectedIndex]["image"],
+                      name: Provider.of<TestimonialListProvider>(
+                        context,
+                      ).gettestimonial[selectedIndex]["name"],
+                      role: Provider.of<TestimonialListProvider>(
+                        context,
+                      ).gettestimonial[selectedIndex]["hisRole"],
+                      companyName: Provider.of<TestimonialListProvider>(
+                        context,
+                      ).gettestimonial[selectedIndex]["companyName"],
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: w < mobileSize ? 20 : 35,
+                        right: w < mobileSize ? 20 : 35,
+                      ),
+                      child: TestimonialText(
+                        w: w,
+                        myRole: Provider.of<TestimonialListProvider>(
+                          context,
+                        ).gettestimonial[selectedIndex]["myRole"],
+                        words: Provider.of<TestimonialListProvider>(
+                          context,
+                        ).gettestimonial[selectedIndex]["words"],
+                        duration: Provider.of<TestimonialListProvider>(
+                          context,
+                        ).gettestimonial[selectedIndex]["duration"],
+                        linkdinlink: Provider.of<TestimonialListProvider>(
+                          context,
+                        ).gettestimonial[selectedIndex]["hisLinkdin"],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          if (Provider.of<TestimonialListProvider>(context, listen: false)
+              .gettestimonial
+              .isNotEmpty)
+            if (w > mobileSize)
+              SizedBox(
+                width: w,
+                child: Center(
+                  child: Container(
+                    padding: const EdgeInsets.only(left: 25, right: 55),
+                    constraints: const BoxConstraints(maxWidth: 1400),
+                    // width: w < 1000 ? w * .89 : w * .8,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          children: [
-                            ArrowButton(
-                              onTap: () {
-                                if (selectedIndex > 0) {
-                                  setState(() {
-                                    selectedIndex--;
-                                  });
-                                }
-                              },
-                              icon: Icons.arrow_back,
-                            ),
-                            const SizedBox(
-                              width: 30,
-                            ),
-                            ArrowButton(
-                              onTap: () {
-                                if (selectedIndex < 1) {
-                                  setState(() {
-                                    selectedIndex++;
-                                  });
-                                }
-                              },
-                              icon: Icons.arrow_forward,
-                            ),
-                          ],
+                        TestimonialCard(
+                          w: w,
+                          image: Provider.of<TestimonialListProvider>(
+                            context,
+                          ).gettestimonial[selectedIndex]["image"],
+                          name: Provider.of<TestimonialListProvider>(
+                            context,
+                          ).gettestimonial[selectedIndex]["name"],
+                          role: Provider.of<TestimonialListProvider>(
+                            context,
+                          ).gettestimonial[selectedIndex]["hisRole"],
+                          companyName: Provider.of<TestimonialListProvider>(
+                            context,
+                          ).gettestimonial[selectedIndex]["companyName"],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 15,
-                              width: 15,
-                              decoration: BoxDecoration(
-                                  color: selectedIndex == 0
-                                      ? Provider.of<ThemeProvider>(context)
-                                          .getThemeColor
-                                      : Colors.black,
-                                  borderRadius: BorderRadius.circular(20)),
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            Container(
-                              height: 15,
-                              width: 15,
-                              decoration: BoxDecoration(
-                                  color: selectedIndex == 1
-                                      ? Provider.of<ThemeProvider>(context)
-                                          .getThemeColor
-                                      : Colors.black,
-                                  borderRadius: BorderRadius.circular(20)),
-                            ),
-                          ],
-                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/qmark.png",
+                                    color: Colors.white30,
+                                  ),
+                                  Row(
+                                    children: [
+                                      ArrowButton(
+                                        onTap: () {
+                                          if (selectedIndex > 0) {
+                                            setState(() {
+                                              selectedIndex--;
+                                            });
+                                          }
+                                        },
+                                        icon: Icons.arrow_back,
+                                      ),
+                                      const SizedBox(
+                                        width: 30,
+                                      ),
+                                      ArrowButton(
+                                        onTap: () {
+                                          if (selectedIndex <
+                                              Provider.of<TestimonialListProvider>(
+                                                          context,
+                                                          listen: false)
+                                                      .gettestimonial
+                                                      .length -
+                                                  1) {
+                                            setState(() {
+                                              selectedIndex++;
+                                            });
+                                          }
+                                        },
+                                        icon: Icons.arrow_forward,
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              TestimonialText(
+                                w: w,
+                                myRole: Provider.of<TestimonialListProvider>(
+                                  context,
+                                ).gettestimonial[selectedIndex]["myRole"],
+                                words: Provider.of<TestimonialListProvider>(
+                                  context,
+                                ).gettestimonial[selectedIndex]["words"],
+                                duration: Provider.of<TestimonialListProvider>(
+                                  context,
+                                ).gettestimonial[selectedIndex]["duration"],
+                                linkdinlink:
+                                    Provider.of<TestimonialListProvider>(
+                                  context,
+                                ).gettestimonial[selectedIndex]["hisLinkdin"],
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
-                  TestimonialCard(
-                    w: w,
-                    image: testimonial[selectedIndex]["image"],
-                    name: testimonial[selectedIndex]["name"],
-                    role: testimonial[selectedIndex]["role"],
-                    companyName: testimonial[selectedIndex]["companyName"],
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: w < mobileSize ? 20 : 35,
-                      right: w < mobileSize ? 20 : 35,
-                    ),
-                    child: TestimonialText(
-                      w: w,
-                      myRole: testimonial[selectedIndex]["myRole"],
-                      words: testimonial[selectedIndex]["words"],
-                      duration: testimonial[selectedIndex]["duration"],
-                      linkdinlink: testimonial[selectedIndex]["linkdinlink"],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          if (w > mobileSize)
-            SizedBox(
-              width: w,
-              child: Center(
-                child: Container(
-                  padding: const EdgeInsets.only(left: 25, right: 55),
-                  constraints: const BoxConstraints(maxWidth: 1400),
-                  // width: w < 1000 ? w * .89 : w * .8,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TestimonialCard(
-                        w: w,
-                        image: testimonial[selectedIndex]["image"],
-                        name: testimonial[selectedIndex]["name"],
-                        role: testimonial[selectedIndex]["role"],
-                        companyName: testimonial[selectedIndex]["companyName"],
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Image.asset(
-                                  "assets/images/qmark.png",
-                                  color: Colors.white30,
-                                ),
-                                Row(
-                                  children: [
-                                    ArrowButton(
-                                      onTap: () {
-                                        if (selectedIndex > 0) {
-                                          setState(() {
-                                            selectedIndex--;
-                                          });
-                                        }
-                                      },
-                                      icon: Icons.arrow_back,
-                                    ),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
-                                    ArrowButton(
-                                      onTap: () {
-                                        if (selectedIndex < 1) {
-                                          setState(() {
-                                            selectedIndex++;
-                                          });
-                                        }
-                                      },
-                                      icon: Icons.arrow_forward,
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            TestimonialText(
-                              w: w,
-                              myRole: testimonial[selectedIndex]["myRole"],
-                              words: testimonial[selectedIndex]["words"],
-                              duration: testimonial[selectedIndex]["duration"],
-                              linkdinlink: testimonial[selectedIndex]
-                                  ["linkdinlink"],
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
                 ),
               ),
-            ),
           if (w > mobileSize)
             const SizedBox(
               height: 50,
@@ -695,7 +732,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                             borderRadius: BorderRadius.circular(
                               !ishover ? 266 : 250,
                             )),
-                        child: Image.asset(
+                        child: Image.network(
                           widget.image.toString(),
                           width: !ishover ? 266 : 250,
                           height: !ishover ? 266 : 250,

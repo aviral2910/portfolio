@@ -1,6 +1,8 @@
 import 'package:aviralportfolio/common/DialogService.dart';
 import 'package:aviralportfolio/common/global.dart';
+import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +15,7 @@ class CustomShadowCard extends StatefulWidget {
       this.width,
       this.image,
       this.radius,
+      this.child,
       this.onTap})
       : super(key: key);
   double? width;
@@ -20,6 +23,7 @@ class CustomShadowCard extends StatefulWidget {
   String? image;
   String? name;
   double? radius;
+  Widget? child;
   void Function()? onTap;
   @override
   State<CustomShadowCard> createState() => _CustomShadowCardState();
@@ -84,22 +88,23 @@ class _CustomShadowCardState extends State<CustomShadowCard> {
               height: widget.height! - 3,
               width: widget.width! - 3,
               child: Center(
-                child: Image.asset(
-                  widget.image.toString(),
-                  color: ishover
-                      ? Provider.of<ThemeProvider>(context).getThemeColor
-                      : Colors.white,
-                  height: w < mobileSize
-                      ? 15
-                      : widget.radius == null
-                          ? 25
-                          : 15,
-                  width: w < mobileSize
-                      ? 15
-                      : widget.radius == null
-                          ? 25
-                          : 15,
-                ),
+                child: widget.child ??
+                    Image.asset(
+                      widget.image.toString(),
+                      color: ishover
+                          ? Provider.of<ThemeProvider>(context).getThemeColor
+                          : Colors.white,
+                      height: w < mobileSize
+                          ? 15
+                          : widget.radius == null
+                              ? 25
+                              : 15,
+                      width: w < mobileSize
+                          ? 15
+                          : widget.radius == null
+                              ? 25
+                              : 15,
+                    ),
               ),
             ),
           ),
@@ -131,6 +136,171 @@ class CustomSkillShadowCard extends StatefulWidget {
 }
 
 class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getSkill();
+  }
+
+  getSkill() {
+    data = Provider.of<SkillListProvider>(context, listen: false)
+        .getSkillList
+        .where((element) => element.id == widget.name);
+    isload = false;
+    setState(() {});
+  }
+
+  bool isload = true;
+
+  late Iterable<QueryDocumentSnapshot<dynamic>> data;
+  bool ishover = false;
+  GlobalKey buttonKey = GlobalKey();
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: widget.width,
+      height: widget.height,
+      child: isload
+          ? CircularProgressIndicator()
+          : Tooltip(
+              message: data.first["name"] ?? "",
+              preferBelow: false,
+              child: InkWell(
+                onTap: widget.onTap ??
+                    () {
+                      DialogService dialogService = DialogService();
+                      dialogService.openCustomDialog(
+                          buttonKey,
+                          context,
+                          Container(
+                            width: 180,
+                            padding: const EdgeInsets.all(20),
+                            alignment: Alignment.center,
+                            child: const Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Speech Bubble Dialog",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Size(200, 150),
+                          ScrollController());
+                    },
+                onHover: (value) {
+                  setState(() {
+                    ishover = value;
+                  });
+                },
+                child: Align(
+                  alignment:
+                      ishover ? Alignment.topCenter : Alignment.bottomCenter,
+                  child: AnimatedContainer(
+                    key: buttonKey,
+                    duration: const Duration(milliseconds: 200),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: !ishover ? 2 : 3,
+                              offset: !ishover
+                                  ? const Offset(-1, -1)
+                                  : const Offset(-2, -2),
+                              color: !ishover
+                                  ? Provider.of<ThemeProvider>(context)
+                                      .getThemeColor
+                                      .withOpacity(1)
+                                  : const Color.fromARGB(200, 53, 53, 53)),
+                          BoxShadow(
+                              blurRadius: !ishover ? 3 : 10,
+                              offset: !ishover
+                                  ? const Offset(1, 1)
+                                  : const Offset(8, 8),
+                              color: !ishover
+                                  ? Provider.of<ThemeProvider>(context)
+                                      .getThemeColor
+                                      .withOpacity(1)
+                                  : const Color.fromARGB(255, 15, 15, 15))
+                        ],
+                        gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: ishover
+                                ? [
+                                    const Color.fromARGB(255, 22, 22, 22),
+                                    const Color.fromARGB(255, 18, 18, 18)
+                                  ]
+                                : [
+                                    const Color.fromARGB(255, 28, 28, 28),
+                                    const Color.fromARGB(255, 24, 24, 24),
+                                  ]),
+                        borderRadius: BorderRadius.circular(
+                            widget.radius == null
+                                ? 10.0
+                                : double.parse(widget.radius.toString()))),
+                    height: widget.height! - 3,
+                    width: widget.width! - 3,
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            bottom: widget.radius == null ? 0 : 3),
+                        child: data.first["image"] == ""
+                            ? Text(
+                                data.first["name"].toString().substring(0, 3),
+                                style: GoogleFonts.titilliumWeb(
+                                    color: ishover
+                                        ? Provider.of<ThemeProvider>(context)
+                                            .getThemeColor
+                                        : Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            : Image.asset(
+                                "assets/images/${data.first["image"].toString()}.png",
+                                color: ishover
+                                    ? Provider.of<ThemeProvider>(context)
+                                        .getThemeColor
+                                    : Colors.white,
+                                height: widget.radius == null ? 25 : 20,
+                                width: widget.radius == null ? 25 : 20,
+                              ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+    );
+  }
+}
+
+class CustomLinkShadowCard extends StatefulWidget {
+  CustomLinkShadowCard(
+      {Key? key,
+      this.height,
+      this.width,
+      this.image,
+      this.radius,
+      this.onTap,
+      this.name})
+      : super(key: key);
+  double? width;
+  double? height;
+  String? image;
+  double? radius;
+  String? name;
+  void Function()? onTap;
+
+  @override
+  State<CustomLinkShadowCard> createState() => _CustomLinkShadowCardState();
+}
+
+class _CustomLinkShadowCardState extends State<CustomLinkShadowCard> {
   bool ishover = false;
   GlobalKey buttonKey = GlobalKey();
   @override

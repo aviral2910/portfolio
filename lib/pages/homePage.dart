@@ -5,20 +5,44 @@ import 'package:aviralportfolio/pages/experience.dart';
 import 'package:aviralportfolio/pages/home.dart';
 import 'package:aviralportfolio/pages/project.dart';
 import 'package:aviralportfolio/pages/testimonial.dart';
+import 'package:aviralportfolio/provider/DataProvider.dart';
+import 'package:aviralportfolio/service/FIrebaseService.dart';
 
 import 'package:aviralportfolio/widgets/Common/customAppBar.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/Common/colorChanger.dart';
 // import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   double mouseX = 0;
+
   double mouseY = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchSkillData();
+  }
+
+  FirebaseService firebaseService = FirebaseService();
+  fetchSkillData() async {
+    firebaseService.fetchSkillData(context);
+  }
+
   final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -51,23 +75,29 @@ class HomePage extends StatelessWidget {
                     thickness: 1,
                     color: Color.fromARGB(170, 67, 66, 66),
                   ),
-                  About(
-                    height: h,
-                    scrollController: _scrollController,
+
+                  Column(
+                    children: [
+                      About(
+                        height: h,
+                        scrollController: _scrollController,
+                      ),
+                      Experience(
+                        scrollController: _scrollController,
+                        height: h,
+                      ),
+                      const Divider(
+                        height: 0,
+                        thickness: 1,
+                        color: Color.fromARGB(170, 67, 66, 66),
+                      ),
+                      Project(
+                        scrollController: _scrollController,
+                        height: h,
+                      ),
+                    ],
                   ),
-                  Experience(
-                    scrollController: _scrollController,
-                    height: h,
-                  ),
-                  const Divider(
-                    height: 0,
-                    thickness: 1,
-                    color: Color.fromARGB(170, 67, 66, 66),
-                  ),
-                  Project(
-                    scrollController: _scrollController,
-                    height: h,
-                  ),
+
                   const Divider(
                     height: 0,
                     thickness: 1,

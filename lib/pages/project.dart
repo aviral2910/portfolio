@@ -1,10 +1,14 @@
 import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/pages/caseStudy.dart';
 import 'package:aviralportfolio/pages/contact.dart';
+import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:aviralportfolio/widgets/ProjectWidget/caseStudyButton.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
@@ -29,6 +33,7 @@ class _ProjectState extends State<Project> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    fetchProject();
     widget.scrollController.addListener(() {
       box ??=
           projectPositionKey.currentContext!.findRenderObject() as RenderBox;
@@ -50,110 +55,11 @@ class _ProjectState extends State<Project> {
     });
   }
 
-  List<String> krishn = [
-    "flutter",
-    "dart",
-    "firebase",
-    "github",
-    "css",
-    "figma",
-  ];
-  List<String> krishnName = [
-    "Flutter",
-    "Dart",
-    "Firebase",
-    "Github",
-    "CSS",
-    "Figma",
-  ];
-  List<String> tracker = [
-    "flutter",
-    "dart",
-    "firebase",
-    "github",
-  ];
-  List<String> gravity = [
-    "flutter",
-    "dart",
-    "block",
-    "figma",
-    "github",
-  ];
-  List<String> shubham = [
-    "flutter",
-    "dart",
-    "block",
-    "figma",
-    "github",
-  ];
-  List<String> shubhamName = [
-    "Flutter",
-    "Dart",
-    "Bloc",
-    "Figma",
-    "Github",
-  ];
-  List<String> gravityName = [
-    "Flutter",
-    "Dart",
-    "Bloc",
-    "Figma",
-    "Github",
-  ];
-  List<String> shubhamData = [
-    "assets/images/shubhamDark.png",
-    "Developed a comprehensive portfolio showcasing the client's outstanding work as a graphic designer specializing in UI and UX. This portfolio serves as a testament to the client's proficiency in the field, capturing the essence of their design journey and leaving a lasting impression on viewers. With a keen eye for detail and a commitment to excellence, the portfolio stands as a powerful representation of the client's expertise in graphic design for UI and UX.",
-    "https://shubham-singh.in",
-    "Shubham's Portfolio",
-  ];
-  List<String> gravityData = [
-    "assets/images/gravity.png",
-    "Developed an Android app, Gravity 9.8, the revolutionary exam-taking and results-displaying application that simplifies the educational journey. Gravity 9.8 provides a seamless and efficient platform for taking exams and receiving immediate results, allowing users to gauge their performance and track their progress effortlessly.\n\nThis app has crossed 4.5+ rating and downloaded by 1.5k+ users on playstore within a day of launch.",
-    "",
-    "Gravity 9.8",
-    "market://details?id=com.gravity.gravity98"
-  ];
-  List<String> trackerName = [
-    "Flutter",
-    "Dart",
-    "Firebase",
-    "Github",
-  ];
-  List<String> krishnData = [
-    "assets/images/krishn.png",
-    "Developed Webapp and android app with which we Talk to Divine Krishna, and resolve all your doubts and problem of life from Lord Krishna's Perspective. He can help you with modern-day problems using advanced Artificial Intelligence. \n\nGita GPT is a chatbot based on ChatGPT. We inspired it, and we love to keep innovating in this space to continue to help you achieve your mental health goals and guide you through spiritual intelligence.",
-    "https://krishn.ai/",
-    "Krishn.ai",
-    "market://details?id=com.puterlabs.krishnai"
-  ];
-  List<String> vsparkleData = [
-    "assets/images/vsparkle.png",
-    "Developed the landing for the Vsparkle who are commited in developing a sustainable and eco-friendly energy future that is readily accessible. \n \nThere goal is to protect the planet and pave the way for a brighter present and even more promising future",
-    "https://vsparkle.in/",
-    "Vsparkle"
-  ];
-  List<String> trackerData = [
-    "assets/images/trackers.png",
-    "This application allows users to create instances for specific tasks or events and then conveniently track their progress.\n\nAdditionally, the app features an Anxiety Tracker, which aids users in tracking their anxiety levels over time. This Anxiety Tracker comes equipped with a range of Breathing exercises designed to help manage anxiety. it also allows users to customize the breathing exercises to suit their individual needs and preferences.",
-    "https://drive.google.com/file/d/18JdxjWRsEcCyR4NI2FTZQMUYBDt37gsj/view?usp=sharing",
-    "Tracker"
-  ];
-  List<String> vsparkle = [
-    "flutter",
-    "dart",
-    "firebase",
-    "github",
-    "css",
-    "figma",
-  ];
-  List<String> vsparkleName = [
-    "Flutter",
-    "Dart",
-    "Firebase",
-    "Github",
-    "CSS",
-    "Figma",
-  ];
+  fetchProject() async {
+    FirebaseService service = FirebaseService();
+    await service.fetchProjectData(context);
+  }
+
   bool changeAppBar = false;
   @override
   Widget build(BuildContext context) {
@@ -179,79 +85,19 @@ class _ProjectState extends State<Project> {
             curve: Curves.easeIn,
             height: changeAppBar ? 30 : 40,
           ),
-          ProjectCard(
-              image: shubhamData[0],
-              text: shubhamData[1],
-              link: shubhamData[2],
-              heading: shubhamData[3],
-              w: w,
-              // apkLink: shubhamData[4],
-              index: 0,
-              list: shubham,
-              listName: shubhamName),
-          const SizedBox(
-            height: 50,
-          ),
-          ProjectCard(
-              image: gravityData[0],
-              text: gravityData[1],
-              link: gravityData[2],
-              heading: gravityData[3],
-              w: w,
-              apkLink: gravityData[4],
-              index: 1,
-              list: gravity,
-              listName: gravityName),
-          const SizedBox(
-            height: 50,
-          ),
-          ProjectCard(
-              image: krishnData[0],
-              text: krishnData[1],
-              link: krishnData[2],
-              heading: krishnData[3],
-              w: w,
-              apkLink: krishnData[4],
-              index: 2,
-              list: krishn,
-              listName: krishnName),
-          const SizedBox(
-            height: 50,
-          ),
-          ProjectCard(
-              image: vsparkleData[0],
-              text: vsparkleData[1],
-              link: vsparkleData[2],
-              heading: vsparkleData[3],
-              w: w,
-              index: 3,
-              list: vsparkle,
-              listName: vsparkleName),
-          const SizedBox(
-            height: 50,
-          ),
-          ProjectCard(
-            image: trackerData[0],
-            text: trackerData[1],
-            link: trackerData[2],
-            heading: trackerData[3],
-            w: w,
-            index: 4,
-            list: tracker,
-            listName: trackerName,
-          ),
-          // const SizedBox(
-          //   height: 50,
-          // ),
-          // ProjectCard(
-          //   image: vsparkleData[0],
-          //   text: vsparkleData[1],
-          //   link: vsparkleData[2],
-          //   heading: vsparkleData[3],
-          //   w: w,
-          //   index: 3,
-          //   list: vsparkle,
-          // ),
+          for (int i = 0;
+              i <
+                  Provider.of<ProjectListProvider>(context)
+                      .getprojectList
+                      .length;
+              i++)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 50.0),
+              child: ProjectCard(
+                w: w,
+                index: i,
+              ),
+            ),
           AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
@@ -264,28 +110,15 @@ class _ProjectState extends State<Project> {
 }
 
 class ProjectCard extends StatefulWidget {
-  ProjectCard(
-      {Key? key,
-      required this.w,
-      required this.text,
-      required this.link,
-      required this.image,
-      this.apkLink,
-      required this.listName,
-      required this.list,
-      required this.index,
-      required this.heading})
-      : super(key: key);
-  List<String> list;
-  List<String> listName;
-  String link;
-  String? apkLink;
-  String image;
+  ProjectCard({
+    Key? key,
+    required this.w,
+    required this.index,
+  }) : super(key: key);
 
-  String heading;
   int index;
-  String text;
-  final double w;
+
+  double w;
 
   @override
   State<ProjectCard> createState() => _ProjectCardState();
@@ -311,22 +144,28 @@ class _ProjectCardState extends State<ProjectCard> {
               ? Column(
                   children: [
                     ProjectImageCard(
-                        heading: widget.heading,
-                        w: widget.w,
-                        image: widget.image),
+                      heading: Provider.of<ProjectListProvider>(context)
+                          .getprojectList[widget.index]["name"],
+                      w: widget.w,
+                      image: Provider.of<ProjectListProvider>(context)
+                              .getprojectList[widget.index]["snapDesktop"]
+                              .isEmpty
+                          ? Provider.of<ProjectListProvider>(context)
+                              .getprojectList[widget.index]["snapIA"][0]
+                          : Provider.of<ProjectListProvider>(context)
+                              .getprojectList[widget.index]["snapDesktop"][0],
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
                     ProjectTextCard(
-                      listName: widget.listName,
-                      apklink: widget.apkLink,
-                      heading: widget.heading,
-                      text: widget.text,
+                      heading: Provider.of<ProjectListProvider>(context)
+                          .getprojectList[widget.index]["name"],
+                      text: Provider.of<ProjectListProvider>(context)
+                          .getprojectList[widget.index]["description"],
                       ishover: ishover,
                       index: widget.index,
-                      link: widget.link,
                       w: widget.w,
-                      list: widget.list,
                     )
                   ],
                 )
@@ -340,22 +179,29 @@ class _ProjectCardState extends State<ProjectCard> {
                         child: Align(
                           alignment: Alignment.center,
                           child: ProjectImageCard(
-                              heading: widget.heading,
-                              w: widget.w,
-                              image: widget.image),
+                            heading: Provider.of<ProjectListProvider>(context)
+                                .getprojectList[widget.index]["name"],
+                            w: widget.w,
+                            image: Provider.of<ProjectListProvider>(context)
+                                    .getprojectList[widget.index]["snapDesktop"]
+                                    .isEmpty
+                                ? Provider.of<ProjectListProvider>(context)
+                                    .getprojectList[widget.index]["snapIA"][0]
+                                : Provider.of<ProjectListProvider>(context)
+                                        .getprojectList[widget.index]
+                                    ["snapDesktop"][0],
+                          ),
                         ),
                       ),
                     if (widget.index % 2 != 0)
                       Expanded(
                           flex: 1,
                           child: ProjectTextCard(
-                              apklink: widget.apkLink,
                               index: widget.index,
-                              heading: widget.heading,
-                              link: widget.link,
-                              listName: widget.listName,
-                              text: widget.text,
-                              list: widget.list,
+                              heading: Provider.of<ProjectListProvider>(context)
+                                  .getprojectList[widget.index]["name"],
+                              text: Provider.of<ProjectListProvider>(context)
+                                  .getprojectList[widget.index]["description"],
                               w: widget.w,
                               ishover: ishover)),
                     const SizedBox(
@@ -365,13 +211,11 @@ class _ProjectCardState extends State<ProjectCard> {
                       Expanded(
                           flex: 1,
                           child: ProjectTextCard(
-                              apklink: widget.apkLink,
-                              heading: widget.heading,
+                              heading: Provider.of<ProjectListProvider>(context)
+                                  .getprojectList[widget.index]["name"],
                               index: widget.index,
-                              link: widget.link,
-                              text: widget.text,
-                              listName: widget.listName,
-                              list: widget.list,
+                              text: Provider.of<ProjectListProvider>(context)
+                                  .getprojectList[widget.index]["description"],
                               w: widget.w,
                               ishover: ishover)),
                     if (widget.index % 2 != 0)
@@ -380,9 +224,18 @@ class _ProjectCardState extends State<ProjectCard> {
                         child: Align(
                           alignment: Alignment.center,
                           child: ProjectImageCard(
-                              heading: widget.heading,
-                              w: widget.w,
-                              image: widget.image),
+                            heading: Provider.of<ProjectListProvider>(context)
+                                .getprojectList[widget.index]["name"],
+                            w: widget.w,
+                            image: Provider.of<ProjectListProvider>(context)
+                                    .getprojectList[widget.index]["snapDesktop"]
+                                    .isEmpty
+                                ? Provider.of<ProjectListProvider>(context)
+                                    .getprojectList[widget.index]["snapIA"][0]
+                                : Provider.of<ProjectListProvider>(context)
+                                        .getprojectList[widget.index]
+                                    ["snapDesktop"][0],
+                          ),
                         ),
                       ),
                   ],
@@ -397,22 +250,16 @@ class ProjectTextCard extends StatelessWidget {
   ProjectTextCard(
       {Key? key,
       required this.text,
-      required this.list,
-      required this.listName,
-      this.apklink,
       required this.heading,
       required this.index,
-      required this.link,
       required this.ishover,
       required this.w})
       : super(key: key);
   double w;
   int index;
-  String? apklink;
-  List<String> listName;
-  List<String> list;
+
   String heading;
-  String link;
+
   String text;
   final bool ishover;
 
@@ -467,13 +314,18 @@ class ProjectTextCard extends StatelessWidget {
                             ? WrapAlignment.start
                             : WrapAlignment.end,
                 children: [
-                  for (int i = 0; i < list.length; i++)
+                  for (int i = 0;
+                      i <
+                          Provider.of<ProjectListProvider>(context)
+                              .getprojectList[index]["tools"]
+                              .length;
+                      i++)
                     CustomSkillShadowCard(
-                      name: listName[i],
+                      name: Provider.of<ProjectListProvider>(context)
+                          .getprojectList[index]["tools"][i],
                       height: 50,
                       width: 50,
                       radius: 50,
-                      image: "assets/images/${list[i]}.png",
                     ),
                 ],
               ),
@@ -491,7 +343,7 @@ class ProjectTextCard extends StatelessWidget {
                         : CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Case Study & Links",
+                    "Links",
                     textAlign: TextAlign.center,
                     style: GoogleFonts.titilliumWeb(
                         fontWeight: FontWeight.w600,
@@ -509,49 +361,68 @@ class ProjectTextCard extends StatelessWidget {
                             ? MainAxisAlignment.end
                             : MainAxisAlignment.start,
                     children: [
-                      CustomSkillShadowCard(
-                        height: 50,
-                        onTap: () async {
-                          Navigator.push(
-                              context,
-                              PageTransition(
-                                  type: PageTransitionType.fade,
-                                  child: CaseStudy()));
-                        },
-                        width: 50,
-                        name: "Case Study",
-                        radius: 50,
-                        image: "assets/images/case1.png",
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      if (apklink != null)
-                        CustomSkillShadowCard(
-                          height: 50,
-                          onTap: () async {
-                            await launchUrl(Uri.parse(apklink.toString()));
-                          },
-                          width: 50,
-                          name: "Play Store",
-                          radius: 50,
-                          image: "assets/images/playstore.png",
+                      if (Provider.of<ProjectListProvider>(context)
+                              .getprojectList[index]["android"] !=
+                          "")
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: CustomLinkShadowCard(
+                            height: 50,
+                            onTap: () async {
+                              await launchUrl(Uri.parse(
+                                  Provider.of<ProjectListProvider>(context,
+                                          listen: false)
+                                      .getprojectList[index]["android"]
+                                      .toString()));
+                            },
+                            width: 50,
+                            name: "Play Store",
+                            radius: 50,
+                            image: "assets/images/playstore.png",
+                          ),
                         ),
-                      if (apklink != null)
-                        const SizedBox(
-                          width: 10,
+                      if (Provider.of<ProjectListProvider>(context)
+                              .getprojectList[index]["web"] !=
+                          "")
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: CustomLinkShadowCard(
+                            onTap: () async {
+                              await launchUrl(Uri.parse(
+                                  Provider.of<ProjectListProvider>(context,
+                                          listen: false)
+                                      .getprojectList[index]["web"]
+                                      .toString()));
+                            },
+                            height: 50,
+                            name: "Live Link",
+                            width: 50,
+                            radius: 50,
+                            image: "assets/images/link.png",
+                          ),
                         ),
-                      if (link != "")
-                        CustomSkillShadowCard(
-                          onTap: () async {
-                            await launchUrl(Uri.parse(link));
-                          },
-                          height: 50,
-                          name: "Live Link",
-                          width: 50,
-                          radius: 50,
-                          image: "assets/images/link.png",
+
+                      if (Provider.of<ProjectListProvider>(context)
+                              .getprojectList[index]["ios"] !=
+                          "")
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15.0),
+                          child: CustomLinkShadowCard(
+                            onTap: () async {
+                              await launchUrl(Uri.parse(
+                                  Provider.of<ProjectListProvider>(context,
+                                          listen: false)
+                                      .getprojectList[index]["ios"]
+                                      .toString()));
+                            },
+                            height: 50,
+                            name: "App Store",
+                            width: 50,
+                            radius: 50,
+                            image: "assets/images/appstore.png",
+                          ),
                         ),
+
                       // Container(
                       //   padding: EdgeInsets.only(
                       //       top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
@@ -784,48 +655,48 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                   child: (widget.w >= mobileSize)
                       ? Stack(
                           children: [
-                            Image.asset(
+                            Image.network(
                               widget.image.toString(),
                               height: widget.w < mobileSize ? 230 : 450,
                               fit: BoxFit.fill,
                             ),
-                            Positioned(
-                                child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 400),
-                              color: ishover
-                                  ? Color.fromARGB(218, 20, 20, 20)
-                                  : Colors.transparent,
-                              height: widget.w < mobileSize ? 230 : 450,
-                              width: 1000,
-                              child: ishover
-                                  ? Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          "assets/images/case2.png",
-                                          height: 60,
-                                          width: 60,
-                                        ),
-                                        CaseStudyButton(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                PageTransition(
-                                                    type:
-                                                        PageTransitionType.fade,
-                                                    child: CaseStudy()));
-                                          },
-                                          isHover: ishover,
-                                          isLoading: false,
-                                        )
-                                      ],
-                                    )
-                                  : null,
-                            ))
+                            // Positioned(
+                            //     child: AnimatedContainer(
+                            //   duration: const Duration(milliseconds: 400),
+                            //   color: ishover
+                            //       ? Color.fromARGB(218, 20, 20, 20)
+                            //       : Colors.transparent,
+                            //   height: widget.w < mobileSize ? 230 : 450,
+                            //   width: 1000,
+                            //   child: ishover
+                            //       ? Column(
+                            //           mainAxisAlignment:
+                            //               MainAxisAlignment.center,
+                            //           children: [
+                            //             Image.asset(
+                            //               "assets/images/case2.png",
+                            //               height: 60,
+                            //               width: 60,
+                            //             ),
+                            //             CaseStudyButton(
+                            //               onTap: () {
+                            //                 Navigator.push(
+                            //                     context,
+                            //                     PageTransition(
+                            //                         type:
+                            //                             PageTransitionType.fade,
+                            //                         child: CaseStudy()));
+                            //               },
+                            //               isHover: ishover,
+                            //               isLoading: false,
+                            //             )
+                            //           ],
+                            //         )
+                            //       : null,
+                            // ))
                           ],
                         )
-                      : Image.asset(
+                      : Image.network(
                           widget.image.toString(),
                           height: widget.w < mobileSize ? 230 : 450,
                           fit: BoxFit.fill,

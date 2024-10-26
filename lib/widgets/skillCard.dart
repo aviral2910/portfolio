@@ -1,6 +1,8 @@
 import 'package:aviralportfolio/common/global.dart';
+import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -151,76 +153,89 @@ class Others extends StatelessWidget {
         runSpacing: 25,
         spacing: 25,
         children: [
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/github2.png",
-            imagWidth: 35,
-            imageHieght: 35,
-            experienceLevel: "Medium",
-            text: "Github",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/adobexd.png",
-            imagWidth: 35,
-            imageHieght: 35,
-            text: "Adobe Xd",
-            experienceLevel: "Beginner",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/firebase.png",
-            imagWidth: 35,
-            imageHieght: 35,
-            text: "Firebase",
-            experienceLevel: "Advanced",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/figma.png",
-            imagWidth: 35,
-            imageHieght: 35,
-            text: "Figma",
-            experienceLevel: "Medium",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "",
-            imagWidth: 40,
-            imageHieght: 40,
-            text: "MVC \nArchitecture",
-            experienceLevel: "Medium",
-            fontSize: 12,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "",
-            text: "MVP \nArchitecture",
-            experienceLevel: "Medium",
-            imagWidth: 25,
-            imageHieght: 25,
-            fontSize: 12,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/block.png",
-            experienceLevel: "Medium",
-            imagWidth: 30,
-            imageHieght: 30,
-            text: "Bloc",
-            fontSize: 14,
-          ),
+          for (int i = 0;
+              i < Provider.of<SkillListProvider>(context).getSkillList.length;
+              i++)
+            if (Provider.of<SkillListProvider>(context).getSkillList[i]
+                    ["stype"] ==
+                "Others")
+              CustomSkillsCard(
+                height: 100,
+                width: 100,
+                image: Provider.of<SkillListProvider>(context).getSkillList[i]
+                            ["image"] ==
+                        ""
+                    ? ""
+                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.png",
+                imagWidth: 35,
+                imageHieght: 35,
+                experienceLevel: Provider.of<SkillListProvider>(context)
+                    .getSkillList[i]["level"],
+                text: Provider.of<SkillListProvider>(context)
+                    .getSkillList[i]["name"]
+                    .toString(),
+                fontSize: 12,
+              ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/adobexd.png",
+          //   imagWidth: 35,
+          //   imageHieght: 35,
+          //   text: "Adobe Xd",
+          //   experienceLevel: "Beginner",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/firebase.png",
+          //   imagWidth: 35,
+          //   imageHieght: 35,
+          //   text: "Firebase",
+          //   experienceLevel: "Advanced",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/figma.png",
+          //   imagWidth: 35,
+          //   imageHieght: 35,
+          //   text: "Figma",
+          //   experienceLevel: "Medium",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "",
+          //   imagWidth: 40,
+          //   imageHieght: 40,
+          //   text: "MVC \nArchitecture",
+          //   experienceLevel: "Medium",
+          //   fontSize: 12,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "",
+          //   text: "MVP \nArchitecture",
+          //   experienceLevel: "Medium",
+          //   imagWidth: 25,
+          //   imageHieght: 25,
+          //   fontSize: 12,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/block.png",
+          //   experienceLevel: "Medium",
+          //   imagWidth: 30,
+          //   imageHieght: 30,
+          //   text: "Bloc",
+          //   fontSize: 14,
+          // ),
         ],
       ),
     );
@@ -244,66 +259,89 @@ class Framework extends StatelessWidget {
             w < mobileSize ? WrapAlignment.spaceAround : WrapAlignment.start,
         spacing: 25,
         children: [
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/flutter.png",
-            experienceLevel: "Advanced",
-            imagWidth: 35,
-            imageHieght: 35,
-            text: "Flutter",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/react.png",
-            experienceLevel: "Beginner",
-            imagWidth: 40,
-            imageHieght: 40,
-            text: "ReactJs",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/springboot.png",
-            imagWidth: 25,
-            imageHieght: 25,
-            experienceLevel: "Medium",
-            text: "Spring Boot",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/django.png",
-            imagWidth: 30,
-            imageHieght: 30,
-            experienceLevel: "Beginner",
-            text: "Django",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/flask.png",
-            experienceLevel: "Beginner",
-            imageHieght: 30,
-            imagWidth: 30,
-            text: "Flask",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/website.png",
-            imagWidth: 30,
-            imageHieght: 30,
-            experienceLevel: "Beginner",
-            fontSize: 14,
-            text: "Web3",
-          ),
+          for (int i = 0;
+              i < Provider.of<SkillListProvider>(context).getSkillList.length;
+              i++)
+            if (Provider.of<SkillListProvider>(context).getSkillList[i]
+                    ["stype"] ==
+                "Frameworks")
+              CustomSkillsCard(
+                height: 100,
+                width: 100,
+                image: Provider.of<SkillListProvider>(context).getSkillList[i]
+                            ["image"] ==
+                        ""
+                    ? ""
+                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.png",
+                imagWidth: 35,
+                imageHieght: 35,
+                experienceLevel: Provider.of<SkillListProvider>(context)
+                    .getSkillList[i]["level"],
+                text: Provider.of<SkillListProvider>(context)
+                    .getSkillList[i]["name"]
+                    .toString(),
+                fontSize: 12,
+              ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/flutter.png",
+          //   experienceLevel: "Advanced",
+          //   imagWidth: 35,
+          //   imageHieght: 35,
+          //   text: "Flutter",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/react.png",
+          //   experienceLevel: "Beginner",
+          //   imagWidth: 40,
+          //   imageHieght: 40,
+          //   text: "ReactJs",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/springboot.png",
+          //   imagWidth: 25,
+          //   imageHieght: 25,
+          //   experienceLevel: "Medium",
+          //   text: "Spring Boot",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/django.png",
+          //   imagWidth: 30,
+          //   imageHieght: 30,
+          //   experienceLevel: "Beginner",
+          //   text: "Django",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/flask.png",
+          //   experienceLevel: "Beginner",
+          //   imageHieght: 30,
+          //   imagWidth: 30,
+          //   text: "Flask",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/website.png",
+          //   imagWidth: 30,
+          //   imageHieght: 30,
+          //   experienceLevel: "Beginner",
+          //   fontSize: 14,
+          //   text: "Web3",
+          // ),
         ],
       ),
     );
@@ -327,66 +365,89 @@ class Languages extends StatelessWidget {
         runSpacing: 25,
         spacing: 25,
         children: [
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/dart.png",
-            experienceLevel: "Advanced",
-            imagWidth: 35,
-            imageHieght: 35,
-            text: "Dart",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/java.png",
-            experienceLevel: "Medium",
-            imagWidth: 40,
-            imageHieght: 40,
-            text: "Java",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/python.png",
-            experienceLevel: "Medium",
-            imagWidth: 30,
-            imageHieght: 30,
-            text: "Python",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/sql.png",
-            experienceLevel: "Medium",
-            imagWidth: 30,
-            imageHieght: 30,
-            text: "SQL",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/html5.png",
-            experienceLevel: "Medium",
-            imageHieght: 30,
-            imagWidth: 30,
-            text: "HTML",
-            fontSize: 14,
-          ),
-          CustomSkillsCard(
-            height: 100,
-            width: 100,
-            image: "assets/images/css.png",
-            experienceLevel: "Medium",
-            imagWidth: 30,
-            imageHieght: 30,
-            fontSize: 14,
-            text: "CSS",
-          ),
+          for (int i = 0;
+              i < Provider.of<SkillListProvider>(context).getSkillList.length;
+              i++)
+            if (Provider.of<SkillListProvider>(context).getSkillList[i]
+                    ["stype"] ==
+                "Languages")
+              CustomSkillsCard(
+                height: 100,
+                width: 100,
+                image: Provider.of<SkillListProvider>(context).getSkillList[i]
+                            ["image"] ==
+                        ""
+                    ? ""
+                    : "assets/images/${Provider.of<SkillListProvider>(context).getSkillList[i]["image"]}.png",
+                imagWidth: 35,
+                imageHieght: 35,
+                experienceLevel: Provider.of<SkillListProvider>(context)
+                    .getSkillList[i]["level"],
+                text: Provider.of<SkillListProvider>(context)
+                    .getSkillList[i]["name"]
+                    .toString(),
+                fontSize: 12,
+              ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/dart.png",
+          //   experienceLevel: "Advanced",
+          //   imagWidth: 35,
+          //   imageHieght: 35,
+          //   text: "Dart",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/java.png",
+          //   experienceLevel: "Medium",
+          //   imagWidth: 40,
+          //   imageHieght: 40,
+          //   text: "Java",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/python.png",
+          //   experienceLevel: "Medium",
+          //   imagWidth: 30,
+          //   imageHieght: 30,
+          //   text: "Python",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/sql.png",
+          //   experienceLevel: "Medium",
+          //   imagWidth: 30,
+          //   imageHieght: 30,
+          //   text: "SQL",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/html5.png",
+          //   experienceLevel: "Medium",
+          //   imageHieght: 30,
+          //   imagWidth: 30,
+          //   text: "HTML",
+          //   fontSize: 14,
+          // ),
+          // CustomSkillsCard(
+          //   height: 100,
+          //   width: 100,
+          //   image: "assets/images/css.png",
+          //   experienceLevel: "Medium",
+          //   imagWidth: 30,
+          //   imageHieght: 30,
+          //   fontSize: 14,
+          //   text: "CSS",
+          // ),
         ],
       ),
     );
