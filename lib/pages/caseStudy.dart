@@ -5,7 +5,9 @@ import 'package:aviralportfolio/widgets/Common/customAppBar.dart';
 import 'package:aviralportfolio/widgets/ProjectWidget/caseStudyButton.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/shadowText.dart';
+
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -14,6 +16,7 @@ import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
+import 'package:widget_zoom/widget_zoom.dart';
 
 class CaseStudy extends StatefulWidget {
   const CaseStudy({super.key});
@@ -708,60 +711,67 @@ class _WebsiteScreenCardState extends State<WebsiteScreenCard> {
           ishover = value;
           setState(() {});
         },
-        child: Card(
-          shadowColor: Provider.of<ThemeProvider>(context).getThemeColor,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
-          elevation: 6,
-          child: Container(
-            // height: 470,
-            // width: 220,
-            decoration: BoxDecoration(
-                color: darkthemeColor,
-                boxShadow: ishover
-                    ? [
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 8 : 7,
-                            offset: widget.isHover
-                                ? const Offset(-4, -4)
-                                : const Offset(-8, -8),
-                            color: widget.isHover
-                                ? Provider.of<ThemeProvider>(context)
-                                    .getThemeColor
-                                    .withOpacity(.6)
-                                : const Color.fromARGB(121, 32, 32, 32)),
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 8 : 10,
-                            offset: widget.isHover
-                                ? const Offset(5, 5)
-                                : const Offset(8, 8),
-                            color: widget.isHover
-                                ? Provider.of<ThemeProvider>(context)
-                                    .getThemeColor
-                                    .withOpacity(.6)
-                                : const Color.fromARGB(121, 15, 15, 15))
-                      ]
-                    : [
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 3 : 7,
-                            offset: widget.isHover
-                                ? const Offset(-2, -2)
-                                : const Offset(-8, -8),
-                            color: const Color.fromARGB(137, 242, 238, 238)),
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 3 : 10,
-                            offset: widget.isHover
-                                ? const Offset(3, 3)
-                                : const Offset(8, 8),
-                            color: const Color.fromARGB(137, 242, 238, 238))
-                      ],
-                borderRadius: BorderRadius.circular(2),
-                border: Border.all(width: 2, color: Colors.black)),
+        child: WidgetZoom(
+          heroAnimationTag: widget.image,
+          zoomWidget: Center(
+            child: Card(
+              shadowColor: Provider.of<ThemeProvider>(context).getThemeColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2)),
+              elevation: 6,
+              child: Container(
+                // height: 470,
+                // width: 220,
+                decoration: BoxDecoration(
+                    color: darkthemeColor,
+                    boxShadow: ishover
+                        ? [
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 8 : 7,
+                                offset: widget.isHover
+                                    ? const Offset(-4, -4)
+                                    : const Offset(-8, -8),
+                                color: widget.isHover
+                                    ? Provider.of<ThemeProvider>(context)
+                                        .getThemeColor
+                                        .withOpacity(.6)
+                                    : const Color.fromARGB(121, 32, 32, 32)),
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 8 : 10,
+                                offset: widget.isHover
+                                    ? const Offset(5, 5)
+                                    : const Offset(8, 8),
+                                color: widget.isHover
+                                    ? Provider.of<ThemeProvider>(context)
+                                        .getThemeColor
+                                        .withOpacity(.6)
+                                    : const Color.fromARGB(121, 15, 15, 15))
+                          ]
+                        : [
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 3 : 7,
+                                offset: widget.isHover
+                                    ? const Offset(-2, -2)
+                                    : const Offset(-8, -8),
+                                color:
+                                    const Color.fromARGB(137, 242, 238, 238)),
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 3 : 10,
+                                offset: widget.isHover
+                                    ? const Offset(3, 3)
+                                    : const Offset(8, 8),
+                                color: const Color.fromARGB(137, 242, 238, 238))
+                          ],
+                    borderRadius: BorderRadius.circular(2),
+                    border: Border.all(width: 2, color: Colors.black)),
 
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(2),
-              child: Image.network(
-                widget.image.toString(),
-                fit: BoxFit.fill,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(2),
+                  child: Image.network(
+                    widget.image.toString(),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
             ),
           ),
@@ -794,83 +804,88 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
           ishover = value;
           setState(() {});
         },
-        child: Card(
-          shadowColor: Provider.of<ThemeProvider>(context).getThemeColor,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          elevation: 6,
-          child: Container(
-            // height: 470,
-            // width: 220,
-            decoration: BoxDecoration(
-                color: darkthemeColor,
-                boxShadow: ishover
-                    ? [
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 8 : 7,
-                            offset: widget.isHover
-                                ? const Offset(-4, -4)
-                                : const Offset(-8, -8),
-                            color: widget.isHover
-                                ? Provider.of<ThemeProvider>(context)
-                                    .getThemeColor
-                                    .withOpacity(.6)
-                                : const Color.fromARGB(121, 32, 32, 32)),
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 8 : 10,
-                            offset: widget.isHover
-                                ? const Offset(5, 5)
-                                : const Offset(8, 8),
-                            color: widget.isHover
-                                ? Provider.of<ThemeProvider>(context)
-                                    .getThemeColor
-                                    .withOpacity(.6)
-                                : const Color.fromARGB(121, 15, 15, 15))
-                      ]
-                    : [
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 3 : 7,
-                            offset: widget.isHover
-                                ? const Offset(-2, -2)
-                                : const Offset(-8, -8),
-                            color: Color.fromARGB(137, 242, 238, 238)),
-                        BoxShadow(
-                            blurRadius: widget.isHover ? 3 : 10,
-                            offset: widget.isHover
-                                ? const Offset(3, 3)
-                                : const Offset(8, 8),
-                            color: Color.fromARGB(137, 242, 238, 238))
-                      ],
-                // boxShadow: [
-                //   BoxShadow(
-                //       blurRadius: !ishover ? 5 : 3,
-                //       offset: !ishover
-                //           ? const Offset(-3, -3)
-                //           : const Offset(-2, -2),
-                //       color: !ishover
-                //           ? Provider.of<ThemeProvider>(context)
-                //               .getThemeColor
-                //               .withOpacity(.7)
-                //           : const Color.fromARGB(200, 53, 53, 53)),
-                //   BoxShadow(
-                //       blurRadius: !ishover ? 8 : 10,
-                //       offset:
-                //           !ishover ? const Offset(4, 4) : const Offset(8, 8),
-                //       color: !ishover
-                //           ? Provider.of<ThemeProvider>(context)
-                //               .getThemeColor
-                //               .withOpacity(.7)
-                //           : const Color.fromARGB(255, 15, 15, 15))
-                // ],
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(width: 4, color: Colors.black)),
-            height: 440,
-            width: 200,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.network(
-                widget.image,
-                fit: BoxFit.fill,
+        child: WidgetZoom(
+          heroAnimationTag: widget.image,
+          zoomWidget: Center(
+            child: Card(
+              shadowColor: Provider.of<ThemeProvider>(context).getThemeColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              elevation: 6,
+              child: Container(
+                // height: 470,
+                // width: 220,
+                decoration: BoxDecoration(
+                    color: darkthemeColor,
+                    boxShadow: ishover
+                        ? [
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 8 : 7,
+                                offset: widget.isHover
+                                    ? const Offset(-4, -4)
+                                    : const Offset(-8, -8),
+                                color: widget.isHover
+                                    ? Provider.of<ThemeProvider>(context)
+                                        .getThemeColor
+                                        .withOpacity(.6)
+                                    : const Color.fromARGB(121, 32, 32, 32)),
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 8 : 10,
+                                offset: widget.isHover
+                                    ? const Offset(5, 5)
+                                    : const Offset(8, 8),
+                                color: widget.isHover
+                                    ? Provider.of<ThemeProvider>(context)
+                                        .getThemeColor
+                                        .withOpacity(.6)
+                                    : const Color.fromARGB(121, 15, 15, 15))
+                          ]
+                        : [
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 3 : 7,
+                                offset: widget.isHover
+                                    ? const Offset(-2, -2)
+                                    : const Offset(-8, -8),
+                                color: Color.fromARGB(137, 242, 238, 238)),
+                            BoxShadow(
+                                blurRadius: widget.isHover ? 3 : 10,
+                                offset: widget.isHover
+                                    ? const Offset(3, 3)
+                                    : const Offset(8, 8),
+                                color: Color.fromARGB(137, 242, 238, 238))
+                          ],
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //       blurRadius: !ishover ? 5 : 3,
+                    //       offset: !ishover
+                    //           ? const Offset(-3, -3)
+                    //           : const Offset(-2, -2),
+                    //       color: !ishover
+                    //           ? Provider.of<ThemeProvider>(context)
+                    //               .getThemeColor
+                    //               .withOpacity(.7)
+                    //           : const Color.fromARGB(200, 53, 53, 53)),
+                    //   BoxShadow(
+                    //       blurRadius: !ishover ? 8 : 10,
+                    //       offset:
+                    //           !ishover ? const Offset(4, 4) : const Offset(8, 8),
+                    //       color: !ishover
+                    //           ? Provider.of<ThemeProvider>(context)
+                    //               .getThemeColor
+                    //               .withOpacity(.7)
+                    //           : const Color.fromARGB(255, 15, 15, 15))
+                    // ],
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(width: 4, color: Colors.black)),
+                height: 440,
+                width: 200,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.network(
+                    widget.image,
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
             ),
           ),

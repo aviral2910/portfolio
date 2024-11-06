@@ -1,9 +1,11 @@
 import 'package:aviralportfolio/pages/caseStudy.dart';
 import 'package:aviralportfolio/pages/homePage.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
+import 'package:aviralportfolio/provider/UpSliderProvider.dart';
 import 'package:aviralportfolio/provider/mousePointer.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:custom_zoom_widget/custom_zoom_widget.dart';
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,6 +13,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'provider/themeProvider.dart';
 
 void main() async {
+  // await FastCachedImageConfig.init(clearCacheAfter: const Duration(days: 15));
   await Firebase.initializeApp(
       options: const FirebaseOptions(
           apiKey: "AIzaSyB-B4yNfdVGz7oozPuigLVWttHhQgW2r0Q",
@@ -23,6 +26,7 @@ void main() async {
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (context) => TestimonialListProvider()),
+      ChangeNotifierProvider(create: (context) => ProjectUpSliderProvider()),
       ChangeNotifierProvider(create: (context) => ProjectListProvider()),
       ChangeNotifierProvider(create: (context) => ExperinceListProvider()),
       ChangeNotifierProvider(create: (context) => SkillListProvider()),

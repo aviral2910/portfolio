@@ -30,25 +30,25 @@ class _TestimonialState extends State<Testimonial> {
     // TODO: implement initState
     super.initState();
     fetchTestimonial();
-    widget.scrollController.addListener(() {
-      box ??= testimonialPositionKey.currentContext!.findRenderObject()
-          as RenderBox;
-      position = box!.localToGlobal(Offset.zero); //this is global position
+    // widget.scrollController.addListener(() {
+    //   box ??= testimonialPositionKey.currentContext!.findRenderObject()
+    //       as RenderBox;
+    //   position = box!.localToGlobal(Offset.zero); //this is global position
 
-      if (position!.dy < widget.height * .6) {
-        if (changeAppBar == false) {
-          setState(() {
-            changeAppBar = true;
-          });
-        }
-      } else {
-        if (changeAppBar == true) {
-          setState(() {
-            changeAppBar = false;
-          });
-        }
-      }
-    });
+    //   if (position!.dy < widget.height * .6) {
+    //     if (changeAppBar == false) {
+    //       setState(() {
+    //         changeAppBar = true;
+    //       });
+    //     }
+    //   } else {
+    //     if (changeAppBar == true) {
+    //       setState(() {
+    //         changeAppBar = false;
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   FirebaseService firebaseService = FirebaseService();
@@ -58,9 +58,33 @@ class _TestimonialState extends State<Testimonial> {
     await service.fetchTestimonialData(context);
   }
 
+  List<Map<String, String>> testimonial = [
+    {
+      "image": "assets/images/roshan.webp",
+      "name": "Roshann Vadassery ",
+      "role": "Founder - Chief",
+      "companyName": "Permissionless",
+      "myRole": "Flutter Team Lead",
+      "words":
+          "Aviral is one of the most proficient flutter developers that I have worked with, his contributions in building krishn.ai is irreplaceable. Very good at co ordinating with multiple designers and product managers.",
+      "duration": "Jan 2022 - April 2023",
+      "linkdinlink": "https://www.linkedin.com/in/roshan-vadassery/",
+    },
+    {
+      "image": "assets/images/nishank.webp",
+      "name": "Nishank Sidhpura",
+      "role": "Chief Technical Officer",
+      "companyName": "Permissionless",
+      "myRole": "Flutter Team Lead",
+      "words":
+          "Aviral is a really hard working person who doesn't stop until the task at hand is completed. Commendable critical thinking and fundamental knowledge. Makes him a no-brainer for any Mobile development projects.",
+      "duration": "Jan 2022 - April 2023",
+      "linkdinlink": "https://www.linkedin.com/in/nishank-s-8141aab5/",
+    }
+  ];
   int selectedIndex = 0;
 
-  bool changeAppBar = false;
+  bool changeAppBar = true;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -202,9 +226,7 @@ class _TestimonialState extends State<Testimonial> {
                         duration: Provider.of<TestimonialListProvider>(
                           context,
                         ).gettestimonial[selectedIndex]["duration"],
-                        linkdinlink: Provider.of<TestimonialListProvider>(
-                          context,
-                        ).gettestimonial[selectedIndex]["hisLinkdin"],
+                        linkdinlink: testimonial[selectedIndex]["linkdinlink"],
                       ),
                     ),
                   ],
@@ -300,10 +322,8 @@ class _TestimonialState extends State<Testimonial> {
                                 duration: Provider.of<TestimonialListProvider>(
                                   context,
                                 ).gettestimonial[selectedIndex]["duration"],
-                                linkdinlink:
-                                    Provider.of<TestimonialListProvider>(
-                                  context,
-                                ).gettestimonial[selectedIndex]["hisLinkdin"],
+                                linkdinlink: testimonial[selectedIndex]
+                                    ["linkdinlink"],
                               ),
                             ],
                           ),
@@ -589,7 +609,7 @@ class _TestimonialTextState extends State<TestimonialText> {
               //         borderRadius: BorderRadius.circular(4)),
               //     child: Center(
               //       child: Image.asset(
-              //         "assets/images/linkedin.webp",
+              //         "assets/images/linkedin.png",
               //         width: 20,
               //         height: 20,
               //       ),

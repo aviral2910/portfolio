@@ -53,6 +53,14 @@ dependencies:
   flutter_easy_animations: ^0.0.2
   carousel_slider: ^5.0.0
   cloud_firestore: ^4.17.5
+  widget_zoom: ^0.0.4
+
+  fast_cached_network_image: ^1.2.9
+  visibility_detector: ^0.4.0+2
+  responsive_builder: ^0.7.1
+  html: ^0.15.4
+ 
+
 
   
 

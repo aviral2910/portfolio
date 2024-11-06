@@ -32,25 +32,25 @@ class _ProjectState extends State<Project> {
     // TODO: implement initState
     super.initState();
     fetchProject();
-    widget.scrollController.addListener(() {
-      box ??=
-          projectPositionKey.currentContext!.findRenderObject() as RenderBox;
-      position = box!.localToGlobal(Offset.zero); //this is global position
+    // widget.scrollController.addListener(() {
+    //   box ??=
+    //       projectPositionKey.currentContext!.findRenderObject() as RenderBox;
+    //   position = box!.localToGlobal(Offset.zero); //this is global position
 
-      if (position!.dy < widget.height * .6) {
-        if (changeAppBar == false) {
-          setState(() {
-            changeAppBar = true;
-          });
-        }
-      } else {
-        if (changeAppBar == true) {
-          setState(() {
-            changeAppBar = false;
-          });
-        }
-      }
-    });
+    //   if (position!.dy < widget.height * .6) {
+    //     if (changeAppBar == false) {
+    //       setState(() {
+    //         changeAppBar = true;
+    //       });
+    //     }
+    //   } else {
+    //     if (changeAppBar == true) {
+    //       setState(() {
+    //         changeAppBar = false;
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   fetchProject() async {
@@ -58,7 +58,7 @@ class _ProjectState extends State<Project> {
     await service.fetchProjectData(context);
   }
 
-  bool changeAppBar = false;
+  bool changeAppBar = true;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -128,12 +128,12 @@ class _ProjectCardState extends State<ProjectCard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: widget.w < mobileSize ? 15 : 35,
-          right: widget.w < mobileSize ? 15 : 35),
+          left: widget.w < mobileSize ? 0 : 35,
+          right: widget.w < mobileSize ? 0 : 35),
       child: Container(
         padding: EdgeInsets.only(
-            left: widget.w < mobileSize ? 5 : 20,
-            right: widget.w < mobileSize ? 5 : 20,
+            left: widget.w < mobileSize ? 0 : 20,
+            right: widget.w < mobileSize ? 0 : 20,
             top: widget.w < mobileSize ? 5 : 20,
             bottom: widget.w < mobileSize ? 5 : 20),
         child: SizedBox(
@@ -149,14 +149,17 @@ class _ProjectCardState extends State<ProjectCard> {
                     const SizedBox(
                       height: 20,
                     ),
-                    ProjectTextCard(
-                      heading: Provider.of<ProjectListProvider>(context)
-                          .getprojectList[widget.index]["name"],
-                      text: Provider.of<ProjectListProvider>(context)
-                          .getprojectList[widget.index]["description"],
-                      ishover: ishover,
-                      index: widget.index,
-                      w: widget.w,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25.0, right: 25),
+                      child: ProjectTextCard(
+                        heading: Provider.of<ProjectListProvider>(context)
+                            .getprojectList[widget.index]["name"],
+                        text: Provider.of<ProjectListProvider>(context)
+                            .getprojectList[widget.index]["description"],
+                        ishover: ishover,
+                        index: widget.index,
+                        w: widget.w,
+                      ),
                     )
                   ],
                 )
@@ -570,10 +573,15 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.w < mobileSize)
-          Text(
-            widget.heading,
-            style: GoogleFonts.titilliumWeb(
-                fontSize: 28, fontWeight: FontWeight.w700, color: Colors.white),
+          Padding(
+            padding: const EdgeInsets.only(left: 25.0, right: 25),
+            child: Text(
+              widget.heading,
+              style: GoogleFonts.titilliumWeb(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
+            ),
           ),
         if (widget.w < mobileSize)
           const SizedBox(
@@ -704,7 +712,7 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                                             i++)
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                right: 40.0),
+                                                right: 25.0, left: 25),
                                             child: SizedBox(
                                               height: 460,
                                               child: MobileScreenCard(
@@ -781,7 +789,7 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                                           //     : null,
                                           // height: widget.w < mobileSize ? null : 460,
                                           aspectRatio: 16 / 9,
-                                          viewportFraction: 0.8,
+                                          viewportFraction: .9,
                                           initialPage: 0,
                                           enableInfiniteScroll: false,
                                           reverse: false,

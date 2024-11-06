@@ -10,9 +10,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class Experience extends StatefulWidget {
-  Experience({super.key, required this.scrollController, required this.height});
+  Experience({
+    super.key,
+    required this.scrollController,
+    required this.height,
+  });
   ScrollController scrollController;
   double height;
+
   @override
   State<Experience> createState() => _ExperienceState();
 }
@@ -28,25 +33,25 @@ class _ExperienceState extends State<Experience> {
     // TODO: implement initState
     super.initState();
     fetchExpereince();
-    widget.scrollController.addListener(() {
-      box ??=
-          experiencePositionKey.currentContext!.findRenderObject() as RenderBox;
-      position = box!.localToGlobal(Offset.zero); //this is global position
+    // widget.scrollController.addListener(() {
+    //   box ??=
+    //       experiencePositionKey.currentContext!.findRenderObject() as RenderBox;
+    //   position = box!.localToGlobal(Offset.zero); //this is global position
 
-      if (position!.dy < widget.height * .6) {
-        if (changeAppBar == false) {
-          setState(() {
-            changeAppBar = true;
-          });
-        }
-      } else {
-        if (changeAppBar == true) {
-          setState(() {
-            changeAppBar = false;
-          });
-        }
-      }
-    });
+    //   if (position!.dy < widget.height * .6) {
+    //     if (changeAppBar == false) {
+    //       setState(() {
+    //         changeAppBar = true;
+    //       });
+    //     }
+    //   } else {
+    //     if (changeAppBar == true) {
+    //       setState(() {
+    //         changeAppBar = false;
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   fetchExpereince() {
@@ -54,7 +59,7 @@ class _ExperienceState extends State<Experience> {
     firebaseService.fetchExperinceData(context);
   }
 
-  bool changeAppBar = false;
+  bool changeAppBar = true;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;

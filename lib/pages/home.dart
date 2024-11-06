@@ -50,16 +50,12 @@ class _HomeState extends State<Home> {
               Column(
                 children: [
                   Container(
-                    height: h * .1,
-                  ),
-                  Container(
                     height: h * .9,
                     width: w,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             alignment: Alignment.topCenter,
-                            image:
-                                AssetImage("assets/images/aviraldark1.webp"))),
+                            image: AssetImage("assets/images/aviral.webp"))),
                     constraints: const BoxConstraints(
                       minHeight: 600,
                     ),
@@ -152,7 +148,7 @@ class _HomeState extends State<Home> {
                                 name: "Resume",
                                 onTap: () async {
                                   await launchUrl(Uri.parse(
-                                      "https://drive.google.com/file/d/1_x9GFkfEhawyKmvTGdeWdMvnaHQy5S00/view?usp=sharing"));
+                                      "https://drive.google.com/file/d/181CxfOEaL5BvQ3eRtupltZud2lom5kvF/view?usp=sharing"));
                                 },
                                 height: 45,
                                 width: 45,
@@ -348,7 +344,7 @@ class _HomeState extends State<Home> {
                                           //         "assets/images/Resume-AviralDixit.pdf",
                                           //     mimeType: MimeType.pdf);
                                           await launchUrl(Uri.parse(
-                                              "https://drive.google.com/file/d/1_x9GFkfEhawyKmvTGdeWdMvnaHQy5S00/view?usp=sharing"));
+                                              "https://drive.google.com/file/d/181CxfOEaL5BvQ3eRtupltZud2lom5kvF/view?usp=sharing"));
                                         },
                                         height: 70,
                                         width: 70,
@@ -457,5 +453,345 @@ class _HomeState extends State<Home> {
                   ))
             ],
           );
+  }
+}
+
+class WebOverlaySection extends StatelessWidget {
+  const WebOverlaySection({
+    super.key,
+    required this.h,
+    required this.w,
+    required this.offsetPercentage,
+  });
+
+  final double h;
+  final double w;
+  final num offsetPercentage;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: h,
+      width: w,
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Container(
+          width: w * .5 + (w * .5 * offsetPercentage),
+          height: h,
+          padding: EdgeInsets.all(20),
+          constraints: const BoxConstraints(minHeight: 300),
+          child: Center(
+            child: Container(
+              // color: Colors.white,
+              width: w * .5 + (w * .2 * offsetPercentage),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      NormalRichText("Hi, I’m ", "Aviral Dixit",
+                          fontWeight: FontWeight.w800,
+                          fontSize: 55,
+                          letterSpacing: 2,
+                          color: Colors.white),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      NormalText(
+                          "SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          letterSpacing: 2,
+                          color: Colors.white),
+                    ],
+                  ),
+                  (w * .5 + (w * .5 * offsetPercentage) < w * .7)
+                      ? const SizedBox(
+                          height: 110,
+                        )
+                      : Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            NormalText("My Socials ",
+                                fontWeight: FontWeight.w200,
+                                fontSize: 16,
+                                letterSpacing: 2,
+                                color: Colors.white),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CustomShadowCard(
+                                  name: "Gmail",
+                                  onTap: () async {
+                                    await launchUrl(Uri.parse(
+                                        "mailto:aviral.dixit2110@gmail.com"));
+                                  },
+                                  height: 70,
+                                  width: 70,
+                                  image: "assets/images/gmail.webp",
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                CustomShadowCard(
+                                  name: "Linkdin",
+                                  onTap: () async {
+                                    await launchUrl(Uri.parse(
+                                        "https://www.linkedin.com/in/aviral-dixit/"));
+                                  },
+                                  height: 70,
+                                  width: 70,
+                                  image: "assets/images/linkedin.webp",
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                CustomShadowCard(
+                                  name: "Github",
+                                  onTap: () async {
+                                    await launchUrl(Uri.parse(
+                                        "https://github.com/aviral2910"));
+                                  },
+                                  height: 70,
+                                  width: 70,
+                                  image: "assets/images/github.webp",
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                CustomShadowCard(
+                                  name: "Call",
+                                  onTap: () async {
+                                    await launchUrl(
+                                        Uri.parse('tel:+917007042761'));
+                                  },
+                                  height: 70,
+                                  width: 70,
+                                  image: "assets/images/telephone.webp",
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                CustomShadowCard(
+                                  name: "Resume",
+                                  onTap: () async {
+                                    // await FileSaver.instance.saveFile(
+                                    //     name: "Resume: Aviral Dixit",
+                                    //     // ext: ".pdf",
+                                    //     filePath:
+                                    //         "assets/images/Resume-AviralDixit.pdf",
+                                    //     mimeType: MimeType.pdf);
+                                    await launchUrl(Uri.parse(
+                                        "https://drive.google.com/file/d/181CxfOEaL5BvQ3eRtupltZud2lom5kvF/view?usp=sharing"));
+                                  },
+                                  height: 70,
+                                  width: 70,
+                                  image: "assets/images/resume.webp",
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class WebImageSection extends StatelessWidget {
+  const WebImageSection({
+    super.key,
+    required this.w,
+    required this.h,
+    required this.offsetPercentage,
+  });
+
+  final double w;
+  final double h;
+  final num offsetPercentage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: w,
+      height: h,
+      child: Align(
+        alignment: Alignment.centerRight,
+        child: Image.asset(
+          "assets/images/aviral.webp",
+          height: h * .9 - (h * .5 * offsetPercentage),
+          width: w * .45,
+          fit: BoxFit.contain,
+        ),
+      ),
+    );
+  }
+}
+
+class MobileOverlaySection extends StatelessWidget {
+  const MobileOverlaySection({
+    super.key,
+    required this.w,
+    required this.h,
+    required this.offsetPercentage,
+  });
+
+  final double w;
+  final double h;
+  final num offsetPercentage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      // color: Colors.white,
+      width: w,
+      height: h - (h * .6 * offsetPercentage),
+      padding: const EdgeInsets.all(20),
+      constraints: const BoxConstraints(minHeight: 300),
+      child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              NormalText("Aviral Dixit",
+                  fontWeight: FontWeight.w900,
+                  fontSize: 30,
+                  letterSpacing: 6,
+                  color: Provider.of<ThemeProvider>(context).getThemeColor),
+              const SizedBox(
+                height: 10,
+              ),
+              NormalText("SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
+                  fontWeight: FontWeight.w400,
+                  fontSize: 15,
+                  letterSpacing: 2,
+                  color: Colors.white),
+            ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          (h - (h * .6 * offsetPercentage)) > h * .8
+              ? const SizedBox(
+                  height: 45,
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomShadowCard(
+                      name: "Gmail",
+                      onTap: () async {
+                        await launchUrl(
+                            Uri.parse("mailto:aviral.dixit2110@gmail.com"));
+                      },
+                      height: 45,
+                      width: 45,
+                      image: "assets/images/gmail.webp",
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CustomShadowCard(
+                      name: "Linkdin",
+                      onTap: () async {
+                        await launchUrl(Uri.parse(
+                            "https://www.linkedin.com/in/aviral-dixit/"));
+                      },
+                      height: 45,
+                      width: 45,
+                      image: "assets/images/linkedin.webp",
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CustomShadowCard(
+                      name: "Github",
+                      onTap: () async {
+                        await launchUrl(
+                            Uri.parse("https://github.com/aviral2910"));
+                      },
+                      height: 45,
+                      width: 45,
+                      image: "assets/images/github.webp",
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CustomShadowCard(
+                      name: "Call",
+                      onTap: () async {
+                        await launchUrl(Uri.parse('tel:+917007042761'));
+                      },
+                      height: 45,
+                      width: 45,
+                      image: "assets/images/telephone.webp",
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    CustomShadowCard(
+                      name: "Resume",
+                      onTap: () async {
+                        // await FileSaver.instance.saveFile(
+                        //     name: "Resume: Aviral Dixit",
+                        //     // ext: ".pdf",
+                        //     filePath:
+                        //         "assets/images/Resume-AviralDixit.pdf",
+                        //     mimeType: MimeType.pdf);
+                        await launchUrl(Uri.parse(
+                            "https://drive.google.com/file/d/181CxfOEaL5BvQ3eRtupltZud2lom5kvF/view?usp=sharing"));
+                      },
+                      height: 45,
+                      width: 45,
+                      image: "assets/images/resume.webp",
+                    )
+                  ],
+                ),
+        ],
+      ),
+    );
+  }
+}
+
+class MobileImageSection extends StatelessWidget {
+  const MobileImageSection({
+    super.key,
+    required this.h,
+    required this.w,
+  });
+
+  final double h;
+  final double w;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: h,
+      width: w,
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 100),
+          child: Image.asset(
+            "assets/images/aviral.webp",
+            height: h,
+            width: w,
+          ),
+        ),
+      ),
+    );
   }
 }

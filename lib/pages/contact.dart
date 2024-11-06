@@ -28,32 +28,32 @@ class _ContactState extends State<Contact> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    widget.scrollController.addListener(() {
-      box ??=
-          contactPositionKey.currentContext!.findRenderObject() as RenderBox;
-      position = box!.localToGlobal(Offset.zero); //this is global position
+    // widget.scrollController.addListener(() {
+    //   box ??=
+    //       contactPositionKey.currentContext!.findRenderObject() as RenderBox;
+    //   position = box!.localToGlobal(Offset.zero); //this is global position
 
-      if (position!.dy < widget.height * .6) {
-        if (changeAppBar == false) {
-          setState(() {
-            changeAppBar = true;
-          });
-        }
-      } else {
-        if (changeAppBar == true) {
-          setState(() {
-            changeAppBar = false;
-          });
-        }
-      }
-    });
+    //   if (position!.dy < widget.height * .6) {
+    //     if (changeAppBar == false) {
+    //       setState(() {
+    //         changeAppBar = true;
+    //       });
+    //     }
+    //   } else {
+    //     if (changeAppBar == true) {
+    //       setState(() {
+    //         changeAppBar = false;
+    //       });
+    //     }
+    //   }
+    // });
   }
 
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController message = TextEditingController();
-  bool changeAppBar = false;
+  bool changeAppBar = true;
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;

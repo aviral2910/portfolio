@@ -45,7 +45,7 @@ class FirebaseService {
         .orderBy("rank", descending: false)
         .get();
     testimonialData = testimonial.docs;
-
+    print(testimonialData);
     Provider.of<TestimonialListProvider>(context, listen: false)
         .settestimonial = testimonialData;
   }

@@ -24,27 +24,27 @@ class _AboutState extends State<About> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    widget.scrollController.addListener(() {
-      box ??= aboutPositionKey.currentContext!.findRenderObject() as RenderBox;
-      position = box!.localToGlobal(Offset.zero); //this is global position
+    // widget.scrollController.addListener(() {
+    //   box ??= aboutPositionKey.currentContext!.findRenderObject() as RenderBox;
+    //   position = box!.localToGlobal(Offset.zero); //this is global position
 
-      if (position!.dy < widget.height * .6) {
-        if (changeAppBar == false) {
-          setState(() {
-            changeAppBar = true;
-          });
-        }
-      } else {
-        if (changeAppBar == true) {
-          setState(() {
-            changeAppBar = false;
-          });
-        }
-      }
-    });
+    //   if (position!.dy < widget.height * .6) {
+    //     if (changeAppBar == false) {
+    //       setState(() {
+    //         changeAppBar = true;
+    //       });
+    //     }
+    //   } else {
+    //     if (changeAppBar == true) {
+    //       setState(() {
+    //         changeAppBar = false;
+    //       });
+    //     }
+    //   }
+    // });
   }
 
-  bool changeAppBar = false;
+  bool changeAppBar = true;
 
   @override
   Widget build(BuildContext context) {
