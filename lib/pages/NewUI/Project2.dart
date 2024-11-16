@@ -13,15 +13,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Project extends StatefulWidget {
-  Project({super.key, required this.scrollController, required this.height});
+class Project2 extends StatefulWidget {
+  Project2({super.key, required this.scrollController, required this.height});
   ScrollController scrollController;
   double height;
   @override
-  State<Project> createState() => _ProjectState();
+  State<Project2> createState() => _Project2State();
 }
 
-class _ProjectState extends State<Project> {
+class _Project2State extends State<Project2> {
   RenderBox? box;
   double? y;
   Offset? position;
@@ -61,16 +61,13 @@ class _ProjectState extends State<Project> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.only(
+          top: w >= mobileSize ? 110 : 50, bottom: 50, left: 15, right: 15),
       width: w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeIn,
-            height: changeAppBar ? h * .1 : h * .2,
-          ),
           HeadingCard(
             icon: "assets/images/project.webp",
             text: "PROJECTS",

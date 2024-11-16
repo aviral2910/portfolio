@@ -1,3 +1,5 @@
+import 'package:aviralportfolio/pages/NewUI/HomePage2.dart';
+import 'package:aviralportfolio/pages/NewUI/SpiderDot.dart';
 import 'package:aviralportfolio/pages/caseStudy.dart';
 import 'package:aviralportfolio/pages/homePage.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return MaterialApp(
       title: """Aviral's Portfolio""",
       // theme: ThemeData(
@@ -49,7 +53,12 @@ class MyApp extends StatelessWidget {
       // ),
       debugShowCheckedModeBanner: false,
       // home: CustomZoomWidget(maxScale: 1, child: CaseStudy()),
-      home: CustomZoomWidget(maxScale: 1, child: HomePage()),
+      // home: CustomZoomWidget(maxScale: 1, child: HomePage()),
+      home: HomePage2(),
+      // home: MovingDotsPage(
+      //   w: w,
+      //   h: h,
+      // ),
     );
   }
 }

@@ -199,25 +199,25 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                         fontSize: 16,
                                         color: Colors.white),
                                     ShadowText("ABOUT", onTap: () {
-                                      scrolltoSection(aboutPositionKey);
+                                      // scrolltoSection(aboutPositionKey);
                                     },
                                         fontWeight: FontWeight.w300,
                                         fontSize: 16,
                                         color: Colors.white),
                                     ShadowText("PROJECT", onTap: () {
-                                      scrolltoSection(projectPositionKey);
+                                      // scrolltoSection(projectPositionKey);
                                     },
                                         fontWeight: FontWeight.w300,
                                         fontSize: 16,
                                         color: Colors.white),
                                     ShadowText("TESTIMONIAL", onTap: () {
-                                      scrolltoSection(testimonialPositionKey);
+                                      // scrolltoSection(testimonialPositionKey);
                                     },
                                         fontWeight: FontWeight.w300,
                                         fontSize: 16,
                                         color: Colors.white),
                                     ShadowText("CONTACT", onTap: () {
-                                      scrolltoSection(contactPositionKey);
+                                      // scrolltoSection(contactPositionKey);
                                     },
                                         fontWeight: FontWeight.w300,
                                         fontSize: 16,
@@ -295,25 +295,25 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                       fontSize: 16,
                                       color: Colors.white),
                                   ShadowText("ABOUT", onTap: () {
-                                    scrolltoSection(aboutPositionKey);
+                                    // scrolltoSection(aboutPositionKey);
                                   },
                                       fontWeight: FontWeight.w300,
                                       fontSize: 16,
                                       color: Colors.white),
                                   ShadowText("PROJECT", onTap: () {
-                                    scrolltoSection(projectPositionKey);
+                                    // scrolltoSection(projectPositionKey);
                                   },
                                       fontWeight: FontWeight.w300,
                                       fontSize: 16,
                                       color: Colors.white),
                                   ShadowText("TESTIMONIAL", onTap: () {
-                                    scrolltoSection(testimonialPositionKey);
+                                    // scrolltoSection(testimonialPositionKey);
                                   },
                                       fontWeight: FontWeight.w300,
                                       fontSize: 16,
                                       color: Colors.white),
                                   ShadowText("CONTACT", onTap: () {
-                                    scrolltoSection(contactPositionKey);
+                                    // scrolltoSection(contactPositionKey);
                                   },
                                       fontWeight: FontWeight.w300,
                                       fontSize: 16,

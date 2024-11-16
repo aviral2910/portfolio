@@ -9,18 +9,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Testimonial extends StatefulWidget {
-  const Testimonial(
+class Testimonial2 extends StatefulWidget {
+  const Testimonial2(
       {super.key, required this.scrollController, required this.height});
   final ScrollController scrollController;
   final double height;
   @override
-  State<Testimonial> createState() => _TestimonialState();
+  State<Testimonial2> createState() => _Testimonial2State();
 }
 
-final testimonialPositionKey = GlobalKey();
-
-class _TestimonialState extends State<Testimonial> {
+class _Testimonial2State extends State<Testimonial2> {
   RenderBox? box;
   double? y;
   Offset? position;
@@ -64,17 +62,13 @@ class _TestimonialState extends State<Testimonial> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-    return SizedBox(
-      key: testimonialPositionKey,
+    return Container(
+      padding: EdgeInsets.only(
+          top: w >= mobileSize ? 110 : 50, bottom: 50, left: 15, right: 15),
       width: w,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AnimatedContainer(
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeIn,
-            height: changeAppBar ? h * .1 : h * .2,
-          ),
           HeadingCard(
             icon: "assets/images/testimonial.webp",
             text: "TESTIMONIAL",

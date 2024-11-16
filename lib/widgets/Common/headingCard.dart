@@ -1,6 +1,8 @@
 import 'package:aviralportfolio/common/global.dart';
+import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class HeadingCard extends StatelessWidget {
   HeadingCard({
@@ -21,9 +23,25 @@ class HeadingCard extends StatelessWidget {
         height: 35,
         padding: const EdgeInsets.only(left: 20, right: 20),
         decoration: BoxDecoration(
+            color: darkthemeColor,
             borderRadius: BorderRadius.circular(40),
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: 4,
+                  offset: const Offset(-2, -2),
+                  color: Provider.of<ThemeProvider>(context)
+                      .getThemeColor
+                      .withOpacity(.5)),
+              BoxShadow(
+                  blurRadius: 4,
+                  offset: const Offset(2, 2),
+                  color: Provider.of<ThemeProvider>(context)
+                      .getThemeColor
+                      .withOpacity(.5))
+            ],
             border: Border.all(
-                width: .4, color: const Color.fromARGB(174, 255, 255, 255))),
+                width: .4,
+                color: Provider.of<ThemeProvider>(context).getThemeColor)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

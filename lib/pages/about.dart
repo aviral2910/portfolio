@@ -55,7 +55,7 @@ class _AboutState extends State<About> {
       // height: h,
       width: w,
       // constraints: BoxConstraints(minHeight: 650, maxHeight: 850),
-      color: darkthemeColor,
+      // color: darkthemeColor,
       child: (w < mobileSize)
           ? Column(
               children: [

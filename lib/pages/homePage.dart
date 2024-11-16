@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
 
   final ScrollController _scrollController = ScrollController();
 
-  final aboutkey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -113,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 // if (w < mobileSize)
                 ScrollTransformItem(
-                  key: aboutkey,
+                  key: const ValueKey("about"),
                   builder: (screenOffset) {
                     return About(
                         scrollController: _scrollController, height: h);
@@ -125,18 +124,21 @@ class _HomePageState extends State<HomePage> {
                 }),
                 // if (w >= mobileSize)
                 ScrollTransformItem(
+                  key: const ValueKey("project"),
                   builder: (screenOffset) {
                     return Project(
                         scrollController: _scrollController, height: h);
                   },
                 ),
                 ScrollTransformItem(
+                  key: const ValueKey("testimonial"),
                   builder: (screenOffset) {
                     return Testimonial(
                         scrollController: _scrollController, height: h);
                   },
                 ),
                 ScrollTransformItem(
+                  key: const ValueKey("contact"),
                   builder: (screenOffset) {
                     return Contact(
                         scrollController: _scrollController, height: h);
