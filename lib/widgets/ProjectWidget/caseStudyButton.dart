@@ -37,7 +37,7 @@ class _CaseStudyButtonState extends State<CaseStudyButton> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.only(top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
         child: Container(
           height: widget.height ?? 35,
@@ -73,13 +73,13 @@ class _CaseStudyButtonState extends State<CaseStudyButton> {
                           offset: widget.isHover
                               ? const Offset(-2, -2)
                               : const Offset(-8, -8),
-                          color: Color.fromARGB(137, 242, 238, 238)),
+                          color: const Color.fromARGB(137, 242, 238, 238)),
                       BoxShadow(
                           blurRadius: widget.isHover ? 2 : 10,
                           offset: widget.isHover
                               ? const Offset(2, 2)
                               : const Offset(8, 8),
-                          color: Color.fromARGB(137, 242, 238, 238))
+                          color: const Color.fromARGB(137, 242, 238, 238))
                     ],
               gradient: const LinearGradient(
                   begin: Alignment.topLeft,

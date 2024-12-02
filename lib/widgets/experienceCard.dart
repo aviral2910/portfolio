@@ -61,14 +61,14 @@ class _ExperienceCardState extends State<ExperienceCard> {
             ),
             Expanded(
               child: AnimatedPadding(
-                duration: Duration(milliseconds: 200),
+                duration: const Duration(milliseconds: 200),
                 padding: EdgeInsets.only(
                     left: 5,
                     right: 5,
                     top: ishover ? 0 : 5,
                     bottom: ishover ? 5 : 0),
                 child: AnimatedContainer(
-                    duration: Duration(milliseconds: 200),
+                    duration: const Duration(milliseconds: 200),
                     // height: 200,
                     // width: w - 110,
                     padding: EdgeInsets.only(
@@ -80,20 +80,24 @@ class _ExperienceCardState extends State<ExperienceCard> {
                         boxShadow: [
                           BoxShadow(
                               blurRadius: ishover ? 2 : 7,
-                              offset: ishover ? Offset(-2, -2) : Offset(-8, -8),
+                              offset: ishover
+                                  ? const Offset(-2, -2)
+                                  : const Offset(-8, -8),
                               color: ishover
                                   ? Provider.of<ThemeProvider>(context)
                                       .getThemeColor
                                       .withOpacity(.65)
-                                  : Color.fromARGB(121, 32, 32, 32)),
+                                  : const Color.fromARGB(121, 32, 32, 32)),
                           BoxShadow(
                               blurRadius: ishover ? 2 : 10,
-                              offset: ishover ? Offset(2, 2) : Offset(8, 8),
+                              offset: ishover
+                                  ? const Offset(2, 2)
+                                  : const Offset(8, 8),
                               color: ishover
                                   ? Provider.of<ThemeProvider>(context)
                                       .getThemeColor
                                       .withOpacity(.55)
-                                  : Color.fromARGB(121, 15, 15, 15))
+                                  : const Color.fromARGB(121, 15, 15, 15))
                         ],
                         gradient: LinearGradient(
                             begin: Alignment.topLeft,

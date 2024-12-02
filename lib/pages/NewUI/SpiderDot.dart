@@ -85,7 +85,7 @@ class _SpiderDotState extends State<SpiderDot>
 
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
     return MouseRegion(
       onHover: (event) {
         setState(() {

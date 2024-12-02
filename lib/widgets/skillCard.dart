@@ -1,9 +1,11 @@
 import 'package:aviralportfolio/common/global.dart';
+import 'package:aviralportfolio/pages/NewUI/Home2.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/themeProvider.dart';
@@ -41,21 +43,22 @@ class _SkillsCardState extends State<SkillsCard> {
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                  blurRadius: isHover ? 3 : 7,
-                  offset: isHover ? Offset(-3, -3) : Offset(-8, -8),
-                  color: isHover
+                  blurRadius: !isHover ? 3 : 7,
+                  offset:
+                      !isHover ? const Offset(-3, -3) : const Offset(-8, -8),
+                  color: !isHover
                       ? Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.45)
-                      : Color.fromARGB(121, 32, 32, 32)),
+                      : const Color.fromARGB(121, 32, 32, 32)),
               BoxShadow(
-                  blurRadius: isHover ? 2 : 10,
-                  offset: isHover ? Offset(2, 2) : Offset(8, 8),
-                  color: isHover
+                  blurRadius: !isHover ? 2 : 10,
+                  offset: !isHover ? const Offset(2, 2) : const Offset(8, 8),
+                  color: !isHover
                       ? Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.45)
-                      : Color.fromARGB(121, 15, 15, 15))
+                      : const Color.fromARGB(121, 15, 15, 15))
             ],
             gradient: const LinearGradient(
                 begin: Alignment.topLeft,
@@ -175,7 +178,10 @@ class Others extends StatelessWidget {
                     .getSkillList[i]["name"]
                     .toString(),
                 fontSize: 12,
-              ),
+              ).animate().fade(
+                    delay: (.2 + (.05 * i)).seconds,
+                    duration: .4.seconds,
+                  ),
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
@@ -281,7 +287,10 @@ class Framework extends StatelessWidget {
                     .getSkillList[i]["name"]
                     .toString(),
                 fontSize: 12,
-              ),
+              ).animate().fade(
+                    delay: (.2 + (.05 * i)).seconds,
+                    duration: .4.seconds,
+                  ),
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,
@@ -387,7 +396,10 @@ class Languages extends StatelessWidget {
                     .getSkillList[i]["name"]
                     .toString(),
                 fontSize: 12,
-              ),
+              ).animate().fade(
+                    delay: (.2 + (.05 * i)).seconds,
+                    duration: .4.seconds,
+                  ),
           // CustomSkillsCard(
           //   height: 100,
           //   width: 100,

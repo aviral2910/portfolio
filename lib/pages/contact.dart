@@ -149,9 +149,9 @@ class _ContactCardState extends State<ContactCard> {
     String message,
     String phone,
   ) async {
-    final serviceId = 'service_raopw1k';
-    final templateId = 'template_f28mjrc';
-    final userId = 'PQRzhg6kh0s_pVp0q';
+    const serviceId = 'service_raopw1k';
+    const templateId = 'template_f28mjrc';
+    const userId = 'PQRzhg6kh0s_pVp0q';
 
     final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
     final response = await http.post(url,
@@ -324,8 +324,7 @@ class _ContactCardState extends State<ContactCard> {
                     if (widget.name.text.isEmpty ||
                         widget.email.text.isEmpty ||
                         widget.message.text.isEmpty) {
-                      IconSnackBar.show(
-                          context: context,
+                      IconSnackBar.show(context,
                           snackBarType: SnackBarType.alert,
                           label: 'Name, Email and Message cannot be Empty !');
                     } else {
@@ -335,9 +334,8 @@ class _ContactCardState extends State<ContactCard> {
                       widget.email.clear();
                       widget.message.clear();
                       widget.phone.clear();
-                      IconSnackBar.show(
-                          context: context,
-                          snackBarType: SnackBarType.save,
+                      IconSnackBar.show(context,
+                          snackBarType: SnackBarType.success,
                           label: 'Submitted Successfully !');
                     }
                     setState(() {
@@ -380,7 +378,7 @@ class _CustomShadowButtonState extends State<CustomShadowButton> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.only(top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
         child: Container(
           height: 50,

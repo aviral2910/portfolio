@@ -5,6 +5,7 @@ import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:aviralportfolio/widgets/inwardTextFormField.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_icon_snackbar/flutter_icon_snackbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
@@ -66,14 +67,17 @@ class _Contact2State extends State<Contact2> {
           HeadingCard(
             icon: "assets/images/contact.webp",
             text: "CONTACT",
-          ),
+          )
+              .animate()
+              .fadeIn(delay: .1.seconds, duration: .7.seconds)
+              .slideY(delay: .1.seconds, duration: .7.seconds),
           AnimatedContainer(
             duration: const Duration(milliseconds: 1000),
             curve: Curves.easeIn,
             height: changeAppBar ? 25 : 50,
           ),
           Container(
-            padding: EdgeInsets.only(left: 15, right: 15),
+            padding: const EdgeInsets.only(left: 15, right: 15),
             width: w,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -84,19 +88,26 @@ class _Contact2State extends State<Contact2> {
                       color: const Color.fromARGB(207, 255, 255, 255),
                       fontWeight: FontWeight.w400,
                       fontSize: w < mobileSize ? 13 : 16),
-                ),
+                ).animate().fadeIn(delay: .1.seconds, duration: .7.seconds),
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 800),
                   curve: Curves.easeIn,
                   height: changeAppBar ? 45 : 60,
                 ),
                 ContactCard(
-                    w: w,
-                    name: name,
-                    changeAppBar: changeAppBar,
-                    phone: phone,
-                    email: email,
-                    message: message)
+                        w: w,
+                        name: name,
+                        changeAppBar: changeAppBar,
+                        phone: phone,
+                        email: email,
+                        message: message)
+                    .animate()
+                    .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                    .slideY(
+                        delay: .1.seconds,
+                        duration: .7.seconds,
+                        begin: .5,
+                        end: 0),
               ],
             ),
           ),
@@ -141,9 +152,9 @@ class _ContactCardState extends State<ContactCard> {
     String message,
     String phone,
   ) async {
-    final serviceId = 'service_raopw1k';
-    final templateId = 'template_f28mjrc';
-    final userId = 'PQRzhg6kh0s_pVp0q';
+    const serviceId = 'service_raopw1k';
+    const templateId = 'template_f28mjrc';
+    const userId = 'PQRzhg6kh0s_pVp0q';
 
     final url = Uri.parse("https://api.emailjs.com/api/v1.0/email/send");
     final response = await http.post(url,
@@ -190,17 +201,18 @@ class _ContactCardState extends State<ContactCard> {
                 ]),
             boxShadow: [
               BoxShadow(
-                  blurRadius: ishover ? 2 : 7,
-                  offset: ishover ? const Offset(-2, -2) : const Offset(-8, -8),
-                  color: ishover
+                  blurRadius: !ishover ? 2 : 7,
+                  offset:
+                      !ishover ? const Offset(-2, -2) : const Offset(-8, -8),
+                  color: !ishover
                       ? Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.8)
                       : const Color.fromARGB(121, 32, 32, 32)),
               BoxShadow(
-                  blurRadius: ishover ? 2 : 8,
-                  offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
-                  color: ishover
+                  blurRadius: !ishover ? 2 : 8,
+                  offset: !ishover ? const Offset(2, 2) : const Offset(8, 8),
+                  color: !ishover
                       ? Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.8)
@@ -316,8 +328,7 @@ class _ContactCardState extends State<ContactCard> {
                     if (widget.name.text.isEmpty ||
                         widget.email.text.isEmpty ||
                         widget.message.text.isEmpty) {
-                      IconSnackBar.show(
-                          context: context,
+                      IconSnackBar.show(context,
                           snackBarType: SnackBarType.alert,
                           label: 'Name, Email and Message cannot be Empty !');
                     } else {
@@ -327,9 +338,8 @@ class _ContactCardState extends State<ContactCard> {
                       widget.email.clear();
                       widget.message.clear();
                       widget.phone.clear();
-                      IconSnackBar.show(
-                          context: context,
-                          snackBarType: SnackBarType.save,
+                      IconSnackBar.show(context,
+                          snackBarType: SnackBarType.success,
                           label: 'Submitted Successfully !');
                     }
                     setState(() {
@@ -372,7 +382,7 @@ class _CustomShadowButtonState extends State<CustomShadowButton> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         padding: EdgeInsets.only(top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
         child: Container(
           height: 50,

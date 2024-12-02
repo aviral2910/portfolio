@@ -20,7 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -59,6 +59,12 @@ dependencies:
   visibility_detector: ^0.4.0+2
   responsive_builder: ^0.7.1
   html: ^0.15.4
+  flutter_animate: ^4.5.2
+  firebase_app_check: ^0.2.2
+  firebase_vertexai: ^0.1.0
+  flutter_dotenv: ^5.2.1
+  flutter_chat_ui: ^1.6.15
+  flutter_markdown: ^0.7.4+3
  
 
 
@@ -94,6 +100,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - .env
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

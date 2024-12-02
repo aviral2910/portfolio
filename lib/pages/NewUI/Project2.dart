@@ -7,7 +7,9 @@ import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
@@ -53,7 +55,8 @@ class _Project2State extends State<Project2> {
 
   fetchProject() async {
     FirebaseService service = FirebaseService();
-    await service.fetchProjectData(context);
+    await compute(service.fetchProjectData, context);
+    // await service.fetchProjectData(context);
   }
 
   bool changeAppBar = true;
@@ -71,7 +74,10 @@ class _Project2State extends State<Project2> {
           HeadingCard(
             icon: "assets/images/project.webp",
             text: "PROJECTS",
-          ),
+          )
+              .animate()
+              .fadeIn(delay: .1.seconds, duration: .7.seconds)
+              .slideY(delay: .1.seconds, duration: .7.seconds),
           AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
@@ -136,10 +142,17 @@ class _ProjectCardState extends State<ProjectCard> {
               ? Column(
                   children: [
                     ProjectImageCard(
-                        heading: Provider.of<ProjectListProvider>(context)
-                            .getprojectList[widget.index]["name"],
-                        w: widget.w,
-                        index: widget.index),
+                            heading: Provider.of<ProjectListProvider>(context)
+                                .getprojectList[widget.index]["name"],
+                            w: widget.w,
+                            index: widget.index)
+                        .animate()
+                        .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                        .slideX(
+                            delay: .1.seconds,
+                            duration: .7.seconds,
+                            begin: .5,
+                            end: 0),
                     const SizedBox(
                       height: 20,
                     ),
@@ -155,6 +168,9 @@ class _ProjectCardState extends State<ProjectCard> {
                         w: widget.w,
                       ),
                     )
+                        .animate()
+                        .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                        .slideX(delay: .1.seconds, duration: .7.seconds),
                   ],
                 )
               : Row(
@@ -173,7 +189,9 @@ class _ProjectCardState extends State<ProjectCard> {
                             index: widget.index,
                           ),
                         ),
-                      ),
+                      )
+                          .animate()
+                          .fadeIn(delay: .1.seconds, duration: .5.seconds),
                     if (widget.index % 2 != 0)
                       Expanded(
                           flex: 1,
@@ -190,15 +208,20 @@ class _ProjectCardState extends State<ProjectCard> {
                     ),
                     if (widget.index % 2 == 0)
                       Expanded(
-                          flex: 1,
-                          child: ProjectTextCard(
-                              heading: Provider.of<ProjectListProvider>(context)
-                                  .getprojectList[widget.index]["name"],
-                              index: widget.index,
-                              text: Provider.of<ProjectListProvider>(context)
-                                  .getprojectList[widget.index]["description"],
-                              w: widget.w,
-                              ishover: ishover)),
+                              flex: 1,
+                              child: ProjectTextCard(
+                                  heading:
+                                      Provider.of<ProjectListProvider>(context)
+                                          .getprojectList[widget.index]["name"],
+                                  index: widget.index,
+                                  text:
+                                      Provider.of<ProjectListProvider>(context)
+                                              .getprojectList[widget.index]
+                                          ["description"],
+                                  w: widget.w,
+                                  ishover: ishover))
+                          .animate()
+                          .fadeIn(delay: .1.seconds, duration: .5.seconds),
                     if (widget.index % 2 != 0)
                       Expanded(
                         flex: 2,
@@ -308,7 +331,16 @@ class ProjectTextCard extends StatelessWidget {
                       height: 50,
                       width: 50,
                       radius: 50,
-                    ),
+                    ).animate().fadeIn(
+                        delay: (.3 +
+                                (.1 *
+                                    (Provider.of<ProjectListProvider>(context)
+                                            .getprojectList[index]["tools"]
+                                            .length -
+                                        i +
+                                        1)))
+                            .seconds,
+                        duration: .4.seconds)
                 ],
               ),
             ),
@@ -362,7 +394,9 @@ class ProjectTextCard extends StatelessWidget {
                             radius: 50,
                             image: "assets/images/playstore.webp",
                           ),
-                        ),
+                        )
+                            .animate()
+                            .fadeIn(delay: .4.seconds, duration: .4.seconds),
                       if (Provider.of<ProjectListProvider>(context)
                               .getprojectList[index]["web"] !=
                           "")
@@ -382,7 +416,9 @@ class ProjectTextCard extends StatelessWidget {
                             radius: 50,
                             image: "assets/images/link.webp",
                           ),
-                        ),
+                        )
+                            .animate()
+                            .fadeIn(delay: .5.seconds, duration: .4.seconds),
 
                       if (Provider.of<ProjectListProvider>(context)
                               .getprojectList[index]["ios"] !=
@@ -402,7 +438,9 @@ class ProjectTextCard extends StatelessWidget {
                             width: 50,
                             radius: 50,
                             image: "assets/images/appstore.webp",
-                          ),
+                          )
+                              .animate()
+                              .fadeIn(delay: .6.seconds, duration: .4.seconds),
                         ),
 
                       // Container(
@@ -488,25 +526,26 @@ class _ProjectIlluminatedTextCardState
         setState(() {});
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         // height: 200,
         width: widget.w,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                  blurRadius: ishover ? 2 : 7,
-                  offset: ishover ? Offset(-1, -1) : Offset(-8, -8),
-                  color: !ishover
-                      ? Color.fromARGB(121, 32, 32, 32)
+                  blurRadius: !ishover ? 2 : 7,
+                  offset:
+                      !ishover ? const Offset(-1, -1) : const Offset(-8, -8),
+                  color: ishover
+                      ? const Color.fromARGB(121, 32, 32, 32)
                       : Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.7)),
               BoxShadow(
-                  blurRadius: ishover ? 2 : 10,
-                  offset: ishover ? Offset(1, 1) : Offset(8, 8),
-                  color: !ishover
-                      ? Color.fromARGB(121, 15, 15, 15)
+                  blurRadius: !ishover ? 2 : 10,
+                  offset: !ishover ? const Offset(1, 1) : const Offset(8, 8),
+                  color: ishover
+                      ? const Color.fromARGB(121, 15, 15, 15)
                       : Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.7))
@@ -591,7 +630,7 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
           child: Stack(
             children: [
               AnimatedContainer(
-                duration: Duration(milliseconds: 200),
+                duration: const Duration(milliseconds: 200),
                 // width: widget.w,
                 // padding: EdgeInsets.only(
                 //     left: widget.w < mobileSize ? 10 : 20,
@@ -603,20 +642,20 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                     boxShadow: [
                       BoxShadow(
                           blurRadius: 4,
-                          offset: Offset(-6, -6),
+                          offset: const Offset(-6, -6),
                           color: ishover
                               ? Provider.of<ThemeProvider>(context)
                                   .getThemeColor
                                   .withOpacity(.4)
-                              : Color.fromARGB(220, 32, 32, 32)),
+                              : const Color.fromARGB(220, 32, 32, 32)),
                       BoxShadow(
                           blurRadius: 5,
-                          offset: Offset(6, 6),
+                          offset: const Offset(6, 6),
                           color: ishover
                               ? Provider.of<ThemeProvider>(context)
                                   .getThemeColor
                                   .withOpacity(.4)
-                              : Color.fromARGB(220, 15, 15, 15))
+                              : const Color.fromARGB(220, 15, 15, 15))
                     ],
                     borderRadius: BorderRadius.circular(10)),
 
@@ -717,7 +756,9 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                                                                 .getprojectList[
                                                             widget.index]
                                                         ["snapIA"][i],
-                                              ),
+                                              ).animate().fadeIn(
+                                                  delay: .8.seconds,
+                                                  duration: .7.seconds),
                                             ),
                                           )
                                       ],
@@ -789,9 +830,9 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                                           reverse: false,
                                           autoPlay: false,
                                           autoPlayInterval:
-                                              Duration(seconds: 3),
+                                              const Duration(seconds: 3),
                                           autoPlayAnimationDuration:
-                                              Duration(milliseconds: 800),
+                                              const Duration(milliseconds: 800),
                                           autoPlayCurve: Curves.fastOutSlowIn,
                                           enlargeCenterPage: true,
                                           enlargeFactor: 0.3,
@@ -807,7 +848,9 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                                               return WebsiteScreenCard(
                                                 isHover: true,
                                                 image: i,
-                                              );
+                                              ).animate().fadeIn(
+                                                  delay: .8.seconds,
+                                                  duration: .7.seconds);
                                             },
                                           );
                                         }).toList(),

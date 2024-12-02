@@ -49,7 +49,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     box ??= globalKey.currentContext!.findRenderObject() as RenderBox;
     position = box.localToGlobal(Offset(0, widget.scrollController!.offset));
     widget.scrollController!.animateTo(position.dy - 50,
-        duration: Duration(milliseconds: 400), curve: Curves.ease);
+        duration: const Duration(milliseconds: 400), curve: Curves.ease);
   }
 
   bool changeAppBar = false;
@@ -101,7 +101,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                               Navigator.of(context).pop();
                             } else {
                               widget.scrollController!.animateTo(0,
-                                  duration: Duration(milliseconds: 400),
+                                  duration: const Duration(milliseconds: 400),
                                   curve: Curves.ease);
                             }
                           },
@@ -169,7 +169,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                     Navigator.of(context).pop();
                                   } else {
                                     widget.scrollController!.animateTo(0,
-                                        duration: Duration(milliseconds: 400),
+                                        duration:
+                                            const Duration(milliseconds: 400),
                                         curve: Curves.ease);
                                   }
                                 },
@@ -265,7 +266,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
                                   Navigator.of(context).pop();
                                 } else {
                                   widget.scrollController!.animateTo(0,
-                                      duration: Duration(milliseconds: 400),
+                                      duration:
+                                          const Duration(milliseconds: 400),
                                       curve: Curves.ease);
                                 }
                               },

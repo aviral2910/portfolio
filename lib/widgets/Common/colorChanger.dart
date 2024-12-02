@@ -26,7 +26,7 @@ class _ColorChangerState extends State<ColorChanger> {
           right: w < mobileSize ? 0 : 30, bottom: w < mobileSize ? 0 : 10),
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: 80,
             width: 80,
           ),
@@ -55,7 +55,8 @@ class _ColorChangerState extends State<ColorChanger> {
               backgroundPaint: Paint()..color = Colors.transparent,
             ),
           ),
-          Positioned(bottom: 14, right: 14, child: AnimatedShadowColorPicker()),
+          const Positioned(
+              bottom: 14, right: 14, child: AnimatedShadowColorPicker()),
         ],
       ),
     );
@@ -94,7 +95,7 @@ class _AnimatedShadowColorPickerState extends State<AnimatedShadowColorPicker> {
         elevation: 4,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         child: AnimatedContainer(
-          duration: Duration(milliseconds: 1000),
+          duration: const Duration(milliseconds: 1000),
           height: 45,
           width: 45,
           decoration: BoxDecoration(

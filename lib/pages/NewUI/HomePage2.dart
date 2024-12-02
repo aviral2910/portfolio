@@ -4,6 +4,7 @@ import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/pages/NewUI/About2.dart';
 import 'package:aviralportfolio/pages/NewUI/Contact2.dart';
 import 'package:aviralportfolio/pages/NewUI/Experience2.dart';
+import 'package:aviralportfolio/pages/NewUI/Home2.dart';
 import 'package:aviralportfolio/pages/NewUI/Project2.dart';
 import 'package:aviralportfolio/pages/NewUI/SpiderDot.dart';
 import 'package:aviralportfolio/pages/NewUI/Testimonial2.dart';
@@ -11,8 +12,11 @@ import 'package:aviralportfolio/pages/NewUI/Testimonial2.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:aviralportfolio/widgets/Common/colorChanger.dart';
+import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -149,7 +153,18 @@ class _HomePage2State extends State<HomePage2> {
                             ),
                           ),
                         ),
-                      );
+                      )
+                          .animate()
+                          .fadeIn(
+                            delay: (.2).seconds,
+                            duration: .6.seconds,
+                          )
+                          .slideY(
+                              delay: (.2).seconds,
+                              duration: .6.seconds,
+                              begin: 1,
+                              end: 0);
+                      ;
                     }),
                   ),
                 ),
@@ -167,7 +182,8 @@ class _HomePage2State extends State<HomePage2> {
                 child: Center(
                   child: Container(
                     // width: w,
-                    constraints: BoxConstraints(maxWidth: 600, minWidth: 300),
+                    constraints:
+                        const BoxConstraints(maxWidth: 600, minWidth: 300),
                     height: 60,
                     padding:
                         const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
@@ -260,7 +276,10 @@ class _HomePage2State extends State<HomePage2> {
                               ),
                             ),
                           ),
-                        );
+                        )
+                            .animate()
+                            .fadeIn(delay: (.2).seconds, duration: .6.seconds)
+                            .slideY(delay: (.2).seconds, duration: .6.seconds);
                       }),
                     ),
                   ),

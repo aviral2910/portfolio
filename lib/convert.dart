@@ -1,7 +1,3 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:html/parser.dart' as html;
-
 Map<String, String> portfolioData = {
   "Aabid Ahmed": 'https://sawad.framer.website/',
   "Aashir Khan": 'https://portfolio,n4sn.vercel.app',

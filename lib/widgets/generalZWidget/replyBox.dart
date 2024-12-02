@@ -23,7 +23,7 @@ class GeneralZUserReply extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Padding(
-                padding: EdgeInsets.only(right: 22),
+                padding: const EdgeInsets.only(right: 22),
                 child: Text(
                   text,
                   style: const TextStyle(

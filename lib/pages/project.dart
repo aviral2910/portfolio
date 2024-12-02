@@ -491,7 +491,7 @@ class _ProjectIlluminatedTextCardState
         setState(() {});
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         // height: 200,
         width: widget.w,
         padding: const EdgeInsets.all(20),
@@ -499,17 +499,17 @@ class _ProjectIlluminatedTextCardState
             boxShadow: [
               BoxShadow(
                   blurRadius: ishover ? 2 : 7,
-                  offset: ishover ? Offset(-1, -1) : Offset(-8, -8),
+                  offset: ishover ? const Offset(-1, -1) : const Offset(-8, -8),
                   color: !ishover
-                      ? Color.fromARGB(121, 32, 32, 32)
+                      ? const Color.fromARGB(121, 32, 32, 32)
                       : Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.7)),
               BoxShadow(
                   blurRadius: ishover ? 2 : 10,
-                  offset: ishover ? Offset(1, 1) : Offset(8, 8),
+                  offset: ishover ? const Offset(1, 1) : const Offset(8, 8),
                   color: !ishover
-                      ? Color.fromARGB(121, 15, 15, 15)
+                      ? const Color.fromARGB(121, 15, 15, 15)
                       : Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.7))
@@ -594,7 +594,7 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
           child: Stack(
             children: [
               AnimatedContainer(
-                duration: Duration(milliseconds: 200),
+                duration: const Duration(milliseconds: 200),
                 // width: widget.w,
                 // padding: EdgeInsets.only(
                 //     left: widget.w < mobileSize ? 10 : 20,
@@ -606,20 +606,20 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                     boxShadow: [
                       BoxShadow(
                           blurRadius: 4,
-                          offset: Offset(-6, -6),
+                          offset: const Offset(-6, -6),
                           color: ishover
                               ? Provider.of<ThemeProvider>(context)
                                   .getThemeColor
                                   .withOpacity(.4)
-                              : Color.fromARGB(220, 32, 32, 32)),
+                              : const Color.fromARGB(220, 32, 32, 32)),
                       BoxShadow(
                           blurRadius: 5,
-                          offset: Offset(6, 6),
+                          offset: const Offset(6, 6),
                           color: ishover
                               ? Provider.of<ThemeProvider>(context)
                                   .getThemeColor
                                   .withOpacity(.4)
-                              : Color.fromARGB(220, 15, 15, 15))
+                              : const Color.fromARGB(220, 15, 15, 15))
                     ],
                     borderRadius: BorderRadius.circular(10)),
 
@@ -792,9 +792,9 @@ class _ProjectImageCardState extends State<ProjectImageCard> {
                                           reverse: false,
                                           autoPlay: false,
                                           autoPlayInterval:
-                                              Duration(seconds: 3),
+                                              const Duration(seconds: 3),
                                           autoPlayAnimationDuration:
-                                              Duration(milliseconds: 800),
+                                              const Duration(milliseconds: 800),
                                           autoPlayCurve: Curves.fastOutSlowIn,
                                           enlargeCenterPage: true,
                                           enlargeFactor: 0.3,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 void showOverlayDialog(BuildContext context, double left, double top,
     ScrollController scrollController) {
-  OverlayState overlayState = Overlay.of(context)!;
+  OverlayState overlayState = Overlay.of(context);
 
   late OverlayEntry overlayEntry; // Declare overlayEntry
 
@@ -52,7 +52,7 @@ void showOverlayDialog(BuildContext context, double left, double top,
 
 void showSpeechBubbleDialog(BuildContext context, double left, double top,
     Widget content, Size size, ScrollController scrollController) {
-  OverlayState overlayState = Overlay.of(context)!;
+  OverlayState overlayState = Overlay.of(context);
 
   late OverlayEntry overlayEntry;
 

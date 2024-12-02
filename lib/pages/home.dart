@@ -478,10 +478,10 @@ class WebOverlaySection extends StatelessWidget {
         child: Container(
           width: w * .5 + (w * .5 * offsetPercentage),
           height: h,
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           constraints: const BoxConstraints(minHeight: 300),
           child: Center(
-            child: Container(
+            child: SizedBox(
               // color: Colors.white,
               width: w * .5 + (w * .2 * offsetPercentage),
               child: Column(
@@ -623,7 +623,7 @@ class WebImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: w,
       height: h,
       child: Align(
@@ -779,7 +779,7 @@ class MobileImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: h,
       width: w,
       child: Center(

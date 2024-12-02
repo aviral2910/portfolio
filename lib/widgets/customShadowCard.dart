@@ -162,7 +162,7 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
       width: widget.width,
       height: widget.height,
       child: isload
-          ? CircularProgressIndicator()
+          ? const CircularProgressIndicator()
           : Tooltip(
               message: data.first["name"] ?? "",
               preferBelow: false,
@@ -190,7 +190,7 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
                               ],
                             ),
                           ),
-                          Size(200, 150),
+                          const Size(200, 150),
                           ScrollController());
                     },
                 onHover: (value) {
@@ -335,7 +335,7 @@ class _CustomLinkShadowCardState extends State<CustomLinkShadowCard> {
                         ],
                       ),
                     ),
-                    Size(200, 150),
+                    const Size(200, 150),
                     ScrollController());
               },
           onHover: (value) {

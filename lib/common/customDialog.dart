@@ -7,7 +7,11 @@ class CustomDialog extends StatelessWidget {
   final double top;
   final VoidCallback onClose; // Pass a callback to close the dialog
 
-  CustomDialog({required this.left, required this.top, required this.onClose});
+  const CustomDialog(
+      {super.key,
+      required this.left,
+      required this.top,
+      required this.onClose});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +21,12 @@ class CustomDialog extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           width: 200,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black26,
                 blurRadius: 10,
@@ -33,14 +37,14 @@ class CustomDialog extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 "Custom Dialog",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: onClose, // Call the close method passed as argument
-                child: Text("Close"),
+                child: const Text("Close"),
               ),
             ],
           ),
@@ -81,7 +85,7 @@ class SpeechBubblePainter extends CustomPainter {
     Paint shadowPaint = Paint()
       ..color = shadowColor
       ..maskFilter =
-          MaskFilter.blur(BlurStyle.normal, 6.0); // Adjust shadow blur
+          const MaskFilter.blur(BlurStyle.normal, 6.0); // Adjust shadow blur
 
     Path path = Path();
 
@@ -118,7 +122,7 @@ class SpeechBubblePainter extends CustomPainter {
     canvas.drawPath(path, borderPaint);
     Paint closeButtonShadowPaint = Paint()
       ..color = shadowColor
-      ..maskFilter = MaskFilter.blur(BlurStyle.normal, 6.0);
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6.0);
 
     Path closeButtonShadowPath = Path()
       ..arcTo(
@@ -168,6 +172,7 @@ class SpeechBubbleDialog extends StatelessWidget {
   Size size;
 
   SpeechBubbleDialog({
+    super.key,
     required this.left,
     required this.top,
     required this.onClose,

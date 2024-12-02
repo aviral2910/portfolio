@@ -47,24 +47,27 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
         child: Align(
           alignment: ishover ? Alignment.topCenter : Alignment.bottomCenter,
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 200),
             padding:
                 const EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                       blurRadius: !ishover ? 2 : 7,
-                      offset: !ishover ? Offset(-1, -1) : Offset(-8, -8),
+                      offset: !ishover
+                          ? const Offset(-1, -1)
+                          : const Offset(-8, -8),
                       color: ishover
-                          ? Color.fromARGB(121, 32, 32, 32)
+                          ? const Color.fromARGB(121, 32, 32, 32)
                           : Provider.of<ThemeProvider>(context)
                               .getThemeColor
                               .withOpacity(.9)),
                   BoxShadow(
                       blurRadius: !ishover ? 2 : 10,
-                      offset: !ishover ? Offset(1, 1) : Offset(8, 8),
+                      offset:
+                          !ishover ? const Offset(1, 1) : const Offset(8, 8),
                       color: ishover
-                          ? Color.fromARGB(121, 32, 32, 32)
+                          ? const Color.fromARGB(121, 32, 32, 32)
                           : Provider.of<ThemeProvider>(context)
                               .getThemeColor
                               .withOpacity(.9))
@@ -171,7 +174,7 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
             child: Column(
               children: [
                 AnimatedContainer(
-                  duration: Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.only(
                       left: 15, right: 15, top: 10, bottom: 10),
                   decoration: BoxDecoration(
@@ -257,7 +260,7 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                   ),
                 ),
                 AnimatedContainer(
-                  duration: Duration(milliseconds: 400),
+                  duration: const Duration(milliseconds: 400),
                   height: 3,
                   width:
                       widget.width == null ? widget.width : widget.width! - 3,
@@ -279,7 +282,7 @@ class _CustomChooseCardState extends State<CustomChooseCard> {
                                     ? const BoxShadow()
                                     : BoxShadow(
                                         blurRadius: 3,
-                                        offset: Offset(-0, -3),
+                                        offset: const Offset(-0, -3),
                                         color:
                                             Provider.of<ThemeProvider>(context)
                                                 .getThemeColor)

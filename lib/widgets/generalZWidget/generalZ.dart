@@ -131,7 +131,10 @@ class _GeneralZState extends State<GeneralZ>
                       gradient: RadialGradient(
                           center: animationLoader,
                           radius: .9,
-                          colors: [themeClor, Color.fromRGBO(58, 62, 50, 1)]),
+                          colors: [
+                            themeClor,
+                            const Color.fromRGBO(58, 62, 50, 1)
+                          ]),
                       borderRadius: BorderRadius.only(
                           bottomRight:
                               _borderRadius == BorderRadius.circular(13)
@@ -263,7 +266,7 @@ class _GeneralZState extends State<GeneralZ>
                                         color:
                                             Provider.of<ThemeProvider>(context)
                                                 .getThemeColor)
-                                    : Container(
+                                    : SizedBox(
                                         width: maxgeneralZBoxHWidth,
                                         height: 48,
                                         child: Container(

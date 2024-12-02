@@ -131,14 +131,14 @@ class _CaseStudyState extends State<CaseStudy> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
+                            SizedBox(
                               height: h,
                               child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  SizedBox(),
+                                  const SizedBox(),
                                   Column(
                                     children: [
                                       Image.asset(
@@ -192,7 +192,7 @@ class _CaseStudyState extends State<CaseStudy> {
                                       ),
                                     ],
                                   ),
-                                  AnimatedArrow()
+                                  const AnimatedArrow()
                                 ],
                               ),
                             ),
@@ -329,7 +329,7 @@ class _CaseStudyState extends State<CaseStudy> {
                             children: [
                               Stack(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     height: h,
                                     child: Column(
                                       mainAxisAlignment:
@@ -541,7 +541,7 @@ class _CaseStudyState extends State<CaseStudy> {
                               Positioned(
                                   bottom: 40,
                                   left: ((w - 694 > 400) ? 694 : 466) / 2 - 15,
-                                  child: AnimatedArrow())
+                                  child: const AnimatedArrow())
                             ],
                           ),
                   ],
@@ -605,8 +605,8 @@ class _WebsiteScreenState extends State<WebsiteScreen> {
                   enableInfiniteScroll: false,
                   reverse: false,
                   autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayInterval: const Duration(seconds: 3),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enlargeCenterPage: true,
                   enlargeFactor: 0.3,
@@ -724,7 +724,7 @@ class _WebsiteScreenCardState extends State<WebsiteScreenCard> {
                 // width: 220,
                 decoration: BoxDecoration(
                     color: darkthemeColor,
-                    boxShadow: ishover
+                    boxShadow: !ishover
                         ? [
                             BoxShadow(
                                 blurRadius: widget.isHover ? 8 : 7,
@@ -817,7 +817,7 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
                 // width: 220,
                 decoration: BoxDecoration(
                     color: darkthemeColor,
-                    boxShadow: ishover
+                    boxShadow: !ishover
                         ? [
                             BoxShadow(
                                 blurRadius: widget.isHover ? 8 : 7,
@@ -846,13 +846,14 @@ class _MobileScreenCardState extends State<MobileScreenCard> {
                                 offset: widget.isHover
                                     ? const Offset(-2, -2)
                                     : const Offset(-8, -8),
-                                color: Color.fromARGB(137, 242, 238, 238)),
+                                color:
+                                    const Color.fromARGB(137, 242, 238, 238)),
                             BoxShadow(
                                 blurRadius: widget.isHover ? 3 : 10,
                                 offset: widget.isHover
                                     ? const Offset(3, 3)
                                     : const Offset(8, 8),
-                                color: Color.fromARGB(137, 242, 238, 238))
+                                color: const Color.fromARGB(137, 242, 238, 238))
                           ],
                     // boxShadow: [
                     //   BoxShadow(

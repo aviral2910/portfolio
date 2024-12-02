@@ -5,6 +5,7 @@ import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -72,7 +73,10 @@ class _Testimonial2State extends State<Testimonial2> {
           HeadingCard(
             icon: "assets/images/testimonial.webp",
             text: "TESTIMONIAL",
-          ),
+          )
+              .animate()
+              .fadeIn(delay: .1.seconds, duration: .7.seconds)
+              .slideY(delay: .1.seconds, duration: .7.seconds),
           AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
@@ -231,7 +235,14 @@ class _Testimonial2State extends State<Testimonial2> {
                           companyName: Provider.of<TestimonialListProvider>(
                             context,
                           ).gettestimonial[selectedIndex]["companyName"],
-                        ),
+                        )
+                            .animate()
+                            .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                            .slideX(
+                                delay: .1.seconds,
+                                duration: .7.seconds,
+                                end: 0,
+                                begin: -.5),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,7 +254,16 @@ class _Testimonial2State extends State<Testimonial2> {
                                   Image.asset(
                                     "assets/images/qmark.webp",
                                     color: Colors.white30,
-                                  ),
+                                  )
+                                      .animate()
+                                      .fadeIn(
+                                          delay: .1.seconds,
+                                          duration: .7.seconds)
+                                      .slideX(
+                                          delay: .1.seconds,
+                                          duration: .7.seconds,
+                                          end: 0,
+                                          begin: .5),
                                   Row(
                                     children: [
                                       ArrowButton(
@@ -255,7 +275,16 @@ class _Testimonial2State extends State<Testimonial2> {
                                           }
                                         },
                                         icon: Icons.arrow_back,
-                                      ),
+                                      )
+                                          .animate()
+                                          .fadeIn(
+                                              delay: .1.seconds,
+                                              duration: .7.seconds)
+                                          .slideX(
+                                              delay: .1.seconds,
+                                              duration: .7.seconds,
+                                              end: 0,
+                                              begin: -.5),
                                       const SizedBox(
                                         width: 30,
                                       ),
@@ -274,7 +303,16 @@ class _Testimonial2State extends State<Testimonial2> {
                                           }
                                         },
                                         icon: Icons.arrow_forward,
-                                      ),
+                                      )
+                                          .animate()
+                                          .fadeIn(
+                                              delay: .1.seconds,
+                                              duration: .7.seconds)
+                                          .slideX(
+                                              delay: .1.seconds,
+                                              duration: .7.seconds,
+                                              end: 0,
+                                              begin: .5),
                                     ],
                                   )
                                 ],
@@ -297,7 +335,15 @@ class _Testimonial2State extends State<Testimonial2> {
                                     Provider.of<TestimonialListProvider>(
                                   context,
                                 ).gettestimonial[selectedIndex]["hisLinkdin"],
-                              ),
+                              )
+                                  .animate()
+                                  .fadeIn(
+                                      delay: .1.seconds, duration: .7.seconds)
+                                  .slideY(
+                                      delay: .1.seconds,
+                                      duration: .7.seconds,
+                                      end: 0,
+                                      begin: .5),
                             ],
                           ),
                         )
@@ -474,7 +520,7 @@ class _TestimonialTextState extends State<TestimonialText> {
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: ishover
+                colors: !ishover
                     ? [
                         const Color.fromARGB(255, 19, 19, 19),
                         const Color.fromARGB(255, 15, 15, 15)
@@ -486,17 +532,18 @@ class _TestimonialTextState extends State<TestimonialText> {
             // color: darkthemeColor,
             boxShadow: [
               BoxShadow(
-                  blurRadius: ishover ? 2 : 7,
-                  offset: ishover ? const Offset(-2, -2) : const Offset(-8, -8),
-                  color: ishover
+                  blurRadius: !ishover ? 2 : 7,
+                  offset:
+                      !ishover ? const Offset(-2, -2) : const Offset(-8, -8),
+                  color: !ishover
                       ? Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.8)
                       : const Color.fromARGB(121, 32, 32, 32)),
               BoxShadow(
-                  blurRadius: ishover ? 2 : 8,
-                  offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
-                  color: ishover
+                  blurRadius: !ishover ? 2 : 8,
+                  offset: !ishover ? const Offset(2, 2) : const Offset(8, 8),
+                  color: !ishover
                       ? Provider.of<ThemeProvider>(context)
                           .getThemeColor
                           .withOpacity(.8)
@@ -641,18 +688,18 @@ class _TestimonialCardState extends State<TestimonialCard> {
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    blurRadius: ishover ? 2 : 7,
+                    blurRadius: !ishover ? 2 : 7,
                     offset:
-                        ishover ? const Offset(-2, -2) : const Offset(-8, -8),
-                    color: ishover
+                        !ishover ? const Offset(-2, -2) : const Offset(-8, -8),
+                    color: !ishover
                         ? Provider.of<ThemeProvider>(context)
                             .getThemeColor
                             .withOpacity(.8)
                         : const Color.fromARGB(121, 32, 32, 32)),
                 BoxShadow(
-                    blurRadius: ishover ? 2 : 8,
-                    offset: ishover ? const Offset(2, 2) : const Offset(8, 8),
-                    color: ishover
+                    blurRadius: !ishover ? 2 : 8,
+                    offset: !ishover ? const Offset(2, 2) : const Offset(8, 8),
+                    color: !ishover
                         ? Provider.of<ThemeProvider>(context)
                             .getThemeColor
                             .withOpacity(.8)
@@ -661,7 +708,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: ishover
+                  colors: !ishover
                       ? [
                           const Color.fromARGB(255, 19, 19, 19),
                           const Color.fromARGB(255, 15, 15, 15)
@@ -694,9 +741,10 @@ class _TestimonialCardState extends State<TestimonialCard> {
                 constraints:
                     BoxConstraints(maxWidth: widget.w < mobileSize ? 400 : 280),
                 decoration: BoxDecoration(
-                    color: Provider.of<ThemeProvider>(context)
-                        .getThemeColor
-                        .withOpacity(.04),
+                    color: darkthemeColor,
+                    // color: Provider.of<ThemeProvider>(context)
+                    //     .getThemeColor
+                    //     .withOpacity(.04),
                     boxShadow: const [
                       BoxShadow(
                           blurRadius: 3,
@@ -722,6 +770,7 @@ class _TestimonialCardState extends State<TestimonialCard> {
                             color: Provider.of<ThemeProvider>(context)
                                 .getThemeColor
                                 .withOpacity(.75),
+                            // color: darkthemeColor,
                             borderRadius: BorderRadius.circular(
                               !ishover ? 266 : 250,
                             )),
@@ -731,7 +780,9 @@ class _TestimonialCardState extends State<TestimonialCard> {
                           height: !ishover ? 266 : 250,
                           fit: BoxFit.fill,
                         ),
-                      ),
+                      )
+                          .animate()
+                          .fadeIn(delay: .8.seconds, duration: .5.seconds),
                     ],
                   ),
                 ),

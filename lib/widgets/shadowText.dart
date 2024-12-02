@@ -1,4 +1,3 @@
-import 'package:aviralportfolio/common/global.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
