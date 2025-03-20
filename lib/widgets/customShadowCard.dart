@@ -91,9 +91,10 @@ class _CustomShadowCardState extends State<CustomShadowCard> {
                 child: widget.child ??
                     Image.asset(
                       widget.image.toString(),
-                      color: ishover
-                          ? Provider.of<ThemeProvider>(context).getThemeColor
-                          : Colors.white,
+                      // color: ishover
+                      //     ? Provider.of<ThemeProvider>(context).getThemeColor
+                      //     : Colors.white,
+                      fit: BoxFit.cover,
                       height: w < mobileSize
                           ? 15
                           : widget.radius == null

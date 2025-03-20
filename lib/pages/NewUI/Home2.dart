@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_tilt/flutter_tilt.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
@@ -30,153 +31,375 @@ class _Home2State extends State<Home2> {
   @override
   Widget build(BuildContext context) {
     return widget.w >= mobileSize
-        ? Container(
-            height: widget.h,
-            padding: const EdgeInsets.all(20),
-            constraints: const BoxConstraints(minHeight: 400),
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                NormalRichText("Hi, I’m ", "Aviral Dixit",
-                        fontWeight: FontWeight.w800,
-                        fontSize: 55,
-                        letterSpacing: 2,
-                        color: Colors.white)
-                    .animate()
-                    .fadeIn(delay: .1.seconds, duration: .7.seconds),
-                const SizedBox(
-                  height: 10,
-                ),
-                NormalText("SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                        letterSpacing: 2,
-                        color: Colors.white)
-                    .animate()
-                    .fadeIn(delay: .1.seconds, duration: .7.seconds),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    NormalText("My Socials ",
-                            fontWeight: FontWeight.w200,
-                            fontSize: 16,
-                            letterSpacing: 2,
-                            color: Colors.white)
-                        .animate()
-                        .fadeIn(delay: .1.seconds, duration: .7.seconds)
-                        .slideY(delay: .1.seconds, duration: .7.seconds),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CustomShadowCard(
-                          name: "Gmail",
-                          onTap: () async {
-                            await launchUrl(
-                                Uri.parse("mailto:aviral.dixit2110@gmail.com"));
-                          },
-                          height: 70,
-                          width: 70,
-                          image: "assets/images/gmail.webp",
-                        )
-                            .animate()
-                            .fadeIn(delay: .3.seconds, duration: .7.seconds)
-                            .slideX(
-                              delay: .3.seconds,
-                              duration: .7.seconds,
-                            ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        CustomShadowCard(
-                          name: "Linkdin",
-                          onTap: () async {
-                            await launchUrl(Uri.parse(
-                                "https://www.linkedin.com/in/aviral-dixit/"));
-                          },
-                          height: 70,
-                          width: 70,
-                          image: "assets/images/linkedin.webp",
-                        )
-                            .animate()
-                            .fadeIn(delay: .1.seconds, duration: .7.seconds)
-                            .slideX(
-                              delay: .1.seconds,
-                              duration: .7.seconds,
-                            ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        CustomShadowCard(
-                          name: "Github",
-                          onTap: () async {
-                            await launchUrl(
-                                Uri.parse("https://github.com/aviral2910"));
-                          },
-                          height: 70,
-                          width: 70,
-                          image: "assets/images/github.webp",
-                        )
-                            .animate()
-                            .fadeIn(delay: .5.seconds, duration: .7.seconds),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        CustomShadowCard(
-                          name: "Call",
-                          onTap: () async {
-                            await launchUrl(Uri.parse('tel:+917007042761'));
-                          },
-                          height: 70,
-                          width: 70,
-                          image: "assets/images/telephone.webp",
-                        )
-                            .animate()
-                            .fadeIn(delay: .1.seconds, duration: .7.seconds)
-                            .slideX(
-                                delay: .1.seconds,
-                                duration: .7.seconds,
-                                end: 0,
-                                begin: 1),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        CustomShadowCard(
-                          name: "Resume",
-                          onTap: () async {
-                            // await FileSaver.instance.saveFile(
-                            //     name: "Resume: Aviral Dixit",
-                            //     // ext: ".pdf",
-                            //     filePath:
-                            //         "assets/images/Resume-AviralDixit.pdf",
-                            //     mimeType: MimeType.pdf);
-                            await launchUrl(Uri.parse(
-                                "https://drive.google.com/file/d/181CxfOEaL5BvQ3eRtupltZud2lom5kvF/view?usp=sharing"));
-                          },
-                          height: 70,
-                          width: 70,
-                          image: "assets/images/resume.webp",
-                        )
-                            .animate()
-                            .fadeIn(delay: .3.seconds, duration: .7.seconds)
-                            .slideX(
+        ? Tilt(
+            tiltConfig: const TiltConfig(enableReverse: true, angle: 20),
+            shadowConfig: const ShadowConfig(
+              maxIntensity: 0,
+              spreadFactor: 1,
+              color: Colors.transparent,
+              minIntensity: 0,
+            ),
+            lightConfig: const LightConfig(
+              maxIntensity: 0,
+              spreadFactor: 1,
+              color: Colors.transparent,
+              minIntensity: 0,
+            ),
+            child: Container(
+              height: widget.h,
+              padding: const EdgeInsets.all(20),
+              constraints: const BoxConstraints(minHeight: 410),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  NormalRichText("Hi, I’m ", "Aviral Dixit",
+                          fontWeight: FontWeight.w800,
+                          fontSize: 55,
+                          letterSpacing: 2,
+                          color: Colors.white)
+                      .animate()
+                      .fadeIn(delay: .1.seconds, duration: .7.seconds),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  NormalText("SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          letterSpacing: 2,
+                          color: Colors.white)
+                      .animate()
+                      .fadeIn(delay: .1.seconds, duration: .7.seconds),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      NormalText("My Socials ",
+                              fontWeight: FontWeight.w200,
+                              fontSize: 16,
+                              letterSpacing: 2,
+                              color: Colors.white)
+                          .animate()
+                          .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                          .slideY(delay: .1.seconds, duration: .7.seconds),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomShadowCard(
+                            name: "Gmail",
+                            onTap: () async {
+                              await launchUrl(Uri.parse(
+                                  "mailto:aviral.dixit2110@gmail.com"));
+                            },
+                            height: 70,
+                            width: 70,
+                            image: "assets/images/gmail.webp",
+                          )
+                              .animate()
+                              .fadeIn(delay: .3.seconds, duration: .7.seconds)
+                              .slideX(
                                 delay: .3.seconds,
                                 duration: .7.seconds,
-                                end: 0,
-                                begin: 1),
-                      ],
+                              ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CustomShadowCard(
+                            name: "Linkdin",
+                            onTap: () async {
+                              await launchUrl(Uri.parse(
+                                  "https://www.linkedin.com/in/aviral-dixit/"));
+                            },
+                            height: 70,
+                            width: 70,
+                            image: "assets/images/linkedin.webp",
+                          )
+                              .animate()
+                              .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                              .slideX(
+                                delay: .1.seconds,
+                                duration: .7.seconds,
+                              ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CustomShadowCard(
+                            name: "Github",
+                            onTap: () async {
+                              await launchUrl(
+                                  Uri.parse("https://github.com/aviral2910"));
+                            },
+                            height: 70,
+                            width: 70,
+                            image: "assets/images/github.webp",
+                          )
+                              .animate()
+                              .fadeIn(delay: .5.seconds, duration: .7.seconds),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CustomShadowCard(
+                            name: "Call",
+                            onTap: () async {
+                              await launchUrl(Uri.parse('tel:+917007042761'));
+                            },
+                            height: 70,
+                            width: 70,
+                            image: "assets/images/telephone.webp",
+                          )
+                              .animate()
+                              .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                              .slideX(
+                                  delay: .1.seconds,
+                                  duration: .7.seconds,
+                                  end: 0,
+                                  begin: 1),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CustomShadowCard(
+                            name: "Resume",
+                            onTap: () async {
+                              // await FileSaver.instance.saveFile(
+                              //     name: "Resume: Aviral Dixit",
+                              //     // ext: ".pdf",
+                              //     filePath:
+                              //         "assets/images/Resume-AviralDixit.pdf",
+                              //     mimeType: MimeType.pdf);
+                              await launchUrl(Uri.parse(
+                                  "https://drive.google.com/file/d/1sNaeKVO4gSNf_bJXpJrBy222nYXR-b6b/view?usp=sharing"));
+                            },
+                            height: 70,
+                            width: 70,
+                            image: "assets/images/resume.webp",
+                          )
+                              .animate()
+                              .fadeIn(delay: .3.seconds, duration: .7.seconds)
+                              .slideX(
+                                  delay: .3.seconds,
+                                  duration: .7.seconds,
+                                  end: 0,
+                                  begin: 1),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Tilt(
+                        borderRadius: BorderRadius.circular(10),
+                        tiltConfig:
+                            const TiltConfig(angle: 20, enableReverse: true),
+                        shadowConfig: const ShadowConfig(
+                          maxIntensity: 0,
+                          spreadFactor: 1,
+                          color: Colors.transparent,
+                          minIntensity: 0,
+                        ),
+                        lightConfig: const LightConfig(
+                          maxIntensity: 0,
+                          spreadFactor: 1,
+                          color: Colors.transparent,
+                          minIntensity: 0,
+                        ),
+                        child: AIShadowButton(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageTransition(
+                                    type: PageTransitionType.rightToLeft,
+                                    child: const Chatpage()));
+                          },
+                          isLoading: false,
+                        )
+                            .animate()
+                            .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                            .slideY(
+                                delay: .1.seconds,
+                                duration: .7.seconds,
+                                begin: 1,
+                                end: 0),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          )
+        : Tilt(
+            tiltConfig: const TiltConfig(angle: 20, enableReverse: true),
+            shadowConfig: const ShadowConfig(
+              maxIntensity: 0,
+              spreadFactor: 1,
+              color: Colors.transparent,
+              minIntensity: 0,
+            ),
+            lightConfig: const LightConfig(
+              maxIntensity: 0,
+              spreadFactor: 1,
+              color: Colors.transparent,
+              minIntensity: 0,
+            ),
+            child: Container(
+              // color: Colors.white,
+              // width: w,
+              // height: h - (h * .6 * offsetPercentage),
+              height: widget.h - 100,
+              padding: const EdgeInsets.all(20),
+              constraints: const BoxConstraints(minHeight: 410),
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      NormalText("Aviral Dixit",
+                          fontWeight: FontWeight.w900,
+                          fontSize: 30,
+                          letterSpacing: 6,
+                          color: Provider.of<ThemeProvider>(context)
+                              .getThemeColor),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      NormalText(
+                          "SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
+                          fontWeight: FontWeight.w400,
+                          fontSize: 15,
+                          letterSpacing: 2,
+                          color: Colors.white),
+                    ],
+                  ).animate().fadeIn(delay: .5.seconds, duration: .7.seconds),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomShadowCard(
+                        name: "Gmail",
+                        onTap: () async {
+                          await launchUrl(
+                              Uri.parse("mailto:aviral.dixit2110@gmail.com"));
+                        },
+                        height: 45,
+                        width: 45,
+                        image: "assets/images/gmail.webp",
+                      )
+                          .animate()
+                          .fadeIn(delay: .3.seconds, duration: .7.seconds)
+                          .slideX(
+                            delay: .3.seconds,
+                            duration: .7.seconds,
+                          ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CustomShadowCard(
+                        name: "Linkdin",
+                        onTap: () async {
+                          await launchUrl(Uri.parse(
+                              "https://www.linkedin.com/in/aviral-dixit/"));
+                        },
+                        height: 45,
+                        width: 45,
+                        image: "assets/images/linkedin.webp",
+                      )
+                          .animate()
+                          .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                          .slideX(
+                            delay: .1.seconds,
+                            duration: .7.seconds,
+                          ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CustomShadowCard(
+                        name: "Github",
+                        onTap: () async {
+                          await launchUrl(
+                              Uri.parse("https://github.com/aviral2910"));
+                        },
+                        height: 45,
+                        width: 45,
+                        image: "assets/images/github.webp",
+                      )
+                          .animate()
+                          .fadeIn(delay: .5.seconds, duration: .7.seconds),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CustomShadowCard(
+                        name: "Call",
+                        onTap: () async {
+                          await launchUrl(Uri.parse('tel:+917007042761'));
+                        },
+                        height: 45,
+                        width: 45,
+                        image: "assets/images/telephone.webp",
+                      )
+                          .animate()
+                          .fadeIn(delay: .3.seconds, duration: .7.seconds)
+                          .slideX(
+                              delay: .3.seconds,
+                              duration: .7.seconds,
+                              begin: 1,
+                              end: 0),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      CustomShadowCard(
+                        name: "Resume",
+                        onTap: () async {
+                          // await FileSaver.instance.saveFile(
+                          //     name: "Resume: Aviral Dixit",
+                          //     // ext: ".pdf",
+                          //     filePath:
+                          //         "assets/images/Resume-AviralDixit.pdf",
+                          //     mimeType: MimeType.pdf);
+                          await launchUrl(Uri.parse(
+                              "https://drive.google.com/file/d/1sNaeKVO4gSNf_bJXpJrBy222nYXR-b6b/view?usp=sharing"));
+                        },
+                        height: 45,
+                        width: 45,
+                        image: "assets/images/resume.webp",
+                      )
+                          .animate()
+                          .fadeIn(delay: .1.seconds, duration: .7.seconds)
+                          .slideX(
+                              delay: .1.seconds,
+                              duration: .7.seconds,
+                              begin: 1,
+                              end: 0),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Tilt(
+                    borderRadius: BorderRadius.circular(10),
+                    tiltConfig:
+                        const TiltConfig(angle: 20, enableReverse: true),
+                    shadowConfig: const ShadowConfig(
+                      maxIntensity: 0,
+                      spreadFactor: 1,
+                      color: Colors.transparent,
+                      minIntensity: 0,
                     ),
-                    const SizedBox(
-                      height: 20,
+                    lightConfig: const LightConfig(
+                      maxIntensity: 0,
+                      spreadFactor: 1,
+                      color: Colors.transparent,
+                      minIntensity: 0,
                     ),
-                    AIShadowButton(
+                    child: AIShadowButton(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -193,164 +416,9 @@ class _Home2State extends State<Home2> {
                             duration: .7.seconds,
                             begin: 1,
                             end: 0),
-                  ],
-                ),
-              ],
-            ),
-          )
-        : Container(
-            // color: Colors.white,
-            // width: w,
-            // height: h - (h * .6 * offsetPercentage),
-            height: widget.h - 100,
-            padding: const EdgeInsets.all(20),
-            constraints: const BoxConstraints(minHeight: 400),
-            child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    NormalText("Aviral Dixit",
-                        fontWeight: FontWeight.w900,
-                        fontSize: 30,
-                        letterSpacing: 6,
-                        color:
-                            Provider.of<ThemeProvider>(context).getThemeColor),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    NormalText("SOFTWARE ENGINEER, FRONT END & APP DEVELOPER.",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
-                        letterSpacing: 2,
-                        color: Colors.white),
-                  ],
-                ).animate().fadeIn(delay: .5.seconds, duration: .7.seconds),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomShadowCard(
-                      name: "Gmail",
-                      onTap: () async {
-                        await launchUrl(
-                            Uri.parse("mailto:aviral.dixit2110@gmail.com"));
-                      },
-                      height: 45,
-                      width: 45,
-                      image: "assets/images/gmail.webp",
-                    )
-                        .animate()
-                        .fadeIn(delay: .3.seconds, duration: .7.seconds)
-                        .slideX(
-                          delay: .3.seconds,
-                          duration: .7.seconds,
-                        ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    CustomShadowCard(
-                      name: "Linkdin",
-                      onTap: () async {
-                        await launchUrl(Uri.parse(
-                            "https://www.linkedin.com/in/aviral-dixit/"));
-                      },
-                      height: 45,
-                      width: 45,
-                      image: "assets/images/linkedin.webp",
-                    )
-                        .animate()
-                        .fadeIn(delay: .1.seconds, duration: .7.seconds)
-                        .slideX(
-                          delay: .1.seconds,
-                          duration: .7.seconds,
-                        ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    CustomShadowCard(
-                      name: "Github",
-                      onTap: () async {
-                        await launchUrl(
-                            Uri.parse("https://github.com/aviral2910"));
-                      },
-                      height: 45,
-                      width: 45,
-                      image: "assets/images/github.webp",
-                    ).animate().fadeIn(delay: .5.seconds, duration: .7.seconds),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    CustomShadowCard(
-                      name: "Call",
-                      onTap: () async {
-                        await launchUrl(Uri.parse('tel:+917007042761'));
-                      },
-                      height: 45,
-                      width: 45,
-                      image: "assets/images/telephone.webp",
-                    )
-                        .animate()
-                        .fadeIn(delay: .3.seconds, duration: .7.seconds)
-                        .slideX(
-                            delay: .3.seconds,
-                            duration: .7.seconds,
-                            begin: 1,
-                            end: 0),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    CustomShadowCard(
-                      name: "Resume",
-                      onTap: () async {
-                        // await FileSaver.instance.saveFile(
-                        //     name: "Resume: Aviral Dixit",
-                        //     // ext: ".pdf",
-                        //     filePath:
-                        //         "assets/images/Resume-AviralDixit.pdf",
-                        //     mimeType: MimeType.pdf);
-                        await launchUrl(Uri.parse(
-                            "https://drive.google.com/file/d/181CxfOEaL5BvQ3eRtupltZud2lom5kvF/view?usp=sharing"));
-                      },
-                      height: 45,
-                      width: 45,
-                      image: "assets/images/resume.webp",
-                    )
-                        .animate()
-                        .fadeIn(delay: .1.seconds, duration: .7.seconds)
-                        .slideX(
-                            delay: .1.seconds,
-                            duration: .7.seconds,
-                            begin: 1,
-                            end: 0),
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                AIShadowButton(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: const Chatpage()));
-                  },
-                  isLoading: false,
-                )
-                    .animate()
-                    .fadeIn(delay: .1.seconds, duration: .7.seconds)
-                    .slideY(
-                        delay: .1.seconds,
-                        duration: .7.seconds,
-                        begin: 1,
-                        end: 0),
-              ],
+                  ),
+                ],
+              ),
             ),
           );
   }
@@ -383,7 +451,8 @@ class _AIShadowButtonState extends State<AIShadowButton> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: EdgeInsets.only(top: ishover ? 0 : 5, bottom: ishover ? 5 : 0),
+        padding: EdgeInsets.only(
+            top: ishover ? 2 : 5, bottom: ishover ? 5 : 2, left: 2, right: 2),
         child: Container(
           height: MediaQuery.sizeOf(context).width > mobileSize ? 50 : 45,
           width: 200,
@@ -459,7 +528,7 @@ class _AIShadowButtonState extends State<AIShadowButton> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
