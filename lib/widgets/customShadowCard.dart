@@ -263,10 +263,10 @@ class _CustomSkillShadowCardState extends State<CustomSkillShadowCard> {
                               )
                             : Image.asset(
                                 "assets/images/${data.first["image"].toString()}.webp",
-                                color: ishover
-                                    ? Provider.of<ThemeProvider>(context)
-                                        .getThemeColor
-                                    : Colors.white,
+                                // color: ishover
+                                //     ? Provider.of<ThemeProvider>(context)
+                                //         .getThemeColor
+                                //     : Colors.white,
                                 height: widget.radius == null ? 25 : 20,
                                 width: widget.radius == null ? 25 : 20,
                               ),
@@ -405,10 +405,10 @@ class _CustomLinkShadowCardState extends State<CustomLinkShadowCard> {
                         )
                       : Image.asset(
                           widget.image.toString(),
-                          color: ishover
-                              ? Provider.of<ThemeProvider>(context)
-                                  .getThemeColor
-                              : Colors.white,
+                          // color: ishover
+                          //     ? Provider.of<ThemeProvider>(context)
+                          //         .getThemeColor
+                          //     : Colors.white,
                           height: widget.radius == null ? 25 : 20,
                           width: widget.radius == null ? 25 : 20,
                         ),

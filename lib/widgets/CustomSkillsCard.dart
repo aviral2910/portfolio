@@ -96,9 +96,9 @@ class _CustomSkillsCardState extends State<CustomSkillsCard> {
                 if (widget.image != "")
                   Image.asset(
                     widget.image.toString(),
-                    color: ishover
-                        ? Provider.of<ThemeProvider>(context).getThemeColor
-                        : Colors.white,
+                    // color: ishover
+                    //     ? Provider.of<ThemeProvider>(context).getThemeColor
+                    //     : Colors.white,
                     height: widget.imageHieght,
                     width: widget.imagWidth,
                   ),
