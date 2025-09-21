@@ -1,5 +1,5 @@
-import 'package:aviralportfolio/pages/NewUI/ChatPage.dart';
-import 'package:aviralportfolio/pages/NewUI/HomePage2.dart';
+import 'package:aviralportfolio/features/chat/ChatPage.dart';
+import 'package:aviralportfolio/features/core/HomePage2.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/UpSliderProvider.dart';
 import 'package:aviralportfolio/provider/mousePointer.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-import 'provider/themeProvider.dart';
+import 'features/theme/themeProvider.dart';
 
 void main() async {
   // await FastCachedImageConfig.init(clearCacheAfter: const Duration(days: 15));

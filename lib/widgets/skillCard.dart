@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/themeProvider.dart';
+import '../features/theme/themeProvider.dart';
 
 class SkillsCard extends StatefulWidget {
   const SkillsCard({

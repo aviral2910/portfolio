@@ -1,17 +1,17 @@
 import 'dart:ui';
 
 import 'package:aviralportfolio/common/global.dart';
-import 'package:aviralportfolio/pages/NewUI/About2.dart';
-import 'package:aviralportfolio/pages/NewUI/Contact2.dart';
-import 'package:aviralportfolio/pages/NewUI/Experience2.dart';
+import 'package:aviralportfolio/features/about/About2.dart';
+import 'package:aviralportfolio/features/contact/Contact2.dart';
+import 'package:aviralportfolio/features/experience/Experience2.dart';
 import 'package:aviralportfolio/features/home/Home2.dart';
-import 'package:aviralportfolio/pages/NewUI/Project2.dart';
+import 'package:aviralportfolio/features/projects/Project2.dart';
 import 'package:aviralportfolio/pages/NewUI/SpiderDot.dart';
-import 'package:aviralportfolio/pages/NewUI/Testimonial2.dart';
+import 'package:aviralportfolio/features/testimonial.dart/Testimonial2.dart';
 
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:aviralportfolio/service/FIrebaseService.dart';
-import 'package:aviralportfolio/widgets/Common/colorChanger.dart';
+import 'package:aviralportfolio/features/common/widgets/colorChanger.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

@@ -1,6 +1,6 @@
 import 'package:aviralportfolio/common/global.dart';
-import 'package:aviralportfolio/pages/NewUI/ChatPage.dart';
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/chat/ChatPage.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/normalText.dart';
 import 'package:flutter/cupertino.dart';

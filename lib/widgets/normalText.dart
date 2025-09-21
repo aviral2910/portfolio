@@ -1,5 +1,5 @@
 import 'package:aviralportfolio/common/global.dart';
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 

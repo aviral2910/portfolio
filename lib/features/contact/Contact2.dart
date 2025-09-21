@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:aviralportfolio/common/global.dart';
-import 'package:aviralportfolio/provider/themeProvider.dart';
-import 'package:aviralportfolio/widgets/Common/headingCard.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
+import 'package:aviralportfolio/features/common/widgets/headingCard.dart';
 import 'package:aviralportfolio/widgets/inwardTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';

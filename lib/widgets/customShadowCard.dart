@@ -1,7 +1,7 @@
 import 'package:aviralportfolio/common/DialogService.dart';
 import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

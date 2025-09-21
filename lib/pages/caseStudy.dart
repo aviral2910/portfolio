@@ -1,7 +1,7 @@
 import 'package:aviralportfolio/common/global.dart';
 
-import 'package:aviralportfolio/provider/themeProvider.dart';
-import 'package:aviralportfolio/widgets/Common/customAppBar.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
+import 'package:aviralportfolio/features/common/widgets/customAppBar.dart';
 import 'package:aviralportfolio/widgets/ProjectWidget/caseStudyButton.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
 import 'package:aviralportfolio/widgets/shadowText.dart';

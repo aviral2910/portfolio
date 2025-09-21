@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:aviralportfolio/common/global.dart';
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_circular_text/circular_text.dart';
 import 'package:flutter_color_picker_wheel/flutter_color_picker_wheel.dart';

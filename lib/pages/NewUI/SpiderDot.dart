@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:aviralportfolio/features/home/Home2.dart';
 
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

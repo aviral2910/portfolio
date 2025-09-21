@@ -1,10 +1,10 @@
 import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/pages/caseStudy.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
-import 'package:aviralportfolio/widgets/Common/headingCard.dart';
+import 'package:aviralportfolio/features/common/widgets/headingCard.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';

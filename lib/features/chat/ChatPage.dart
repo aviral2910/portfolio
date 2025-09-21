@@ -11,7 +11,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../../provider/themeProvider.dart';
+import '../theme/themeProvider.dart';
 
 class Chatpage extends StatefulWidget {
   const Chatpage({super.key});

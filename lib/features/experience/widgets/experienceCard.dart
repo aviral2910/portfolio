@@ -1,8 +1,8 @@
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../common/global.dart';
+import '../../../common/global.dart';
 
 class ExperienceCard extends StatefulWidget {
   ExperienceCard({

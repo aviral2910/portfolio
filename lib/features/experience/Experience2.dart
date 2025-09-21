@@ -2,7 +2,7 @@ import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
-import 'package:aviralportfolio/widgets/experienceCard.dart';
+import 'package:aviralportfolio/features/experience/widgets/experienceCard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

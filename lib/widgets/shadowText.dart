@@ -4,7 +4,7 @@ import 'dart:ui' as ui;
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/themeProvider.dart';
+import '../features/theme/themeProvider.dart';
 
 class ShadowText extends StatefulWidget {
   ShadowText(this.data,

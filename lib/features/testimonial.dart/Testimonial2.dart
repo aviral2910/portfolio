@@ -1,9 +1,9 @@
 import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
-import 'package:aviralportfolio/provider/themeProvider.dart';
+import 'package:aviralportfolio/features/theme/themeProvider.dart';
 import 'package:aviralportfolio/service/FIrebaseService.dart';
 import 'package:aviralportfolio/widgets/customShadowCard.dart';
-import 'package:aviralportfolio/widgets/Common/headingCard.dart';
+import 'package:aviralportfolio/features/common/widgets/headingCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
