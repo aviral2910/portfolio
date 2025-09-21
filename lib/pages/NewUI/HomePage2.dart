@@ -186,7 +186,7 @@ class _HomePage2State extends State<HomePage2> {
                         const BoxConstraints(maxWidth: 600, minWidth: 300),
                     height: 60,
                     padding:
-                        const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
@@ -218,133 +218,90 @@ class _HomePage2State extends State<HomePage2> {
                                 .getThemeColor),
                       ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: List.generate(_titles.length, (index) {
-                        final bool isSelected = index == _selectedIndex;
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _selectedIndex = index;
-                              _scrollController.jumpTo(0);
-                            });
-                          },
-                          child: Container(
-                            // duration: const Duration(milliseconds: 300),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 16),
-                            decoration: BoxDecoration(
-                              boxShadow: isSelected
-                                  ? [
-                                      BoxShadow(
-                                          blurRadius: 4,
-                                          offset: const Offset(-2, -2),
-                                          color: Provider.of<ThemeProvider>(
-                                                  context)
-                                              .getThemeColor
-                                              .withOpacity(.5)),
-                                      BoxShadow(
-                                          blurRadius: 4,
-                                          offset: const Offset(2, 2),
-                                          color: Provider.of<ThemeProvider>(
-                                                  context)
-                                              .getThemeColor
-                                              .withOpacity(.5))
-                                    ]
-                                  : null,
-                              border: isSelected
-                                  ? Border.all(
-                                      color: Provider.of<ThemeProvider>(context)
-                                          .getThemeColor
-                                          .withOpacity(.6))
-                                  : Border(
-                                      bottom: BorderSide(
-                                          color: Provider.of<ThemeProvider>(
-                                                  context)
-                                              .getThemeColor
-                                              .withOpacity(.4)),
+                    child: Container(
+                      constraints:
+                          const BoxConstraints(maxWidth: 600, minWidth: 300),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          for (int index = 0; index < _titles.length; index++)
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _selectedIndex = index;
+                                    _scrollController.jumpTo(0);
+                                  });
+                                },
+                                child: Container(
+                                  // width: double.infinity,
+                                  // height: double.infinity,
+                                  // duration: const Duration(milliseconds: 300),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 0, horizontal: 0),
+                                  decoration: BoxDecoration(
+                                    boxShadow: _selectedIndex == index
+                                        ? [
+                                            BoxShadow(
+                                                blurRadius: 4,
+                                                offset: const Offset(-2, -2),
+                                                color:
+                                                    Provider.of<ThemeProvider>(
+                                                            context)
+                                                        .getThemeColor
+                                                        .withOpacity(.5)),
+                                            BoxShadow(
+                                                blurRadius: 4,
+                                                offset: const Offset(2, 2),
+                                                color:
+                                                    Provider.of<ThemeProvider>(
+                                                            context)
+                                                        .getThemeColor
+                                                        .withOpacity(.5))
+                                          ]
+                                        : null,
+                                    border: _selectedIndex == index
+                                        ? Border.all(
+                                            color: Provider.of<ThemeProvider>(
+                                                    context)
+                                                .getThemeColor
+                                                .withOpacity(.6))
+                                        : Border(
+                                            bottom: BorderSide(
+                                                color:
+                                                    Provider.of<ThemeProvider>(
+                                                            context)
+                                                        .getThemeColor
+                                                        .withOpacity(.4)),
+                                          ),
+                                    color: darkthemeColor,
+                                    borderRadius: BorderRadius.circular(0),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      _titles[index].toUpperCase(),
+                                      style: GoogleFonts.titilliumWeb(
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
-                              color: darkthemeColor,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Text(
-                              _titles[index].toUpperCase(),
-                              style: GoogleFonts.titilliumWeb(
-                                fontSize: 10,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                        )
-                            .animate()
-                            .fadeIn(delay: (.2).seconds, duration: .6.seconds)
-                            .slideY(delay: (.2).seconds, duration: .6.seconds);
-                      }),
+                                  ),
+                                ),
+                              )
+                                  .animate()
+                                  .fadeIn(
+                                      delay: (.2).seconds, duration: .6.seconds)
+                                  .slideY(
+                                      delay: (.2).seconds,
+                                      duration: .6.seconds),
+                            )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               )
-            // SafeArea(
-            //     child: Center(
-            //       child: Container(
-            //         constraints: BoxConstraints(maxWidth: 600, minWidth: 300),
-            //         child: Padding(
-            //           padding: const EdgeInsets.only(top: 10.0),
-            //           child: ClipRRect(
-            //             borderRadius: BorderRadius.circular(25),
-            //             child: BackdropFilter(
-            //               filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-            //               child: Container(
-            //                 padding: const EdgeInsets.symmetric(
-            //                     vertical: 0, horizontal: 0),
-            //                 decoration: BoxDecoration(
-            //                   color: Colors.white.withOpacity(
-            //                       .2), // Semi-transparent background
-            //                   borderRadius: BorderRadius.circular(25),
-            //                   border: Border.all(
-            //                       color: Colors.white.withOpacity(.3)),
-            //                 ),
-            //                 child: Row(
-            //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //                   children: List.generate(_titles.length, (index) {
-            //                     final bool isSelected = index == _selectedIndex;
-            //                     return GestureDetector(
-            //                       onTap: () {
-            //                         setState(() {
-            //                           _selectedIndex = index;
-            //                         });
-            //                       },
-            //                       child: AnimatedContainer(
-            //                         duration: const Duration(milliseconds: 300),
-            //                         padding: const EdgeInsets.symmetric(
-            //                             vertical: 8, horizontal: 16),
-            //                         decoration: BoxDecoration(
-            //                           color: isSelected
-            //                               ? Colors.white
-            //                               : Colors.transparent,
-            //                           borderRadius: BorderRadius.circular(20),
-            //                         ),
-            //                         child: Text(
-            //                           _titles[index].toUpperCase(),
-            //                           style: GoogleFonts.titilliumWeb(
-            //                             color: isSelected
-            //                                 ? Colors.black
-            //                                 : Colors.white,
-            //                             fontWeight: FontWeight.w500,
-            //                           ),
-            //                         ),
-            //                       ),
-            //                     );
-            //                   }),
-            //                 ),
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   )
             : null,
       ),
       body: Container(

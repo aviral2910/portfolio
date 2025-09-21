@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:flutter/material.dart';
