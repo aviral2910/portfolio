@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:aviralportfolio/common/DialogService.dart';
 import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/common/overlayService.dart';
-import 'package:aviralportfolio/pages/NewUI/Home2.dart';
+import 'package:aviralportfolio/features/home/Home2.dart';
 import 'package:aviralportfolio/widgets/Common/headingCard.dart';
 import 'package:aviralportfolio/widgets/skillCard.dart';
 import 'package:flutter/material.dart';

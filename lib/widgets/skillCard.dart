@@ -1,5 +1,5 @@
 import 'package:aviralportfolio/common/global.dart';
-import 'package:aviralportfolio/pages/NewUI/Home2.dart';
+import 'package:aviralportfolio/features/home/Home2.dart';
 import 'package:aviralportfolio/provider/DataProvider.dart';
 import 'package:aviralportfolio/provider/skillTypeProvider.dart';
 import 'package:aviralportfolio/widgets/CustomSkillsCard.dart';

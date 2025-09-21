@@ -1,8 +1,5 @@
 import 'package:aviralportfolio/common/global.dart';
-import 'package:aviralportfolio/pages/about.dart';
-import 'package:aviralportfolio/pages/contact.dart';
-import 'package:aviralportfolio/pages/project.dart';
-import 'package:aviralportfolio/pages/testimonial.dart';
+
 import 'package:aviralportfolio/provider/themeProvider.dart';
 import 'package:aviralportfolio/widgets/shadowText.dart';
 import 'package:flutter/material.dart';

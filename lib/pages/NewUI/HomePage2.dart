@@ -4,7 +4,7 @@ import 'package:aviralportfolio/common/global.dart';
 import 'package:aviralportfolio/pages/NewUI/About2.dart';
 import 'package:aviralportfolio/pages/NewUI/Contact2.dart';
 import 'package:aviralportfolio/pages/NewUI/Experience2.dart';
-import 'package:aviralportfolio/pages/NewUI/Home2.dart';
+import 'package:aviralportfolio/features/home/Home2.dart';
 import 'package:aviralportfolio/pages/NewUI/Project2.dart';
 import 'package:aviralportfolio/pages/NewUI/SpiderDot.dart';
 import 'package:aviralportfolio/pages/NewUI/Testimonial2.dart';
